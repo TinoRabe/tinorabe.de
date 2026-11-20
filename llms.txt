@@ -1,0 +1,41 @@
+# Tino Rabe
+
+> Freelance Dynamics 365 CRM & Power Platform consultant and Power Pages specialist, based in Laboe near Kiel, Germany. Opens Dynamics 365 securely to customers and partners: customer portals, partner portals and self-service on Dynamics 365 Sales, Customer Service and Field Service. Former Microsoft MVP for Power Pages (2024 to 2026). Works remotely for clients and Microsoft partners in Germany, Austria and Switzerland. Site language: German.
+
+Grown with Dynamics 365 and Power Platform. Known for Power Pages. Delivering across the whole platform.
+
+## About
+
+- Working with Dynamics CRM and portals since 2014, starting with Adxstudio portals at Avanade; later ascendit, proMX and adesso; freelance since 2025.
+- Followed the portal product through every rename: Adxstudio, Dynamics 365 Portals, Power Apps Portals, Power Pages.
+- Microsoft exams on Dynamics 365 Sales, Customer Engagement, Power Platform and Field Service (2018 to 2021).
+- Talks 2024 to 2026, including Days of Knowledge (Odense), Collabdays Hamburg and the Global Power Platform Bootcamp.
+- Education: IT systems management assistant (IT-Systemkaufmann), Bachelor of Arts in Business Informatics (FH Kiel).
+- About page: https://tinorabe.de/ueber-mich/
+
+## Services
+
+1. **Delivery: Dynamics 365 CRM & Power Platform** (build right): solution architecture, delivery or review for Dynamics 365 Sales, Customer Service and Field Service, Dataverse, model-driven apps, Power Automate and Power Pages, inside the client's team or the team of their Microsoft partner. Data model, internal security roles and external permissions are planned together from the start.
+   https://tinorabe.de/leistungen/dynamics-365-crm/
+2. **Security audit for Power Pages** (prove it's right): independent, strictly read-only remote review of a live portal on Dynamics 365 in eight areas, including table permissions, Web API column exposure, authentication and configuration. Report with findings rated by severity and concrete measures. About two weeks. Fixed price EUR 4,900 net, EUR 6,900 net for high complexity.
+   https://tinorabe.de/leistungen/security-audit/
+3. **Care for portals on Dynamics 365** (keep it right): monthly security and configuration review, Microsoft release check with assessment, written monthly report, small changes included. Care EUR 1,290 net per month, Care Plus EUR 2,490 net per month, minimum term three months.
+   https://tinorabe.de/leistungen/care/
+
+All prices are net, plus VAT.
+
+## References
+
+Projects by industry (client names only with consent; audits are confidential): real estate (tenant portal), software vendor (customer and partner portal with external sign-in), international machine builder (B2B self-service for spare parts), property developer (buyer and owner portal), building technology (Field Service and Customer Service), medical and safety technology, medical diagnostics, telecommunications, rail technology, energy, insurance and health.
+https://tinorabe.de/referenzen/
+
+## Contact
+
+- Contact page: https://tinorabe.de/kontakt/
+- Email: tino@amingi.net
+- LinkedIn: https://www.linkedin.com/in/tinorabe/
+
+## Related
+
+- PowerPortals.de, Tino Rabe's English and German knowledge site on Microsoft Power Pages (blog, tools, cheat sheets): https://powerportals.de/
+- Weekly in English on LinkedIn: Power Pages Weekly and the newsletter "Power Pages Pro".
