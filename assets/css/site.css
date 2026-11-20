@@ -113,3 +113,15 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:
 footer.site a{color:#c3cad9}
 footer.site .r{text-align:right}
 @media (max-width:700px){footer.site .r{text-align:left}}
+
+/* Cookie-Einwilligung */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:100;background:#fff;color:var(--ink);box-shadow:0 -2px 12px rgba(20,25,40,.12);font-size:14px}
+.consent .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+.consent p{flex:1 1 420px;line-height:1.5}
+.consent p a{text-decoration:underline}
+.consent-actions{display:flex;gap:10px}
+.consent-btn{font:inherit;font-weight:700;padding:9px 16px;border-radius:8px;cursor:pointer;background:#fff;color:var(--ink);border:1px solid #c9d0e0}
+.consent-btn:hover{border-color:var(--grey)}
+.consent-btn.accept{background:var(--blue);border-color:var(--blue);color:#fff}
+.consent-btn.accept:hover{background:#1d4fd8}
+@media (max-width:600px){.consent-actions{width:100%;justify-content:flex-end}}

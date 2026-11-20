@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Nur auf der echten Domain zählen, nicht lokal oder auf Vorschau-Hosts (analog powerportals.de)
+  if (/(^|\.)tinorabe\.de$/.test(location.hostname))
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zgn6w74y83");
+</script>
+
 <title>Seite nicht gefunden · Tino Rabe</title>
 <meta name="description" content="Diese Seite gibt es nicht.">
 <link rel="canonical" href="https://tinorabe.de/404.html">
@@ -62,5 +72,42 @@
     </div>
   </div>
 </footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einwilligung" hidden>
+  <div class="wrap">
+    <p>Diese Website nutzt Microsoft Clarity, um zu verstehen, wie Besucher die Seite nutzen (anonymisierte Analyse, keine Werbung). Cookies werden erst gesetzt, wenn Sie zustimmen. <a href="/datenschutz/">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    function apply(granted) {
+      if (typeof window.clarity !== 'function') return;
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: granted ? 'granted' : 'denied' });
+    }
+    function banner(show) {
+      var el = document.getElementById('cookie-consent');
+      if (el) el.hidden = !show;
+    }
+    function decide(granted) {
+      try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+      apply(granted);
+      banner(false);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var stored = null;
+      try { stored = localStorage.getItem(KEY); } catch (e) {}
+      if (stored === 'granted' || stored === 'denied') apply(stored === 'granted'); else banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', function () { decide(true); });
+      if (d) d.addEventListener('click', function () { decide(false); });
+    });
+  })();
+</script>
+
 </body>
 </html>

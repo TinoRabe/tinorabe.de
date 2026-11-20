@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Nur auf der echten Domain zählen, nicht lokal oder auf Vorschau-Hosts (analog powerportals.de)
+  if (/(^|\.)tinorabe\.de$/.test(location.hostname))
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zgn6w74y83");
+</script>
+
 <title>Datenschutzerklärung · Tino Rabe</title>
 <meta name="description" content="Datenschutzerklärung von tinorabe.de: Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO.">
 <link rel="canonical" href="https://tinorabe.de/datenschutz/">
@@ -57,8 +67,9 @@
   <ul>
     <li>Daten, die Sie mir mitteilen, zum Beispiel per E-Mail oder Telefon.</li>
     <li>Automatisch erfasste technische Daten beim Aufruf der Seite (Server-Logs): IP-Adresse, Browser-Typ, Zeitpunkt des Zugriffs und aufgerufene Seite.</li>
+    <li>Analyse-Cookies, nur mit Ihrer Einwilligung: Microsoft Clarity (siehe Abschnitt 4). Ohne Ihre Zustimmung im Cookie-Banner werden keine Analyse-Cookies gesetzt.</li>
   </ul>
-  <p>Diese Website setzt keine Cookies, nutzt kein Analyse- oder Tracking-Werkzeug, bindet keine Inhalte Dritter ein und lädt keine Schriften von fremden Servern. Es werden keine Daten zu Werbezwecken erhoben.</p>
+  <p>Schriften werden von diesem Server geladen, nicht von fremden Servern. Es werden keine Daten zu Werbezwecken erhoben.</p>
 
   <h3>2. Verantwortliche Stelle</h3>
   <p>Tino Rabe<br>Amingi<br>Kaistraße 90, c/o Regus<br>24114 Kiel, Deutschland<br>Telefon: +49 157 55 999 046<br>E-Mail: <a href="mailto:tino@amingi.net">tino@amingi.net</a></p>
@@ -68,13 +79,18 @@
   <p>Dabei verarbeiten diese Anbieter technisch notwendige Daten, insbesondere Ihre IP-Adresse, um die Seite auszuliefern und vor Angriffen zu schützen. Rechtsgrundlage ist mein berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). Dabei können Daten in die USA übermittelt werden; beide Anbieter sind nach dem EU-US Data Privacy Framework zertifiziert.</p>
   <p>Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a> · <a href="https://www.cloudflare.com/de-de/privacypolicy/" rel="noopener">Datenschutzerklärung von Cloudflare</a></p>
 
-  <h3>4. Anfrage per E-Mail oder Telefon</h3>
+  <h3>4. Microsoft Clarity (nur mit Ihrer Einwilligung)</h3>
+  <p>Diese Website nutzt, sofern Sie im Cookie-Banner zugestimmt haben, Microsoft Clarity, einen Analysedienst der Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, D18 P521, Irland. Clarity erstellt anonymisierte Heatmaps und Sitzungsaufzeichnungen, um zu verstehen, wie Besucher die Website nutzen (zum Beispiel Klicks, Scrollverhalten, Verweildauer). Eingaben in Formularfelder werden von Clarity automatisch maskiert.</p>
+  <p>Clarity setzt hierfür die Cookies <code>_clck</code> und <code>_clsk</code>. Diese werden erst gesetzt, wenn Sie im Cookie-Banner „Akzeptieren“ wählen. Lehnen Sie ab, erfasst Clarity lediglich eine anonyme, nicht sitzungsübergreifende Kennung ohne Cookies. Ihre Wahl speichert der Browser lokal, damit der Banner nicht bei jedem Aufruf erscheint.</p>
+  <p>Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie die Cookies <code>_clck</code> und <code>_clsk</code> sowie die Website-Daten von tinorabe.de in Ihrem Browser löschen; der Banner erscheint dann beim nächsten Besuch erneut. Weitere Informationen: <a href="https://learn.microsoft.com/de-de/clarity/setup-and-installation/clarity-data" rel="noopener">Clarity-Datenerfassung (Microsoft Learn)</a>.</p>
+
+  <h3>5. Anfrage per E-Mail oder Telefon</h3>
   <p>Wenn Sie mich per E-Mail oder Telefon kontaktieren, speichere ich Ihre Anfrage einschließlich der angegebenen Kontaktdaten, um sie zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn Ihre Anfrage mit einem Vertrag oder dessen Anbahnung zusammenhängt, sonst Art. 6 Abs. 1 lit. f DSGVO. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
 
-  <h3>5. Speicherdauer</h3>
+  <h3>6. Speicherdauer</h3>
   <p>Ihre personenbezogenen Daten verbleiben bei mir, bis der Zweck für die Datenverarbeitung entfällt, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen.</p>
 
-  <h3>6. Ihre Rechte</h3>
+  <h3>7. Ihre Rechte</h3>
   <ul>
     <li>Auskunftsrecht (Art. 15 DSGVO)</li>
     <li>Berichtigungsrecht (Art. 16 DSGVO)</li>
@@ -85,7 +101,7 @@
     <li>Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
   </ul>
 
-  <h3>7. SSL- bzw. TLS-Verschlüsselung</h3>
+  <h3>8. SSL- bzw. TLS-Verschlüsselung</h3>
   <p>Diese Seite nutzt SSL/TLS-Verschlüsselung zum Schutz vertraulicher Inhalte.</p>
 
   <p class="muted">Stand: November 2026</p>
@@ -107,5 +123,42 @@
     </div>
   </div>
 </footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einwilligung" hidden>
+  <div class="wrap">
+    <p>Diese Website nutzt Microsoft Clarity, um zu verstehen, wie Besucher die Seite nutzen (anonymisierte Analyse, keine Werbung). Cookies werden erst gesetzt, wenn Sie zustimmen. <a href="/datenschutz/">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    function apply(granted) {
+      if (typeof window.clarity !== 'function') return;
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: granted ? 'granted' : 'denied' });
+    }
+    function banner(show) {
+      var el = document.getElementById('cookie-consent');
+      if (el) el.hidden = !show;
+    }
+    function decide(granted) {
+      try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+      apply(granted);
+      banner(false);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var stored = null;
+      try { stored = localStorage.getItem(KEY); } catch (e) {}
+      if (stored === 'granted' || stored === 'denied') apply(stored === 'granted'); else banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', function () { decide(true); });
+      if (d) d.addEventListener('click', function () { decide(false); });
+    });
+  })();
+</script>
+
 </body>
 </html>
