@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages 2026: The Quiet Hardening Series</title>
+<meta name="description" content="Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-hardening-series-2026/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-hardening-series-2026/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/haertungs-serie-2026/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-hardening-series-2026/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages 2026: The Quiet Hardening Series">
+<meta property="og:description" content="Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-hardening-series-2026/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-hardening-series-2026.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages 2026: The Quiet Hardening Series">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages 2026: The Quiet Hardening Series">
+<meta name="twitter:description" content="Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-hardening-series-2026.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-hardening-series-2026/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-hardening-series-2026/",
+      "name": "Power Pages 2026: The Quiet Hardening Series",
+      "description": "Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-hardening-series-2026.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-hardening-series-2026/#article",
+      "headline": "Power Pages 2026: The Quiet Hardening Series",
+      "description": "Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-hardening-series-2026/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-hardening-series-2026.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages maintenance, Power Pages deprecations 2026, table permissions enforcement, OData feed removal, portal content editor, Power Pages Care, release management, portal operations",
+      "articleSection": "Administration"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Administration</span>
+      <time datetime="2026-09-09">9 September 2026</time><span>10 min read</span><a href="/de/blog/haertungs-serie-2026/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Power Pages 2026: The Quiet Hardening Series</h1>
+    <p class="art-lead">Microsoft has been hardening Power Pages in small steps for years. In 2026 four deadlines converge. What operators should take from it, with a timeline.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Last week I described what happens on 14 September 2026: Microsoft removes the wildcard value from the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;table&gt;/fields</code> site setting. Sites that use it lose their Web API calls that day. The technical route out of it is in the <a href="/en/blog/wildcard-web-api-fix/" class="underline font-semibold">engineer post</a>.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  This post asks a different question. Not how to fix it, but why an announcement like that catches some organisations cold and others not at all.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  The answer is unglamorous, which is why it is easy to miss. The wildcard is not a one off. It is the latest entry in a series that has been running since 2022 and that gets unusually dense this year.
+</p>
+
+<section id="timeline" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The timeline</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Everything below comes from the Microsoft Learn article on upcoming changes in Power Pages, document date 14 August 2026. I have sorted it by effective date rather than announcement date. For an operator, what matters is when something stops working.
+  </p>
+
+  <figure class="mb-8">
+    <picture>
+      <source media="(max-width: 640px)" srcset="/assets/images/blog/haertungs-serie-2026/timeline-deprecations-2022-2026-en-mobile.png">
+      <img src="/assets/images/blog/haertungs-serie-2026/timeline-deprecations-2022-2026-en.png" alt="Timeline of Power Pages deprecations 2022 to 2026" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+    </picture>
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>2022, the announcement wave.</strong> In June 2022 two things are declared deprecated at once: OData feeds for lists, and the portal content editor. Also in 2022, the old form of the OAuth 2.0 implicit grant flow is deprecated, with a migration deadline of October 2022. And from October 2022 newly created sites are private by default, which surprised a lot of people at the time.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>The pattern from 2022 onward.</strong> Microsoft first switches a capability off for new sites, lets existing ones keep running, and sets the real end years later. For OData feeds that means: from October 2022 new sites cannot use the feature, and the end for everyone lands in June 2026. Nearly four years of runway.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-3"><strong>June 2026, three deadlines land.</strong></p>
+  <ul class="list-disc pl-6 space-y-1 text-gray-700 leading-relaxed mb-4">
+    <li>OData feeds for lists are removed.</li>
+    <li>The portal content editor is removed.</li>
+  </ul>
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The change with the widest blast radius comes last. From June 2026, sites enforce table permissions for <strong>all</strong> forms and lists, regardless of whether the "Enable Table Permissions" setting is on. For newly created sites this has applied since release 9.3.7.x.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>14 September 2026.</strong> The wildcard value in the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;table&gt;/fields</code> setting is removed for all sites.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Four deadlines in one year, three of them in June and one in September. If you look at your portal once a quarter, 2026 gives you three chances to miss something.
+  </p>
+</section>
+
+<section id="why-hardening" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Why Microsoft is hardening, and why that is good</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    It is worth staying with the reasoning for a moment, because the same logic runs through all four items.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The wildcard exposes every column of a Dataverse table, including the ones nobody meant to publish. The table permission change closes the case where a form without permission checking hands back more data than the user's roles would allow. Both changes take away something that was convenient and, in the worst case, gave away too much.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    That is the right direction, and I mean that without qualification. Power Pages is a platform where business teams can build portals quickly. That speed is its value. The price is that defaults matter enormously, because a great many settings were never deliberately chosen, they were only never changed. When Microsoft tightens defaults like that, the security posture of thousands of portals improves at once, including all the ones that will never see an audit.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    But hardening never comes without breakage. The very configuration that made a platform generous is the configuration that solutions were built on for years. Tighten it and things break. That is not a complaint about Microsoft, it is simply the mechanism.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    And it leads to a fairly clear consequence for whoever operates the portal.
+  </p>
+</section>
+
+<section id="consequence" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The consequence: a release radar, or a surprise</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    A production Power Pages portal has exactly two operating modes.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>The first.</strong> Someone checks regularly what Microsoft has announced, tests it against the actual configuration of this portal, and reports what needs doing. Regularly means monthly, not when it comes up. The effort is small, because most months turn up nothing relevant. The value is that the relevant months do not slip through.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>The second.</strong> Nobody checks. Then the organisation learns about a change on the day a user calls because the form no longer saves. The fix is the same as it would have been, it just costs several times as much, because now it happens under time pressure, with a support ticket open and an unhappy business unit waiting.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The difference between the two modes is not competence. I see very good developer teams in the second mode, simply because nobody owns the task. The difference is ownership. As long as watching releases is nobody's job, it is nobody's job.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    One number for scale. The wildcard announcement landed in the documentation on 14 August 2026. Between that day and the effective date sit 31 days. For the June deadlines it was years. The trend is toward shorter notice, and that is the real reason an annual look is no longer enough.
+  </p>
+</section>
+
+<section id="what-helps" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">What helps: first an inventory, then an operating routine</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Two different problems, two different answers. They are easy to confuse.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>The inventory problem</strong> is the question: what is actually in my portal right now, and where am I affected? That is one off work with a result. A security audit walks the configuration systematically: table permissions, column permissions, web roles, Web API exposure, authentication, site visibility. The deliverable is a findings report with severities and an order of work. Fixed price from 4,900 EUR net. Afterwards you know where you stand, including the wildcard question and the table permission question.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    <strong>The runtime problem</strong> is the question: who tells me when this changes? That is continuous work with no end point, and it is what Power Pages Care exists for. I look after your portal so you do not have to.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Four things happen every month, whether or not anything is going on.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">01 Security and configuration review</h3>
+      <p class="text-gray-600 text-sm">Table permissions, web roles, site settings and identity configuration checked systematically. Drift gets caught before anyone exploits it.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">02 Microsoft release check with a clear verdict</h3>
+      <p class="text-gray-600 text-sm">I read the release notes, you get the verdict. What affects your portal, what needs action, what you can ignore. The wildcard case this August ran exactly that way.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">03 Written monthly report</h3>
+      <p class="text-gray-600 text-sm">Status, findings, recommendations, open items. Evidence in writing, useful for audit and compliance purposes too.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">04 Smaller adjustments included</h3>
+      <p class="text-gray-600 text-sm">A bug fix, a permission adjustment, a form change are covered. Anything bigger is agreed upfront, no surprises.</p>
+    </div>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    There are two tiers. <strong>Care at 1,290 EUR net per month</strong> covers the review, the release check and the report, with a 48 hour response time on business days and smaller adjustments up to two hours a month. That is the tier for stable portals that want certainty. <strong>Care Plus at 2,490 EUR net per month</strong> includes everything in Care plus a quarterly deep-dive that takes one audit area in full depth. Response within 24 hours, same day for security incidents, adjustments up to five hours a month including small enhancements. That tier is built for living portals, for B2C and External ID, for multiple environments.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Minimum term three months, monthly after that, billed monthly in advance.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The principle behind it matters more than the numbers. Care does not sell buckets of hours, it sells ownership. The Care Plus deep-dive follows the eight areas of the Security Audit, so over two years you get a rolling full audit. If you cancel, the reports and documentation stay with you. And you always know who to call.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    If the budget only covers one, do the inventory first. I give that advice almost every time. A radar pointed at an unknown configuration cannot judge relevance.
+  </p>
+</section>
+
+<section id="when-not-needed" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">When you do not need a maintenance contract</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Since this would otherwise read like a sales page, here is the honest part. There are cases where a maintenance contract is the wrong product for you, and I say so on the call.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>You have in house Power Pages knowledge with clear ownership.</strong> If someone on your team is named as responsible for reading the release notes and the deprecations article every month, and has actually been doing it for more than six months, then you would be buying something you already have. The test is simple: ask that person which four deadlines fall in 2026. If the answer comes without looking it up, you are covered.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Your portal is anonymous and static.</strong> A portal with no sign in, no forms, no Web API usage, essentially serving content, has very little surface for this class of change. None of the four 2026 deadlines touches it. An annual look is enough here.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>The portal is on its way out.</strong> If the replacement is already decided and scheduled, and the date falls before the relevant deadlines, do not repair something that is being switched off anyway. Just verify that the date actually holds.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>You are mid project with a good partner.</strong> As long as an implementation partner is actively working on the portal and has a maintenance component in the contract, a second contract alongside is duplicated work. Do check the existing contract for whether release monitoring is genuinely in scope. Often what is in there is incident response, and that is a different thing.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    That leaves the cases in between, and in my experience those are most of them. A production portal with signed in users, built one to five years ago, no dedicated owner since, and a service provider who shows up when called. For that setup the hardening series is not an abstract topic. It is a list of dates that nobody is keeping.
+  </p>
+</section>
+
+<section id="next-date" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The next date is 14 September</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Check this week whether your portal uses the wildcard value. The instructions are in the <a href="/en/blog/wildcard-web-api-fix/" class="underline font-semibold">engineer post</a> and take ten minutes per portal.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    If you would rather have it checked: the <a href="/leistungen/security-audit/">security audit</a> (page in German) covers exactly these site settings. You will know afterwards whether and where you are affected and how long remediation takes.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Write to tino@amingi.net.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    I am a former Microsoft MVP for Power Pages (2024 to 2026) and have been on the platform since its Adxstudio days.
+  </p>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Related Articles</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/en/blog/wildcard-web-api-fix/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">The Web API wildcard is going away on 14 September. Here is how to fix it.</h3>
+      <p class="text-gray-600 mb-4">Microsoft removes the wildcard value in the Webapi/&lt;table&gt;/fields site setting on 14 September 2026. What breaks, and how to check your site in 10 minutes.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/security-compliance-power-pages/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Security & Compliance: Why Power Pages Portals Are More Secure</h3>
+      <p class="text-gray-600 mb-4">Power Pages delivers GDPR compliance, EU hosting and role-based access rights out-of-the-box, enterprise security without expert knowledge.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Sources</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/important-changes-deprecations" class="underline" target="_blank" rel="noopener">Important upcoming changes and deprecations in Power Pages</a>, document date 14 August 2026. Basis for every date in the timeline</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-overview" class="underline" target="_blank" rel="noopener">Overview of the Power Pages portals Web API</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/portals/configure/entity-forms#secure-your-forms" class="underline" target="_blank" rel="noopener">Secure your forms</a> and <a href="https://learn.microsoft.com/en-us/power-apps/maker/portals/configure/securing-lists" class="underline" target="_blank" rel="noopener">Securing lists</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/portals/configure/list-odata-feeds" class="underline" target="_blank" rel="noopener">List OData feeds</a></li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Who looks after your portal once it is live?</p>
+      <p>Care for portals on Dynamics 365: operations, updates and a monthly report, so that your portal stays secure after go-live. From €1,290 net per month.</p>
+      <p class="btns"><a class="btn" href="/leistungen/care/">About Care (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

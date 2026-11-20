@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages External Identity Management: Process Documentation</title>
+<meta name="description" content="Interactive process documentation for onboarding external users into Power Pages portals">
+<link rel="canonical" href="https://tinorabe.de/en/tools/power-pages-external-identity/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/tools/power-pages-external-identity/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/tools/power-pages-externe-identitaet/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/tools/power-pages-external-identity/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages External Identity Management: Process Documentation">
+<meta property="og:description" content="Interactive process documentation for onboarding external users into Power Pages portals">
+<meta property="og:url" content="https://tinorabe.de/en/tools/power-pages-external-identity/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages External Identity Management: Process Documentation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages External Identity Management: Process Documentation">
+<meta name="twitter:description" content="Interactive process documentation for onboarding external users into Power Pages portals">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/tools/power-pages-external-identity/#webpage",
+      "url": "https://tinorabe.de/en/tools/power-pages-external-identity/",
+      "name": "Power Pages External Identity Management: Process Documentation",
+      "description": "Interactive process documentation for onboarding external users into Power Pages portals",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "en-GB"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<link rel="stylesheet" href="/assets/css/pp-process.css?v=06426ccb4f">
+
+<div class="ppx">
+                <div class="header" data-chip="Process documentation · Entra External ID">
+            <h1>Power Pages external identity management</h1>
+            <p>Process Documentation: Onboarding New Portal Users</p>
+        </div>
+        
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#einleitung">1. Introduction and Purpose</a></li>
+                <li><a href="#rollenverteilung">2. Roles and Responsibilities</a></li>
+                <li><a href="#prozess-fachbereich">3. Detailed Process: Internal Department</a></li>
+                <li><a href="#prozess-benutzer">4. Detailed Process: Portal User</a></li>
+                <li><a href="#systemarchitektur">5. System Architecture and Data Flow</a></li>
+                <li><a href="#faq">6. Frequently Asked Questions (FAQ)</a></li>
+                <li><a href="#zusammenfassung">7. Summary</a></li>
+                <li><a href="#quellen">Sources and References</a></li>
+            </ul>
+        </div>
+        
+        <div class="section" id="einleitung">
+            <h2>1. Introduction and Purpose</h2>
+            
+            <div class="intro-box">
+                <h3>Purpose</h3>
+                <p>This documentation describes the process for onboarding new portal users in Power Pages<a href="#fn1" class="footnote-ref">[1]</a> with external identity management (Entra External ID<a href="#fn2" class="footnote-ref">[2]</a>). The focus is on the division of tasks between the internal department and the external portal user.</p>
+            </div>
+            
+            <div class="alert alert-info">
+                <strong>Key Takeaway</strong>
+                The internal department exclusively performs tasks in Dataverse<a href="#fn3" class="footnote-ref">[3]</a>. The interaction with the external identity provider is carried out entirely by the portal user themselves.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Internal Effort</h4>
+                    <div class="value">2</div>
+                    <div class="label">steps</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Time Required</h4>
+                    <div class="value">~1</div>
+                    <div class="label">minute per user<a href="#fn4" class="footnote-ref">[4]</a></div>
+                </div>
+                <div class="stat-card">
+                    <h4>Systems (internal)</h4>
+                    <div class="value" style="font-size: 1.5rem;">Dataverse<br>+ Power Pages</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Entra External ID</h4>
+                    <div class="value" style="font-size: 1.5rem;">No<br>Interaction</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="rollenverteilung">
+            <h2>2. Roles and Responsibilities</h2>
+            
+            <div class="role-section">
+                <h3>Internal Department (Dataverse)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Activity</th>
+                            <th>System</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>Create contact record<a href="#fn5" class="footnote-ref">[5]</a></td>
+                            <td>Dataverse</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Initiate invitation<a href="#fn6" class="footnote-ref">[6]</a></td>
+                            <td>Power Pages</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem; font-style: italic; color: #5b6474;">
+                    <strong>Note:</strong> No direct interaction with Entra External ID required.
+                </p>
+            </div>
+            
+            <div class="role-section external">
+                <h3>External Portal User (Entra External ID)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Activity</th>
+                            <th>System</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>Open invitation link</td>
+                            <td>Email Client</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Define password<a href="#fn7" class="footnote-ref">[7]</a></td>
+                            <td>Entra External ID</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>Activate account</td>
+                            <td>Entra External ID</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>Perform initial login<a href="#fn8" class="footnote-ref">[8]</a></td>
+                            <td>Power Pages</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem; font-style: italic; color: #5b6474;">
+                    <strong>Note:</strong> Carried out entirely independently without internal support.
+                </p>
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>Important</strong>
+                The internal department has no activities in the external identity provider.
+            </div>
+        </div>
+
+        <div class="section" id="prozess-fachbereich">
+            <h2>3. Detailed Process: Internal Department</h2>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Create Contact Record</div>
+                </div>
+                <div class="step-content">
+                    <div class="step-detail">
+                        <strong>Required Data:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Email address (required, unique)</li>
+                            <li>First name (required)</li>
+                            <li>Last name (required)</li>
+                            <li>Status: Active</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-detail">
+                        <strong>System:</strong>
+                        <p>Microsoft Dataverse (Model-Driven App<a href="#fn9" class="footnote-ref">[9]</a> or Power Pages Admin<a href="#fn10" class="footnote-ref">[10]</a>)</p>
+                    </div>
+
+                    <div class="step-detail">
+                        <strong>Time Required:</strong>
+                        <p>Approx. 30 seconds<a href="#fn4" class="footnote-ref">[4]</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Initiate Invitation</div>
+                </div>
+                <div class="step-content">
+                    <div class="step-detail">
+                        <strong>Action:</strong>
+                        <p>The invitation function for the created contact is triggered via Power Pages Admin.<a href="#fn6" class="footnote-ref">[6]</a> The system automatically generates a unique redemption code and sends an email to the stored email address.</p>
+                    </div>
+
+                    <div class="step-detail">
+                        <strong>System Action:</strong>
+                        <p>Power Pages creates an invitation record in Dataverse and sends a preconfigured email template.<a href="#fn11" class="footnote-ref">[11]</a></p>
+                    </div>
+
+                    <div class="step-detail">
+                        <strong>Time Required:</strong>
+                        <p>Approx. 5 seconds (button click)<a href="#fn4" class="footnote-ref">[4]</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>Internal Tasks Complete</strong>
+                After completing these two steps, all tasks of the internal department are finished. Further process steps are carried out automatically or by the portal user.
+            </div>
+        </div>
+        
+        <div class="section" id="prozess-benutzer">
+            <h2>4. Detailed Process: Portal User (Self-Service)</h2>
+
+            <div class="alert alert-info">
+                <strong>Important</strong>
+                All subsequent steps are carried out independently by the portal user. The internal department has no tasks in this process section.
+            </div>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Receive Invitation Email</div>
+                </div>
+                <div class="step-content">
+                    <p>The portal user automatically receives an email with a unique invitation link. Validity: 7 days by default.<a href="#fn12" class="footnote-ref">[12]</a></p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Validate Redemption Code</div>
+                </div>
+                <div class="step-content">
+                    <p>By clicking the link, the portal user is redirected to Power Pages. The system validates the redemption code and, upon successful validation, redirects to Entra External ID.<a href="#fn13" class="footnote-ref">[13]</a></p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Registration in Entra External ID</div>
+                </div>
+                <div class="step-content">
+                    <p>The portal user is redirected to the signup page of the external identity provider.<a href="#fn14" class="footnote-ref">[14]</a> There, they enter and confirm a self-chosen password and any additional profile data as required.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Account Activation</div>
+                </div>
+                <div class="step-content">
+                    <p>After successful registration, Entra External ID creates an active user account. The link to the Dataverse contact is established via the email address.<a href="#fn15" class="footnote-ref">[15]</a></p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Authentication and Portal Access</div>
+                </div>
+                <div class="step-content">
+                    <p>After completing registration, the portal user is automatically redirected to the Power Pages portal and authenticated.<a href="#fn8" class="footnote-ref">[8]</a> From this point on, full portal access is available.</p>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>Result</strong>
+                The portal user is now fully registered and can independently sign in to the portal at any time using their credentials (email + password). Password management is handled exclusively through Entra External ID.<a href="#fn16" class="footnote-ref">[16]</a>
+            </div>
+        </div>
+        
+        <div class="section" id="systemarchitektur">
+            <h2>5. System Architecture and Data Flow</h2>
+
+            <h3>System Components Overview</h3>
+
+            <div class="system-grid">
+                <div class="system-card dataverse">
+                    <h4>Dataverse</h4>
+                    <ul>
+                        <li>Contact records<a href="#fn3" class="footnote-ref">[3]</a></li>
+                        <li>Invitation records</li>
+                        <li>Permission management<a href="#fn17" class="footnote-ref">[17]</a></li>
+                    </ul>
+                </div>
+
+                <div class="system-card powerpages">
+                    <h4>Power Pages</h4>
+                    <ul>
+                        <li>Invitation management<a href="#fn6" class="footnote-ref">[6]</a></li>
+                        <li>OAuth2/OIDC integration<a href="#fn18" class="footnote-ref">[18]</a></li>
+                        <li>Portal frontend<a href="#fn1" class="footnote-ref">[1]</a></li>
+                    </ul>
+                </div>
+
+                <div class="system-card entra">
+                    <h4>Entra External ID</h4>
+                    <ul>
+                        <li>Authentication<a href="#fn2" class="footnote-ref">[2]</a></li>
+                        <li>User accounts</li>
+                        <li>Password management<a href="#fn16" class="footnote-ref">[16]</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Data Flow: User Onboarding</h3>
+            
+            <div style="background: #fff; padding: 2rem; margin: 1.5rem 0; border: 1px solid #dde2ee; border-radius: 6px;">
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <div style="background: #2563eb; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-right: 1rem;">Department</div>
+                        <div style="flex: 1; height: 2px; background: #2563eb;"></div>
+                        <div style="background: #2563eb; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-left: 1rem;">Dataverse</div>
+                    </div>
+                    <p style="text-align: center; color: #5b6474; font-size: 0.9rem;">Create contact + initiate invitation</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <div style="background: #0b0f1c; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-right: 0.5rem;">Power Pages</div>
+                        <div style="flex: 1; height: 2px; background: #0b0f1c;"></div>
+                        <div style="background: #5b6474; color: white; padding: 0.5rem 1rem; font-weight: bold; margin: 0 0.5rem;">Email</div>
+                        <div style="flex: 1; height: 2px; background: #2563eb;"></div>
+                        <div style="background: #2563eb; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-left: 0.5rem;">Portal User</div>
+                    </div>
+                    <p style="text-align: center; color: #5b6474; font-size: 0.9rem;">Send invitation link</p>
+                </div>
+
+                <div>
+                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                        <div style="background: #2563eb; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-right: 1rem;">Portal User</div>
+                        <div style="flex: 1; height: 2px; background: #2563eb;"></div>
+                        <div style="background: #2563eb; color: white; padding: 0.5rem 1rem; font-weight: bold; margin-left: 1rem;">Entra External ID</div>
+                    </div>
+                    <p style="text-align: center; color: #5b6474; font-size: 0.9rem;">Registration + authentication (fully self-service)</p>
+                </div>
+            </div>
+            
+            <div class="alert alert-warning">
+                <strong>Important Note</strong>
+                The integration between Power Pages and Entra External ID uses standardized OAuth2/OpenID Connect protocols.<a href="#fn18" class="footnote-ref">[18]</a> The internal department does not need knowledge of these technical details and has no activities in the external identity provider.
+            </div>
+        </div>
+        
+        <div class="section" id="faq">
+            <h2>6. Frequently Asked Questions (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Is interaction with Entra External ID required from the internal department?</div>
+                <div class="faq-answer">No. The internal department exclusively performs tasks in Dataverse and Power Pages Admin. All interaction with the external identity provider is carried out independently by the portal user.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Does the internal department need to manage or reset passwords?</div>
+                <div class="faq-answer">No. Password management is handled entirely through Entra External ID.<a href="#fn16" class="footnote-ref">[16]</a> Portal users can independently perform password resets. The internal department has no access to passwords.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long is an invitation valid?</div>
+                <div class="faq-answer">Default validity: 7 days.<a href="#fn12" class="footnote-ref">[12]</a> After expiry, the invitation can be resent (identical process to the initial send).</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is bulk creation of portal users possible?</div>
+                <div class="faq-answer">Yes. Via Power Automate<a href="#fn19" class="footnote-ref">[19]</a>, contact records and invitations can be created automatically from lists (e.g., Excel, CSV). This significantly reduces the manual effort for larger user groups.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How is a portal user deactivated?</div>
+                <div class="faq-answer">The contact record in Dataverse is set to status "Inactive".<a href="#fn20" class="footnote-ref">[20]</a> Authentication via Entra External ID is then no longer possible. Reactivation is done by changing the status back to "Active".</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens if the invitation email fails to deliver?</div>
+                <div class="faq-answer">The invitation can be resent via the Power Pages Admin interface. Most common cause: spam filter at the recipient. The portal user should be instructed to check their spam folder.</div>
+            </div>
+        </div>
+        
+        <div class="section" id="zusammenfassung">
+            <h2>7. Summary</h2>
+
+            <div class="summary-box">
+                <h3>Effort for the Internal Department</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Number of Steps</h4>
+                        <div class="value">2</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Time Required</h4>
+                        <div class="value">~1</div>
+                        <div class="label">minute<a href="#fn4" class="footnote-ref">[4]</a></div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Systems</h4>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #2563eb; margin-top: 0.5rem;">Dataverse<br>+ Power Pages</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Entra External ID</h4>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #2563eb; margin-top: 0.5rem;">No<br>Interaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Advantages of This Architecture</h3>
+
+            <div class="advantage-item">
+                <div class="advantage-number">1</div>
+                <div class="advantage-content">
+                    <strong>Minimal Internal Effort</strong>
+                    <p>Only two simple steps required per portal user</p>
+                </div>
+            </div>
+
+            <div class="advantage-item">
+                <div class="advantage-number">2</div>
+                <div class="advantage-content">
+                    <strong>No Password Management</strong>
+                    <p>Fully delegated to Entra External ID<a href="#fn16" class="footnote-ref">[16]</a></p>
+                </div>
+            </div>
+
+            <div class="advantage-item">
+                <div class="advantage-number">3</div>
+                <div class="advantage-content">
+                    <strong>Self-Service for Portal Users</strong>
+                    <p>Registration and login completely independent<a href="#fn7" class="footnote-ref">[7]</a></p>
+                </div>
+            </div>
+
+            <div class="advantage-item">
+                <div class="advantage-number">4</div>
+                <div class="advantage-content">
+                    <strong>Scalability</strong>
+                    <p>Bulk import via Power Automate possible for larger user groups<a href="#fn19" class="footnote-ref">[19]</a></p>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 2rem;">
+                <strong>Key Takeaway</strong>
+                Onboarding new portal users requires the internal department to perform only two tasks: creating a contact record and initiating an invitation. All further process steps, in particular all interaction with the external identity provider, are carried out independently by the portal user. This results in minimal effort for the department while maintaining high scalability of the process.
+            </div>
+        </div>
+        
+        <div class="footnotes" id="quellen">
+            <h2>Sources and References</h2>
+            
+            <div class="footnote-item" id="fn1">
+                <span class="footnote-number">[1]</span>
+                Microsoft Power Pages Dokumentation: <a href="https://learn.microsoft.com/en-us/power-pages/" target="_blank">https://learn.microsoft.com/en-us/power-pages/</a>
+            </div>
+            
+            <div class="footnote-item" id="fn2">
+                <span class="footnote-number">[2]</span>
+                Microsoft Entra External ID Dokumentation: <a href="https://learn.microsoft.com/en-us/entra/external-id/" target="_blank">https://learn.microsoft.com/en-us/entra/external-id/</a>
+            </div>
+            
+            <div class="footnote-item" id="fn3">
+                <span class="footnote-number">[3]</span>
+                Microsoft Dataverse Dokumentation: <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/" target="_blank">https://learn.microsoft.com/en-us/power-apps/maker/data-platform/</a>
+            </div>
+            
+            <div class="footnote-item" id="fn4">
+                <span class="footnote-number">[4]</span>
+                Own estimate based on typical processing times. Actual duration may vary depending on system performance and user experience.
+            </div>
+            
+            <div class="footnote-item" id="fn5">
+                <span class="footnote-number">[5]</span>
+                Manage Contacts in Dataverse: <a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/customer-entities-account-contact" target="_blank">https://learn.microsoft.com/en-us/power-apps/developer/data-platform/customer-entities-account-contact</a>
+            </div>
+            
+            <div class="footnote-item" id="fn6">
+                <span class="footnote-number">[6]</span>
+                Invite Contacts in Power Pages: <a href="https://learn.microsoft.com/en-us/power-pages/security/invite-contacts" target="_blank">https://learn.microsoft.com/en-us/power-pages/security/invite-contacts</a>
+            </div>
+            
+            <div class="footnote-item" id="fn7">
+                <span class="footnote-number">[7]</span>
+                Self-Service Password Reset: <a href="https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sspr-howitworks" target="_blank">https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sspr-howitworks</a>
+            </div>
+            
+            <div class="footnote-item" id="fn8">
+                <span class="footnote-number">[8]</span>
+                Authentication in Power Pages: <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/" target="_blank">https://learn.microsoft.com/en-us/power-pages/security/authentication/</a>
+            </div>
+            
+            <div class="footnote-item" id="fn9">
+                <span class="footnote-number">[9]</span>
+                Model-Driven Apps Overview: <a href="https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-overview" target="_blank">https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-overview</a>
+            </div>
+            
+            <div class="footnote-item" id="fn10">
+                <span class="footnote-number">[10]</span>
+                Power Pages Administration: <a href="https://learn.microsoft.com/en-us/power-pages/admin/admin-overview" target="_blank">https://learn.microsoft.com/en-us/power-pages/admin/admin-overview</a>
+            </div>
+            
+            <div class="footnote-item" id="fn11">
+                <span class="footnote-number">[11]</span>
+                Email Templates for Invitations: <a href="https://learn.microsoft.com/en-us/power-pages/security/invite-contacts" target="_blank">https://learn.microsoft.com/en-us/power-pages/security/invite-contacts</a> (Power Pages uses invitation workflows to send customized emails)
+            </div>
+            
+            <div class="footnote-item" id="fn12">
+                <span class="footnote-number">[12]</span>
+                The 7-day validity is a configurable default setting. The actual duration can be adjusted in the Power Pages settings.
+            </div>
+            
+            <div class="footnote-item" id="fn13">
+                <span class="footnote-number">[13]</span>
+                Invitation Redemption Process: <a href="https://learn.microsoft.com/en-us/power-pages/security/invite-contacts#redeem-invitations" target="_blank">https://learn.microsoft.com/en-us/power-pages/security/invite-contacts#redeem-invitations</a>
+            </div>
+            
+            <div class="footnote-item" id="fn14">
+                <span class="footnote-number">[14]</span>
+                User Flows in Entra External ID: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-user-flow-sign-up-sign-in-customers" target="_blank">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-user-flow-sign-up-sign-in-customers</a>
+            </div>
+            
+            <div class="footnote-item" id="fn15">
+                <span class="footnote-number">[15]</span>
+                Identity mapping between Power Pages and Entra ID: The link is established by default via the email address as the unique identifier.
+            </div>
+            
+            <div class="footnote-item" id="fn16">
+                <span class="footnote-number">[16]</span>
+                Password Management in Entra External ID: <a href="https://learn.microsoft.com/en-us/entra/identity/authentication/concept-password-ban-bad" target="_blank">https://learn.microsoft.com/en-us/entra/identity/authentication/concept-password-ban-bad</a>
+            </div>
+            
+            <div class="footnote-item" id="fn17">
+                <span class="footnote-number">[17]</span>
+                Security Roles and Permissions in Dataverse: <a href="https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges" target="_blank">https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges</a>
+            </div>
+            
+            <div class="footnote-item" id="fn18">
+                <span class="footnote-number">[18]</span>
+                Configure OpenID Connect Provider for Power Pages: <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/openid-provider" target="_blank">https://learn.microsoft.com/en-us/power-pages/security/authentication/openid-provider</a>
+            </div>
+            
+            <div class="footnote-item" id="fn19">
+                <span class="footnote-number">[19]</span>
+                Power Automate for bulk operations: <a href="https://learn.microsoft.com/en-us/power-automate/dataverse/overview" target="_blank">https://learn.microsoft.com/en-us/power-automate/dataverse/overview</a>
+            </div>
+            
+            <div class="footnote-item" id="fn20">
+                <span class="footnote-number">[20]</span>
+                Deactivate Contacts in Power Pages: The contact status in Dataverse controls portal access. When status is "Inactive", authentication is no longer possible.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p style="color: #5b6474; margin-bottom: 0.5rem;">Created by</p>
+            <p class="author">Tino Rabe</p>
+            <p style="color: #5b6474; margin-top: 0.25rem;">Former Microsoft MVP for Power Pages (2024 to 2026)</p>
+            <p style="color: #2563eb; margin-top: 0.75rem;">tino@amingi.net | tinorabe.de</p>
+        </div>
+    </div>
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

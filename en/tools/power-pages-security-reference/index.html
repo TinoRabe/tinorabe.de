@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Security Reference: SDM vs EDM vs SPA</title>
+<meta name="description" content="22 Power Pages security and compliance controls, verified against Microsoft Learn for the standard data model, the enhanced data model and SPA code sites. Included, not included or not documented, with prerequisites like Managed Environments.">
+<link rel="canonical" href="https://tinorabe.de/en/tools/power-pages-security-reference/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Security Reference: SDM vs EDM vs SPA">
+<meta property="og:description" content="22 Power Pages security and compliance controls, verified against Microsoft Learn for the standard data model, the enhanced data model and SPA code sites. Included, not included or not documented, with prerequisites like Managed Environments.">
+<meta property="og:url" content="https://tinorabe.de/en/tools/power-pages-security-reference/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Security Reference: SDM vs EDM vs SPA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Security Reference: SDM vs EDM vs SPA">
+<meta name="twitter:description" content="22 Power Pages security and compliance controls, verified against Microsoft Learn for the standard data model, the enhanced data model and SPA code sites. Included, not included or not documented, with prerequisites like Managed Environments.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/tools/power-pages-security-reference/#webpage",
+      "url": "https://tinorabe.de/en/tools/power-pages-security-reference/",
+      "name": "Power Pages Security Reference: SDM vs EDM vs SPA",
+      "description": "22 Power Pages security and compliance controls, verified against Microsoft Learn for the standard data model, the enhanced data model and SPA code sites. Included, not included or not documented, with prerequisites like Managed Environments.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "en-GB"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<style>
+.pps {
+  --pps-navy: #0b0f1c;
+  --pps-navy-card: #161b2c;
+  --pps-blue-dark: #4a9eff;
+  --pps-page: #edf0f8;
+  --pps-card: #ffffff;
+  --pps-blue: #2563eb;
+  --pps-blue-soft: #e8efff;
+  --pps-ink: #141824;
+  --pps-muted: #5b6474;
+  --pps-label: #8a93a6;
+  --pps-line: #dde2ee;
+  background: var(--pps-page);
+  color: var(--pps-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.pps *, .pps *::before, .pps *::after { box-sizing: border-box; }
+.pps-wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+.pps-hero {
+  background-color: var(--pps-navy);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 14px);
+  color: #fff;
+  padding: calc(var(--nav-height, 72px) + 56px) 0 56px;
+}
+.pps-hero__grid { display: flex; justify-content: space-between; gap: 32px; align-items: flex-start; }
+.pps-chip {
+  display: inline-block;
+  border: 1px solid var(--pps-blue-dark);
+  color: var(--pps-blue-dark);
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px; margin-bottom: 24px;
+}
+.pps-hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.pps-hero h1 span { display: block; color: var(--pps-blue-dark); }
+.pps-hero p { color: #a9b1c4; font-size: 1.1rem; line-height: 1.6; max-width: 640px; margin: 0; }
+.pps-tile {
+  flex: none; width: 76px; height: 76px; border-radius: 16px; background: var(--pps-navy-card);
+  position: relative; display: grid; place-items: center;
+  font-weight: 800; font-size: 40px; color: #fff;
+}
+.pps-tile::after { content: ""; position: absolute; top: 12px; right: 12px; width: 10px; height: 10px; background: var(--pps-blue-dark); border-radius: 2px; }
+
+.pps-section { padding: 56px 0 8px; }
+.pps-section:last-of-type { padding-bottom: 72px; }
+.pps-kicker {
+  display: flex; align-items: center; gap: 16px;
+  color: var(--pps-blue); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.pps-kicker::after { content: ""; flex: 1; height: 1px; background: var(--pps-line); }
+.pps-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-lead { color: var(--pps-muted); line-height: 1.6; margin: 0 0 28px; text-wrap: pretty; }
+
+.pps-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pps-legend__item { background: var(--pps-card); border-radius: 6px; padding: 20px; border: 1px solid var(--pps-line); }
+.pps-legend__item strong { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.pps-legend__item p { margin: 0; color: var(--pps-muted); font-size: 0.92rem; line-height: 1.55; }
+
+.pps-mark { display: inline-block; width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.pps-mark--in { background: var(--pps-blue); }
+.pps-mark--nd { border: 2px solid var(--pps-label); }
+.pps-mark--out { background: var(--pps-ink); }
+
+.pps-arch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
+.pps-arch__btn {
+  text-align: left; cursor: pointer; font: inherit; color: inherit;
+  background: var(--pps-card); border: 1px solid var(--pps-line);
+  border-radius: 6px; padding: 20px;
+  transition: background-color .15s, border-color .15s;
+}
+.pps-arch__btn:hover { border-color: var(--pps-ink); }
+.pps-arch__btn:focus-visible { outline: 2px solid var(--pps-blue); outline-offset: 2px; }
+.pps-arch__btn[aria-pressed="true"] { background: var(--pps-navy); border-color: var(--pps-navy); color: #fff; }
+.pps-arch__btn[aria-pressed="true"] .pps-arch__code { color: var(--pps-blue-dark); }
+.pps-arch__btn[aria-pressed="true"] .pps-arch__desc { color: #a9b1c4; }
+.pps-arch__code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 1.6rem; color: var(--pps-blue); display: block; margin-bottom: 4px; }
+.pps-arch__name { font-weight: 700; display: block; margin-bottom: 6px; }
+.pps-arch__desc { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.5; display: block; }
+
+.pps-panel { background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; padding: 28px; }
+.pps-panel__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.pps-panel h3 { display: flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 800; margin: 0 0 14px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-panel ul { list-style: none; margin: 0; padding: 0; }
+.pps-panel li { padding: 10px 0; border-top: 1px solid var(--pps-line); }
+.pps-panel li:first-child { border-top: 0; padding-top: 0; }
+.pps-panel details summary { cursor: pointer; font-weight: 600; list-style: none; }
+.pps-panel details summary::-webkit-details-marker { display: none; }
+.pps-panel details summary::before { content: "→ "; color: var(--pps-blue); }
+.pps-panel details[open] summary::before { content: "↓ "; }
+.pps-panel details p { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.55; margin: 8px 0 0; }
+.pps-empty { color: var(--pps-muted); font-size: 0.92rem; line-height: 1.55; margin: 0; }
+.pps-env { margin-top: 24px; padding-top: 22px; border-top: 1px dashed var(--pps-line); color: var(--pps-muted); font-size: 0.92rem; line-height: 1.6; }
+.pps-env strong { color: var(--pps-ink); }
+
+.pps-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pps-tag {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--pps-blue); background: var(--pps-blue-soft); border-radius: 4px; padding: 3px 7px; white-space: nowrap;
+}
+.pps-tag--me { color: #fff; background: var(--pps-blue); }
+
+.pps-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.pps-toggle { display: inline-flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--pps-muted); cursor: pointer; }
+.pps-toggle input { width: 18px; height: 18px; accent-color: var(--pps-blue); }
+.pps-tablewrap { overflow-x: auto; background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; }
+.pps-table { width: 100%; border-collapse: collapse; min-width: 860px; font-size: 0.9rem; }
+.pps-table th {
+  text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--pps-label); padding: 14px 16px; border-bottom: 1px solid var(--pps-line); background: #f7f8fc;
+}
+.pps-table td { padding: 14px 16px; border-bottom: 1px solid var(--pps-line); vertical-align: top; line-height: 1.5; }
+.pps-table tbody tr:last-child td { border-bottom: 0; }
+.pps-table .pps-group td {
+  background: var(--pps-navy); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 10px 16px;
+}
+.pps-table .pps-feature { font-weight: 700; min-width: 190px; }
+.pps-table .pps-note { color: var(--pps-muted); max-width: 420px; }
+.pps-table .pps-state { white-space: nowrap; }
+.pps-state span { display: inline-flex; align-items: center; gap: 8px; }
+.pps-table .pps-envcell { color: var(--pps-muted); font-style: italic; }
+.pps-table a, .pps-panel a, .pps-foot a { color: var(--pps-blue); font-weight: 600; text-decoration: none; }
+.pps-table a:hover, .pps-panel a:hover, .pps-foot a:hover { text-decoration: underline; }
+.pps-table tr[hidden] { display: none; }
+
+.pps-note-env { color: var(--pps-muted); line-height: 1.6; margin: 20px 0 0; text-wrap: pretty; }
+.pps-note-env strong { color: var(--pps-ink); }
+
+.pps-foot { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.6; }
+.pps-foot ul { list-style: none; padding: 0; margin: 0 0 16px; }
+.pps-foot li { position: relative; padding-left: 22px; margin-bottom: 8px; }
+.pps-foot li::before { content: "→"; position: absolute; left: 0; color: var(--pps-blue); font-weight: 700; }
+.pps-meta { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 700; color: var(--pps-label); letter-spacing: 1px; }
+
+@media (max-width: 860px) {
+  .pps-legend, .pps-arch, .pps-panel__cols { grid-template-columns: 1fr; }
+  .pps-tile { display: none; }
+  .pps-panel { padding: 20px; }
+}
+
+.pps-cta { background: var(--pps-navy); color: #a9b1c4; padding: 64px 0; margin-top: 56px; }
+.pps-cta .pps-kicker { color: var(--pps-blue-dark); }
+.pps-cta .pps-kicker::after { background: rgba(255,255,255,0.12); }
+.pps-cta h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-cta__lead { margin: 0 0 28px; line-height: 1.6; max-width: 720px; }
+.pps-cta__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pps-cta__card { display: block; background: var(--pps-navy-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 24px; text-decoration: none; color: #a9b1c4; transition: border-color .15s; }
+.pps-cta__card:hover, .pps-cta__card:focus-visible { border-color: var(--pps-blue-dark); outline: none; }
+.pps-cta__label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 12px; letter-spacing: 2px; color: var(--pps-blue-dark); }
+.pps-cta__card h3 { color: #fff; font-size: 1.15rem; font-weight: 800; margin: 8px 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-cta__card p { margin: 0 0 14px; line-height: 1.55; font-size: 0.93rem; }
+.pps-cta__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; font-size: 0.86rem; }
+.pps-cta__meta b { color: #fff; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.pps-cta__go { color: var(--pps-blue-dark); font-weight: 700; white-space: nowrap; }
+@media (max-width: 860px) { .pps-cta__grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="pps">
+
+  <header class="pps-hero">
+    <div class="pps-wrap pps-hero__grid">
+      <div>
+        <span class="pps-chip">Security reference · verified 29 Oct 2026</span>
+        <h1>Power Pages security,<span>by architecture.</span></h1>
+        <p>22 security and compliance controls, checked against Microsoft Learn for the standard data model, the enhanced data model and single-page application sites. Every control gets one of three states, and every state links to its source.</p>
+      </div>
+      <div class="pps-tile" aria-hidden="true">P</div>
+    </div>
+  </header>
+
+  <section class="pps-section">
+    <div class="pps-wrap">
+      <div class="pps-kicker">How to read it</div>
+      <h2>Three states, no guessing</h2>
+      <p class="pps-lead">Most comparisons mix up "not supported" and "nobody wrote it down". In a security review, that difference matters.</p>
+      <div class="pps-legend">
+        <div class="pps-legend__item">
+          <strong><span class="pps-mark pps-mark--in"></span>Included</strong>
+          <p>A Microsoft Learn page states it for this architecture, or the feature page applies to all sites and the SPA documentation lists it.</p>
+        </div>
+        <div class="pps-legend__item">
+          <strong><span class="pps-mark pps-mark--out"></span>Not included</strong>
+          <p>Microsoft Learn explicitly excludes it for this architecture.</p>
+        </div>
+        <div class="pps-legend__item">
+          <strong><span class="pps-mark pps-mark--nd"></span>Not documented</strong>
+          <p>Microsoft Learn says neither yes nor no. Test it in your tenant before you promise it to a security reviewer.</p>
+        </div>
+      </div>
+      <p class="pps-note-env"><strong>Environment and tenant controls</strong> such as Customer Lockbox or Purview logging don't act on the site, so the site architecture doesn't decide whether you get them. They are listed separately, with their prerequisites.</p>
+    </div>
+  </section>
+
+  <section class="pps-section" id="architecture">
+    <div class="pps-wrap">
+      <div class="pps-kicker">Approach 1</div>
+      <h2>Pick your architecture</h2>
+      <p class="pps-lead">Select the model your site runs on and see what you get, what you don't, and where the documentation goes quiet.</p>
+      <div class="pps-arch" role="group" aria-label="Architecture">
+        <button type="button" class="pps-arch__btn" data-model="sdm" aria-pressed="false">
+          <span class="pps-arch__code">SDM</span>
+          <span class="pps-arch__name">Standard data model</span>
+          <span class="pps-arch__desc">Configuration in adx_ tables, moved between environments as configuration data, template packages updated manually.</span>
+        </button>
+        <button type="button" class="pps-arch__btn" data-model="edm" aria-pressed="true">
+          <span class="pps-arch__code">EDM</span>
+          <span class="pps-arch__name">Enhanced data model</span>
+          <span class="pps-arch__desc">Default for new sites. Solution-aware, works with pipelines. Microsoft states functional parity with the standard model.</span>
+        </button>
+        <button type="button" class="pps-arch__btn" data-model="spa" aria-pressed="false">
+          <span class="pps-arch__code">SPA</span>
+          <span class="pps-arch__name">Single-page application</span>
+          <span class="pps-arch__desc">Code site in React, Angular, Vue or Astro, deployed with PAC CLI. No Liquid, no pages workspace, data through the Web API.</span>
+        </button>
+      </div>
+      <div class="pps-panel" id="pps-panel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="pps-section" id="matrix">
+    <div class="pps-wrap">
+      <div class="pps-kicker">Approach 2</div>
+      <h2>Full comparison</h2>
+      <p class="pps-lead">All 22 controls side by side, with prerequisites and the Microsoft Learn page each verdict rests on.</p>
+      <div class="pps-toolbar">
+        <label class="pps-toggle"><input type="checkbox" id="pps-diff"> Show only rows where the architectures differ</label>
+        <span class="pps-meta">LAST VERIFIED 2026-10-29</span>
+      </div>
+      <div class="pps-tablewrap">
+        <table class="pps-table">
+          <thead>
+            <tr><th scope="col">Control</th><th scope="col">SDM</th><th scope="col">EDM</th><th scope="col">SPA</th><th scope="col">Prerequisites and caveats</th><th scope="col">Source</th></tr>
+          </thead>
+          <tbody id="pps-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pps-cta">
+    <div class="pps-wrap">
+      <div class="pps-kicker">Next step</div>
+      <h2>Want to know where your portal actually stands?</h2>
+      <p class="pps-cta__lead">This reference tells you which controls exist. Whether yours are configured right is a different question.</p>
+      <div class="pps-cta__grid">
+        <a class="pps-cta__card" href="/leistungen/security-audit/">
+          <span class="pps-cta__label">PROVE</span>
+          <h3>Security Audit</h3>
+          <p>Eight audit areas, strictly read-only, a written report with risk-prioritized findings. About two weeks.</p>
+          <div class="pps-cta__meta"><span><b>from €4,900 net, fixed</b></span><span class="pps-cta__go">See the package →</span></div>
+        </a>
+        <a class="pps-cta__card" href="/leistungen/dynamics-365-crm/">
+          <span class="pps-cta__label">DECIDE</span>
+          <h3>Delivery</h3>
+          <p>Solution architecture, delivery or review for Dynamics 365 and Power Pages: data model, roles and access model, authentication and environment strategy, in your team or your partner's team.</p>
+          <div class="pps-cta__meta"><span><b>Dynamics 365 CRM &amp; Power Pages</b></span><span class="pps-cta__go">About delivery (in German) →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pps-section">
+    <div class="pps-wrap pps-foot">
+      <div class="pps-kicker">Method</div>
+      <h2>How this was checked</h2>
+      <ul>
+        <li>Every verdict comes from a Microsoft Learn page, linked in the matrix. Release plans, blog posts and forum answers don't count.</li>
+        <li>Standard and enhanced data model: Microsoft states functional parity with no gaps in design studio. Differences listed here are about how you configure a control, not whether you have it.</li>
+        <li>SPA sites: based on <a href="https://learn.microsoft.com/power-pages/configure/create-code-sites" target="_blank" rel="noopener">Create and deploy a single-page application</a> and Microsoft's <a href="https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code" target="_blank" rel="noopener">Power Pages plugin documentation</a>.</li>
+        <li>Preview features are marked. Microsoft doesn't recommend them for production.</li>
+      </ul>
+      <p>Spotted a change in Microsoft Learn? Write to <a href="mailto:tino@amingi.net?subject=Security%20reference%20correction">tino@amingi.net</a> and I'll update the reference.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var L = 'https://learn.microsoft.com/power-pages/';
+  var P = 'https://learn.microsoft.com/power-platform/admin/';
+  var IN = 'in', ND = 'nd', OUT = 'out';
+  var LABEL = { in: 'Included', nd: 'Not documented', out: 'Not included' };
+  var MODELS = { sdm: 'Standard data model', edm: 'Enhanced data model', spa: 'Single-page application' };
+
+  var groups = [
+    { name: 'Access control', items: [
+      { name: 'Table permissions', s: { sdm: IN, edm: IN, spa: IN }, tags: [],
+        note: 'Enforced server-side for Dataverse access through lists, forms, Liquid, the Web API and server logic. On SPA sites, the data paths are the Web API and server logic, so that is where they apply. Polymorphic lookups aren\'t supported for parent-child permissions. The custom access type with a FetchXML filter (preview) requires enhanced authorization.',
+        src: L + 'security/table-permissions' },
+      { name: 'Column permissions', s: { sdm: IN, edm: IN, spa: ND }, tags: ['Web API only'],
+        note: 'Apply only to the Power Pages Web API, not to Liquid, FetchXML, forms, lists or search. Bypassed when enhanced authorization (preview) is on: then Dataverse column security profiles apply. The SPA documentation doesn\'t mention column permissions.',
+        src: L + 'security/column-permissions' },
+      { name: 'Web roles', s: { sdm: IN, edm: IN, spa: IN }, tags: [],
+        note: 'On the enhanced data model, assign roles from the contact\'s enhanced form in Power Pages Management. On SPA sites, read roles from the global user object to shape the UI. Enforcement stays server-side.',
+        src: L + 'security/create-web-roles' },
+      { name: 'Page permissions', s: { sdm: IN, edm: IN, spa: OUT }, tags: [],
+        note: 'Restrict read per page in design studio, child pages and web files can inherit. SPA sites don\'t support the pages workspace: Microsoft says to check web roles through the global user object and render the UI conditionally. That hides content in the browser, it doesn\'t protect it. Protect the data with table permissions.',
+        src: L + 'security/page-security' },
+      { name: 'Column security profiles', s: { sdm: IN, edm: IN, spa: ND }, tags: ['Preview', 'Enhanced authorization'],
+        note: 'Dataverse column-level security applied to site users. Unlike column permissions, it covers all components and APIs, including Web API, forms and lists. Profiles are managed in the Power Platform admin center and assigned to site users in the Security workspace.',
+        src: L + 'security/column-security-profile' },
+      { name: 'Site visibility', s: { sdm: IN, edm: IN, spa: IN }, tags: [],
+        note: 'New sites are private: only signed-in users of your organization get in through Microsoft Entra ID. Changing visibility restarts the site. Sites in developer environments can\'t be made public. The SPA documentation lists public and private configurations.',
+        src: L + 'security/site-visibility' },
+      { name: 'Contact invitations', s: { sdm: IN, edm: IN, spa: ND }, tags: [],
+        note: 'Single or group invitations with expiry, account and web role assignment on redemption. On the enhanced data model, check that the Assign to Web Roles column is on the invitation form. Don\'t convert the send invitation workflow to real time.',
+        src: L + 'security/invite-contacts' }
+    ]},
+    { name: 'Identity', items: [
+      { name: 'Identity providers', s: { sdm: IN, edm: IN, spa: IN }, tags: [],
+        note: 'OpenID Connect, SAML 2.0, WS-Federation, OAuth 2.0 (Microsoft, LinkedIn, Facebook, Google, Twitter, one instance each) and local sign-in, which Microsoft doesn\'t recommend. OpenID Connect supports private_key_jwt for the token endpoint, response_type=code token isn\'t supported. For SPA sites, Microsoft\'s plugin documents Entra ID, Entra External ID, OpenID Connect, SAML 2.0, WS-Federation, Microsoft, Facebook, Google and local sign-in. Admins can restrict protocols per site through governance controls.',
+        src: L + 'security/authentication/configure-site' },
+      { name: 'Custom certificates for OAuth implicit grant', s: { sdm: IN, edm: IN, spa: ND }, tags: [],
+        note: 'Upload in the Power Platform admin center and reference the thumbprint in the site setting CustomCertificates/ImplicitGrantflow. Can\'t be reused as the SSL certificate for a custom host name.',
+        src: L + 'admin/manage-custom-certificates' },
+      { name: 'Website authentication key', s: { sdm: IN, edm: IN, spa: ND }, tags: ['Learn inconsistent'],
+        note: 'Connects the site to Dataverse. Microsoft Learn contradicts itself on the lifetime: the key management page says renew every year, the connectivity page says the key expires after two years. Newer sites can use a Microsoft-managed identity instead. Renewing restarts the site.',
+        src: L + 'admin/manage-auth-key' }
+    ]},
+    { name: 'Perimeter and browser', items: [
+      { name: 'Web Application Firewall', s: { sdm: IN, edm: IN, spa: IN }, tags: ['Production site'],
+        note: 'Azure Front Door in prevention mode. Not available in Singapore Local, China and the UAE. Custom domains need a one-time validation. Platform IP restrictions aren\'t supported while WAF is on, use WAF custom rules. For SPA sites, Microsoft\'s Power Pages plugin documents a firewall skill.',
+        src: L + 'security/web-application-firewall' },
+      { name: 'IP address restriction', s: { sdm: IN, edm: IN, spa: ND }, tags: [],
+        note: 'Allow list in CIDR notation, every other address gets a static 403 page. Not supported while WAF is enabled. Site Checker doesn\'t run on IP-restricted sites.',
+        src: L + 'admin/ip-address-restrict' },
+      { name: 'HTTP security headers', s: { sdm: IN, edm: IN, spa: IN }, tags: [],
+        note: 'Advanced settings in the Security workspace: Content Security Policy, CORS, SameSite cookie rules, Permissions-Policy, Referrer-Policy, X-Frame-Options and nosniff. Strict-Transport-Security is set by the platform and can\'t be changed. For SPA sites, Microsoft\'s plugin documents a skill that configures these headers.',
+        src: L + 'security/advanced-settings' }
+    ]},
+    { name: 'Assurance', items: [
+      { name: 'Security scan (deep scan)', s: { sdm: IN, edm: IN, spa: IN }, tags: ['Core 1.0.2403.84+'],
+        note: 'Scans anonymous pages by default, authenticated pages on request. Report in English (US), downloadable as PDF. Recurring scans are in preview. For SPA sites, Microsoft\'s plugin documents a server-side scan of the live site.',
+        src: L + 'security/security-scan' },
+      { name: 'Security agent', s: { sdm: IN, edm: IN, spa: ND }, tags: ['Preview'],
+        note: 'Chat in the Security workspace of design studio for posture review, authorization, authentication and application security settings. Applies changes only after your approval. According to the FAQ it also runs scheduled ZAP scans every two weeks against 37 OWASP-aligned rules. The SPA documentation doesn\'t mention the Security workspace.',
+        src: L + 'security/security-agent' },
+      { name: 'Site traffic monitoring', s: { sdm: IN, edm: IN, spa: ND }, tags: ['Preview'],
+        note: 'Analyzes traffic patterns to detect suspicious activity, for example traffic spikes or IP clusters. Alerts appear on the Overview page of the Security workspace. According to the security agent FAQ, it uses Microsoft Sentinel telemetry.',
+        src: L + 'faq-security-agent' }
+    ]}
+  ];
+
+  var env = [
+    { name: 'Phishing detection and remediation', scope: 'Platform', tags: [],
+      note: 'Microsoft monitors site activity. Verified phishing sites are suspended automatically, admins are notified by email, Teams and the admin center. Disputes go through a support ticket.',
+      src: L + 'admin/phishing-detection-agent' },
+    { name: 'Disable external service calls from server logic', scope: 'Environment', tags: [],
+      note: 'Admin center, Manage, Power Pages, Settings. Scope: all sites, all except selected, or selected sites. Takes effect immediately, blocked calls return HTTP 403.',
+      src: L + 'security/disable-external-service-calls' },
+    { name: 'Control site creation', scope: 'Tenant', tags: [],
+      note: 'PowerShell setting disablePortalsCreationByNonAdminUsers. Afterwards only Dynamics 365 and Power Platform administrators can create sites. Learn doesn\'t say whether it also blocks SPA uploads through PAC CLI.',
+      src: L + 'admin/control-site-creation' },
+    { name: 'Customer Lockbox', scope: 'Environment', tags: ['Managed Environment', 'E5/A5/G5 compliance'],
+      note: 'Power Pages is explicitly in scope. Requests expire after four days, approved access ends after eight hours. Sites must use Dataverse search instead of Lucene.NET.',
+      src: P + 'about-lockbox' },
+    { name: 'Customer-managed key', scope: 'Environment', tags: ['Managed Environment', 'E5/A5/G5 compliance'],
+      note: 'Power Pages isn\'t on Microsoft\'s list of CMK-supported services, Dataverse is. Your key encrypts the Dataverse data behind the site, not the site host. The environment goes offline while encryption runs.',
+      src: P + 'customer-managed-key' },
+    { name: 'Activity logging in Microsoft Purview', scope: 'Tenant', tags: ['Production environment'],
+      note: 'Captures admin operations such as WAF, IP restrictions, site visibility, custom domains, certificates and the authentication key. Requires Dataverse auditing, the setting Enable SAS Logging in Purview and the Audit Logs or View-Only Audit Logs role.',
+      src: P + 'activity-logging-auditing/activity-logs-power-pages' }
+  ];
+
+  function esc(t) {
+    return String(t).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function tagsHtml(tags) {
+    if (!tags.length) return '';
+    return '<div class="pps-tags">' + tags.map(function (t) {
+      return '<span class="pps-tag' + (t === 'Managed Environment' ? ' pps-tag--me' : '') + '">' + esc(t) + '</span>';
+    }).join('') + '</div>';
+  }
+  function source(url) {
+    return '<a href="' + url + '" target="_blank" rel="noopener">Microsoft Learn</a>';
+  }
+  function stateCell(v) {
+    return '<td class="pps-state"><span><span class="pps-mark pps-mark--' + v + '"></span>' + LABEL[v] + '</span></td>';
+  }
+
+  function renderPanel(model) {
+    var buckets = { in: [], out: [], nd: [] };
+    groups.forEach(function (g) {
+      g.items.forEach(function (f) { buckets[f.s[model]].push(f); });
+    });
+    var cols = [IN, OUT, ND].map(function (k) {
+      var list = buckets[k].length
+        ? '<ul>' + buckets[k].map(function (f) {
+            return '<li><details><summary>' + esc(f.name) + '</summary><p>' + esc(f.note) + ' ' + source(f.src) + '</p>' + tagsHtml(f.tags) + '</details></li>';
+          }).join('') + '</ul>'
+        : '<p class="pps-empty">' + (k === OUT ? 'Microsoft Learn excludes none of the 22 controls for this architecture.' : 'Nothing in this category.') + '</p>';
+      return '<div><h3><span class="pps-mark pps-mark--' + k + '"></span>' + LABEL[k] + '</h3>' + list + '</div>';
+    }).join('');
+    var envNames = env.map(function (e) { return e.name; }).join(', ');
+    document.getElementById('pps-panel').innerHTML =
+      '<div class="pps-panel__cols">' + cols + '</div>' +
+      '<p class="pps-env"><strong>Independent of the architecture:</strong> ' + esc(envNames) + '. Customer Lockbox and customer-managed key need a Managed Environment. Details in the full comparison below.</p>';
+  }
+
+  function renderTable() {
+    var rows = '';
+    groups.forEach(function (g) {
+      rows += '<tr class="pps-group"><td colspan="6">' + esc(g.name) + '</td></tr>';
+      g.items.forEach(function (f) {
+        var differs = !(f.s.sdm === f.s.edm && f.s.edm === f.s.spa);
+        rows += '<tr data-differs="' + differs + '"><td class="pps-feature">' + esc(f.name) + '</td>' +
+          stateCell(f.s.sdm) + stateCell(f.s.edm) + stateCell(f.s.spa) +
+          '<td class="pps-note">' + esc(f.note) + tagsHtml(f.tags) + '</td><td>' + source(f.src) + '</td></tr>';
+      });
+    });
+    rows += '<tr class="pps-group"><td colspan="6">Environment and tenant controls</td></tr>';
+    env.forEach(function (e) {
+      rows += '<tr data-differs="false"><td class="pps-feature">' + esc(e.name) + '</td>' +
+        '<td colspan="3" class="pps-envcell">' + esc(e.scope) + ' level, same for every architecture</td>' +
+        '<td class="pps-note">' + esc(e.note) + tagsHtml(e.tags) + '</td><td>' + source(e.src) + '</td></tr>';
+    });
+    document.getElementById('pps-tbody').innerHTML = rows;
+  }
+
+  function select(model) {
+    if (!MODELS[model]) model = 'edm';
+    Array.prototype.forEach.call(document.querySelectorAll('.pps-arch__btn'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-model') === model ? 'true' : 'false');
+    });
+    renderPanel(model);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.pps-arch__btn'), function (b) {
+    b.addEventListener('click', function () {
+      var m = b.getAttribute('data-model');
+      select(m);
+      if (history.replaceState) history.replaceState(null, '', '#' + m);
+    });
+  });
+
+  document.getElementById('pps-diff').addEventListener('change', function (e) {
+    Array.prototype.forEach.call(document.querySelectorAll('#pps-tbody tr[data-differs]'), function (tr) {
+      tr.hidden = e.target.checked && tr.getAttribute('data-differs') !== 'true';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#pps-tbody tr.pps-group'), function (tr) {
+      var n = tr.nextElementSibling, visible = false;
+      while (n && !n.classList.contains('pps-group')) { if (!n.hidden) visible = true; n = n.nextElementSibling; }
+      tr.hidden = !visible;
+    });
+  });
+
+  renderTable();
+  select((location.hash || '').replace('#', ''));
+})();
+</script>
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

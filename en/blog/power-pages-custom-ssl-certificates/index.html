@@ -1,0 +1,1386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door</title>
+<meta name="description" content="Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door">
+<meta property="og:description" content="Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-custom-ssl-certificates.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door">
+<meta property="article:published_time" content="2025-11-16">
+<meta property="article:modified_time" content="2025-11-16">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door">
+<meta name="twitter:description" content="Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-custom-ssl-certificates.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/",
+      "name": "The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door",
+      "description": "Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-custom-ssl-certificates.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/#article",
+      "headline": "The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door",
+      "description": "Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.",
+      "datePublished": "2025-11-16",
+      "dateModified": "2025-11-16",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-custom-ssl-certificates.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages SSL certificate, Azure Front Door, certificate auto-rotation, Key Vault, TLS encryption, custom domain, certificate renewal, Power Pages security",
+      "articleSection": "TECHNICAL"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>TECHNICAL</span>
+      <time datetime="2025-11-16">16 November 2025</time><span>15 min read</span><a href="/de/blog/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">The Power Pages Certificate Dilemma: Standard SSL vs Azure Front Door</h1>
+    <p class="art-lead">Power Pages SSL guide: Built-in certificate management vs Azure Front Door. Covers certificate auto-rotation, Key Vault integration and custom domains.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<article class="py-12 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+    <div class="prose prose-lg max-w-none mb-12">
+      <p class="text-xl text-gray-700 leading-relaxed">
+        "How do I get my own SSL certificate on my Power Pages website?" This is the most common question I receive as a Power Pages consultant.
+      </p>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        The answer usually starts simple: upload a certificate in the Power Platform Admin Center, done. Then the customer adds one sentence, "our security policy requires certificate renewal every 30 days", and the calculation changes completely. This guide explains both paths in technical depth: the built-in Power Pages method and Azure Front Door with certificate auto-rotation, so you can make the right call for your project instead of guessing.
+      </p>
+    </div>
+
+    <section class="mb-16" id="tls-basics">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">TLS/SSL Basics: Technical Foundation</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        Before comparing certificate management strategies, it helps to establish the technical foundation. Understanding these basics prevents most of the configuration errors I see in the field.
+      </p>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h3 class="text-xl font-bold text-blue-900 mb-3">SSL vs TLS: What's the Difference?</h3>
+        <p class="text-blue-800 mb-3">
+          <strong>SSL (Secure Sockets Layer)</strong> is the legacy protocol name, while <strong>TLS (Transport Layer Security)</strong> is the modern standard. Despite the common usage of "SSL certificate," what's actually running today is TLS 1.2 or TLS 1.3.
+        </p>
+        <p class="text-blue-800">
+          Power Pages supports <strong>TLS 1.2 and TLS 1.3</strong> as its encryption standards. TLS 1.0 and 1.1 are no longer supported for security reasons.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Certificate Components</h3>
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        A TLS certificate consists of three main components:
+      </p>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 text-2xl font-bold">1.</span>
+            <div>
+              <strong class="text-gray-900">Public Key:</strong>
+              <span class="text-gray-700"> enables encrypted communication between client and server.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 text-2xl font-bold">2.</span>
+            <div>
+              <strong class="text-gray-900">Identity Information:</strong>
+              <span class="text-gray-700"> domain name, organization details, validity period.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 text-2xl font-bold">3.</span>
+            <div>
+              <strong class="text-gray-900">CA Signature:</strong>
+              <span class="text-gray-700"> a digital signature from a trusted Certificate Authority verifying authenticity.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Certificate Chain of Trust</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Certificates work through a chain of trust:
+      </p>
+
+      <div class="bg-gray-100 rounded-lg p-6 font-mono text-sm mb-6 overflow-x-auto">
+        <div class="space-y-2">
+          <div><strong>Root CA</strong> (Microsoft Trusted CA List)</div>
+          <div class="ml-4">&darr; signs</div>
+          <div class="ml-4"><strong>Intermediate CA</strong></div>
+          <div class="ml-8">&darr; signs</div>
+          <div class="ml-8"><strong>Your Certificate</strong> (www.yourcompany.com)</div>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <p class="text-amber-800">
+          <strong>Critical:</strong> your certificate must include the complete chain (intermediate certificates) for proper validation. An incomplete chain will cause browser security warnings even though the certificate itself is valid.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">PFX File Format</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Power Pages requires certificates in <strong>PFX format</strong> (also known as PKCS#12):
+      </p>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+        <ul class="space-y-3 text-gray-700">
+          <li>Contains private key + certificate + certificate chain in a single file</li>
+          <li>Password-protected for security</li>
+          <li>Single file, easy to distribute</li>
+          <li><strong>Must use TripleDES encryption</strong>: NOT AES-256</li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Certificate Lifecycle</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Every TLS certificate goes through a predictable lifecycle:
+      </p>
+
+      <div class="pp-soft rounded-lg p-6 mb-6">
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div class="sm:w-32 font-semibold text-gray-900">Issue</div>
+            <div class="flex-1 text-gray-700">Certificate Authority creates and signs your certificate</div>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div class="sm:w-32 font-semibold text-gray-900">Deploy</div>
+            <div class="flex-1 text-gray-700">Upload to Power Pages or Key Vault</div>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div class="sm:w-32 font-semibold text-gray-900">Valid Period</div>
+            <div class="flex-1 text-gray-700">Typically 365 days (some policies: 30-90 days)</div>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div class="sm:w-32 font-semibold text-gray-900">Renew</div>
+            <div class="flex-1 text-gray-700"><strong>&larr; this is where the work happens</strong></div>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div class="sm:w-32 font-semibold text-gray-900">Expire</div>
+            <div class="flex-1 text-gray-700">Certificate no longer trusted, downtime risk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--note p-6">
+        <p class="text-blue-900 font-semibold mb-2">Key Takeaway</p>
+        <p class="text-blue-800">
+          Whether you use Power Pages Standard or Azure Front Door, you need a valid TLS certificate from a trusted CA. The difference is <strong>how you manage the renewal process</strong>: and that's what this guide is about.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-16" id="the-problem">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">The Power Pages Certificate Dilemma</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        Every custom-domain conversation with a Power Pages customer tends to follow the same arc.
+      </p>
+
+      <div class="pp-soft rounded-2xl p-8 mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">The Typical Scenario</h3>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg p-6">
+            <p class="text-gray-800 mb-2"><strong>Customer says:</strong></p>
+            <p class="text-gray-700 italic">"We need our company domain (www.company.com) with HTTPS on our Power Pages portal."</p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6">
+            <p class="text-gray-800 mb-2"><strong>You think:</strong></p>
+            <p class="text-gray-700 italic">"Easy, just upload a certificate in the Power Pages Admin Center."</p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6 border-2 border-amber-300">
+            <p class="text-gray-800 mb-2"><strong>Then they add:</strong></p>
+            <p class="text-gray-700 italic">"Oh, and our security policy requires certificate renewal every 30 days."</p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6">
+            <p class="text-gray-800 mb-2"><strong>You realize:</strong></p>
+            <p class="text-gray-700 italic">"Wait&hellip; that's 12 manual uploads per year. There must be a better way."</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Two Different Challenges</h3>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-green-50 border-2 border-green-300 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-green-900 mb-3">Scenario 1: Annual Renewal</h4>
+          <p class="text-green-800 mb-4">Standard certificate with 365 days validity</p>
+          <ul class="space-y-2 text-green-800">
+            <li>Renew once per year</li>
+            <li>Manual process is acceptable</li>
+            <li>~15 minutes of work annually</li>
+            <li>Low risk of forgetting</li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 border-2 border-red-300 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-red-900 mb-3">Scenario 2: Frequent Renewal</h4>
+          <p class="text-red-800 mb-4">Short-lived certificates (30-90 days)</p>
+          <ul class="space-y-2 text-red-800">
+            <li>Renew 4-12 times per year</li>
+            <li>Manual process becomes impractical</li>
+            <li>High cumulative time investment</li>
+            <li>Risk of human error &rarr; downtime</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">The Two Paths Forward</h3>
+
+      <div class="bg-gray-100 rounded-lg p-8">
+        <div class="text-center mb-6">
+          <div class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold text-lg">
+            Custom SSL Certificate Needed
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6 border-2 border-blue-300">
+            <h4 class="text-xl font-bold text-blue-900 mb-3">Path 1: Power Pages Built-in</h4>
+            <p class="text-blue-800 mb-4">Standard SSL management method</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-green-600 font-bold">+</span>
+                <span class="text-gray-700">Simple, works out-of-the-box</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-600 font-bold">+</span>
+                <span class="text-gray-700">No additional infrastructure</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-red-600 font-bold">&minus;</span>
+                <span class="text-gray-700">Manual renewal process</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-red-600 font-bold">&minus;</span>
+                <span class="text-gray-700">Impractical for frequent renewals</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border-2 border-gray-200">
+            <h4 class="text-xl font-bold text-gray-900 mb-3">Path 2: Azure Front Door</h4>
+            <p class="text-gray-900 mb-4">Global CDN with certificate auto-rotation</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-green-600 font-bold">+</span>
+                <span class="text-gray-700">Automatic certificate rotation</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-600 font-bold">+</span>
+                <span class="text-gray-700">Zero manual renewal work</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-red-600 font-bold">&minus;</span>
+                <span class="text-gray-700">More complex initial setup</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-red-600 font-bold">&minus;</span>
+                <span class="text-gray-700">Additional Azure infrastructure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6 text-gray-600 text-lg">
+          <strong>The Question:</strong> when should you choose which path?
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16" id="standard-method">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Path 1: Power Pages Built-in SSL Management</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        Power Pages includes native SSL certificate management out of the box. This built-in method works for the majority of Power Pages projects and requires no additional Azure infrastructure. Here's when and how to use it.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Prerequisites</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Before configuring a custom domain with SSL, your Power Pages site needs to meet these requirements:
+      </p>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">&check;</span>
+            <span><strong>Production state:</strong> the site must be in production, not trial mode.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">&check;</span>
+            <span><strong>Admin permissions:</strong> System Administrator or Dynamics 365 Administrator role.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">&check;</span>
+            <span><strong>Valid certificate:</strong> SSL/TLS certificate in .pfx format with password.</span>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Certificate Requirements</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Power Pages has specific technical requirements for SSL certificates:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Requirement</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Trusted CA</td>
+              <td class="px-6 py-4 text-gray-700">Signed by a CA from the Microsoft Trusted CA List</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">File format</td>
+              <td class="px-6 py-4 text-gray-700">Password-protected .pfx (PKCS#12)</td>
+            </tr>
+            <tr class="border-t border-gray-200 bg-amber-50">
+              <td class="px-6 py-4 text-gray-900 font-bold">Encryption</td>
+              <td class="px-6 py-4 text-gray-900"><strong>TripleDES only</strong>: AES-256 is NOT supported</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Private key</td>
+              <td class="px-6 py-4 text-gray-700">Minimum 2048 bits (RSA)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Certificate chain</td>
+              <td class="px-6 py-4 text-gray-700">Must include all intermediate certificates</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Hashing algorithm</td>
+              <td class="px-6 py-4 text-gray-700">SHA2 enabled (SHA1 no longer supported)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Extended key usage</td>
+              <td class="px-6 py-4 text-gray-700">Server Authentication (OID: 1.3.6.1.5.5.7.3.1)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <p class="text-amber-900 font-semibold mb-2">Critical: TripleDES Encryption Required</p>
+        <p class="text-amber-800 mb-3">
+          Power Pages does not accept .pfx files encrypted with AES-256. You must use TripleDES encryption when exporting your certificate.
+        </p>
+        <p class="text-amber-800 text-sm font-mono bg-white p-3 rounded overflow-x-auto">
+          PowerShell: Export-PfxCertificate -Cert ... -TripleDESEncryption<br>
+          OpenSSL: openssl pkcs12 -export -descert -in cert.crt -inkey key.key
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">7-Step Configuration Process</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        The standard method uses the Power Platform Admin Center for the entire configuration:
+      </p>
+
+      <div class="pp-soft rounded-lg p-6 mb-6">
+        <ol class="space-y-4">
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Power Platform Admin Center</strong>
+              <p class="text-gray-700 text-sm">Navigate to admin.powerplatform.microsoft.com</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Select your site</strong>
+              <p class="text-gray-700 text-sm">Resources &rarr; Power Pages sites &rarr; [Your Site] &rarr; Manage</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Connect custom domain</strong>
+              <p class="text-gray-700 text-sm">Click "Connect Custom Domain" in the Site Details section</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Upload certificate</strong>
+              <p class="text-gray-700 text-sm">Upload the .pfx file plus password (remember: TripleDES encryption)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">5</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Enter domain name</strong>
+              <p class="text-gray-700 text-sm">Specify your custom domain (e.g., www.company.com)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">6</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">DNS validation (CDN sites only)</strong>
+              <p class="text-gray-700 text-sm">Add a TXT record to your DNS if Content Delivery Network is enabled</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">7</div>
+            <div class="flex-1">
+              <strong class="text-gray-900">Review &amp; create binding</strong>
+              <p class="text-gray-700 text-sm">Verify settings and complete the SSL binding</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Built-in Security Features</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Power Pages ships with enterprise-grade security features by default, regardless of whether you use a custom domain:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Security Feature</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">DDoS Protection</td>
+              <td class="px-6 py-4 text-gray-700">Azure DDoS Protection (Layer 3/4), automatic, no configuration</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Web Application Firewall</td>
+              <td class="px-6 py-4 text-gray-700">WAF with OWASP rules (requires CDN enabled)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">TLS Encryption</td>
+              <td class="px-6 py-4 text-gray-700">TLS 1.2 / 1.3 support</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Certificate Management</td>
+              <td class="px-6 py-4 text-gray-700">Secure storage in the Power Pages platform</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Certificate Renewal Process</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        The standard method requires manual intervention for every certificate renewal:
+      </p>
+
+      <div class="bg-gray-100 rounded-lg p-6 mb-6">
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">1.</span>
+            <span class="text-gray-700">Download the new certificate from your CA</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">2.</span>
+            <span class="text-gray-700">Export it as a password-protected .pfx with TripleDES encryption</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">3.</span>
+            <span class="text-gray-700">Upload the new certificate in the Power Platform Admin Center</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">4.</span>
+            <span class="text-gray-700">Delete the old SSL binding</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">5.</span>
+            <span class="text-gray-700">Create a new binding with the renewed certificate</span>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm mt-4 italic">Time required: 15-20 minutes per renewal</p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">When to Use Power Pages Standard Method</h3>
+      <div class="pp-box pp-box--tip p-6">
+        <p class="text-green-900 font-semibold mb-3">Recommended when:</p>
+        <ul class="space-y-2 text-green-800">
+          <li>Certificate validity: <strong>365 days (annual renewal)</strong></li>
+          <li>User distribution: regional or single-continent</li>
+          <li>Monthly traffic: less than 50,000 requests</li>
+          <li>Azure expertise: limited or no in-house Azure knowledge</li>
+          <li>Infrastructure preference: minimal additional complexity</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-16" id="front-door">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Path 2: Azure Front Door Integration</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        Azure Front Door is Microsoft's modern cloud Content Delivery Network (CDN) and provides capabilities well beyond standard Power Pages SSL management. Understanding what Front Door actually offers helps you decide if the added complexity is justified for your project.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">What Is Azure Front Door?</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Azure Front Door is a global, scalable entry point that uses Microsoft's global edge network to create fast, secure, and widely scalable web applications.
+      </p>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-6">
+        <ul class="space-y-4 text-gray-700">
+          <li class="flex items-start gap-3">
+            <div>
+              <strong class="text-gray-900">Modern cloud CDN:</strong> Microsoft's global content delivery network with advanced features.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div>
+              <strong class="text-gray-900">118+ global edge locations:</strong> distributed across all continents for low latency.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div>
+              <strong class="text-gray-900">Microsoft private WAN:</strong> backend traffic uses Microsoft's private backbone network.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div>
+              <strong class="text-gray-900">TLS offload at edge:</strong> SSL/TLS termination happens at the edge location closest to the user.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Core Front Door Features</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Front Door provides several technical capabilities that extend beyond basic SSL management:
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Feature</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Global Edge Network</td>
+              <td class="px-6 py-4 text-gray-700">Reduced latency for global users</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Advanced Caching</td>
+              <td class="px-6 py-4 text-gray-700">Edge caching, compression, query string control</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Enhanced WAF</td>
+              <td class="px-6 py-4 text-gray-700">Full Azure WAF rules + Bot Manager</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Rules Engine</td>
+              <td class="px-6 py-4 text-gray-700">Custom routing, URL rewrites, header manipulation</td>
+            </tr>
+            <tr class="border-t border-gray-200 bg-gray-50">
+              <td class="px-6 py-4 text-gray-900 font-bold">Certificate Auto-Rotation</td>
+              <td class="px-6 py-4 text-gray-900 font-bold">Zero-touch certificate renewal</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Private Link</td>
+              <td class="px-6 py-4 text-gray-700">Zero-trust backend connectivity (Premium tier)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--note p-6">
+        <p class="text-blue-900 font-semibold mb-2">Key Insight</p>
+        <p class="text-blue-800">
+          While Front Door provides many features, <strong>certificate auto-rotation</strong> is the primary reason most Power Pages projects consider it. All other features are valuable, but secondary to solving the frequent-renewal problem.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-16" id="auto-rotation">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">The Game-Changer: Certificate Auto-Rotation</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        This is the feature that turns Front Door from "nice to have" into "essential" for projects with frequent certificate renewals. Here's exactly how it works and when it justifies the added infrastructure.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">The Manual Renewal Challenge</h3>
+      <div class="pp-box pp-box--risk p-6 mb-6">
+        <p class="text-red-900 font-semibold mb-3">The time cost of manual renewals:</p>
+        <div class="text-red-800 space-y-2">
+          <p><strong>90-day certificates:</strong> 4 renewals/year &times; 15 minutes = 1 hour of annual work</p>
+          <p><strong>30-day certificates:</strong> 12 renewals/year &times; 15 minutes = 3 hours of annual work</p>
+          <p><strong>Risk factor:</strong> each manual step is a potential source of human error and downtime</p>
+          <p><strong>Operational overhead:</strong> calendar reminders, coordination, documentation</p>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">How Auto-Rotation Works</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Certificate auto-rotation leverages Azure Key Vault and its Front Door integration to eliminate manual renewal work entirely:
+      </p>
+
+      <div class="bg-gray-100 rounded-lg p-6 font-mono text-sm mb-6 overflow-x-auto">
+        <div class="space-y-3">
+          <div class="font-bold text-gray-900">Azure Key Vault</div>
+          <div class="ml-4">&darr; (integrated CA: DigiCert / GlobalSign)</div>
+          <div class="ml-4">&darr; end-to-end certificate lifecycle management</div>
+          <div class="ml-4">&darr; automatic renewal before expiry</div>
+          <div class="ml-4">&darr; new certificate version created in Key Vault</div>
+          <div class="ml-4">&darr;</div>
+          <div class="font-bold text-gray-900">Front Door (secret version: "Latest")</div>
+          <div class="ml-4">&darr; auto-detects the new certificate version</div>
+          <div class="ml-4">&darr; rolls out to all edge locations within 3-4 days</div>
+          <div class="ml-4">&darr;</div>
+          <div class="font-bold text-green-900">= Zero Manual Work</div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">One-Time Configuration</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        Auto-rotation requires an initial setup, then runs automatically forever. Here's the complete configuration process:
+      </p>
+
+      <div class="pp-soft rounded-lg p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Step 1: Azure Key Vault Setup</h4>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li>Create a Key Vault in your Azure subscription</li>
+          <li>Configure network access (public or private endpoint)</li>
+          <li>Upload your certificate to Key Vault</li>
+        </ul>
+
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Step 2: Register the Front Door Service Principal</h4>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded font-mono text-sm mb-4 overflow-x-auto">
+          az ad sp create --id ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037
+        </div>
+
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Step 3: Grant Key Vault Access</h4>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li>Permissions: <strong>Get</strong> (Secrets + Certificates)</li>
+          <li>Principal: <strong>Microsoft.Azure.Frontdoor</strong></li>
+          <li>This allows Front Door to read certificates from Key Vault</li>
+        </ul>
+
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Step 4: Front Door Custom Domain Configuration</h4>
+        <ul class="space-y-2 text-gray-700">
+          <li>Add the custom domain to Front Door</li>
+          <li>Certificate type: <strong>Use my own certificate</strong></li>
+          <li>Select your Key Vault + Certificate</li>
+          <li><strong>Secret version: "Latest"</strong>: critical for auto-rotation</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-6">
+        <p class="text-amber-900 font-semibold mb-2">Critical Configuration Detail</p>
+        <p class="text-amber-800">
+          You must set the secret version to <strong>"Latest"</strong>, not a specific version number. This tells Front Door to automatically check for and deploy new certificate versions from Key Vault. If you select a specific version instead, auto-rotation will not work.
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Automatic Renewal Mechanics</h3>
+      <p class="text-gray-700 text-lg mb-4 leading-relaxed">
+        How renewal actually happens depends on your Certificate Authority:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-green-50 border-2 border-green-300 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-green-900 mb-3">Integrated CAs (DigiCert / GlobalSign)</h4>
+          <ul class="space-y-2 text-green-800 text-sm">
+            <li>Key Vault handles end-to-end maintenance</li>
+            <li>Auto-renews before expiry, no human intervention</li>
+            <li>New version created in Key Vault automatically</li>
+            <li>Front Door auto-detects and rolls out within 3-4 days</li>
+            <li><strong>Completely hands-off</strong></li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-amber-900 mb-3">Non-Integrated CAs (Let's Encrypt, etc.)</h4>
+          <ul class="space-y-2 text-amber-800 text-sm">
+            <li>Manual upload of the renewed cert to Key Vault, or</li>
+            <li>Custom automation (Azure Functions, Logic Apps)</li>
+            <li>Front Door still auto-detects if "Latest" is set</li>
+            <li><strong>Partially automated</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Comparison: Standard vs Front Door</h3>
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Aspect</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Power Pages Standard</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Front Door + Key Vault</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Initial Setup Time</td>
+              <td class="px-6 py-4 text-gray-700">30 minutes</td>
+              <td class="px-6 py-4 text-gray-700">2 hours</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Certificate Storage</td>
+              <td class="px-6 py-4 text-gray-700">Power Pages Admin</td>
+              <td class="px-6 py-4 text-gray-700">Azure Key Vault</td>
+            </tr>
+            <tr class="border-t border-gray-200 bg-gray-50">
+              <td class="px-6 py-4 text-gray-900 font-bold">Renewal Process</td>
+              <td class="px-6 py-4 text-gray-700">Manual every time</td>
+              <td class="px-6 py-4 text-gray-900 font-bold">Automatic (integrated CAs)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Version Management</td>
+              <td class="px-6 py-4 text-gray-700">N/A</td>
+              <td class="px-6 py-4 text-gray-700">"Latest" for auto-rotation</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Rollout Time</td>
+              <td class="px-6 py-4 text-gray-700">Immediate</td>
+              <td class="px-6 py-4 text-gray-700">3-4 days (automatic)</td>
+            </tr>
+            <tr class="border-t border-gray-200 bg-gray-50">
+              <td class="px-6 py-4 text-gray-900 font-bold">Work per Renewal</td>
+              <td class="px-6 py-4 text-gray-700">15-20 minutes</td>
+              <td class="px-6 py-4 text-gray-900 font-bold">0 minutes (integrated CAs)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Supported CAs</td>
+              <td class="px-6 py-4 text-gray-700">Any trusted CA</td>
+              <td class="px-6 py-4 text-gray-700">All (auto only for DigiCert/GlobalSign)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700 font-semibold">Configuration Location</td>
+              <td class="px-6 py-4 text-gray-700">Power Pages Admin Center</td>
+              <td class="px-6 py-4 text-gray-700">Azure Portal</td>
+            </tr>
+            <tr class="border-t border-gray-200 bg-green-50">
+              <td class="px-6 py-4 text-gray-900 font-bold">Best For</td>
+              <td class="px-6 py-4 text-gray-900 font-bold">Annual renewals (365 days)</td>
+              <td class="px-6 py-4 text-gray-900 font-bold">Frequent renewals (&lt;90 days)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Limitations &amp; Considerations</h3>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+        <ul class="space-y-3 text-gray-700">
+          <li><strong>DigiCert/GlobalSign:</strong> full end-to-end automation</li>
+          <li><strong>Let's Encrypt:</strong> custom automation required (Azure Functions recommended)</li>
+          <li><strong>Other CAs:</strong> manual Key Vault upload or custom automation</li>
+          <li><strong>TLS requirements:</strong> must meet all Azure Front Door TLS requirements</li>
+          <li><strong>EC cryptography:</strong> not supported, use RSA only</li>
+          <li><strong>Root CA trust:</strong> the root CA must be in the Microsoft Trusted CA List</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-16" id="other-benefits">
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Other Front Door Technical Benefits</h3>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        While certificate auto-rotation is the primary driver, Front Door provides additional technical capabilities worth understanding before you decide.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">1. Global Performance</h4>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Anycast routing:</strong> users connect to the nearest edge</li>
+            <li><strong>Split TCP:</strong> optimized connections</li>
+            <li><strong>TLS offload at edge:</strong> faster handshakes</li>
+            <li><strong>HTTP/2 support:</strong> multiplexed connections</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">2. Advanced Caching</h4>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Query string control:</strong> granular cache keys</li>
+            <li><strong>Cache expiration rules:</strong> custom TTL policies</li>
+            <li><strong>Object chunking:</strong> 8MB chunks for large files</li>
+            <li><strong>Compression:</strong> Gzip/Brotli at the edge</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">3. Enhanced WAF</h4>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-3 py-2 text-left font-semibold text-gray-900">Feature</th>
+                  <th class="px-3 py-2 text-left font-semibold text-gray-900">Power Pages WAF</th>
+                  <th class="px-3 py-2 text-left font-semibold text-gray-900">Front Door WAF</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-700">
+                <tr class="border-t border-gray-200">
+                  <td class="px-3 py-2">Managed Rules</td>
+                  <td class="px-3 py-2">Subset</td>
+                  <td class="px-3 py-2">Full Azure rules</td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="px-3 py-2">Bot Protection</td>
+                  <td class="px-3 py-2">Basic</td>
+                  <td class="px-3 py-2">MS Bot Manager</td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="px-3 py-2">Custom Rules</td>
+                  <td class="px-3 py-2">Limited</td>
+                  <td class="px-3 py-2">Extensive</td>
+                </tr>
+                <tr class="border-t border-gray-200">
+                  <td class="px-3 py-2">Configuration</td>
+                  <td class="px-3 py-2">PP Admin</td>
+                  <td class="px-3 py-2">Azure Portal</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">4. Rules Engine</h4>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>URL redirects/rewrites:</strong> custom routing logic</li>
+            <li><strong>Custom headers:</strong> modify requests/responses</li>
+            <li><strong>Route overrides:</strong> dynamic origin selection</li>
+            <li><strong>RegEx support:</strong> pattern-based rules</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16" id="decision-framework">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Technical Decision Framework</h2>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        Choosing between Power Pages Standard and Front Door comes down to a small number of technical and operational factors. This framework helps you make an informed decision instead of guessing.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Decision Tree</h3>
+      <div class="bg-gray-100 rounded-lg p-6 font-mono text-sm mb-8 overflow-x-auto">
+        <div class="space-y-2">
+          <div class="font-bold text-gray-900">Certificate Renewal Frequency?</div>
+          <div class="ml-2">&#9474;</div>
+          <div class="ml-2">&#9500;&#9472; <strong>Annual (365 days)</strong></div>
+          <div class="ml-4">&#9474; &rarr; <span class="text-green-700 font-bold">Power Pages Standard</span></div>
+          <div class="ml-2">&#9474;</div>
+          <div class="ml-2">&#9500;&#9472; <strong>Quarterly (90 days)</strong></div>
+          <div class="ml-4">&#9474; Can you manage 4&times;/year manual renewal?</div>
+          <div class="ml-6">&#9474; Yes &rarr; Power Pages OK</div>
+          <div class="ml-6">&#9474; No &rarr; Front Door</div>
+          <div class="ml-4">&#9474; Using Let's Encrypt?</div>
+          <div class="ml-6">&rarr; Front Door + custom automation</div>
+          <div class="ml-2">&#9474;</div>
+          <div class="ml-2">&#9492;&#9472; <strong>Monthly (30 days) or more frequent</strong></div>
+          <div class="ml-4">&rarr; <span class="text-blue-600 font-bold">Front Door strongly recommended</span></div>
+          <div class="mt-4 font-bold text-blue-900">Additional factors:</div>
+          <div class="ml-2">&#9500;&#9472; Global users (3+ continents)? &rarr; Front Door</div>
+          <div class="ml-2">&#9500;&#9472; &gt;100k requests/month? &rarr; Front Door</div>
+          <div class="ml-2">&#9492;&#9472; Complex routing needs? &rarr; Front Door</div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Evaluation Checklist</h3>
+      <div class="pp-soft rounded-lg p-6 mb-6">
+        <p class="text-gray-900 font-semibold mb-4">Technical requirements assessment:</p>
+        <div class="bg-white rounded-lg p-6">
+          <div class="space-y-3 text-gray-700">
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>Certificate renewal frequency:</strong> ___ days</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>CA provider:</strong> ___ (integrated: DigiCert/GlobalSign?)</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>User distribution:</strong> regional / multi-continent</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>Monthly traffic:</strong> ___ requests</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>Advanced routing needed:</strong> yes / no</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>Azure expertise level:</strong> low / medium / high</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-blue-600"><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span></span>
+              <span><strong>Current pain points:</strong> ___________</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Recommendations by Project Profile</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-green-50 border-2 border-green-300 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-green-900 mb-3">~90% of Projects: Power Pages Standard</h4>
+          <p class="text-green-800 mb-4">Most Power Pages implementations fit this profile:</p>
+          <ul class="space-y-2 text-green-800">
+            <li>Annual certificate renewals (365 days)</li>
+            <li>Regional user base (single continent)</li>
+            <li>Less than 50,000 requests per month</li>
+            <li>Limited in-house Azure expertise</li>
+            <li>Preference for minimal infrastructure</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-gray-900 mb-3">~10% of Projects: Front Door</h4>
+          <p class="text-gray-900 mb-4">Front Door is justified when:</p>
+          <ul class="space-y-2 text-gray-900">
+            <li>Frequent renewals (30-90 days)</li>
+            <li>Global user distribution</li>
+            <li>High traffic (&gt;100k requests/month)</li>
+            <li>Performance-critical application</li>
+            <li>Azure expertise available in the team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16" id="implementation">
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Implementation Overview</h3>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        A quick reference for implementing each approach once you've made the decision.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white border-2 border-blue-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-blue-900 mb-3">Power Pages Standard (~30 minutes)</h4>
+          <ol class="space-y-2 text-gray-700 text-sm">
+            <li>1. Admin Center &rarr; Resources &rarr; Power Pages</li>
+            <li>2. Connect Custom Domain</li>
+            <li>3. Upload .pfx (TripleDES encryption!)</li>
+            <li>4. Enter domain name + create CNAME</li>
+            <li>5. Add TXT record (if CDN enabled)</li>
+            <li>6. Review &amp; create binding</li>
+          </ol>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-3">Front Door + Key Vault (~2 hours)</h4>
+          <ol class="space-y-2 text-gray-700 text-sm">
+            <li>1. Create Front Door (Standard/Premium)</li>
+            <li>2. Add Power Pages as Origin</li>
+            <li>3. Create Key Vault + upload certificate</li>
+            <li>4. Configure custom domain + "Latest" version</li>
+            <li>5. Optional: configure WAF policy</li>
+            <li>6. Update DNS: CNAME to Front Door endpoint</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16" id="challenges">
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Common Technical Challenges</h3>
+
+      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+        The issues that come up most often in the field, and how to resolve them.
+      </p>
+
+      <h4 class="text-lg font-bold text-gray-900 mb-3">Power Pages Challenges</h4>
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Challenge</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">TripleDES encryption error</td>
+              <td class="px-6 py-4 text-gray-700 font-mono text-sm">openssl pkcs12 -export -descert</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">CNAME not propagated</td>
+              <td class="px-6 py-4 text-gray-700">Wait 24-48h, verify with <code>nslookup</code></td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">Incomplete certificate chain</td>
+              <td class="px-6 py-4 text-gray-700">Include intermediate certificates in the .pfx</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">AES-256 .pfx rejected</td>
+              <td class="px-6 py-4 text-gray-700">Re-export using TripleDES encryption</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="text-lg font-bold text-gray-900 mb-3">Front Door Challenges</h4>
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
+          <thead class="pp-soft">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Challenge</th>
+              <th class="px-6 py-3 text-left text-sm font-bold text-gray-900">Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">Front Door Classic retiring 2027</td>
+              <td class="px-6 py-4 text-gray-700">Use Standard/Premium tier now</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">Managed certs deprecated Aug 2025</td>
+              <td class="px-6 py-4 text-gray-700">Use BYOC (Bring Your Own Certificate)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">Certificate version not rotating</td>
+              <td class="px-6 py-4 text-gray-700">Set secret version to "Latest" (not a specific version)</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">Key Vault access denied</td>
+              <td class="px-6 py-4 text-gray-700">Check the Front Door service principal permissions</td>
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-700">EC certificates not supported</td>
+              <td class="px-6 py-4 text-gray-700">Use RSA certificates only</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-16" id="conclusion">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Conclusion</h2>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Key Takeaways</h3>
+      <div class="pp-soft rounded-lg p-6 mb-8">
+        <ol class="space-y-3 text-gray-700">
+          <li><strong>1. TLS/SSL basics matter:</strong> understanding certificates, chains, and formats prevents most configuration errors.</li>
+          <li><strong>2. Power Pages has enterprise security built in:</strong> DDoS protection and WAF are included by default.</li>
+          <li><strong>3. Certificate renewal frequency is the #1 decision factor:</strong> this single variable determines the right path.</li>
+          <li><strong>4. Front Door is an automation tool, not a security upgrade:</strong> it's about operational efficiency, not additional protection.</li>
+          <li><strong>5. ~90% of projects don't need Front Door:</strong> the standard method works perfectly for annual renewals.</li>
+        </ol>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Recommended Approach</h3>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
+        <h4 class="font-bold text-gray-900 mb-3">Start simple, scale when needed:</h4>
+        <div class="bg-gray-100 rounded-lg p-6 font-mono text-sm overflow-x-auto">
+          <div class="space-y-2">
+            <div><strong>Phase 1:</strong> Power Pages Standard</div>
+            <div class="ml-4">&darr; (3-6 months evaluation)</div>
+            <div><strong>Phase 2:</strong> if renewal frequency becomes painful &rarr; Front Door</div>
+            <div class="ml-4">&darr; (one-time 2-hour setup)</div>
+            <div><strong>Phase 3:</strong> zero manual renewals</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">The One Thing to Remember</h3>
+      <div class="pp-navy text-white p-8 rounded-2xl mb-8">
+        <p class="text-xl font-bold mb-4">Certificate renewal frequency determines your path.</p>
+        <ul class="space-y-2 text-lg">
+          <li><strong>Annual (365 days)?</strong> &rarr; Power Pages Standard is perfect</li>
+          <li><strong>Frequent (&lt;90 days)?</strong> &rarr; Front Door pays for itself in time saved</li>
+        </ul>
+        <p class="mt-4 italic opacity-90">Everything else is secondary.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Final Checklists</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-amber-900 mb-3">Before Choosing Front Door, Verify:</h4>
+          <ul class="space-y-2 text-amber-800 text-sm">
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Renewal frequency justifies the automation effort</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>CA is integrated (DigiCert/GlobalSign) OR custom automation is acceptable</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Team has Azure expertise for setup/maintenance</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>DNS changes are acceptable</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Managing two systems (Power Pages + Azure) is OK</li>
+          </ul>
+        </div>
+
+        <div class="bg-green-50 border-2 border-green-300 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-green-900 mb-3">Power Pages Standard Is Sufficient When:</h4>
+          <ul class="space-y-2 text-green-800 text-sm">
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Annual certificate renewals (365 days)</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Regional user base (single continent)</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Less than 50,000 requests per month</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Simple routing requirements</li>
+            <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Limited Azure expertise in the team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16" id="sources">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Sources &amp; References</h2>
+      <p class="text-gray-600 mb-6">All claims in this article are grounded in official Microsoft documentation:</p>
+
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li><a href="https://learn.microsoft.com/en-us/power-pages/admin/add-custom-domain" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Add a custom domain name to Power Pages</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-pages/admin/manage-custom-certificates" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Manage custom certificates in Power Pages</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-pages/security/faq" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Power Pages security FAQ</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-pages/security/web-application-firewall" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Web Application Firewall for Power Pages</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-pages/system-requirements" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Power Pages system requirements</a></li>
+        </ul>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview" target="_blank" rel="noopener" class="text-blue-600 hover:underline">What is Azure Front Door?</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/end-to-end-tls" target="_blank" rel="noopener" class="text-blue-600 hover:underline">TLS encryption with Azure Front Door (incl. certificate autorotation)</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-custom-domain-https" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Configure a custom domain with your own certificate</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-caching" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Caching with Azure Front Door</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-rules-engine" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Rules Engine</a></li>
+        </ul>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li><a href="https://learn.microsoft.com/en-us/azure/key-vault/certificates/about-certificates" target="_blank" rel="noopener" class="text-blue-600 hover:underline">About Azure Key Vault certificates</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/key-vault/certificates/overview-renew-certificate" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Renew Azure Key Vault certificates</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/afds-overview" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Web Application Firewall on Azure Front Door</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/edge-locations-by-region" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Edge locations by region</a></li>
+        </ul>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li><a href="https://ccadb.my.salesforce-sites.com/microsoft/IncludedCACertificateReportForMSFT" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Microsoft Trusted CA List</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/powershell/module/pki/export-pfxcertificate" target="_blank" rel="noopener" class="text-blue-600 hover:underline">PowerShell: Export-PfxCertificate</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/azure/frontdoor/tier-migration" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Front Door Classic retirement / tier migration</a></li>
+          <li><a href="https://docs.openssl.org/1.1.1/man1/pkcs12" target="_blank" rel="noopener" class="text-blue-600 hover:underline">OpenSSL PKCS12 documentation</a></li>
+        </ul>
+      </div>
+    </section>
+
+
+
+  </div>
+</article>
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

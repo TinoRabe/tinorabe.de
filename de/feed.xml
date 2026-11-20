@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Tino Rabe · Artikel</title>
+    <link>https://tinorabe.de/de/blog/</link>
+    <description>Fachartikel zu Dynamics 365, Power Pages und Portalsicherheit von Tino Rabe, Dynamics 365 CRM & Power Platform Berater, ehemaliger Microsoft MVP für Power Pages.</description>
+    <language>de-DE</language>
+    <atom:link href="https://tinorabe.de/de/feed.xml" rel="self" type="application/rss+xml"/>
+    <managingEditor>tino@amingi.net (Tino Rabe)</managingEditor>
+    <webMaster>tino@amingi.net</webMaster>
+    <copyright>2026 Tino Rabe</copyright>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://tinorabe.de/assets/img/tino-rabe-640.jpg</url>
+      <title>Tino Rabe · Artikel</title>
+      <link>https://tinorabe.de/de/blog/</link>
+    </image>
+    <item>
+      <title><![CDATA[Interne Tools auf Dynamics 365: erst den Lizenzkontext prüfen, dann bauen]]></title>
+      <link>https://tinorabe.de/de/blog/d365-power-pages-internal-users/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/d365-power-pages-internal-users/</guid>
+      <description><![CDATA[D365-Enterprise-Lizenzen decken interne Power-Pages-Sites und Power Apps ab, aber nur im lizenzierten App-Kontext und derselben Umgebung. Vorher prüfen.]]></description>
+      <pubDate>6. Oktober 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Kosten &amp; Lizenzierung</category>
+    </item>
+    <item>
+      <title><![CDATA[End-to-End-Wert: Warum ein Portal kein Nice-to-have ist (sondern essenziell)]]></title>
+      <link>https://tinorabe.de/de/blog/d365-portal-business-case/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/d365-portal-business-case/</guid>
+      <description><![CDATA[Power Pages lizenziert pro Website, nicht pro D365-Workload. Ein Portal für Customer Service, Sales und Field Service bedeutet einen Lizenzpool, nicht drei.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>ROI &amp; Business Case</category>
+    </item>
+    <item>
+      <title><![CDATA[Content Snippets in Power Pages massenhaft pflegen: der Excel-Round-Trip]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-content-snippet-bulk-import/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-content-snippet-bulk-import/</guid>
+      <description><![CDATA[60 Content Snippets in zwei Sprachen, ohne 60-mal auf Neu zu klicken. Wie die Site-Component-Tabelle des Enhanced Data Model den Excel-Round-Trip möglich macht.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[Neue HTML-Features 2026: Was davon in Power Pages heute schon einsatzreif ist]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-html-2026-features/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-html-2026-features/</guid>
+      <description><![CDATA[Trend-Artikel feiern neue HTML-Features. Für einen Power-Pages-Browsermix mit Firefox und Safari sind nur zwei davon wirklich Baseline. Der Praxis-Check.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[N:M-Daten on demand holen mit Power Pages Server Logic]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-server-logic-nm-ondemand/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-server-logic-nm-ondemand/</guid>
+      <description><![CDATA[Die Web API stolpert beim N:M-Lesen. Server Logic liest serverseitig per $expand, on demand. Live verifiziert, samt der Sicherheitsfallstricke.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Server Logic aus Liquid aufrufen: der Full Circle in Power Pages]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/</guid>
+      <description><![CDATA[Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Nutzungsbedingungen einrichten - und der stille Fehler, den fast alle treffen]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-terms-conditions/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-terms-conditions/</guid>
+      <description><![CDATA[Terms &amp; Conditions in Power Pages: das eine Site Setting, das entscheidende Content Snippet, und warum der Dialog kommentarlos ausbleibt, wenn ein Feld leer ist.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Administration</category>
+    </item>
+    <item>
+      <title><![CDATA[N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/</guid>
+      <description><![CDATA[Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.]]></description>
+      <pubDate>29. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Server Logic: 4 versteckte Grenzen, an denen Ihr Code zerbricht]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-server-logic-versteckte-grenzen/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-server-logic-versteckte-grenzen/</guid>
+      <description><![CDATA[Server Logic verspricht ECMAScript 2023. Die Sandbox sieht das anders. Dokumentierte Sperrliste, vier empirische Grenzen und ein Vorgehen zum Debuggen.]]></description>
+      <pubDate>23. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Über interne Silos hinaus: Dynamics 365 für Partner und Zulieferer öffnen]]></title>
+      <link>https://tinorabe.de/de/blog/d365-partner-ecosystem/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/d365-partner-ecosystem/</guid>
+      <description><![CDATA[D365 Sales bildet Ihr eigenes Team perfekt ab. Ein Partner-Relationship-Management-Portal gibt Partnern und Zulieferern Echtzeitzugriff, ohne D365-Login.]]></description>
+      <pubDate>22. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Integration</category>
+    </item>
+    <item>
+      <title><![CDATA[Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/</guid>
+      <description><![CDATA[Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.]]></description>
+      <pubDate>16. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Das 75-25-Dilemma: Warum Ihre Dynamics-365-Investition an der Bürotür endet]]></title>
+      <link>https://tinorabe.de/de/blog/d365-75-25-dilemma/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/d365-75-25-dilemma/</guid>
+      <description><![CDATA[Dynamics 365 optimiert interne Abläufe hervorragend. Die anderen 25 Prozent, der externe Zugang für Kunden und Partner, brauchen eine eigene Lizenz und ein Portal.]]></description>
+      <pubDate>15. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Strategie</category>
+    </item>
+    <item>
+      <title><![CDATA[Der Care-Beweis: Warum &#39;Mir hat niemand Bescheid gesagt&#39; die Antwort ist]]></title>
+      <link>https://tinorabe.de/de/blog/der-care-beweis/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/der-care-beweis/</guid>
+      <description><![CDATA[Microsoft kündigte am 14. August eine Power-Pages-Web-API-Frist an. Wartungskunden wussten es sofort. Alle anderen erfahren es am 14. September.]]></description>
+      <pubDate>12. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Wartung</category>
+    </item>
+    <item>
+      <title><![CDATA[Es war kein Hack. Es war Ihre Power-Pages-Konfiguration.]]></title>
+      <link>https://tinorabe.de/de/blog/es-war-kein-hack/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/es-war-kein-hack/</guid>
+      <description><![CDATA[Die Power-Pages-Datenlecks dieser Woche betrafen Millionen Datensätze bei über einem Dutzend Organisationen, ohne einen einzigen Exploit. Das Muster dahinter.]]></description>
+      <pubDate>11. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Security</category>
+    </item>
+    <item>
+      <title><![CDATA[Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API]]></title>
+      <link>https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/</guid>
+      <description><![CDATA[Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.]]></description>
+      <pubDate>9. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages 2026: Die stille Härtungs-Serie]]></title>
+      <link>https://tinorabe.de/de/blog/haertungs-serie-2026/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/haertungs-serie-2026/</guid>
+      <description><![CDATA[Microsoft härtet Power Pages seit Jahren in kleinen Schritten. 2026 laufen vier Fristen zusammen. Was Betreiber daraus lernen sollten, mit Zeitleiste.]]></description>
+      <pubDate>9. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Administration</category>
+    </item>
+    <item>
+      <title><![CDATA[Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/</guid>
+      <description><![CDATA[Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.]]></description>
+      <pubDate>2. September 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Development</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Architektur-Fehler, die KI Ihnen nicht meldet]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-ai-architektur-fehler/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-ai-architektur-fehler/</guid>
+      <description><![CDATA[KI baut Ihr Power-Pages-Portal schnell und bestätigt Ihnen laufend, dass alles passt. Drei reale Architektur-Fehler, die sie Ihnen dabei nie meldet.]]></description>
+      <pubDate>24. August 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Checklist</category>
+    </item>
+    <item>
+      <title><![CDATA[Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es]]></title>
+      <link>https://tinorabe.de/de/blog/wildcard-web-api-fix/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/wildcard-web-api-fix/</guid>
+      <description><![CDATA[Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/&lt;tabelle&gt;/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.]]></description>
+      <pubDate>19. August 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Sicherheit</category>
+    </item>
+    <item>
+      <title><![CDATA[Link-Vorschauen für Power Pages: Der kleinste E-Commerce-Schritt, den Sie gehen können]]></title>
+      <link>https://tinorabe.de/de/blog/link-vorschauen-power-pages-og-tags/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/link-vorschauen-power-pages-og-tags/</guid>
+      <description><![CDATA[Power Pages kennt kein Open Graph. So bauen Sie statische und dynamische Link-Vorschauen mit Web Template, Snippet und Liquid, ohne Ihre Daten zu öffnen.]]></description>
+      <pubDate>16. August 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[Liquid FetchXML vs. Web API in Power Pages: Wann was?]]></title>
+      <link>https://tinorabe.de/de/blog/liquid-fetchxml-vs-web-api/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/liquid-fetchxml-vs-web-api/</guid>
+      <description><![CDATA[Liquid FetchXML oder Web API in Power Pages? Entscheidungsbaum, Performance-Vergleich, Security und Hybrid-Pattern aus der Projektpraxis erklärt.]]></description>
+      <pubDate>19. April 2026</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Authentifizierung 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Tutorial]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-authentication-erklaert/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-authentication-erklaert/</guid>
+      <description><![CDATA[Komplettes Tutorial für Power Pages Authentifizierung: OAuth 2.0, OpenID Connect und SAML 2.0 verständlich erklärt, mit SSO und Praxisbeispielen.]]></description>
+      <pubDate>6. November 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Tutorial</category>
+    </item>
+    <item>
+      <title><![CDATA[Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen]]></title>
+      <link>https://tinorabe.de/de/blog/makers-guide-power-pages-data/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/makers-guide-power-pages-data/</guid>
+      <description><![CDATA[Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.]]></description>
+      <pubDate>3. November 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Tutorial</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Server Logic: Server-Side JavaScript für sichere Business Logic (Preview)]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-server-logic-preview/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-server-logic-preview/</guid>
+      <description><![CDATA[Power Pages Server Logic in der Preview: Wie server-seitiges JavaScript sichere Business Logic ohne Custom API ermöglicht, und wo aktuell die Grenzen liegen.]]></description>
+      <pubDate>31. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Entwicklung</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Sicherheitsarchitektur: Interaktiver Guide]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/</guid>
+      <description><![CDATA[Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.]]></description>
+      <pubDate>18. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Sicherheit</category>
+    </item>
+    <item>
+      <title><![CDATA[Entra External ID für Power Pages: Administrator-Handbuch]]></title>
+      <link>https://tinorabe.de/de/blog/entra-external-id-administration/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/entra-external-id-administration/</guid>
+      <description><![CDATA[Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.]]></description>
+      <pubDate>15. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Administration</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Externe Identität: Der komplette Onboarding-Prozess]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-externe-identitaet-prozess/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-externe-identitaet-prozess/</guid>
+      <description><![CDATA[Schritt-für-Schritt-Guide zum Onboarding externer Benutzer in Power Pages mit Entra External ID und Azure AD B2C, inklusive typischer Stolperfallen und Lösungen.]]></description>
+      <pubDate>12. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Tutorial</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Lizenzwert: Was ist out-of-the-box inkludiert?]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-lizenzwert-outofthebox/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-lizenzwert-outofthebox/</guid>
+      <description><![CDATA[Power Pages out-of-the-box: WAF, CMS, Dataverse Security, Deployments und native Integrationen. Haben Sie Power Pages schon in Ihrer Lizenz, ohne es zu wissen?]]></description>
+      <pubDate>8. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Kosten</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Wert: Was Sie für Ihr Geld wirklich bekommen]]></title>
+      <link>https://tinorabe.de/de/blog/power-pages-wert-lizenzpakete/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-pages-wert-lizenzpakete/</guid>
+      <description><![CDATA[Skeptisch bei Power Pages Lizenzkosten? Konkrete Analyse: Was Sie für authentifizierte &amp; anonyme User-Lizenzen bekommen, inkl. ROI-Berechnung die überzeugt]]></description>
+      <pubDate>8. Oktober 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Kosten</category>
+    </item>
+    <item>
+      <title><![CDATA[Self-Service Portal im Kundenservice: ROI &amp; Einsparpotenzial mit Power Pages]]></title>
+      <link>https://tinorabe.de/de/blog/self-service-portal-roi-kundenservice/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/self-service-portal-roi-kundenservice/</guid>
+      <description><![CDATA[Entdecken Sie, wie ein Self-Service Portal mit Microsoft Power Pages Ihre Servicekosten um bis zu 78.000 EUR/Jahr senkt und die Kundenzufriedenheit steigert]]></description>
+      <pubDate>18. September 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>ROI &amp; Business Case</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages vs WordPress: Der ehrliche Vergleich für B2B-Kundenportale]]></title>
+      <link>https://tinorabe.de/de/blog/power-portals-vs-wordpress/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-portals-vs-wordpress/</guid>
+      <description><![CDATA[WordPress oder Microsoft Power Pages für Ihr B2B-Kundenportal? Ehrlicher Vergleich: Sicherheit, Wartung, Kosten, Integration - welche Lösung passt wirklich?]]></description>
+      <pubDate>5. September 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Technologie-Vergleich</category>
+    </item>
+    <item>
+      <title><![CDATA[Power Pages Kosten &amp; Lizenzierung 2025: Der komplette Überblick]]></title>
+      <link>https://tinorabe.de/de/blog/power-portals-lizenzierung-kosten/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/power-portals-lizenzierung-kosten/</guid>
+      <description><![CDATA[Power Pages Lizenzierung: authentifizierte und anonyme Nutzer, versteckte Kosten und ROI-Berechnung, alle Kosten transparent und ehrlich aufgeschlüsselt.]]></description>
+      <pubDate>22. August 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Kosten &amp; Lizenzierung</category>
+    </item>
+    <item>
+      <title><![CDATA[5 Warnsignale, dass Ihr Unternehmen ein Kundenportal braucht]]></title>
+      <link>https://tinorabe.de/de/blog/5-warnsignale-kundenportal/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/5-warnsignale-kundenportal/</guid>
+      <description><![CDATA[Support überlastet? Excel-Chaos? Kunden fragen ständig nach Updates? 5 klare Warnsignale, dass Ihr Unternehmen jetzt ein eigenes Kundenportal braucht.]]></description>
+      <pubDate>9. August 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>CHECKLISTE</category>
+    </item>
+    <item>
+      <title><![CDATA[Sicherheit &amp; Compliance: Warum Power Pages Portale sicherer sind]]></title>
+      <link>https://tinorabe.de/de/blog/sicherheit-compliance-power-pages/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/sicherheit-compliance-power-pages/</guid>
+      <description><![CDATA[Power Pages liefert DSGVO-Compliance, EU-Hosting und rollenbasierte Zugriffsrechte out-of-the-box. Enterprise-Security ganz ohne eigenes Expertenwissen.]]></description>
+      <pubDate>28. Juli 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Sicherheit</category>
+    </item>
+    <item>
+      <title><![CDATA[Dynamics 365 bereits im Einsatz? Ihr Kundenportal ist einen Klick entfernt]]></title>
+      <link>https://tinorabe.de/de/blog/dynamics-365-kundenportal-templates/</link>
+      <guid isPermaLink="true">https://tinorabe.de/de/blog/dynamics-365-kundenportal-templates/</guid>
+      <description><![CDATA[Dynamics 365 bereits im Einsatz? Power Pages Templates liefern ein professionelles Kundenportal in 8 bis 12 statt 6 Monaten. Vorlage und Prozess erklärt.]]></description>
+      <pubDate>15. Juli 2025</pubDate>
+      <dc:creator>Tino Rabe</dc:creator>
+      <category>Integration</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen</title>
+<meta name="description" content="Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/makers-guide-power-pages-data/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/makers-guide-power-pages-data/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/makers-guide-power-pages-data/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/makers-guide-power-pages-data/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen">
+<meta property="og:description" content="Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/makers-guide-power-pages-data/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-makers-guide-power-pages-data.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen">
+<meta property="article:published_time" content="2025-11-03">
+<meta property="article:modified_time" content="2026-08-27">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen">
+<meta name="twitter:description" content="Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-makers-guide-power-pages-data.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/makers-guide-power-pages-data/#webpage",
+      "url": "https://tinorabe.de/de/blog/makers-guide-power-pages-data/",
+      "name": "Der Maker's Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen",
+      "description": "Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-makers-guide-power-pages-data.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/makers-guide-power-pages-data/#article",
+      "headline": "Der Maker's Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen",
+      "description": "Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.",
+      "datePublished": "2025-11-03",
+      "dateModified": "2026-08-27",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/makers-guide-power-pages-data/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-makers-guide-power-pages-data.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Lists, Power Pages Forms, Dataverse Web API, Power Pages Daten",
+      "articleSection": "Tutorial"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Tutorial</span>
+      <time datetime="2025-11-03">3. November 2025</time><span>15 Min. Lesezeit</span><a href="/en/blog/makers-guide-power-pages-data/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Der Maker&#39;s Guide für Power Pages Daten: 4 Tools, die Sie kennen müssen</h1>
+    <p class="art-lead">Vollständiger Guide zu den 4 Daten-Tools in Power Pages: Lists, Forms, Basic Forms und Dataverse Web API, wann Sie welches Tool wirklich einsetzen sollten.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+                  <div class="prose prose-lg max-w-none mb-12">
+                <p class="text-xl text-gray-700 leading-relaxed">
+                    Sie brauchen keinen Entwickler-Hintergrund, um leistungsstarke, datengesteuerte Websites in Power Pages zu erstellen. Microsoft hat <strong>4 zentrale Tools</strong> speziell für Maker wie Sie entwickelt, komplett ohne Code.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    In diesem Guide zeige ich Ihnen, wie Sie das richtige Tool für Ihre Anforderungen auswählen und häufige Fehler vermeiden.
+                </p>
+            </div>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Die eine Frage, die alles verändert</h2>
+                <div class="pp-card p-6 mb-6">
+                    <p class="text-lg font-semibold text-gray-900 mb-4">
+                        Bevor Sie mit dem Aufbau beginnen, fragen Sie sich:
+                    </p>
+                    <p class="text-2xl font-bold text-blue-600">
+                        "Was sollen meine Benutzer tun?"
+                    </p>
+                </div>
+
+                <p class="text-gray-700 mb-6">Die Antwort bestimmt, welches Tool Sie benötigen:</p>
+
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Benutzer-Aktion</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Tool</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700"><strong>Formular ausfüllen</strong></td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Basic Form</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700"><strong>Daten durchsuchen/filtern</strong></td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Lists</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700"><strong>Mehrstufigen Prozess durchlaufen</strong></td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Multistep Form</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700"><strong>Personalisierten Text sehen</strong></td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">PowerFx</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-gray-700">Lassen Sie uns jedes Tool im Detail betrachten.</p>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tool 1: Basic Forms (Für einfache Formulare)</h2>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Was macht es?</h3>
+                    <p class="text-gray-700 mb-4">
+                        Erstellt Formulare, mit denen Benutzer Daten übermitteln oder bearbeiten können, wie ein Kontaktformular, eine Registrierung oder ein Profil-Editor.
+                    </p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Praxis-Beispiele:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>"Kontakt"-Formular</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Event-Registrierung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Profil-Update-Seite</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Bewerbungsformular</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Einstufige Formulare</li>
+                            <li>Eine Tabelle (z.B. Contact, Account)</li>
+                            <li>Standardfelder (Name, E-Mail, Telefon)</li>
+                            <li>Keine komplexe Verzweigungslogik</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann NICHT verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Mehrstufige Assistenten → Multistep Forms</li>
+                            <li>Custom UI Design → Web API (Developer)</li>
+                            <li>Mehrere Tabellen → Multistep Forms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pp-box pp-box--note p-6 mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">So richten Sie es ein:</h4>
+                    <ol class="space-y-3 text-gray-700">
+                        <li><strong>1.</strong> Design Studio öffnen → <strong>Data</strong> Workspace</li>
+                        <li><strong>2.</strong> Klicken Sie auf <strong>+ New form</strong></li>
+                        <li><strong>3.</strong> Tabelle auswählen (z.B. <strong>Contact</strong>)</li>
+                        <li><strong>4.</strong> Modus wählen:
+                            <ul class="ml-6 mt-2 space-y-1">
+                                <li><strong>Insert:</strong> Neue Datensätze (Registrierung, Kontaktformular)</li>
+                                <li><strong>Edit:</strong> Bestehende Datensätze aktualisieren (Profil-Editor)</li>
+                                <li><strong>ReadOnly:</strong> Info anzeigen (Details anzeigen)</li>
+                            </ul>
+                        </li>
+                        <li><strong>5.</strong> Zur Seite hinzufügen</li>
+                        <li><strong>6.</strong> <strong>Table Permissions</strong> setzen (KRITISCH!)</li>
+                    </ol>
+                </div>
+
+                <div class="pp-box pp-box--risk p-6">
+                    <h4 class="text-lg font-bold text-red-900 mb-3">Sicherheits-Tipp:</h4>
+                    <p class="text-gray-700 mb-4">
+                        <strong>Aktivieren Sie IMMER Table Permissions</strong>, sonst kann jeder im Internet Ihre Daten sehen!
+                    </p>
+                    <ol class="space-y-2 text-gray-700">
+                        <li><strong>1.</strong> Design Studio → <strong>Security</strong> Workspace</li>
+                        <li><strong>2.</strong> <strong>Table permissions</strong> → <strong>+ New permission</strong></li>
+                        <li><strong>3.</strong> Tabelle auswählen, Zugriffstyp (Global/Contact/Account)</li>
+                        <li><strong>4.</strong> <strong>Web Roles</strong> zuweisen</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tool 2: Lists (Für Datenlisten)</h2>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Was macht es?</h3>
+                    <p class="text-gray-700 mb-4">
+                        Zeigt Daten in einem Tabellen-/Grid-Format an, wie eine Kundenliste, einen Produktkatalog oder Suchergebnisse.
+                    </p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Praxis-Beispiele:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Aktive Kundenliste</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Produktkatalog</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Stellenangebote</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Support-Tickets</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Datensätze in Grid anzeigen</li>
+                            <li>Sortierung/Filterung erforderlich</li>
+                            <li>Link zu Detailseiten</li>
+                            <li>Schreibgeschützt oder mit Aktionen (Bearbeiten/Löschen)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann NICHT verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Custom HTML Layout → Liquid Templates (Developer)</li>
+                            <li>Echtzeit-Updates → Web API (Developer)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pp-box pp-box--note p-6 mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">So richten Sie es ein:</h4>
+                    <ol class="space-y-3 text-gray-700">
+                        <li><strong>1.</strong> Design Studio → <strong>Data</strong> Workspace</li>
+                        <li><strong>2.</strong> Klicken Sie auf <strong>+ New list</strong></li>
+                        <li><strong>3.</strong> Tabelle auswählen (z.B. <strong>Account</strong>)</li>
+                        <li><strong>4.</strong> <strong>Dataverse View</strong> wählen (z.B. "Aktive Konten")</li>
+                        <li><strong>5.</strong> Konfigurieren:
+                            <ul class="ml-6 mt-2 space-y-1">
+                                <li>Seitengröße (Datensätze pro Seite)</li>
+                                <li>Detailseite (Link zum Formular)</li>
+                                <li>Aktionen (Erstellen, Bearbeiten, Löschen)</li>
+                            </ul>
+                        </li>
+                        <li><strong>6.</strong> Zur Seite hinzufügen</li>
+                        <li><strong>7.</strong> <strong>Table Permissions</strong> setzen</li>
+                    </ol>
+                </div>
+
+                <div class="pp-card p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Pro-Tipp: Multiple Views</h4>
+                    <p class="text-gray-700">
+                        Sie können einer Liste mehrere Ansichten hinzufügen (z.B. "Aktive Kontakte" und "Inaktive Kontakte"). Benutzer erhalten ein Dropdown-Menü, um zwischen ihnen zu wechseln.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tool 3: Multistep Forms (Für Assistenten)</h2>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Was macht es?</h3>
+                    <p class="text-gray-700 mb-4">
+                        Erstellt mehrstufige Prozesse, wie einen Registrierungs-Assistenten, einen Kreditantrag oder einen Onboarding-Flow.
+                    </p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Praxis-Beispiele:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>3-Schritt-Registrierung (Persönliche Info → Adresse → Bestätigung)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Kreditantrag (Antragsteller-Info → Finanzdetails → Dokumente → Absenden)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Event-Registrierung (Teilnehmer-Info → Session-Auswahl → Zahlung)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Mehrstufige Prozesse</li>
+                            <li>Bedingte Logik (wenn Antwort A, gehe zu Schritt X)</li>
+                            <li>Mehrere Tabellen (z.B. Contact + Account)</li>
+                            <li>Fortschrittsanzeige</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann NICHT verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Einstufiges Formular → Basic Form</li>
+                            <li>Stark individuelles UI → Web API (Developer)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pp-box pp-box--note p-6 mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">So richten Sie es ein:</h4>
+                    <ol class="space-y-3 text-gray-700">
+                        <li><strong>1.</strong> Design Studio → <strong>+ Page</strong> → <strong>Start from blank</strong></li>
+                        <li><strong>2.</strong> <strong>Insert</strong> → <strong>Multistep form</strong></li>
+                        <li><strong>3.</strong> Schritte konfigurieren:
+                            <ul class="ml-6 mt-2 space-y-1">
+                                <li><strong>Load Form Step:</strong> Datensatz erstellen/bearbeiten</li>
+                                <li><strong>Condition Step:</strong> Verzweigungslogik</li>
+                                <li><strong>Redirect Step:</strong> Zur URL weiterleiten</li>
+                            </ul>
+                        </li>
+                        <li><strong>4.</strong> <strong>Fortschrittsanzeige</strong> setzen (anzeigen/ausblenden)</li>
+                        <li><strong>5.</strong> <strong>On Success</strong> Verhalten konfigurieren (Weiterleitung, Nachricht)</li>
+                        <li><strong>6.</strong> <strong>Table Permissions</strong> für jede Tabelle setzen</li>
+                    </ol>
+                </div>
+
+                <div class="pp-card p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Pro-Tipp: Bedingte Logik</h4>
+                    <p class="text-gray-700">
+                        Verwenden Sie <strong>Condition Steps</strong> für Verzweigungen:
+                    </p>
+                    <ul class="mt-3 space-y-2 text-gray-700">
+                        <li>Wenn Benutzer "Unternehmen" auswählt, Unternehmensfelder anzeigen</li>
+                        <li>Wenn Benutzer "Einzelperson" auswählt, Unternehmensfelder überspringen</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tool 4: PowerFx (Für dynamisches UI)</h2>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Was macht es?</h3>
+                    <p class="text-gray-700 mb-4">
+                        Fügt dynamischen, personalisierten Text zu Ihren Seiten hinzu, wie "Willkommen, Johann!" oder "Ihr Bestellsumme: 150€".
+                    </p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Praxis-Beispiele:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Begrüßungsnachricht: "Hallo, [Benutzername]!"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Dynamischer Button-Text: "Profil bearbeiten" (eingeloggt) oder "Anmelden" (nicht eingeloggt)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Bedingtes Bild: Unterschiedliches Banner für verschiedene Benutzertypen</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 mr-2">•</span>
+                            <span>Berechneter Wert: "Summe: [Summe der Mengen]"</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Personalisierter UI-Text</li>
+                            <li>Dynamischer Button-Text</li>
+                            <li>Bedingte Sichtbarkeit</li>
+                            <li>Einfache Berechnungen</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Wann NICHT verwenden:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>Komplexe Geschäftslogik → Server Logic (Developer)</li>
+                            <li>Datenmanipulation → Web API (Developer)</li>
+                            <li>Vollständige CRUD-Operationen → Forms/Lists</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pp-box pp-box--note p-6 mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">So richten Sie es ein:</h4>
+                    <ol class="space-y-3 text-gray-700">
+                        <li><strong>1.</strong> Design Studio → <strong>Text</strong>, <strong>Button</strong> oder <strong>Image</strong> Komponente auswählen</li>
+                        <li><strong>2.</strong> Klicken Sie auf <strong>fx</strong>-Button in der Toolbar</li>
+                        <li><strong>3.</strong> PowerFx-Formel schreiben (Excel-ähnlich):
+                            <pre class="mt-2 bg-gray-800 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto">=Concatenate("Willkommen, ", User.FullName, "!")</pre>
+                        </li>
+                        <li><strong>4.</strong> Klicken Sie auf <strong>Save</strong></li>
+                    </ol>
+                </div>
+
+                <div class="pp-card p-6 mb-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">PowerFx-Beispiele:</h4>
+
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Personalisierte Begrüßung:</p>
+                            <pre class="bg-gray-800 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto">=Concatenate("Hallo, ", User.FullName, "!")</pre>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Bedingter Button-Text:</p>
+                            <pre class="bg-gray-800 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto">=If(User.DataverseUserId <> Blank(), "Profil bearbeiten", "Anmelden")</pre>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Dynamischer Wert in Text:</p>
+                            <pre class="bg-gray-800 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto">Ihr Bestellsumme beträgt ${Sum(OrderLine1.Quantity, OrderLine2.Quantity)}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pp-box pp-box--warn p-6">
+                    <h4 class="text-lg font-bold text-yellow-900 mb-3">Status:</h4>
+                    <p class="text-gray-700">
+                        <strong>Preview Feature:</strong> PowerFx ist in der Preview-Phase. Verwenden Sie es zum Testen, aber vermeiden Sie produktionskritische Szenarien, bis es Generally Available (GA) ist.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Entscheidungsbaum: Welches Tool verwende ich?</h2>
+
+                <div class="pp-soft border border-gray-200 rounded-lg p-8">
+                    <p class="text-lg font-semibold text-gray-900 mb-6">Folgen Sie diesem einfachen Ablauf:</p>
+
+                    <div class="space-y-4 text-gray-700">
+                        <div class="pp-card pl-4">
+                            <p class="font-bold text-lg mb-2">START: Was soll der Benutzer tun?</p>
+                        </div>
+
+                        <div class="pp-box pp-box--note pl-8">
+                            <p class="font-semibold mb-2">→ Formular absenden (1 Schritt)</p>
+                            <p class="text-blue-600 font-bold">→ Basic Form</p>
+                        </div>
+
+                        <div class="pp-box pp-box--note pl-8">
+                            <p class="font-semibold mb-2">→ Formular absenden (mehrere Schritte)</p>
+                            <p class="text-blue-600 font-bold">→ Multistep Form</p>
+                        </div>
+
+                        <div class="pp-box pp-box--note pl-8">
+                            <p class="font-semibold mb-2">→ Daten durchsuchen/filtern</p>
+                            <p class="text-blue-600 font-bold">→ Lists</p>
+                        </div>
+
+                        <div class="pp-box pp-box--note pl-8">
+                            <p class="font-semibold mb-2">→ Dynamischen Text sehen (personalisiert)</p>
+                            <p class="text-blue-600 font-bold">→ PowerFx</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Praxis-Szenario: Event-Registrierung</h2>
+
+                <p class="text-gray-700 mb-6">
+                    Lassen Sie uns ein komplettes Event-Registrierungssystem mit diesen Tools bauen.
+                </p>
+
+                <div class="pp-box pp-box--note p-6 mb-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Anforderungen:</h3>
+                    <ol class="space-y-2 text-gray-700">
+                        <li><strong>1.</strong> Event-Listenseite (Benutzer durchsuchen Events)</li>
+                        <li><strong>2.</strong> Registrierungsformular (Benutzer melden sich an)</li>
+                        <li><strong>3.</strong> Bestätigungsseite (personalisierte Nachricht)</li>
+                    </ol>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-blue-600 mb-3">Seite 1: Event-Liste</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Tool:</strong> Lists</li>
+                            <li><strong>Tabelle:</strong> Event</li>
+                            <li><strong>View:</strong> "Aktive Events"</li>
+                            <li><strong>Aktionen:</strong> Details anzeigen</li>
+                            <li><strong>Detailseite:</strong> → Event-Registrierungsformular</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-blue-600 mb-3">Seite 2: Event-Registrierungsformular</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Tool:</strong> Multistep Form</li>
+                            <li><strong>Schritt 1:</strong> Persönliche Info (Contact-Tabelle)</li>
+                            <li><strong>Schritt 2:</strong> Event-Auswahl (Event Registration-Tabelle)</li>
+                            <li><strong>Schritt 3:</strong> Bestätigung</li>
+                            <li><strong>On Success:</strong> Weiterleitung zur Bestätigungsseite</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-blue-600 mb-3">Seite 3: Bestätigung</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Tool:</strong> PowerFx (personalisierte Nachricht)</li>
+                            <li><strong>Text:</strong> "Vielen Dank, [Benutzername]! Sie sind für [Eventname] registriert."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pp-card p-6 mt-8">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Setup-Zeit:</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><strong>Ohne Code:</strong> <span class="text-blue-600 font-bold">30 Minuten</span></li>
+                        <li><strong>Mit Developer (Custom UI):</strong> <span class="text-gray-500">4-6 Stunden</span></li>
+                    </ul>
+                    <p class="mt-4 text-lg font-semibold text-blue-600">
+                        Maker-Power: Sie haben gerade ein vollständiges Registrierungssystem ohne eine einzige Zeile Code erstellt.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Häufige Maker-Fehler (und wie Sie sie vermeiden)</h2>
+
+                <div class="space-y-6">
+                    <div class="pp-box pp-box--risk p-6">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">Fehler 1: Table Permissions vergessen</h3>
+                        <p class="text-gray-700 mb-2"><strong>Problem:</strong> Formular/Liste zeigt "Access Denied" oder gibt Daten öffentlich preis.</p>
+                        <p class="text-gray-700"><strong>Lösung:</strong> Setzen Sie IMMER Table Permissions + Web Roles.</p>
+                    </div>
+
+                    <div class="pp-box pp-box--risk p-6">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">Fehler 2: Basic Form für mehrstufige Prozesse verwenden</h3>
+                        <p class="text-gray-700 mb-2"><strong>Problem:</strong> Versuchen, mehrere Schritte in ein Formular zu quetschen.</p>
+                        <p class="text-gray-700"><strong>Lösung:</strong> Verwenden Sie stattdessen Multistep Form.</p>
+                    </div>
+
+                    <div class="pp-box pp-box--risk p-6">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">Fehler 3: Nicht als verschiedene Benutzer testen</h3>
+                        <p class="text-gray-700 mb-2"><strong>Problem:</strong> Funktioniert für Sie (Admin), aber nicht für Endbenutzer.</p>
+                        <p class="text-gray-700"><strong>Lösung:</strong> Testen Sie mit verschiedenen Web Roles (anonym, authentifiziert).</p>
+                    </div>
+
+                    <div class="pp-box pp-box--risk p-6">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">Fehler 4: Zu kompliziert mit Custom Code</h3>
+                        <p class="text-gray-700 mb-2"><strong>Problem:</strong> Developer bitten, etwas zu programmieren, das Basic Form erledigen kann.</p>
+                        <p class="text-gray-700"><strong>Lösung:</strong> Prüfen Sie zuerst, ob No-Code-Tools es bewältigen können.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Power User Tipp: Wann einen Developer hinzuziehen</h2>
+
+                <p class="text-gray-700 mb-6">
+                    Manchmal stoßen Sie mit No-Code-Tools an eine Grenze. Hier ist, wann Sie um Hilfe bitten sollten:
+                </p>
+
+                <div class="pp-box pp-box--warn p-6 mb-6">
+                    <h3 class="text-lg font-bold text-yellow-900 mb-4">Rufen Sie einen Developer, wenn Sie Folgendes benötigen:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-red-600 mr-2"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span></span>
+                            <span>Custom UI Design (über Forms/Lists hinaus)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-600 mr-2"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span></span>
+                            <span>Versteckte Geschäftslogik (Berechnungen, die für Benutzer unsichtbar sind)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-600 mr-2"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span></span>
+                            <span>Massenoperationen (100 Datensätze auf einmal importieren)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-600 mr-2"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span></span>
+                            <span>Externe API-Integration (z.B. an DocuSign senden)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-600 mr-2"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span></span>
+                            <span>Echtzeit-Updates ohne Seiten-Reload</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <p class="text-gray-700">
+                        <strong>Developer-Tools:</strong> Web API, Server Logic, Plugins, Custom JavaScript
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Schnellreferenz-Karte</h2>
+
+                <p class="text-gray-700 mb-6">Drucken Sie dies aus und behalten Sie es auf Ihrem Schreibtisch:</p>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead class="pp-navy text-white">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">Ich möchte...</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">Tool</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">Komplexität</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">Ein einfaches Formular erstellen</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Basic Form</td>
+                                <td class="px-6 py-4 text-green-600">Einfach</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">Daten in einem Grid anzeigen</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Lists</td>
+                                <td class="px-6 py-4 text-green-600">Einfach</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">Einen mehrstufigen Assistenten bauen</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Multistep Form</td>
+                                <td class="px-6 py-4 text-yellow-600">Mittel</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">Dynamischen Text hinzufügen</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">PowerFx</td>
+                                <td class="px-6 py-4 text-green-600">Einfach</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">Geschäftsregeln validieren</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Business Rules</td>
+                                <td class="px-6 py-4 text-yellow-600">Mittel</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-gray-700">E-Mail-Benachrichtigungen senden</td>
+                                <td class="px-6 py-4 text-blue-600 font-semibold">Power Automate</td>
+                                <td class="px-6 py-4 text-yellow-600">Mittel</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Nächste Schritte</h2>
+
+                <div class="pp-soft border border-gray-200 rounded-lg p-8">
+                    <ol class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-bold mr-3">1.</span>
+                            <div>
+                                <strong>Üben:</strong> Bauen Sie ein einfaches Kontaktformular mit Basic Form
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-bold mr-3">2.</span>
+                            <div>
+                                <strong>Lernen:</strong> Erkunden Sie Lists, indem Sie Dataverse-Daten anzeigen
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-bold mr-3">3.</span>
+                            <div>
+                                <strong>Experimentieren:</strong> Probieren Sie PowerFx für eine Willkommensnachricht aus
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-600 font-bold mr-3">4.</span>
+                            <div>
+                                <strong>Herausforderung:</strong> Bauen Sie einen 3-Schritt-Registrierungs-Assistenten
+                            </div>
+                        </li>
+                    </ol>
+
+                    <p class="mt-6 text-lg font-semibold text-blue-600">
+                        Möchten Sie mehr erfahren? Schauen Sie sich den Developer's Guide an, um zu sehen, was mit Code möglich ist.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Ressourcen</h2>
+
+                <ul class="space-y-3">
+                    <li>
+                        <a href="https://learn.microsoft.com/power-pages/getting-started/use-design-studio" target="_blank" class="text-blue-600 hover:underline font-semibold">
+                            Power Pages Design Studio Dokumentation →
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://learn.microsoft.com/power-pages/security/table-permissions" target="_blank" class="text-blue-600 hover:underline font-semibold">
+                            Table Permissions Guide →
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://learn.microsoft.com/power-pages/configure/power-fx" target="_blank" class="text-blue-600 hover:underline font-semibold">
+                            PowerFx in Power Pages (Preview) →
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="pp-card p-8 mb-16">
+                <p class="text-xl font-semibold text-gray-900 mb-4">
+                    Denken Sie daran: Sie brauchen keinen Code, um leistungsstarke Websites zu bauen.
+                </p>
+                <p class="text-lg text-gray-700">
+                    Diese 4 Tools, <strong>Basic Forms, Lists, Multistep Forms und PowerFx</strong>: decken 80% der Maker-Anforderungen ab.
+                </p>
+                <p class="text-lg text-blue-600 font-semibold mt-4">
+                    Beherrschen Sie diese, und Sie werden schneller ausliefern als die meisten Developer.
+                </p>
+            </div>
+
+        </article>
+
+
+
+        <section class="py-12 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Ähnliche Artikel</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <article class="bg-white rounded-2xl overflow-hidden transition-all border border-gray-100">
+                        <div class="p-6">
+                            <div class="text-sm text-blue-600 font-semibold mb-2">Developer Guide</div>
+                            <h3 class="text-xl font-bold mb-3 leading-tight">
+                                <a href="#" class="hover:text-blue-600">Power Pages für Entwickler: Erweiterte Datenzugriffs-Methoden</a>
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">Lernen Sie Web API, Server Logic und Custom Code für komplexe Datenszenarien kennen.</p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-blue-600 font-semibold hover:underline">Weiterlesen →</a>
+                                <span class="text-sm text-gray-400">12 Min.</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-2xl overflow-hidden transition-all border border-gray-100">
+                        <div class="p-6">
+                            <div class="text-sm text-blue-600 font-semibold mb-2">Sicherheit</div>
+                            <h3 class="text-xl font-bold mb-3 leading-tight">
+                                <a href="#" class="hover:text-blue-600">Table Permissions verstehen: Der komplette Security-Guide</a>
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">Alles über Table Permissions, Web Roles und sichere Datenzugriffssteuerung.</p>
+                            <div class="flex items-center justify-between">
+                                <a href="#" class="text-blue-600 font-semibold hover:underline">Weiterlesen →</a>
+                                <span class="text-sm text-gray-400">10 Min.</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

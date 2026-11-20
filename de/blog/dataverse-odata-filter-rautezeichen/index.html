@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API</title>
+<meta name="description" content="Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API">
+<meta property="og:description" content="Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-dataverse-odata-filter-rautezeichen.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API">
+<meta name="twitter:description" content="Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-dataverse-odata-filter-rautezeichen.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/#webpage",
+      "url": "https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/",
+      "name": "Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API",
+      "description": "Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-dataverse-odata-filter-rautezeichen.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/#article",
+      "headline": "Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API",
+      "description": "Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-dataverse-odata-filter-rautezeichen.png",
+      "inLanguage": "de-DE",
+      "keywords": "OData Filter Encoding, Dataverse Web API Rautezeichen, Power Pages Filter 400, Hochkomma OData escapen, encodeURIComponent OData, Dataverse Filter Sonderzeichen",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Development</span>
+      <time datetime="2026-09-09">9. September 2026</time><span>8 Min. Lesezeit</span><a href="/en/blog/dataverse-odata-filter-hash-character/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Der OData-Filter frisst Ihr #: Eine Fallgrube der Dataverse Web API</h1>
+    <p class="art-lead">Ein Rautezeichen im Datensatznamen kappt Ihren OData-Filter. Warum das passiert, der zweistufige Fix und die Zeichen, die Microsoft nicht dokumentiert.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Ihr Filter funktioniert. Seit Monaten. Dann legt das Marketing einen Datensatz namens <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter #2</code> an, und die Anfrage kommt mit 400 zurück.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+  An Ihrem Code hat sich nichts geändert. In Dataverse ist nichts kaputtgegangen. Das Zeichen war es.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  Hier steht, was passiert, warum die Lösung zwei Schritte hat statt einem, und welche Zeichen Microsoft für dieses Problem dokumentiert und welche stillschweigend fehlen.
+</p>
+
+<figure class="mb-12">
+  <img src="/assets/images/blog/dataverse-odata-filter-hash-character/hero-odata-filter-hash.png" alt="Der Filter wird schon im Browser an der Raute abgeschnitten, bevor er den Server erreicht, und kommt dort als unfertige Zeichenkette an, die HTTP 400 liefert" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+</figure>
+
+<section id="ausgangslage" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Die Ausgangslage</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ein Server-Logic-Endpunkt aktualisiert Einwilligungsdatensätze. Vor dem Schreiben schlägt er einen Purpose über den Namen nach:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>const filter = "msdynmkt_name eq '" + purposeName + "'";
+const raw = Server.Connector.Dataverse.RetrieveMultipleRecords(
+              "msdynmkt_purposes", "$filter=" + filter);</code></pre>
+
+  <p class="text-gray-700 leading-relaxed">
+    Für die meisten Purposes ist das in Ordnung. Für <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Commercial HLC #1 - DACH</code> kommt Status 400. Für <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter Q4 #2</code> kommt Status 400. Das Muster war eine Weile unsichtbar, weil die Testdaten sauber waren: Jeder fehlschlagende Name enthielt eine Raute.
+  </p>
+</section>
+
+<section id="warum-die-raute-anders-ist" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Warum die Raute anders ist</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Jedes andere Sonderzeichen in einer URL macht am Ziel Ärger. Die Raute macht Ärger, bevor die Anfrage überhaupt losgeht.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    RFC 3986 definiert <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> als das Trennzeichen, mit dem der Fragmentbezeichner beginnt, und ist dabei genau: Der Fragmentbezeichner wird vor der Auflösung vom Rest der URI abgetrennt, und die darin enthaltene Information wird allein vom User Agent ausgewertet, unabhängig vom URI-Schema.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Abgetrennt vor der Auflösung. Der Client schneidet die URL an der Raute ab und sendet nur, was links davon steht.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Aus dieser Anfrage:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>GET /api/data/v9.2/msdynmkt_purposes?$filter=msdynmkt_name eq 'Commercial HLC #1 - DACH'</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    wird auf dem Server das hier:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>GET /api/data/v9.2/msdynmkt_purposes?$filter=msdynmkt_name eq 'Commercial HLC</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das Zeichenkettenliteral hat jetzt ein öffnendes und kein schließendes Hochkomma. Dataverse parst, scheitert, antwortet mit 400.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das ist der laute Fehlerfall, und es ist der glückliche.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Denken Sie an <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Campaign #2 Berlin</code> in einem <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains()</code>-Filter. Schneiden Sie an der Raute ab, und was übrig bleibt, hängt am genauen Aufbau. Steckt die Raute mitten in einem noch offenen Zeichenkettenliteral, dem Regelfall bei einem Wert wie diesem, bleibt auch hier ein unfertiges Hochkomma übrig, und Sie bekommen denselben lauten 400 wie oben. Ich habe genau das am 3. September 2026 live nachgestellt: ein Testkontakt mit <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> im Nachnamen, derselbe <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains()</code>-Filter unescaped gegen <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/api/data/v9.2/contacts</code> gefahren, Ergebnis HTTP 400, "unterminated string literal", korrekt mit <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%23</code> kodiert dagegen HTTP 200 mit dem einen erwarteten Treffer. Die eigentliche Gefahr liegt woanders: Steht die Raute nicht mehr innerhalb eines offenen Literals, wenn der Client abschneidet, etwa weil im selben Query-String danach noch eine zusätzliche Bedingung oder ein <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> folgt, bleibt ein für sich genommen gültiger, aber unvollständiger Filter übrig. Kein Fehler. HTTP 200. Nur eben nicht der Filter, den Sie geschrieben haben. Im Kontext von Einwilligungen oder Berechtigungen ist das deutlich schlechter als ein 400, weil nichts darauf hinweist.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Dass Ihr HTTP-Client Sie nicht schützt, hat einen Grund: Die Sache ist tatsächlich mehrdeutig. Eine Raute in einer URL hat Bedeutung. Der Client kann nicht wissen, ob Sie ein Fragment meinten oder ein Literal. Manche Bibliotheken kodieren beherzt, andere reichen Zeichenketten unverändert durch. Der Dataverse-Konnektor in Power Pages Server Logic gehört zur zweiten Sorte.
+  </p>
+</section>
+
+<section id="was-microsoft-dokumentiert" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was Microsoft dokumentiert</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Mehr als man erwartet, mit einer bemerkenswerten Lücke.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Hochkommas sind dokumentiert.</strong> Die Anleitung zum Filtern in der Dataverse Web API hat einen Abschnitt "Manage single quotes": Bei einem einzelnen Wert ersetzen Sie das Hochkomma durch zwei aufeinanderfolgende Hochkommas. Die dokumentierte Fehlermeldung lohnt das Merken, weil sie die Position nennt: "There is an unterminated literal at position 21 in 'lastname eq 'O'Bryan''".
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Prozentkodierung ist dokumentiert, teilweise.</strong> Dieselbe Seite sagt, dass Sie einen Zeichenkettenwert in einer Filterfunktion URL-kodieren müssen, wenn er ein Sonderzeichen enthält. Als Beispiel dient <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains(name,'+123')</code>, das scheitert, mit <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains(name,'%2B123')</code> als Lösung.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Anschließend folgt eine Tabelle der zu kodierenden Zeichen. Das ist die vollständige Liste:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Zeichen</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Kodiert</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 font-mono text-sm">
+        <tr class="border-b border-gray-200"><td class="p-3">$</td><td class="p-3">%24</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">&amp;</td><td class="p-3">%26</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">+</td><td class="p-3">%2B</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">,</td><td class="p-3">%2C</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">/</td><td class="p-3">%2F</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">:</td><td class="p-3">%3A</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">;</td><td class="p-3">%3B</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">=</td><td class="p-3">%3D</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">?</td><td class="p-3">%3F</td></tr>
+        <tr class="bg-gray-50"><td class="p-3">@</td><td class="p-3">%40</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Zehn Zeichen. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> ist keines davon.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%</code> selbst übrigens auch nicht, und das ist womöglich noch schlimmer. Ein Prozentzeichen in einem Wert, das nicht zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%25</code> kodiert wird, zerlegt jede nachfolgende Prozentgruppe. Ein Datensatz namens <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">50% Rabatt</code> ist eine scharfe Granate im Filter, und die Dokumentation schweigt zu beidem.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Die zwei Zeichen, die am ehesten ohne erkennbaren Fehler scheitern, sind also genau die zwei, die in Microsofts Tabelle fehlen. Diese Lücke ist der Grund für diesen Beitrag.
+  </p>
+</section>
+
+<section id="die-loesung" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Die Lösung, in der richtigen Reihenfolge</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Verlockend ist ein einzelnes Replace auf die Raute. Das löst den Fall vor Ihrer Nase und lässt die anderen stehen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die richtige Lösung berücksichtigt, dass hier zwei verschiedene Regelebenen übereinanderliegen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    <strong>Ebene eins ist OData.</strong> Innerhalb eines Zeichenkettenliterals wird ein Hochkomma verdoppelt. So steht es in den URL Conventions von OData 4.01: Hochkommas innerhalb von Zeichenkettenliteralen werden als zwei aufeinanderfolgende Hochkommas dargestellt. Mit URLs hat das nichts zu tun.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Ebene zwei ist die URI.</strong> Reservierte Zeichen im Wert werden prozentkodiert, gemäß RFC 3986.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Wenden Sie beides in dieser Reihenfolge an, und eine Funktion erledigt alles:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function odataString(value) {
+  // 1. OData-Ebene: Hochkommas im Literal verdoppeln
+  const doubled = String(value).replace(/'/g, "''");
+  // 2. URI-Ebene: alles Reservierte prozentkodieren
+  return encodeURIComponent(doubled);
+}
+
+const filter = "msdynmkt_name eq '" + odataString(purposeName) + "'";</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Reihenfolge ist keine Geschmacksfrage. Sie trägt, und der Grund ist ein hübscher Zufall in der JavaScript-Standardbibliothek.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">encodeURIComponent</code> kodiert alles außer <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">A-Z a-z 0-9 - _ . ! ~ * ' ( )</code>. Das Hochkomma steht auf der Ausnahmeliste. Die Funktion kodiert also <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%23</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%</code> zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%25</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&amp;</code> zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%26</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code> zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%2B</code> und <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">?</code> zu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%3F</code> und lässt Ihre sorgfältig verdoppelten Hochkommas exakt als <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">''</code> stehen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Andersherum überleben die verdoppelten Hochkommas zwar auch, aber Sie verlieren die Gewissheit, dass die Verdopplung auf den Originalwert angewendet wurde und nicht auf einen bereits kodierten. Erst verdoppeln. Dann kodieren. Immer.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Achten Sie darauf, was kodiert wird und was nicht. Die Hochkommas um das Literal sind Struktur, sie bleiben unkodiert. Nur der Wert läuft durch die Funktion. Wer den ganzen Filterausdruck kodiert, zerstört ihn, denn <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">eq</code>, die Leerzeichen und die Hochkommas sind Syntax.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Die OASIS-Spezifikation hat ein Beispiel für genau dieses Prinzip. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Categories('Smartphone%2FTablet')</code> ist gültig, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Categories('Smartphone/Tablet')</code> nicht, weil Schrägstriche als Pfadtrenner gelesen werden. Die Raute verhält sich genauso, nur eine Ebene früher.
+  </p>
+</section>
+
+<section id="zwei-fallen" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Zwei Fallen daneben</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Der Liquid-Filter <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">url_escape</code> ist kein Ersatz.</strong> Er ist dokumentiert als URI-Escaping für die Verwendung in einer URL, und das Beispiel in der Dokumentation macht aus <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">'This & that//'</code> die Zeichenfolge <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">This+%26+that%2F%2F</code>. Sehen Sie sich die Leerzeichen an. Er erzeugt <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code> im Stil der Formularkodierung. In einem OData-Zeichenkettenliteral ist <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code> ein wörtliches Pluszeichen und kein Leerzeichen, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">url_escape</code> verändert Ihren Suchbegriff also unbemerkt. Wenn Sie Filter in Liquid bauen, ist dieser Filter das falsche Werkzeug.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-lg text-gray-800">
+      <strong>Achten Sie auf doppelte Kodierung.</strong> Wenn Sie Ihren bereits kodierten Filter an einen URL-Builder oder eine HTTP-Bibliothek übergeben, die Query-Parameter erneut kodiert, wird aus <code class="bg-yellow-100 px-1.5 py-0.5 rounded font-mono">%23</code> ein <code class="bg-yellow-100 px-1.5 py-0.5 rounded font-mono">%2523</code>, und Sie sind zurück bei null Treffern. Kodieren Sie genau einmal, auf Wertebene, und wissen Sie, an welcher Stelle Ihres Stapels das passiert.
+    </p>
+  </div>
+</section>
+
+<section id="wo-sie-das-trifft" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Wo Sie das trifft</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Überall dort, wo Ihre Filterwerte keine GUIDs sind.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Der Klassiker sind Datensätze aus dem Marketing, weil die Raute dort Namenskonvention ist: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter #1</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Campaign #DACH</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Commercial #2</code>. Danach kommen generierte Kennzeichen: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">INV#2024-001</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">PO#88213</code>. Und schließlich alles, was Benutzer eintippen und was in einem Filter landet, also Kategorien, Tags, Projektnummern und Suchfelder.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Suchfelder verdienen einen eigenen Hinweis. Dass jemand eine Raute in ein Suchfeld tippt, ist nicht exotisch, und eine Suche, die still das Falsche liefert, ist schlimmer als eine, die einen Fehler wirft.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ein Portal, das niemand aktiv beobachtet, kann Benutzern monatelang still falsche Daten ausliefern, bevor es jemand bemerkt. Genau das fangen die monatlichen <a href="/leistungen/care/" class="underline font-semibold">Care</a>-Checks ab.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Die Regel, die Sie schützt, ist einfach. Ist ein Wert im Filter etwas anderes als eine GUID, läuft er durch die Escape-Funktion. Schreiben Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">odataString</code> einmal, legen Sie es dorthin, wo das Team es findet, und verwenden Sie es überall.
+  </p>
+</section>
+
+<section id="url-grenzen" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Wenn Sie schon in der URL sind</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Zwei dokumentierte Grenzen, die Sie kennen sollten, denn Prozentkodierung verdreifacht die Länge jedes betroffenen Zeichens ungefähr.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Microsoft dokumentiert eine maximal akzeptierte URL-Länge von 32 KB, also 32.768 Zeichen, und 64 KB innerhalb eines <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$batch</code>-Body. Und es gibt eine engere Grenze, die Sie zuerst erwischt: Ein einzelnes Segment einer OData-Anfrage darf höchstens 260 Zeichen lang sein. Ein stark kodierter Wert erreicht das schneller, als man denkt.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Keine der beiden Grenzen verursacht das Rautenproblem. Beide können auftauchen, während Sie es beheben.
+  </p>
+</section>
+
+<section id="was-bleibt" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was bleibt</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Zwei Regeln, zwei Ebenen, eine Funktion.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Hochkommas verdoppeln, weil OData es so will. Den Wert prozentkodieren, weil die URI es so will. In dieser Reihenfolge, weil <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">encodeURIComponent</code> Hochkommas in Ruhe lässt und Sie sich sonst selbst täuschen könnten.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Und behalten Sie im Kopf, welche Fehler laut sind und welche leise. Der 400 vom Anfang dieses Beitrags ist die freundliche Variante. Fürchten sollten Sie den gekappten Filter, der weiterhin parst, 200 liefert und Ihnen den falschen Datensatz reicht.
+  </p>
+</section>
+
+
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Weitere Beiträge</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/de/blog/power-pages-server-logic-versteckte-grenzen/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Server Logic: 4 versteckte Grenzen</h3>
+      <p class="text-gray-600 mb-4">Die dokumentierte Sperrliste, vier empirische Grenzen und ein Vorgehen zum Debuggen einer undurchsichtigen Laufzeitumgebung.</p>
+      <span class="font-semibold">Beitrag lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">Ein Entscheidungsbaum, Performance-Vergleich und Sicherheitsmuster zwischen den beiden Datenzugriffswegen in Power Pages.</p>
+      <span class="font-semibold">Beitrag lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query/filter-rows" class="underline" target="_blank" rel="noopener">Dataverse Web API, Filter rows</a>, "Manage single quotes" und "URL encode special characters" mit der Tabelle der zehn Zeichen</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/compose-http-requests-handle-errors" class="underline" target="_blank" rel="noopener">Dataverse Web API, HTTP-Anfragen erstellen und Fehler behandeln</a>, Version v9.2, URL-Länge und 260-Zeichen-Grenze pro Segment, Fehlerhülle</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits" class="underline" target="_blank" rel="noopener">Dataverse Web API, Service Protection Limits</a></li>
+    <li><a href="https://www.rfc-editor.org/rfc/rfc3986.txt" class="underline" target="_blank" rel="noopener">RFC 3986</a>, Abschnitt 3.5 zu Fragmenten, Abschnitt 2.2 zu reservierten Zeichen, Abschnitt 2.1 zur Prozentkodierung</li>
+    <li><a href="https://docs.oasis-open.org/odata/odata/v4.01/os/part2-url-conventions/odata-v4.01-os-part2-url-conventions.html" class="underline" target="_blank" rel="noopener">OData Version 4.01 Part 2, URL Conventions</a>, Zeichenkettenliterale und Prozentkodierung</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" class="underline" target="_blank" rel="noopener">MDN, encodeURIComponent</a> und die nicht kodierten Zeichen</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-filters" class="underline" target="_blank" rel="noopener">Power Pages Liquid-Filter</a>, url_escape und xml_escape</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/template-tags" class="underline" target="_blank" rel="noopener">Power Pages Liquid Template Tags</a>, {% fetchxml %}</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-objects" class="underline" target="_blank" rel="noopener">Server-Objekte</a>, Server.Connector.Dataverse</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

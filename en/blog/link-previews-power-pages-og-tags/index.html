@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take</title>
+<meta name="description" content="Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/link-vorschauen-power-pages-og-tags/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take">
+<meta property="og:description" content="Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-link-previews-power-pages-og-tags.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take">
+<meta property="article:published_time" content="2026-08-16">
+<meta property="article:modified_time" content="2026-10-19">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take">
+<meta name="twitter:description" content="Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-link-previews-power-pages-og-tags.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/#webpage",
+      "url": "https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/",
+      "name": "Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take",
+      "description": "Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-link-previews-power-pages-og-tags.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/#article",
+      "headline": "Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take",
+      "description": "Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.",
+      "datePublished": "2026-08-16",
+      "dateModified": "2026-10-19",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-link-previews-power-pages-og-tags.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages Open Graph, Power Pages meta tags, Power Pages link preview, Power Pages web template head, Liquid meta description Power Pages, og:image Power Pages",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Development</span>
+      <time datetime="2026-08-16">16 August 2026</time><span>14 min read</span><a href="/de/blog/link-vorschauen-power-pages-og-tags/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Link Previews for Power Pages: The Smallest E-Commerce Step You Can Take</h1>
+    <p class="art-lead">Power Pages has no built-in Open Graph support. Here is how to add static and dynamic link previews with web templates, snippets and Liquid, safely and fast.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    I was updating my own homepage, rolling out a new page. Once the page was live I shared the link to check it, and what came back was a grey box. No title, no image, no description, just the raw URL sitting there like nobody had bothered to tell it what it was.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  That is when I actually learned what an Open Graph tag is and how it works. I had scrolled past neat little link cards in other people's shares for years without once wondering why mine did not have one. Once I understood the mechanism, I wanted it built properly into Power Pages, not bolted on for a single page.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Along the way I hit the obvious wall first: the <strong>Header</strong> web template, which looks like the natural place to add a site-wide <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> tag, turned out not to touch <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> at all. While digging for a way around that, I stumbled on a 2020 blog post by Oliver Rodrigues, who had already worked out the fix, content snippet and all. I could have found that with one search before I even started.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  No harm done, though. There was still plenty left to work out for how Power Pages looks today, Studio sites, the enhanced data model, and a security trap that catches almost everyone who tries this. Thank you, Oliver, for the pointer that saved me the last mile: <a href="https://oliverrodrigues365.com/2020/06/14/power-apps-portals-adding-head-meta-tag/" class="underline" target="_blank" rel="noopener">his original post</a> is worth a read.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  That grey box is a conversion problem, and it is one of the cheapest ones you will ever fix. You do not need a shop, a payment provider, or a redesign. You need about twenty lines of Liquid in the right web template.
+</p>
+
+<div class="pp-box pp-box--warn p-6 mb-12">
+  <p class="text-gray-800 font-medium">
+    Here is the part most teams get wrong on the first attempt, though: the fix that feels obvious is a security incident waiting to happen.
+  </p>
+</div>
+
+<section id="why-nothing" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Why Power Pages gives you nothing here</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Microsoft documents plenty about Power Pages. Open Graph is not part of it. Search Microsoft Learn for Power Pages and meta tags and you get results for other products entirely. The only indexing-related article is the one about adding a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">robots.txt</code> file so search engines know what to crawl.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    So link previews in Power Pages are not a feature you switch on. They are something you compose out of primitives that are documented individually: web templates, content snippets, and Liquid.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The good news is that the most important primitive works in your favour. Microsoft states it plainly: "Liquid is processed on the server side, so the output is rendered as plain HTML to the end user." A crawler that never executes a line of JavaScript still receives fully rendered tags. Whatever you build in Liquid, LinkedIn and Teams will see.
+  </p>
+</section>
+
+<section id="step-1-head" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Step 1: own the &lt;head&gt;, page by page</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Open Graph tags live in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>. Where you reach it in Power Pages depends on which kind of site you have, and getting this wrong is the first place the plan falls apart.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    If your site was built with the newer Power Pages Studio experience, the drag-and-drop, component-based editor that new sites default to, there is no <em>web template</em> that lets you touch <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> site-wide. The web template named <strong>Header</strong>, the one that looks like the obvious place to add site-wide tags, is not <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> content at all. Opened directly, its source starts with a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;div class="navbar-expand-xl navbar ..."&gt;</code>. Checked against the rendered DOM, the same story: the navbar sits in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;body&gt;</code>, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> never contains it. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> on a Studio site, charset, viewport, the existing meta tags, the stylesheet links, is generated by the platform around whatever your page template renders. There is no web template for it.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    There is, however, a site-wide way in through a different door: a reserved content snippet. Create one named exactly <strong>Head/Bottom</strong>, and Power Pages injects its content into <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> on every page, no page template surgery required. Microsoft's own documentation uses the same snippet: the Bing indexing guide for Power Pages adds a verification meta tag through a content snippet named Head/Bottom. That guide doesn't cover Open Graph, but the mechanism itself is documented (updated October 2026; this post first called it documented only by community precedent). Tested directly against this Studio site: it works, a static <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;meta&gt;</code> tag placed in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code> shows up in the rendered <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> of every page.
+  </p>
+
+  <div class="pp-box pp-box--note p-6 mb-8">
+    <p class="text-gray-800">
+      <strong>Its one real limit</strong>, also tested directly: Liquid runs inside <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code> (filters and objects like <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ 'x' | upcase }}</code> or <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ now }}</code> evaluate correctly), but the current-request objects <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">page</code> and <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">website</code> are not bound there. <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ page.adx_title }}</code> or <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ website.adx_name | escape }}</code> inside <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code> resolve to nothing, and the whole <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;meta&gt;</code> tag carrying them disappears from the rendered output rather than shipping with an empty <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">content=""</code>. Use <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code> for genuinely static, site-wide tags, a literal <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">og:site_name</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">twitter:card</code>, a fallback <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">og:image</code>, and stop there. It cannot give you a different <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">og:title</code> per page.
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    For that you still need the second mechanism: a page template with <strong>Use Website Header and Footer</strong> unchecked (checked by default), wired to a web template. Microsoft's description of what happens when you clear that checkbox is the whole trick: your web template "will be responsible for rendering the entire response in the case that you're rendering HTML, this means everything from the doctype to the root <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;html&gt;</code> tags, and everything in between." Clear it, and you write the entire document yourself, doctype included, with full access to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">page</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">website</code>, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">entities</code>, and Open Graph tags become just more lines in your own <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Tested directly: a page template with the checkbox off, pointed at a web template containing a full <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;html&gt;&lt;head&gt;...&lt;/head&gt;&lt;body&gt;...&lt;/body&gt;&lt;/html&gt;</code> document, rendered exactly that. Every <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;meta property="og:..."&gt;</code> tag landed in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">page.adx_title</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">website.adx_name</code> resolved to real values there, nothing else came along uninvited. The trade-off is real: you lose the built-in navigation and footer that the checkbox normally gives you for free, and this is a per-page-template decision. There is no way to get <em>per-page</em> dynamic tags site-wide on a Studio site, only the static baseline from <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Put the two together and you get a sensible split: static site-wide defaults in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code>, so every page has at least a decent card, and the checkbox-off page template reserved for the one page that actually needs a dynamic, record-driven title and description. That constraint fits the rest of this article better than it first sounds. The teaser page you will build in Step 3 is that one page. You are not retrofitting dynamic <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> control across an entire site, you are building it once, for the page whose job is to carry a rich preview.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    If your site predates the Studio experience (a classic Liquid/Bootstrap site, built with layouts like <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">layout_1_column</code>), check your own Header and Footer web template source before assuming either behaviour. On some of those sites, Header and Footer literally wrap <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>...<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;/head&gt;</code> and the closing tags, which would put you back in fully dynamic site-wide territory without needing <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Head/Bottom</code> at all. Open the template and look. Do not assume.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">A static baseline for your teaser page's web template looks like this:</p>
+
+  <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+    <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Static Baseline: Teaser Page Web Template</div>
+    <pre class="text-sm font-mono leading-relaxed"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;title&gt;{{ page.title | escape }}&lt;/title&gt;
+&lt;meta property="og:site_name" content="{{ website.adx_name | escape }}" /&gt;
+&lt;meta property="og:type" content="website" /&gt;
+&lt;meta property="og:title" content="{{ page.title | escape }}" /&gt;
+&lt;meta property="og:url" content="{{ request.url | escape }}" /&gt;
+&lt;meta property="og:description"
+      content="{{ snippets['OG/Description/Default'] | strip_html | truncate: 200 | escape }}" /&gt;
+&lt;meta property="og:image"
+      content="{{ request.url | base }}/og-default.png" /&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+{% include 'Header' %}
+&lt;!-- your page content --&gt;
+{% include 'Footer' %}
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Note the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% include 'Header' %}</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% include 'Footer' %}</code> lines in the body. Because the checkbox is off, the platform will not add them for you, but the Header and Footer web templates still exist as ordinary includable templates. Pull them back in explicitly and the teaser page keeps the same navigation and footer as the rest of the site, it just also owns its own <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Tested end to end: the includes bring back the navigation links and footer text, but not a single stylesheet. The platform loads CSS and JS separately from Header and Footer, so a page with the checkbox off renders unstyled until you add those links yourself. Open any regular page's <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> and copy what you find there, on this site that was <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">bootstrap.min.css</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">theme.css</code>, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">portalbasictheme.css</code> alongside a couple of hosted bundles. Your exact list will differ by theme, but the fix is the same: add <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;link rel="stylesheet"&gt;</code> tags for them in your custom <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code>.
+  </p>
+
+  <figure class="mb-10">
+    <img src="/assets/images/blog/link-previews-power-pages-og-tags/teaser-page-unstyled.jpg" alt="Teaser page with Header and Footer includes restored via Liquid, rendered without any stylesheet, plain browser default styling" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+    <figcaption class="text-sm text-gray-500 mt-3 text-center">The includes bring navigation and footer back. Stylesheets are a separate mechanism, and this page has none, until you add the <code class="bg-gray-100 px-1 rounded font-mono text-xs">&lt;link&gt;</code> tags yourself.</figcaption>
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-4">Three things in the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> block are worth pointing out.</p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+      <h4 class="font-bold text-gray-900 mb-2 font-mono text-sm">request.url | base</h4>
+      <p class="text-gray-700 text-sm"><code class="bg-gray-200 px-1 rounded font-mono text-xs">request.url</code> is already absolute. Power Pages Liquid has no <code class="bg-gray-200 px-1 rounded font-mono text-xs">absolute_url</code> filter, whatever you may have seen in Jekyll or Shopify examples. When you need just the scheme and host, pipe the request URL through <code class="bg-gray-200 px-1 rounded font-mono text-xs">base</code>, which Microsoft documents as "Gets the base URL of a given URL".</p>
+    </div>
+    <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+      <h4 class="font-bold text-gray-900 mb-2 font-mono text-sm">escape</h4>
+      <p class="text-gray-700 text-sm">Not decoration. Microsoft's own guidance on Liquid objects says to "always use escape filter to HTML encode data whenever using Liquid objects to read untrusted data provided by the user". A record name with a stray quotation mark will otherwise break out of your <code class="bg-gray-200 px-1 rounded font-mono text-xs">content</code> attribute.</p>
+    </div>
+    <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl">
+      <h4 class="font-bold text-gray-900 mb-2 font-mono text-sm">snippets[...]</h4>
+      <p class="text-gray-700 text-sm">The description text comes from a content snippet, not hardcoded markup. Content snippets are, in Microsoft's words, "small chunks of editable content that can be placed by a developer in a header, footer, web page or a web template". Marketing edits the snippet. You never touch the template again.</p>
+    </div>
+  </div>
+</section>
+
+<section id="step-2-fallback" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Step 2: reuse it across pages, with a fallback chain</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    One custom page template is fine for one teaser page. The moment you need the same treatment for several product pages, a fallback chain is what keeps you from hand-writing <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">content=</code> for every record.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">page</code> object in Liquid refers to the current request page and exposes <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">title</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">url</code> directly. Beyond that, Microsoft documents a general rule that matters more than any individual property: you can access any attribute of the page's underlying Dataverse record by logical name. That is how you reach the Web Page summary column, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_summary</code>, even though it is not listed as a named property.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">That gives you a clean three-level fallback:</p>
+
+  <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+    <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Fallback Chain: Record, Page, Snippet</div>
+    <pre class="text-sm font-mono leading-relaxed"><code>{% assign og_title = page.adx_title | default: page.title %}
+
+{% assign og_desc = page.adx_summary %}
+{% if og_desc == blank %}
+  {% assign og_desc = page.adx_copy %}
+{% endif %}
+{% if og_desc == blank %}
+  {% assign og_desc = snippets['OG/Description/Default'] %}
+{% endif %}
+
+&lt;meta property="og:title" content="{{ og_title | escape }}" /&gt;
+&lt;meta property="og:description"
+      content="{{ og_desc | strip_html | truncate: 200 | escape }}" /&gt;</code></pre>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Record first, page second, snippet last. The order is the point: the most specific text available wins, and there is always something.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Note <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">strip_html</code> before <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">truncate</code>. The summary and copy fields hold rich text. Feed raw HTML into a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">content</code> attribute and you get markup fragments in the preview card.
+  </p>
+
+  <div class="pp-box pp-box--note p-6 mb-8">
+    <p class="text-gray-800">
+      <strong>Enhanced data model note:</strong> one naming question worth settling if your site runs on the newer enhanced data model: the underlying Dataverse columns are <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">mspp_title</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">mspp_summary</code>, and <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">mspp_copy</code> there, not <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_title</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_summary</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_copy</code>. Tested directly against an enhanced-data-model site, the <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">page</code> and <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">website</code> Liquid objects still resolve the legacy <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_</code> names to real values, while the <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">mspp_</code> names return blank through the same objects. This matches what Microsoft states about the enhanced data model directly: sites on it "have functional parity with sites that use the standard data model," with "no functionality gaps," and the design studio and Liquid rendering "work the same, regardless of whether the site uses the enhanced data model or the standard data model." The <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_</code> names are the documented Liquid object attributes in Microsoft's own current reference for <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">page</code> and <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">website</code>, unrelated to which table actually backs them. Use <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_title</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_summary</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_copy</code>, and <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">adx_name</code> in this fallback chain either way.
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    If your landing page is a table page driven by a record, do not reach for a magic <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">entity</code> variable. Microsoft documents no such global. The documented route is either <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">page.&lt;column&gt;</code>, when the page's underlying record is the current request record, or an explicit lookup: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% assign item = entities['my_product'][request.params.id] %}</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    If your portal runs in more than one language, two more tags are worth adding: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:locale</code> for the language of the page currently being viewed, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:locale:alternate</code>, repeatable, for each other language version that exists. Both take a full locale code, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">en_US</code> or <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">de_DE</code>, not a bare two-letter language tag. Tested directly: static values for both render correctly and pass LinkedIn's Post Inspector without complaint.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Drive <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:locale</code> from whatever your site already uses to know a page's language, rather than hardcoding it once per template, and point <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:locale:alternate</code> at the URL of the equivalent page in each other language your portal supports. Crawlers use this pair to pick the right variant to show and to label the one they do show correctly. It is a small addition on top of the fallback chain above, not a second <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;head&gt;</code> block to maintain.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    If the curated page is genuinely an article, two more tags close the loop: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:type</code> set to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">article</code> instead of <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">website</code>, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">article:published_time</code>. Tested directly: LinkedIn's Post Inspector had already labelled the page type as "Article" from context, but left Author and Publish date as "not found" until both tags were actually present, adding them filled in both fields. One trap surfaced along the way: the Liquid <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">date</code> filter combined with a strftime-style format string, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ now | date: '%Y-%m-%dT%H:%M:%S%z' }}</code>, returned garbled output on this environment, not a valid date, reproducible across repeated calls and with the cache bypassed. The unfiltered <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{{ now }}</code> rendered a valid date correctly. Do not assume the formatted version works on your site, verify it directly before you wire <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">article:published_time</code> to it, this is one more place where Power Pages Liquid diverges from Shopify or Jekyll Liquid.
+  </p>
+</section>
+
+<section id="step-3-trap" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Step 3: the trap. Crawlers cannot sign in</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">This is where good intentions cause damage.</p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    You build a beautiful product detail page behind authentication. You add Open Graph tags. You share the link. The preview is empty. So you widen the table permission until the tags fill in, and now the data is public.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The short version, before the mechanism: a crawler is an anonymous visitor, nothing more. <strong>Anonymous-readable content</strong> gets real Open Graph tags, that is the whole goal. <strong>Authenticated content</strong> renders a page the crawler can reach, but any tag built from a record Anonymous cannot read comes back blank, and widening that read permission to fix it exposes the record to every anonymous visitor, not just crawlers. The fix is never to open the table. It is to give the crawler something else to read.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">The mechanism is worth understanding precisely, because it has two independent layers.</p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Page-level access is governed by page permissions. Microsoft's design studio option is literally "Anyone can see this page", and the docs say that when it is selected, "the page is public on the web and available to anyone".
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Data access on that page is a separate question, governed by table permissions bound to the Anonymous Users web role. Microsoft is blunt about how that role behaves: "This role is intended to be used with table permissions. It doesn't respect any other rules or permissions. A site can have only one Anonymous Users web role for unauthenticated users."
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    A crawler is an unauthenticated HTTP client. It gets exactly the Anonymous role, no more. So if your Open Graph tags are built from a record that anonymous users cannot read, the page renders but the tags come back blank.
+  </p>
+
+  <div class="pp-box pp-box--risk p-6 mb-8">
+    <p class="text-gray-800">
+      <strong>The tempting fix</strong> is to grant the Anonymous role Read on the table so the tags populate. Do not do that. Table permissions are not scoped to one template. Microsoft states that "Access to Dataverse records is automatically restricted in Power Pages when using forms, lists, Liquid, the Portals Web API, and other components accessing Dataverse tables". Read is Read: every list, every form, every Web API call that resolves against that table now answers to anonymous visitors too. Microsoft's own Site Checker flags exactly this pattern, calling out table permissions "assigned to the Anonymous web role that expose unintended data".
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">The right move is smaller and safer: build a curated public teaser page.</p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    One page. Anonymous readable on purpose. It carries the marketing copy, the image, and the Open Graph tags, and it is backed either by static snippet content or by a deliberately narrow table that holds nothing confidential. The call to action on that page points into the authenticated area. The crawler gets a rich card, the human gets a sign-in prompt, and your production tables never widen.
+  </p>
+
+  <p class="text-2xl font-bold text-gray-900 text-center my-10">Curate the shop window.<br>Do not unlock the warehouse.</p>
+
+  <p class="text-gray-700 leading-relaxed">
+    One more small requirement while you are at it: image size. The <a href="https://ogp.me/" class="underline" target="_blank" rel="noopener">Open Graph protocol itself</a> does not mandate an exact size, but <a href="https://developers.facebook.com/docs/sharing/webmasters/images/" class="underline" target="_blank" rel="noopener">Facebook's own sharing guidelines</a> do: 1200 by 630 pixels, close to a 1.91:1 aspect ratio, and every other platform, LinkedIn included, has standardised on the same numbers. Upload it as a web file and reference the absolute URL, crawlers do not resolve relative paths reliably.
+  </p>
+</section>
+
+<section id="robots-gate" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The gate you will hit first: robots.txt</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Before you chase any of the above, check one thing that has nothing to do with Liquid. Power Pages ships with a default <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">robots.txt</code> that blocks every crawler from the entire site: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">User-agent: *</code> / <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Disallow: /</code>. Tested directly: LinkedIn's Post Inspector refuses to even attempt a preview against a URL sitting behind that default. Its own error is explicit: "We did not re-scrape [url] because the URL or one of its redirects is blocked by rules set in robots.txt file of its URL domain." Perfect Open Graph tags on a page the crawler was never allowed to fetch buy you nothing.
+  </p>
+
+  <figure class="mb-10">
+    <img src="/assets/images/blog/link-previews-power-pages-og-tags/post-inspector-robots-blocked.jpg" alt="LinkedIn Post Inspector error: We did not re-scrape the URL because it is blocked by rules set in robots.txt" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+    <figcaption class="text-sm text-gray-500 mt-3 text-center">Power Pages' default robots.txt blocks every crawler, LinkedIn included, before your Open Graph tags are even in play.</figcaption>
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-4">Microsoft's documented fix is a web file named <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Robots.txt</code> at your site root with an empty <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Disallow</code>:</p>
+
+  <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+    <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">robots.txt: Open to All Crawlers</div>
+    <pre class="text-sm font-mono leading-relaxed"><code>User-agent: *
+Disallow:</code></pre>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    That opens the entire site to crawling, which is one legitimate choice. If you would rather keep most of the site out of search results while still letting crawlers reach your one curated teaser page, scope it instead:
+  </p>
+
+  <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+    <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">robots.txt: Scoped to the Teaser Page</div>
+    <pre class="text-sm font-mono leading-relaxed"><code>User-agent: *
+Disallow: /
+Allow: /your-teaser-page/</code></pre>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    This follows the standard robots exclusion convention where a more specific <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Allow</code> rule wins over a broader <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Disallow</code>, and it costs nothing in terms of data exposure since robots.txt only ever signals crawl intent, never data access. It does not touch table permissions or page permissions. Confirm the scoped version against your own site with the Post Inspector before you rely on it, not every crawler implements the specificity rule identically.
+  </p>
+</section>
+
+<section id="verify" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">How to verify it actually works</h2>
+
+  <div class="pp-box pp-box--note p-6 mb-8">
+    <p class="text-gray-800">
+      Configuration changes like web templates and content snippets go through the server-side cache, so do not trust what you see immediately after saving. Do not just wait for it either: open <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">/_services/about</code> on your site and clear the cache from there, and the change is live right away. Skip that step and Microsoft's own SLA still guarantees it within 15 minutes on its own, but there is no reason to sit around for it.
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Then test with the tools that actually parse Open Graph tags, not your own browser. LinkedIn's Post Inspector and Facebook's Sharing Debugger both fetch the page fresh and show you exactly what they see, including hard failures like a robots.txt block. Pasting the link into a Teams chat is worth doing too, and separately: different platforms render different subsets of the same tags. In testing, LinkedIn's share composer showed the title and image, Teams additionally rendered the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">og:description</code> in the same preview card. Confirm on at least two platforms before you call it done, and use each inspector's cache-refresh function rather than guessing, every one of these platforms caches aggressively.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-4 items-start">
+    <figure>
+      <img src="/assets/images/blog/link-previews-power-pages-og-tags/post-inspector-success.jpg" alt="LinkedIn Post Inspector showing a 200 Success re-scrape with a correctly rendered card, real brand image and title" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+      <figcaption class="text-sm text-gray-500 mt-3 text-center">Post Inspector, after the robots.txt fix: 200 Success, real brand image.</figcaption>
+    </figure>
+    <figure>
+      <img src="/assets/images/blog/link-previews-power-pages-og-tags/linkedin-share-composer.png" alt="LinkedIn share composer showing a rich link preview card with title and brand image" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+      <figcaption class="text-sm text-gray-500 mt-3 text-center">LinkedIn's own share composer, same URL.</figcaption>
+    </figure>
+    <figure>
+      <img src="/assets/images/blog/link-previews-power-pages-og-tags/teams-chat-preview.png" alt="Microsoft Teams chat compose box showing a rich link preview card with title, description and brand image" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+      <figcaption class="text-sm text-gray-500 mt-3 text-center">Teams renders the same tags, plus og:description in the card.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="payoff" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">What this actually buys you</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    No shop. No checkout. No new licences. One custom page template, a content snippet, one curated teaser page, and one image.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The result is that every link to your portal, in every Teams channel and every LinkedIn post and every email preview pane, stops looking like a broken URL and starts looking like a product. For most Power Pages sites that is the single highest-leverage hour of work available.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    It is also the smallest possible step toward e-commerce, which is exactly why it is worth taking first.
+  </p>
+</section>
+
+
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Related Articles</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/en/blog/power-pages-security-architecture/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Security Architecture</h3>
+      <p class="text-gray-600 mb-4">Table Permissions, Web Roles, and the hierarchical security model in detail, the mechanism behind Step 3 above.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/makers-guide-power-pages-data/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Tutorial</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Maker's Guide: Data in Power Pages</h3>
+      <p class="text-gray-600 mb-4">How Dataverse data is exposed and consumed in Power Pages, background for the page and entities objects used here.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Sources</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/power-pages/admin/enhanced-data-model" class="underline" target="_blank" rel="noopener">Enhanced data model, functional parity statement</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/web-templates" class="underline" target="_blank" rel="noopener">Web templates in Power Pages, including "Use Website Header and Footer"</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/portals/liquid/store-content-web-templates" class="underline" target="_blank" rel="noopener">Store source content by using web templates</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-overview" class="underline" target="_blank" rel="noopener">What is Liquid? Server-side processing statement</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-objects" class="underline" target="_blank" rel="noopener">Available Liquid objects, including page, request, snippets, entities, website</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-filters" class="underline" target="_blank" rel="noopener">Available Liquid filters, including escape, strip_html, truncate, default, base</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/customize-content-snippets" class="underline" target="_blank" rel="noopener">Customize content by using content snippets</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/power-pages-security" class="underline" target="_blank" rel="noopener">Power Pages security overview, anonymous users</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/create-web-roles" class="underline" target="_blank" rel="noopener">Create web roles, Anonymous Users role behaviour</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/page-security" class="underline" target="_blank" rel="noopener">Control page access, "Anyone can see this page"</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/table-permissions" class="underline" target="_blank" rel="noopener">Set table permissions</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/admin/site-checker-configuration-issues" class="underline" target="_blank" rel="noopener">Site Checker configuration issues, anonymous exposure</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/admin/clear-server-side-cache" class="underline" target="_blank" rel="noopener">Clear server-side cache, manual invalidation and the 15 minute SLA</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/getting-started/force-bing-index" class="underline" target="_blank" rel="noopener">Robots.txt and search engine indexing in Power Pages</a></li>
+    <li><a href="https://ogp.me/" class="underline" target="_blank" rel="noopener">The Open Graph protocol specification</a></li>
+    <li><a href="https://developers.facebook.com/docs/sharing/webmasters/images/" class="underline" target="_blank" rel="noopener">Facebook sharing image guidance, 1200 x 630 and 1.91:1</a></li>
+    <li><a href="https://learn.microsoft.com/power-pages/getting-started/force-bing-index" class="underline" target="_blank" rel="noopener">Microsoft Learn: Generate answers from public data using Bing search, meta tag authentication via the Head/Bottom content snippet</a></li>
+    <li><a href="https://community.powerplatform.com/forums/thread/details/?threadid=fa5964f4-4a6b-4c39-b0c8-a28a4de6a42d" class="underline" target="_blank" rel="noopener">Community thread on the Head/Bottom content snippet for Open Graph, confirmed by direct testing</a></li>
+    <li><a href="https://oliverrodrigues365.com/2020/06/14/power-apps-portals-adding-head-meta-tag/" class="underline" target="_blank" rel="noopener">Oliver Rodrigues, "Power Apps Portals: Adding a &lt;head&gt; meta tag" (2020), the original write-up behind the Head/Bottom approach</a></li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

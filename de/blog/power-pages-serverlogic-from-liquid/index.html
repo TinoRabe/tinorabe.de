@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Server Logic aus Liquid aufrufen: der Full Circle in Power Pages</title>
+<meta name="description" content="Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-serverlogic-from-liquid/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-serverlogic-from-liquid/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Server Logic aus Liquid aufrufen: der Full Circle in Power Pages">
+<meta property="og:description" content="Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-serverlogic-from-liquid.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Server Logic aus Liquid aufrufen: der Full Circle in Power Pages">
+<meta property="article:published_time" content="2026-09-29">
+<meta property="article:modified_time" content="2026-09-29">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Server Logic aus Liquid aufrufen: der Full Circle in Power Pages">
+<meta name="twitter:description" content="Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-serverlogic-from-liquid.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/#webpage",
+      "url": "https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/",
+      "name": "Server Logic aus Liquid aufrufen: der Full Circle in Power Pages",
+      "description": "Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-serverlogic-from-liquid.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/#article",
+      "headline": "Server Logic aus Liquid aufrufen: der Full Circle in Power Pages",
+      "description": "Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.",
+      "datePublished": "2026-09-29",
+      "dateModified": "2026-09-29",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-serverlogic-from-liquid.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Server Logic, serverlogic Liquid Tag, Server.Context.Input, serverseitiges Rendering, N:M, Server.Connector.Dataverse",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Development</span>
+      <time datetime="2026-09-29">29. September 2026</time><span>7 Min. Lesezeit</span><a href="/en/blog/power-pages-serverlogic-from-liquid/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Server Logic aus Liquid aufrufen: der Full Circle in Power Pages</h1>
+    <p class="art-lead">Der serverlogic-Liquid-Tag rendert wiederverwendbare Server-Logik zur Render-Zeit, ohne Client-Call, ohne CSRF. Der N:M-Read aus Teil eins, geschlossen. Live verifiziert.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Das ist der dritte und letzte Teil eines kleinen Bogens ums Lesen einer Many-to-many-Beziehung in Power Pages, und er schließt den Kreis auf befriedigende Weise.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Teil eins las N:M mit <a href="/de/blog/power-pages-webapi-nm-relationships/" class="underline">Liquid FetchXML</a>: serverseitig gerendert, aber beim Seitenaufbau vorgeladen. Teil zwei verlagerte denselben Read in <a href="/de/blog/power-pages-server-logic-nm-ondemand/" class="underline">Server Logic, on demand vom Client aufgerufen</a>, keine Abfrage im Browser, dafür ein Client-Roundtrip mit CSRF-Token. Jede Seite hatte ihren Preis.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Der <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">serverlogic</code>-Liquid-Tag nimmt beide Preise auf einmal weg. Dieselbe serverseitige Operation aus Teil zwei, aufgerufen aus Liquid, während die Seite rendert. Kein Client-Call, kein CSRF-Token, und die Abfrage berührt den Browser trotzdem nie. Microsoft hat das 2026 ausgeliefert, und es ist genau das Stück, das aus dem Ganzen einen Kreis macht: wiederverwendbare, testbare Server-Logik, direkt in die Seite gerendert wie damals das FetchXML.
+</p>
+
+<section id="tag" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Der Tag</h2>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>{% serverlogic name: 'installation-products',
+             operation: 'getInstallationProducts',
+             output: result %}
+
+{% if result.success %}
+  &lt;ul&gt;
+  {% for inst in result.data.installations %}
+    &lt;li&gt;{{ inst.name | escape }}&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endif %}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Vier Parameter: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">name</code> (der Server-Logic-Record), <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">operation</code> (die auszuführende JavaScript-Funktion, jede von Ihnen definierte, nicht nur <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">get</code>), <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">input</code> (optionaler String, JSON wenn Sie Struktur brauchen) und <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">output</code> (die Liquid-Variable, die das Ergebnis erhält). Das Ergebnisobjekt trägt <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">success</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">status_code</code> (500 bei Ausführungsfehler), <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">data</code> (das geparste JSON Ihrer Operation) und <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">raw_result</code> (die ungeparste Antwort, falls der Rückgabewert kein gültiges JSON ist).
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Die entscheidende Zeile aus Microsofts Doku: dieser serverseitige Aufruf "doesn't require a client-side HTTP request or Cross-Site Request Forgery (CSRF) token." Weisen Sie den Server-Logic-Record einer Web Role zu, auf die der aktuelle Nutzer Zugriff hat, den Rest erledigt der Tag zur Render-Zeit.
+  </p>
+</section>
+
+<section id="full-circle" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Der Full Circle, live</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ich habe genau das im Demo-Portal gebaut: ein Web Template mit dem obigen Tag, das eine Operation aufruft, die die N:M-Beziehung aus Teil eins liest und eine kompakte Liste zurückgibt. Als angemeldeter Portal-Nutzer rendert die Seite die verknüpften Produkte serverseitig:
+  </p>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/power-pages-serverlogic-from-liquid/sl-liquid-fullcircle-result.png" alt="Ein Power-Pages-Web-Template nutzt den serverlogic-Liquid-Tag und rendert die N:M-Liste Installation-zu-Produkt serverseitig, result.success true, status_code 200" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed">
+    Dieselben Daten wie in Teil eins (<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Pump A</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Valve B</code> unter einer Installation), derselbe serverseitige Dataverse-Connector wie in Teil zwei, jetzt direkt von Liquid in die Seite gerendert. Das ist der geschlossene Kreis.
+  </p>
+</section>
+
+<section id="contexts" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Eine Funktion, zwei Kontexte</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Hier ist das Detail, das Ihnen einen Nachmittag spart. Dieselbe Server-Logic-Funktion lässt sich auf zwei Wegen aufrufen, vom Client über HTTP und aus Liquid, aber sie liest ihre Eingabe aus zwei verschiedenen Quellen:
+  </p>
+
+  <ul class="space-y-3 text-gray-700 mb-6 list-disc pl-5">
+    <li>Über HTTP aufgerufen: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Context.QueryParameters["id"]</code>, dazu <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Body</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Headers</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">HttpMethod</code>.</li>
+    <li>Aus Liquid aufgerufen: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Context.Input</code>, der String, den Sie im <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">input</code>-Parameter des Tags übergeben haben.</li>
+  </ul>
+
+  <p class="text-gray-700 leading-relaxed">
+    Wenn Sie eine Operation für beide Einstiegspunkte schreiben, verzweigen Sie nach der Eingabequelle. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">QueryParameters</code> ist bei einem Liquid-Aufruf leer, und <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Input</code> ist über HTTP leer.
+  </p>
+</section>
+
+<section id="gotchas" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Zwei Dinge, die die Doku nicht ausbuchstabiert</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">Ich bin beim Bauen des Live-Beispiels über beide gestolpert, damit Sie es nicht müssen.</p>
+
+  <div class="pp-box pp-box--warn p-6 mb-6">
+    <p class="text-gray-800">
+      <strong>Der Connector liefert einen Envelope.</strong> Wenn Sie das Ergebnis innerhalb der Operation verarbeiten (statt es durchzureichen), gab mir <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Connector.Dataverse.RetrieveMultipleRecords</code> einen String der Form <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{ "StatusCode": 200, "Body": "..." }</code>, wobei <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Body</code> die OData-JSON als String ist. Sie parsen zweimal: den Envelope, dann <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Body</code>, dann erreichen Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">value</code>. Die Doku-Beispiele geben das Connector-Ergebnis direkt zurück und zeigen das nie, deshalb bekommen Sie beim ersten Versuch, über <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">result.value</code> zu iterieren, nichts.
+    </p>
+  </div>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>function getInstallationProducts() {
+  var options = "$select=pwrprtl_installation_name" +
+    "&amp;$expand=pwrprtl_installation_product($select=pwrprtl_product_name)";
+  var res = Server.Connector.Dataverse.RetrieveMultipleRecords("pwrprtl_installations", options, true);
+  var envelope = (typeof res === "string") ? JSON.parse(res) : res;
+  var odata = (typeof envelope.Body === "string") ? JSON.parse(envelope.Body) : envelope.Body;
+  var rows = (odata &amp;&amp; odata.value) ? odata.value : [];
+
+  var installations = [];
+  for (var i = 0; i &lt; rows.length; i++) {
+    var prods = rows[i].pwrprtl_installation_product || [];
+    var names = [];
+    for (var j = 0; j &lt; prods.length; j++) { names.push(prods[j].pwrprtl_product_name); }
+    installations.push({ name: rows[i].pwrprtl_installation_name, products: names });
+  }
+  return JSON.stringify({ installations: installations });
+}</code></pre>
+
+  <div class="pp-box pp-box--warn p-6 mt-6">
+    <p class="text-gray-800">
+      <strong>Kompilierte Server Logic wird gecacht.</strong> Nachdem Sie den Code geändert haben, liefern der Endpunkt und der Liquid-Tag weiter die vorige Version, bis der Site-Cache geleert wird (<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_services/about</code>, Clear cache, mit Administrator-Web-Rolle). Wenn eine Änderung nicht zu greifen scheint, ist es der Cache, nicht Ihr Code.
+    </p>
+  </div>
+</section>
+
+<section id="security" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Sicherheit: kein CSRF heißt nicht keine Verantwortung</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Auf das CSRF-Token zu verzichten ist hier sicher, weil der Aufruf den Server nie verlässt; es gibt keine Cross-Site-Anfrage, die man fälschen könnte. Aber die Operation läuft weiter im Kontext des aktuellen Nutzers und respektiert Web Roles und Tabellenberechtigungen, und die Autorisierungsentscheidungen liegen weiter bei Ihnen. Microsoft ist deutlich: Behandeln Sie Eingabe und Rückgaben als untrusted. Validieren Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Context.Input</code>, bevor er eine Abfrage berührt, und wenden Sie den <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">escape</code>-Filter an, bevor Sie einen zurückgegebenen String in HTML rendern, genau wie im Tag oben.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Und der eine echte Preis: der Tag läuft während des Seitenaufbaus, eine langsame Dataverse-Abfrage oder ein externer Call erhöht also die Page-Response-Zeit. Das ist der Handel fürs serverseitige Rendern. Wenn Reaktionsschnelligkeit wichtiger ist als der erste Seitenaufbau, bleiben Sie beim Client-Call aus Teil zwei.
+  </p>
+</section>
+
+<section id="decision" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Drei serverseitige Wege, eine Entscheidung</h2>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Sie wollen</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Nutzen Sie</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4">N:M (oder jeden Read) beim Seitenaufbau gerendert, einfache Abfrage</td>
+          <td class="p-4">Liquid FetchXML (<code class="bg-gray-100 px-1 rounded font-mono text-xs">link-entity</code> / <code class="bg-gray-100 px-1 rounded font-mono text-xs">intersect</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4">Wiederverwendbare/testbare Logik beim Seitenaufbau gerendert</td>
+          <td class="p-4"><code class="bg-gray-100 px-1 rounded font-mono text-xs">{% serverlogic %}</code>-Tag (<code class="bg-gray-100 px-1 rounded font-mono text-xs">Server.Context.Input</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="p-4">Dieselbe Logik on demand, nach dem Laden</td>
+          <td class="p-4">Server Logic über HTTP (<code class="bg-gray-100 px-1 rounded font-mono text-xs">safeAjax</code>, CSRF, <code class="bg-gray-100 px-1 rounded font-mono text-xs">QueryParameters</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4">N:M schreiben (verknüpfen / trennen)</td>
+          <td class="p-4">Portal Web API <code class="bg-gray-100 px-1 rounded font-mono text-xs">$ref</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed">
+    FetchXML ist der schnellste Weg für eine einfache Abfrage. Sobald die Logik wiederverwendbar oder testbar sein soll, gibt Ihnen <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% serverlogic %}</code> das zur Render-Zeit, und dieselbe Operation beantwortet nach dem Laden einen Client-Call. Drei Werkzeuge, ein Denkmodell: entscheiden Sie danach, wann der Nutzer die Daten braucht und wie viel Logik dahintersteckt. Das ist der Bogen, geschlossen.
+  </p>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Verwandte Artikel</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="/de/blog/power-pages-server-logic-nm-ondemand/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">N:M on demand mit Server Logic</h3>
+      <p class="text-gray-600 mb-4">Teil zwei: derselbe Read, on demand vom Client aufgerufen, keine Abfrage im Browser.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/power-pages-webapi-nm-relationships/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">N:M lesen: Web API vs. FetchXML</h3>
+      <p class="text-gray-600 mb-4">Teil eins: wo die Web API bei N:M stolpert, und der Liquid-FetchXML-Workaround.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/en/blog/power-pages-security-architecture/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Security-Architektur</h3>
+      <p class="text-gray-600 mb-4">Web Roles und Tabellenberechtigungen: das Modell, das Server Logic weiter regiert, CSRF hin oder her.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://www.microsoft.com/en-us/power-platform/blog/power-pages/extend-liquid-with-server-logic-in-power-pages/" class="underline" target="_blank" rel="noopener">Microsoft Power Platform Blog: Extend Liquid with Server Logic in Power Pages</a> (die Ankündigung)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/liquid/liquid-objects#serverlogic" class="underline" target="_blank" rel="noopener">Microsoft Learn: serverlogic Liquid object</a> (Syntax, Parameter, Ergebnis-Attribute)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/author-server-logic#call-server-logic-from-liquid" class="underline" target="_blank" rel="noopener">Microsoft Learn: Author server logic, call from Liquid</a> ("doesn't require a client-side HTTP request or CSRF token"; Render-Zeit-Kosten)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/server-objects#context" class="underline" target="_blank" rel="noopener">Microsoft Learn: Server objects, Context</a> (<code class="bg-gray-100 px-1 rounded font-mono text-xs">Server.Context.Input</code> für Liquid vs. <code class="bg-gray-100 px-1 rounded font-mono text-xs">QueryParameters</code> für HTTP)</li>
+    <li>Hands-on in meinem eigenen Demo-Portal: ein Web Template, das eine Server-Logic-Operation per <code class="bg-gray-100 px-1 rounded font-mono text-xs">{% serverlogic %}</code> aufruft und die N:M-Liste serverseitig rendert, live verifiziert (result.success true, status_code 200)</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

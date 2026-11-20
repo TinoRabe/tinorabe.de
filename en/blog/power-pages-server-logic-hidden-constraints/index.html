@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code</title>
+<meta name="description" content="Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-server-logic-versteckte-grenzen/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code">
+<meta property="og:description" content="Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-hidden-constraints.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code">
+<meta property="article:published_time" content="2026-09-23">
+<meta property="article:modified_time" content="2026-09-23">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code">
+<meta name="twitter:description" content="Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-hidden-constraints.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/",
+      "name": "Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code",
+      "description": "Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-hidden-constraints.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/#article",
+      "headline": "Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code",
+      "description": "Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-hidden-constraints.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages Server Logic, Power Pages server side JavaScript, Server Logic HTTP 400, Server.Connector.Dataverse, Power Pages blocked keywords, ECMAScript 2023 Power Pages",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Development</span>
+      <time datetime="2026-09-23">23 September 2026</time><span>9 min read</span><a href="/de/blog/power-pages-server-logic-versteckte-grenzen/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Power Pages Server Logic: 4 Hidden Constraints That Will Break Your Code</h1>
+    <p class="art-lead">Server Logic promises ECMAScript 2023. The sandbox disagrees. Documented blocked patterns, four constraints found by bisection, and a debugging playbook.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Server Logic went generally available on 6 April 2026. Microsoft describes the runtime as "native JavaScript code compliant with the ECMAScript 2023 standard".
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+  Read that and you assume the obvious: whatever runs in Node runs here.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  It does not. And when it does not, you get an HTTP 400 with no stack trace, no line number, and no clue. I spent several days in a production project last May writing code that was clean by every JavaScript convention and still got rejected. This is what I found by bisection, plus what Microsoft has since documented, and where the two do not agree.
+</p>
+
+<figure class="mb-12">
+  <img src="/assets/images/blog/power-pages-server-logic-hidden-constraints/hero-server-logic-hidden-constraints.png" alt="What Microsoft documents as blocked in Server Logic versus the undocumented constraints found only by testing in production" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+</figure>
+
+<section id="blocked-pattern-list" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">First: read the blocked pattern list</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Before you debug anything, know that Microsoft publishes a list of patterns the platform rejects outright. The docs say the system "validates server logic scripts and rejects those that contain certain unsafe or restricted keywords".
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The list is worth memorising because several entries are surprising:
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">__dirname</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">__filename</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">import(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">import from</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">eval(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Function(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">setTimeout(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">setInterval(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">setImmediate(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">process.exit</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">process.kill</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">child_process</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fs.</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">require(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">constructor.constructor</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">this.constructor</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">arguments.callee</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">with(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">delete</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Object.getPrototypeOf</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Object.setPrototypeOf</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Proxy(</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Reflect.</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Symbol.for</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">__proto__</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">prototype</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">debugger</code>
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Three of those will bite ordinary code.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">delete</code> is blocked as a keyword. That is why the DELETE handler is not <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">function delete()</code> but <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">function del()</code>. Microsoft's own tutorial carries the comment "delete keyword should not be used in script file." It also means <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">delete obj.someKey</code> is off the table. Use <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">obj.someKey = null</code> instead.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">prototype</code> is blocked as a substring. Any library or helper that touches <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Foo.prototype.bar</code> is dead on arrival.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">setTimeout(</code> and friends are blocked. There is no delay primitive. Every retry-with-backoff pattern you have ever written is impossible here, and Microsoft does not call this consequence out anywhere.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Also documented: no browser APIs. The docs are explicit that Server Logic "doesn't support browser-based APIs or libraries. Examples include <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fetch</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">XMLHttpRequest</code>, and other DOM-related features." For outbound calls you use <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Connector.HttpClient</code> instead.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    That list explains a good share of mysterious 400s. It does not explain the four below.
+  </p>
+</section>
+
+<section id="four-constraints" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The four constraints</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Everything in this section was found empirically, by bisection, in May 2026, on a live site. None of it appeared in the blocked pattern list or anywhere else on Microsoft Learn at the time. Treat it as field observation, not documentation, and retest in your own environment before you build around it, constraint 3 has since demonstrably changed, more on that below. Constraints 1 and 2 were retested live on 3 September 2026 and still reproduce exactly as described, same HTTP 400, same "Exception occurred while processing this request" error text.
+  </p>
+
+  <div class="overflow-x-auto mb-10">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Pattern</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Result</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4 font-mono text-sm">Module-level <code class="bg-gray-100 px-1 rounded">const</code> holding a function expression</td>
+          <td class="p-4 text-sm">HTTP 400</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4 font-mono text-sm">Array methods with an anonymous callback (map, filter, sort, forEach)</td>
+          <td class="p-4 text-sm">HTTP 400</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="p-4 font-mono text-sm">Server.Logger.Warn(...) and Server.Logger.Error(...)</td>
+          <td class="p-4 text-sm">HTTP 400 in May 2026, confirmed fixed in September 2026</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="p-4 font-mono text-sm">Server.Connector.Dataverse.* return value</td>
+          <td class="p-4 text-sm">String, not object</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Constraint 1: function expressions in a const</h3>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>// Rejected
+const helper = function (x) { return x * 2; };
+function get() { return JSON.stringify({ result: helper(5) }); }
+
+// Accepted
+function get() {
+  function helper(x) { return x * 2; }
+  return JSON.stringify({ result: helper(5) });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    A function declaration nested inside <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">get()</code> runs. A function expression assigned to a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">const</code> does not, wherever you put it.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-10">
+    The practical cost is real: helpers have to be duplicated inside <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">get()</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">put()</code>. It is ugly. It is also the only shape I got to run reliably.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Constraint 2: anonymous callbacks on array methods</h3>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>// All three rejected
+const doubled  = arr.map(function (x) { return x * 2; });
+const filtered = arr.filter(function (x) { return x > 0; });
+const sorted   = arr.slice().sort(function (a, b) { return a - b; });</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">forEach</code> too. That is the standard toolkit gone.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The workaround is classical loops, and because <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">sort(callback)</code> is affected as well, sorting means doing it by hand:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function get() {
+  const items = [];
+  for (let i = 0; i < records.length; i++) {
+    if (!records[i].isActive) continue;
+    items.push({ id: records[i].id, order: records[i].sortOrder });
+  }
+
+  for (let i = 0; i < items.length; i++) {
+    for (let j = i + 1; j < items.length; j++) {
+      if (items[i].order > items[j].order) {
+        const tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+    }
+  }
+  return JSON.stringify({ items: items });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-10">
+    Why? My working hypothesis, and it is only that, is that the sandbox treats anonymous function expressions passed as arguments as untrusted code. It fits the pattern in constraint 1 and it fits the spirit of the blocked list, which is full of reflection and dynamic-evaluation entries. Microsoft has published nothing on the subject.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Constraint 3: Logger.Warn and Logger.Error, since fixed</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Logger.Log(...)</code> worked fine in May 2026. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Logger.Warn(...)</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Logger.Error(...)</code> both returned 400 back then.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The workaround at the time was to fold the severity into the message:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>Server.Logger.Log("WARN: Dataverse returned a non-success status");
+Server.Logger.Log("ERROR: update failed: " + err.message);</code></pre>
+
+  <div class="pp-box pp-box--note p-6 mb-6">
+    <p class="text-gray-800">
+      <strong>Update, 3 September 2026:</strong> I retested all three methods live, against a freshly created server logic endpoint on the demo portal, with exactly this code:
+    </p>
+  </div>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function get() {
+  Server.Logger.Log("log-ok");
+  Server.Logger.Warn("warn-ok");
+  Server.Logger.Error("error-ok");
+  return JSON.stringify({ status: "success" });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Result: HTTP 200, all three calls ran without a crash. Microsoft's Server objects reference now also documents all three, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Log</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Warn</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Error</code>, with a plain code sample. What was a real constraint in May is a resolved issue today, still worth a quick test in your own environment if you are on an older site version. The workaround pattern above is harmless either way.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Nobody told me this got fixed between May and September. I only found out because I happened to retest it for this post. That gap, changes to the platform landing quietly while you are busy shipping, is exactly what <a href="/leistungen/care/" class="underline font-semibold">Care</a> exists to close: a monthly check against what Microsoft actually shipped, not a hope that you'll notice.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-10">
+    A related gap worth knowing: the Logger documentation points at the DevTools extension as the place to view messages, but that article does not mention Server Logic at all. Where your log output actually surfaces is, as of today, undocumented.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Constraint 4: the Dataverse connector returns a string</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The documentation shows a response shape:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>{
+  "StatusCode": 204,
+  "Body": "",
+  "IsSuccessStatusCode": true,
+  "ReasonPhrase": "No Content",
+  "ServerError": false,
+  "ServerErrorMessage": null,
+  "Headers": { }
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    What it does not say anywhere in prose is the return type. In practice you get that shape as a serialised string, and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Body</code> inside it is a string as well. So a single record read needs two parses:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function get() {
+  function parseConnector(response) {
+    if (typeof response === "string") {
+      try { return JSON.parse(response); } catch (e) { return null; }
+    }
+    return response;
+  }
+
+  const raw     = Server.Connector.Dataverse.RetrieveMultipleRecords("contacts", "$top=10");
+  const wrapper = parseConnector(raw);
+  if (!wrapper || !wrapper.IsSuccessStatusCode) {
+    Server.Logger.Log("ERROR: connector status " + (wrapper && wrapper.StatusCode));
+    return JSON.stringify({ items: [] });
+  }
+  const data = JSON.parse(wrapper.Body);
+  return JSON.stringify({ items: data.value });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Microsoft's own client-side sample does the same double parse, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">JSON.parse(res.data)</code> and then <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">JSON.parse(p.Body)</code>, which is the closest thing to confirmation you will find.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Two smaller traps in the same area. The connector expects the <strong>EntitySetName</strong>, not the table name: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">accounts</code>, not <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">account</code>. And the client response envelope is documented with a capital <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Data</code> while the sample code reads <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">res.data</code>. Defend against both: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">const payload = res.data || res.Data;</code>
+  </p>
+</section>
+
+<section id="debugging-playbook" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">How to debug an engine that will not talk to you</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    There is no error-handling documentation for Server Logic. No status code table, no error code list, no troubleshooting article. The string "Exception occurred while processing this request" appears nowhere on Microsoft Learn. You are on your own, so build your own instrumentation.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Bisect.</strong> Start with an endpoint that returns a constant. Add one construct at a time. The moment the 400 appears, the last thing you added is the culprit. Tedious, and it is the only method that works against a silent validator.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    <strong>Stamp a marker.</strong> Put a version marker in every response. Caching and deployment timing will otherwise have you debugging code that is not running.
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>return JSON.stringify({ marker: "v7", items: items });</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    <strong>Use the stages pattern.</strong> Wrap each step in its own try/catch and collect results instead of letting one failure take down the endpoint.
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function get() {
+  const stages = {};
+  try { stages.user = Server.User && Server.User.fullname; }
+  catch (e) { stages.user_err = e.message; }
+
+  try {
+    const r = Server.Connector.Dataverse.RetrieveMultipleRecords("contacts", "$top=1");
+    stages.connectorType  = typeof r;
+    stages.connectorFirst = String(r).substring(0, 200);
+  } catch (e) { stages.connector_err = e.message; }
+
+  return JSON.stringify({ marker: "diag-v1", stages: stages });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    This is the single highest-value habit for an opaque runtime. It turns a binary 400 into a readable report.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    <strong>Introspect types.</strong> Dump <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">typeof</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Object.keys()</code> and the first 200 characters of anything the platform hands you. That is exactly how the string return in constraint 4 revealed itself.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-lg text-gray-800">
+      <strong>Warning:</strong> One more thing you should know before you assume everything is your fault: there is a tenant-level governance control that blocks outbound HTTP from Server Logic entirely. When an admin enables it, any script attempting an outbound call "returns an HTTP 403 Forbidden response instead of executing the call", immediately, without redeployment. If your external calls started failing overnight and nothing in your code changed, check that setting before you bisect anything.
+    </p>
+  </div>
+</section>
+
+<section id="takeaway" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">What to take away</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Server Logic is a genuinely useful addition. Running JavaScript server-side, hidden from the browser, governed by web roles and table permissions, closes a real gap in Power Pages. I use it.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    But "ECMAScript 2023 compliant" is a description of the language, not a promise about the sandbox. The blocked pattern list is documented and you should read it before your first line of code. Beyond that list there is a second layer of behaviour that is not documented at all, and the runtime's only way of telling you about it is a 400 with an empty body.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Write defensively. Instrument from the first commit. Bisect when it goes quiet. And re-test the undocumented constraints periodically, because a platform this young moves.
+  </p>
+</section>
+
+
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Related Articles</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/en/blog/power-pages-render-mutate-refresh-pattern/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">The Render-Mutate-Refresh Pattern</h3>
+      <p class="text-gray-600 mb-4">Liquid and Server Logic combined into one pattern for data-bound, user-specific components in Power Pages.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">A decision tree, performance comparison, and security patterns between the two data access paths in Power Pages.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Sources</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-logic-overview" class="underline" target="_blank" rel="noopener">Server logic overview</a>, ECMAScript 2023 wording, supported HTTP methods, site settings and timeout</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/author-server-logic" class="underline" target="_blank" rel="noopener">Create and manage server logic</a>, blocked keyword list, limitations, CSRF token, response envelope</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-objects" class="underline" target="_blank" rel="noopener">Server objects reference</a>, Server.Logger, Server.Connector.Dataverse, Server.User, Server.Context</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-logic-operations" class="underline" target="_blank" rel="noopener">Server logic Dataverse operations tutorial</a>, del() comment and double parse sample</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-logic-debug" class="underline" target="_blank" rel="noopener">Debug server logic</a>, mocked objects in the local debugger</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/disable-external-service-calls" class="underline" target="_blank" rel="noopener">Disable external service calls</a>, tenant governance control and HTTP 403</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave2/power-pages/enable-secure-server-side-logic-power-pages" class="underline" target="_blank" rel="noopener">Release plan entry</a>, public preview October 2025 and general availability April 2026</li>
+    <li><a href="https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-general-availability-ga-of-server-logic-in-power-pages/" class="underline" target="_blank" rel="noopener">General availability announcement</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/devtools-addon" class="underline" target="_blank" rel="noopener">DevTools extension</a>, referenced by the Logger docs</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

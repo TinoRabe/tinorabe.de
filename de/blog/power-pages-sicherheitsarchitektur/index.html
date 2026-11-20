@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Sicherheitsarchitektur: Interaktiver Guide</title>
+<meta name="description" content="Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-security-architecture/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-security-architecture/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Sicherheitsarchitektur: Interaktiver Guide">
+<meta property="og:description" content="Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-sicherheitsarchitektur.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Sicherheitsarchitektur: Interaktiver Guide">
+<meta property="article:published_time" content="2025-10-18">
+<meta property="article:modified_time" content="2026-08-27">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Sicherheitsarchitektur: Interaktiver Guide">
+<meta name="twitter:description" content="Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-sicherheitsarchitektur.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/#webpage",
+      "url": "https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/",
+      "name": "Power Pages Sicherheitsarchitektur: Interaktiver Guide",
+      "description": "Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-sicherheitsarchitektur.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/#article",
+      "headline": "Power Pages Sicherheitsarchitektur: Interaktiver Guide",
+      "description": "Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.",
+      "datePublished": "2025-10-18",
+      "dateModified": "2026-08-27",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-sicherheitsarchitektur.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Sicherheit, Web Roles, Table Permissions, Zugriffskontrolle, Microsoft Entra ID, Authentifizierung, Autorisierung, Dataverse Security, Power Pages Architektur",
+      "articleSection": "Sicherheit"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Sicherheit</span>
+      <time datetime="2025-10-18">18. Oktober 2025</time><span>10 Min. Lesezeit</span><a href="/en/blog/power-pages-security-architecture/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Power Pages Sicherheitsarchitektur: Interaktiver Guide</h1>
+    <p class="art-lead">Power Pages Sicherheitsarchitektur: Table Permissions, Web Roles und Authentifizierungsebenen. Rollenbasierter Zugriff verständlich erklärt, mit Beispielen.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-12">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    <strong>Sicherheit in Power Pages basiert auf Ebenen.</strong> Das Verständnis dieses hierarchischen Modells ist
+    entscheidend für die Implementierung sicherer Kundenportale. Dieser Guide erklärt, wie Administratoren, Custom Roles,
+    authentifizierte Benutzer, anonyme Besucher und System-Komponenten zusammenarbeiten, von der Authentifizierung bis
+    zur Feldebene.
+  </p>
+  <p class="text-gray-700 leading-relaxed">
+    Fünf Ebenen greifen dabei ineinander: anonyme Besucher, authentifizierte Benutzer, benutzerdefinierte Rollen, die
+    Administrator-Rolle und die System-Komponenten (Web API, Forms, Lists, Liquid Templates). Wer versteht, wie diese
+    Ebenen zusammenspielen, kann Berechtigungen gezielt statt pauschal vergeben.
+  </p>
+</div>
+
+<h2>Wichtigste Erkenntnisse</h2>
+
+<div class="callout">
+  <span class="callout__lead">Wesentliche Sicherheitsprinzipien:</span>
+  <ul>
+    <li><strong>Administrator ist nur ein Name:</strong> keine automatischen Privilegien, alle Zugriffe erfordern explizite Table Permissions</li>
+    <li><strong>Mehrere Rollen, kumulative Berechtigungen:</strong> Benutzer können mehrere Rollen haben, Berechtigungen addieren sich</li>
+    <li><strong>Die Rolle „Authenticated Users" ist automatisch:</strong> Sie kann nicht entfernt werden und gilt für ALLE eingeloggten Benutzer</li>
+    <li><strong>Bevorzugen Sie spezifische Scopes:</strong> Contact oder Account Scope statt Global, wo immer möglich</li>
+    <li><strong>System-Komponenten respektieren Berechtigungen:</strong> Web API, Forms und Lists halten sich an Table Permissions</li>
+  </ul>
+</div>
+
+<h2>Das hierarchische Zugriffskontrollmodell auf einen Blick</h2>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Stellen Sie sich die Sicherheitsarchitektur als Gebäude mit fünf Stockwerken vor. Jede Ebene hat eine eigene Farbe,
+  eine eigene Zielgruppe und eigene Spielregeln:
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 not-prose">
+  <div class="pp-box pp-box--tip p-4">
+    <div class="font-bold text-sm mb-1">Anonyme Benutzer</div>
+    <div class="text-xs text-gray-600">Öffentliche Besucher ohne Login</div>
+  </div>
+  <div class="pp-box pp-box--warn p-4">
+    <div class="font-bold text-sm mb-1">Authentifizierte Benutzer</div>
+    <div class="text-xs text-gray-600">Alle eingeloggten Nutzer (implizite Rolle)</div>
+  </div>
+  <div class="pp-box pp-box--note p-4">
+    <div class="font-bold text-sm mb-1">Custom Roles</div>
+    <div class="text-xs text-gray-600">Partner, Kunde, abteilungsspezifisch</div>
+  </div>
+  <div class="pp-box pp-box--risk p-4">
+    <div class="font-bold text-sm mb-1">Administrator</div>
+    <div class="text-xs text-gray-600">Web Role mit expliziten Berechtigungen</div>
+  </div>
+  <div class="pp-card p-4">
+    <div class="font-bold text-sm mb-1">System-Ebene</div>
+    <div class="text-xs text-gray-600">Web API, Forms, Lists, Liquid</div>
+  </div>
+</div>
+
+<h2>Die Sicherheitsebenen im Detail</h2>
+
+<h3>1. Administrator Web Role</h3>
+
+<div class="pp-soft p-8 rounded-2xl mb-10 not-prose">
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-red-600">Kernkonzept</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Nur ein Web-Role-Name, keine besonderen Privilegien</li>
+        <li>Alle Datenzugriffe erfordern explizite Table Permissions</li>
+        <li>Gleiche Regeln wie für jede Custom Role</li>
+        <li>Verwenden Sie spezifische Scopes (Contact/Account) statt Global</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-red-600">Was Sie tun können</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Portal-Einstellungen und Konfiguration verwalten</li>
+        <li>Web Roles zu Benutzern zuweisen</li>
+        <li>Seiten und Inhalte verwalten</li>
+        <li>Table Permissions konfigurieren (falls gewährt)</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-red-600">Zugriffstypen (Table Permissions)</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><strong>Global:</strong> alle Datensätze in der Tabelle</li>
+        <li><strong>Contact:</strong> mit dem Benutzer verbundene Datensätze</li>
+        <li><strong>Account:</strong> mit dem Konto des Benutzers verbundene Datensätze</li>
+        <li><strong>Self:</strong> nur der eigene Contact-Datensatz des Benutzers</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pp-box pp-box--risk bg-red-100 p-6 mt-6">
+    <p class="text-gray-800 text-sm">
+      <strong>Best Practices:</strong> Vermeiden Sie Global Scope wo möglich, verwenden Sie Contact oder Account Scope
+      für die meisten Szenarien, folgen Sie dem Prinzip der geringsten Rechte und planen Sie regelmäßige Berechtigungsaudits ein.
+    </p>
+  </div>
+</div>
+
+<h3>2. Custom Web Roles</h3>
+
+<div class="pp-soft p-8 rounded-2xl mb-10 not-prose">
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">So funktioniert es</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Erstellen Sie Rollen für spezifische Benutzergruppen</li>
+        <li>Weisen Sie Rollen Table und Page Permissions zu</li>
+        <li>Benutzer können mehrere Rollen haben (kumulativer Zugriff)</li>
+        <li>Konfiguration über die Portal Management App</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Häufige Beispiele</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><strong>Partner:</strong> Zugriff auf Daten ihrer Kunden</li>
+        <li><strong>Kunde:</strong> B2B-Zugriff auf Account-Ebene</li>
+        <li><strong>Support-Agent:</strong> Case-Management-Rechte</li>
+        <li><strong>Abteilungsleiter:</strong> Team-Datenzugriff</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Berechtigungs-Scopes</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><strong>Account Scope:</strong> perfekt für B2B-Szenarien</li>
+        <li><strong>Contact Scope:</strong> zugehörige Datensätze des Benutzers</li>
+        <li><strong>Parent Scope:</strong> hierarchische Beziehungen</li>
+        <li><strong>Child Permissions:</strong> Zugriff auf verbundene Tabellen</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Konfiguration</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Security Workspace im Design Studio (modern)</li>
+        <li>Oder Power Pages Management App (Dataverse)</li>
+        <li>Table Permissions mit spezifischen Scopes hinzufügen</li>
+        <li>Benutzer manuell oder via Power Automate zuweisen</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>3. Authentifizierte Benutzer</h3>
+
+<div class="pp-soft p-8 rounded-2xl mb-10 not-prose">
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-xl border-2 border-orange-300">
+      <h4 class="font-bold mb-2 text-orange-600">Wichtig: implizite Rolle</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><span class="pp-mark pp-mark--warn" aria-hidden="true">!</span>Automatisch ALLEN eingeloggten Benutzern zugewiesen</li>
+        <li><span class="pp-mark pp-mark--warn" aria-hidden="true">!</span>Kann nicht von Benutzern entfernt werden</li>
+        <li><span class="pp-mark pp-mark--warn" aria-hidden="true">!</span>Nur EINE pro Website</li>
+        <li><span class="pp-mark pp-mark--warn" aria-hidden="true">!</span>Seien Sie vorsichtig mit Berechtigungen an dieser Stelle</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-orange-600">So funktioniert es</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Benutzer werden durch Dataverse Contacts repräsentiert</li>
+        <li>Können zusätzliche Custom Roles haben</li>
+        <li>Berechtigungen sind kumulativ über alle Rollen</li>
+        <li>Verwaltet über die Portal Management App</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-orange-600">Typisches Setup</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><strong>Contact Scope:</strong> eigene Datensätze des Benutzers</li>
+        <li><strong>Self Scope:</strong> nur der eigene Contact-Datensatz</li>
+        <li><strong>Lesezugriff:</strong> Referenzdaten (Produkte etc.)</li>
+        <li><strong>Erstellen:</strong> Cases, Leads, Support-Anfragen</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-orange-600">Authentifizierungsmethoden</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Microsoft Entra ID (für interne Benutzer)</li>
+        <li>Microsoft Entra External ID (für externe Kunden und Partner)</li>
+        <li>SAML 2.0, OpenID Connect</li>
+        <li>Lokale Authentifizierung (Benutzername/Passwort)</li>
+        <li>Azure AD B2C</li>
+        <li>Social Provider (Google, LinkedIn, etc.)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>4. Anonyme Benutzer</h3>
+
+<div class="pp-soft p-8 rounded-2xl mb-10 not-prose">
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-green-600">Anonymous-Users-Rolle</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Spezielle Rolle für nicht-authentifizierte Besucher</li>
+        <li>Nur EINE pro Website</li>
+        <li>Respektiert Table Permissions (aber nicht Page Permissions)</li>
+        <li>Zugriff auf öffentliche Inhalte und Formulare</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-green-600">Website-Sichtbarkeit</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Standard: nur intern (Microsoft Entra Auth)</li>
+        <li>Go-Live: Umschalten auf „Public"</li>
+        <li>Schützt teilweise entwickelte Websites</li>
+        <li>Verhindert versehentliche Datenlecks</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-green-600">Worauf sie zugreifen können</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Öffentliche Seiten (Homepage, Marketing)</li>
+        <li>Knowledge-Base-Artikel (falls konfiguriert)</li>
+        <li>Kontaktformulare</li>
+        <li>Login- und Registrierungsseiten</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-green-600">Datenzugriff</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Kann Table Permissions haben (über die Anonymous-Rolle)</li>
+        <li>Daten über Formulare übermitteln</li>
+        <li>Gefilterte Listen anzeigen (falls konfiguriert)</li>
+        <li>Kein direkter Dataverse-API-Zugriff</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>5. System-Komponenten</h3>
+
+<div class="pp-soft p-8 rounded-2xl mb-10 not-prose">
+  <div class="space-y-4">
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Portals Web API</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>CRUD-Operationen auf Dataverse-Tabellen</li>
+        <li>Verfügbar unter <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/_api/</code>-Endpunkten</li>
+        <li>Muss pro Tabelle aktiviert werden (Site Settings)</li>
+        <li>Erfordert Power Pages 9.3.3.x oder neuer</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Sicherheits-Fakten</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Web API respektiert Table Permissions</li>
+        <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Verwendet Portal-Session-Authentifizierung</li>
+        <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Erfordert CSRF-Token für alle Aufrufe</li>
+        <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Column Permissions für Field-Level Security</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Site Settings (erforderlich)</h4>
+      <div class="bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-xs space-y-1 overflow-x-auto">
+        <div><span class="text-gray-500">Aktivieren:</span> <span class="text-blue-300">Webapi/&lt;tabelle&gt;/enabled = true</span></div>
+        <div><span class="text-gray-500">Felder:</span> <span class="text-blue-300">Webapi/&lt;tabelle&gt;/fields = * oder Liste</span></div>
+        <div><span class="text-gray-500">Hinweis:</span> <span class="text-blue-300">Verwenden Sie den logischen Namen (z. B. "account")</span></div>
+        <div><span class="text-gray-500">Im Code:</span> <span class="text-blue-300">Verwenden Sie den EntitySetName (z. B. "accounts")</span></div>
+      </div>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Weitere Komponenten</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><strong>Forms &amp; Lists:</strong> respektieren Table Permissions</li>
+        <li><strong>Liquid Templates:</strong> Zugriff auf das {{ user }}-Objekt</li>
+        <li><strong>JavaScript:</strong> client-seitige Code-Ausführung</li>
+        <li><strong>FetchXML:</strong> Dataverse-Daten abfragen</li>
+      </ul>
+    </div>
+    <div class="bg-white p-6 rounded-xl">
+      <h4 class="font-bold mb-2 text-blue-600">Einschränkungen</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li>Nicht für Drittanbieter-Integration konzipiert</li>
+        <li>Konfigurationstabellen nicht unterstützt</li>
+        <li>Actions und Functions nicht verfügbar</li>
+        <li>Server-seitiges Caching für Performance</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Sicherheits-Best-Practices</h2>
+
+<div class="grid md:grid-cols-2 gap-6 mb-10 not-prose">
+  <div class="bg-gray-50 p-6 rounded-xl">
+    <h4 class="font-bold text-lg mb-3">Empfohlen</h4>
+    <ul class="space-y-2 text-gray-700 text-sm">
+      <li>Contact oder Account Scope für B2B-Szenarien verwenden</li>
+      <li>Das Prinzip der geringsten Rechte anwenden</li>
+      <li>Column Permissions für Sicherheit auf Feldebene aktivieren</li>
+      <li>MFA für sensible Bereiche konfigurieren</li>
+      <li>Regelmäßige Sicherheitsaudits der Rollenzuweisungen</li>
+      <li>Dataverse Auditing für Compliance aktivieren</li>
+    </ul>
+  </div>
+  <div class="bg-red-50 p-6 rounded-xl">
+    <h4 class="font-bold text-lg mb-3 text-red-700">Zu vermeiden</h4>
+    <ul class="space-y-2 text-gray-700 text-sm">
+      <li>Global Scope, es sei denn absolut notwendig</li>
+      <li>Weitreichende Berechtigungen für die Rolle „Authenticated Users"</li>
+      <li>Sicherheitslogik nur client-seitig in JavaScript implementieren</li>
+      <li>Web API ohne ordentliche Table Permissions aktivieren</li>
+      <li>Authentifizierungsanbieter ohne klare Strategie mischen</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Implementierungsleitfaden</h2>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Ein praktischer Schritt-für-Schritt-Ansatz zur Implementierung sicherer Power-Pages-Portale:
+</p>
+
+<div class="bg-white border-2 border-blue-200 rounded-xl p-6 mb-10 not-prose">
+  <h4 class="font-bold text-xl mb-4 text-blue-800">Setup-Checkliste</h4>
+  <ol class="space-y-4 text-gray-700">
+    <li>
+      <strong>1. Planen Sie Ihre Rollen:</strong>
+      <p class="ml-4 text-sm">Ordnen Sie Geschäftsrollen (Partner, Kunde, Intern) den Web Roles zu</p>
+    </li>
+    <li>
+      <strong>2. Definieren Sie Table Permissions:</strong>
+      <p class="ml-4 text-sm">Bestimmen Sie, auf welche Tabellen jede Rolle zugreifen muss und mit welchem Scope</p>
+    </li>
+    <li>
+      <strong>3. Konfigurieren Sie die Authentifizierung:</strong>
+      <p class="ml-4 text-sm">Richten Sie Entra ID (intern) und Entra External ID (extern) ein</p>
+    </li>
+    <li>
+      <strong>4. Implementieren Sie Row-Level Security:</strong>
+      <p class="ml-4 text-sm">Verwenden Sie Contact oder Account Scope, damit Benutzer nur ihre Daten sehen</p>
+    </li>
+    <li>
+      <strong>5. Aktivieren Sie Field-Level Security:</strong>
+      <p class="ml-4 text-sm">Konfigurieren Sie Column Permissions für sensible Felder</p>
+    </li>
+    <li>
+      <strong>6. Testen Sie gründlich:</strong>
+      <p class="ml-4 text-sm">Überprüfen Sie Berechtigungen mit Testbenutzern in jeder Rolle</p>
+    </li>
+    <li>
+      <strong>7. Aktivieren Sie Auditing:</strong>
+      <p class="ml-4 text-sm">Schalten Sie Dataverse Auditing für Compliance-Tracking ein</p>
+    </li>
+  </ol>
+</div>
+
+<h2>Fazit</h2>
+
+<p>Die Power-Pages-Sicherheitsarchitektur bietet Zugriffskontrolle auf Enterprise-Niveau, ohne dass tiefes Sicherheits-Know-how erforderlich ist. Wer das hierarchische Modell versteht und die Best Practices befolgt, kann sichere Kundenportale erstellen, die sensible Daten schützen und gleichzeitig exzellente Benutzererfahrungen bieten.</p>
+
+<p>Und wenn Ihr Portal bereits live ist und Sie wissen wollen, ob die Konfiguration wirklich so dasteht, wie sie hier beschrieben ist: Genau das prüft mein <a href="/leistungen/security-audit/">Security-Audit zum Festpreis</a>, strikt lesend und mit risikopriorisiertem Bericht.</p>
+
+<h4>Weitere Ressourcen</h4>
+<ul>
+  <li><a href="https://learn.microsoft.com/power-pages/security/" target="_blank" rel="noopener noreferrer">Microsoft Power Pages Sicherheitsdokumentation</a></li>
+  <li><a href="https://learn.microsoft.com/power-pages/security/table-permissions" target="_blank" rel="noopener noreferrer">Konfigurationsleitfaden für Table Permissions</a></li>
+  <li><a href="/de/blog/sicherheit-compliance-power-pages/">Sicherheit und Compliance: Warum Power Pages sicherer ist</a></li>
+</ul>
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Wann wurde Ihr Portal zuletzt unabhängig geprüft?</p>
+      <p>Das Security-Audit zeigt, was durch Ihr Portal nach außen geht: Tabellenberechtigungen, Web API, Authentifizierung, Konfiguration. Sie erhalten einen Befundbericht mit Schweregraden und konkreten Maßnahmen. Festpreis ab 4.900 € netto.</p>
+      <p class="btns"><a class="btn" href="/leistungen/security-audit/">Zum Security-Audit</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)</title>
+<meta name="description" content="Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-server-logic-preview/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-server-logic-preview/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-server-logic-preview/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-server-logic-preview/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)">
+<meta property="og:description" content="Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-server-logic-preview/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)">
+<meta property="article:published_time" content="2025-10-31">
+<meta property="article:modified_time" content="2026-11-04">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)">
+<meta name="twitter:description" content="Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-preview.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-preview/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-server-logic-preview/",
+      "name": "Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)",
+      "description": "Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-preview.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-preview/#article",
+      "headline": "Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)",
+      "description": "Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.",
+      "datePublished": "2025-10-31",
+      "dateModified": "2026-11-04",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-preview/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-preview.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages Server Logic, Server-Side JavaScript, Server.Connector.Dataverse, Power Pages Preview, ECMAScript 2023, Bulk Operations, Hidden Business Logic",
+      "articleSection": "PREVIEW"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>PREVIEW</span>
+      <time datetime="2025-10-31">31 October 2025</time><span>16 min read</span><a href="/de/blog/power-pages-server-logic-preview/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Power Pages Server Logic: Server-Side JavaScript for Secure Business Logic (Preview)</h1>
+    <p class="art-lead">Power Pages Server Logic (Preview): Server-side JavaScript, Dataverse connector, HttpClient and external APIs. Includes 3 ready-to-use code templates.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<article class="py-12 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+
+    <div class="pp-box pp-box--warn p-6 mb-12">
+      <h3 class="text-xl font-bold mb-2 text-yellow-800">Important: Preview Feature</h3>
+      <p class="text-gray-700 leading-relaxed">
+        Server Logic is currently a <strong>preview feature</strong> in Power Pages. It is <strong>not suitable for production environments</strong> and is subject to the <a href="https://go.microsoft.com/fwlink/?linkid=2189520" target="_blank" rel="noopener" class="text-blue-600 hover:underline font-semibold">Supplemental Terms of Use</a>.
+      </p>
+    </div>
+
+    <div class="prose prose-lg max-w-none mb-12">
+      <p class="text-xl text-gray-700 leading-relaxed">
+        Microsoft has released <strong>Power Pages Server Logic</strong>, a new feature that enables server-side JavaScript execution directly in Power Pages. Unlike the client-side Web API, Server Logic code runs on the Power Pages server and is completely hidden from the browser.
+      </p>
+    </div>
+
+    <section id="introduction" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Client-Side Web API vs. Server Logic</h2>
+
+      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+        <div class="pp-card p-6">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-red-100 text-red-800">Client-Side Web API</span>
+          <h4 class="text-lg font-bold mt-3 mb-2 text-gray-900">Problems</h4>
+          <ul class="text-sm space-y-1 text-gray-700">
+            <li>Code visible in browser (F12)</li>
+            <li>100 API calls = 100 HTTP requests</li>
+            <li>Business logic exposed</li>
+            <li>No batch support</li>
+          </ul>
+        </div>
+
+        <div class="text-3xl font-black text-blue-600 text-center hidden md:block">&rarr;</div>
+
+        <div class="pp-card p-6">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-800">Server Logic</span>
+          <h4 class="text-lg font-bold mt-3 mb-2 text-gray-900">Solution</h4>
+          <ul class="text-sm space-y-1 text-gray-700">
+            <li>Code on server (hidden)</li>
+            <li>1 API call, loop on server</li>
+            <li>Business logic protected</li>
+            <li>Pseudo-batch via loops</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="what-is-server-logic" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">What is Power Pages Server Logic?</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Server Logic enables the execution of <strong>ECMAScript 2023</strong> JavaScript on the Power Pages server. The code is stored in Dataverse and invoked via special API endpoints:
+      </p>
+
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Server Logic: Endpoint</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>POST https://yoursite.powerappsportals.com/_api/serverlogics/YourFunctionName
+Content-Type: application/json
+__RequestVerificationToken: {{CSRF_TOKEN}}
+
+{ "data": "your payload" }</code></pre>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Key Differences</h3>
+
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead class="pp-navy text-white">
+            <tr>
+              <th class="p-4 text-left font-semibold">Aspect</th>
+              <th class="p-4 text-left font-semibold">Client-Side Web API</th>
+              <th class="p-4 text-left font-semibold">Server Logic</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200">
+              <td class="p-4 font-semibold">Execution</td>
+              <td class="p-4">In browser (JavaScript)</td>
+              <td class="p-4">On server (ECMAScript 2023)</td>
+            </tr>
+            <tr class="border-b border-gray-200 bg-gray-50">
+              <td class="p-4 font-semibold">Code visibility</td>
+              <td class="p-4">Visible via DevTools</td>
+              <td class="p-4">Hidden on server</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="p-4 font-semibold">Business logic</td>
+              <td class="p-4">Exposed (F12)</td>
+              <td class="p-4">Protected</td>
+            </tr>
+            <tr class="border-b border-gray-200 bg-gray-50">
+              <td class="p-4 font-semibold">API keys</td>
+              <td class="p-4">In browser code</td>
+              <td class="p-4">Via <code class="font-mono text-xs">Server.SiteSetting</code></td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="p-4 font-semibold">Bulk operations</td>
+              <td class="p-4">100 HTTP requests</td>
+              <td class="p-4">1 request, loop on server</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="p-4 font-semibold">External APIs</td>
+              <td class="p-4">CORS issues</td>
+              <td class="p-4">Via <code class="font-mono text-xs">Server.Connector.HttpClient</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="use-case-1" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Use Case 1: Bulk Contact Import</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        <strong>Problem:</strong> Importing 100+ contacts requires 100 individual API calls from the browser, slow, error-prone, no transactions.
+      </p>
+      <p class="text-lg text-gray-700 leading-relaxed mb-8">
+        <strong>Solution:</strong> A single API call to Server Logic, loop runs on the server close to Dataverse.
+      </p>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Client-Side (Browser)</h3>
+      <p class="text-gray-700 mb-3">A single API call with all contacts:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Client: Bulk Import Request</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>// CSV data from upload
+const csvData = [
+    { firstname: "John", lastname: "Doe", emailaddress1: "john@example.com" },
+    { firstname: "Jane", lastname: "Smith", emailaddress1: "jane@example.com" },
+    // ... 98 more contacts
+];
+
+fetch('/_api/serverlogics/BulkContactImport', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        '__RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+    },
+    body: JSON.stringify({ contacts: csvData })
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        console.log(`Import complete!`);
+        console.log(`Created: ${data.results.successCount}`);
+        console.log(`Failed: ${data.results.failedCount}`);
+    }
+})
+.catch(error => console.error('Error:', error));</code></pre>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Server-Side (Power Pages Server Logic)</h3>
+      <p class="text-gray-700 mb-3">Loop runs on server, code hidden:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Server: BulkContactImport</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>function post() {
+    try {
+        // Parse Request Body
+        const payload = JSON.parse(Server.Context.Body);
+        const contacts = payload.contacts;
+
+        // Validation
+        if (!contacts || !Array.isArray(contacts)) {
+            return JSON.stringify({
+                success: false,
+                error: "Invalid payload"
+            });
+        }
+
+        // Initialize results
+        const results = {
+            successCount: 0,
+            failedCount: 0,
+            errors: [],
+            createdIds: []
+        };
+
+        Server.Logger.Log(`Starting bulk import of ${contacts.length} contacts`);
+
+        // SERVER-SIDE LOOP (hidden from browser)
+        for (let i = 0; i &lt; contacts.length; i++) {
+            const contact = contacts[i];
+
+            try {
+                // Dataverse CreateRecord
+                const createResponse = Server.Connector.Dataverse.CreateRecord(
+                    "contacts",
+                    JSON.stringify({
+                        firstname: contact.firstname || "",
+                        lastname: contact.lastname,
+                        emailaddress1: contact.emailaddress1,
+                        telephone1: contact.telephone1 || ""
+                    })
+                );
+
+                const responseData = JSON.parse(createResponse.Body);
+                results.createdIds.push(responseData.contactid);
+                results.successCount++;
+
+                Server.Logger.Log(`Created contact ${i + 1}/${contacts.length}`);
+
+            } catch (err) {
+                results.failedCount++;
+                results.errors.push({
+                    index: i,
+                    contact: contact.lastname,
+                    error: err.message
+                });
+                Server.Logger.Error(`Failed contact ${i}: ${err.message}`);
+            }
+        }
+
+        Server.Logger.Log(`Bulk import completed. Success: ${results.successCount}, Failed: ${results.failedCount}`);
+
+        return JSON.stringify({
+            success: true,
+            results: results
+        });
+
+    } catch (err) {
+        Server.Logger.Error(`Bulk import failed: ${err.message}`);
+        return JSON.stringify({
+            success: false,
+            error: err.message
+        });
+    }
+}</code></pre>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6">
+        <h4 class="font-bold mb-3 text-amber-900">Benefits of This Solution</h4>
+        <ul class="space-y-2 text-sm text-amber-900">
+          <li>1 HTTP request instead of 100 (browser &rarr; server)</li>
+          <li>Server-side loop close to Dataverse = significantly faster</li>
+          <li>Business logic hidden (not visible via F12)</li>
+          <li>Error handling per record with <code class="font-mono text-xs">Server.Logger</code></li>
+          <li>Detailed result object with IDs and errors</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="use-case-2" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Use Case 2: Hidden Business Logic (Commission Calculator)</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        <strong>Problem:</strong> Commission calculations in client-side code are visible via DevTools (F12), competitors can copy algorithms.
+      </p>
+      <p class="text-lg text-gray-700 leading-relaxed mb-8">
+        <strong>Solution:</strong> Calculation runs on server, client receives only the final result.
+      </p>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Client-Side (Browser)</h3>
+      <p class="text-gray-700 mb-3">Simple API call, no business logic visible:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Client: Get Commission</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>// Client receives only final result
+async function getCommission(dealId) {
+    const response = await fetch(
+        `/_api/serverlogics/CommissionCalculator?dealId=${dealId}`,
+        {
+            headers: {
+                '__RequestVerificationToken': getCSRFToken()
+            }
+        }
+    );
+
+    const result = await response.json();
+
+    // Only final number, no algorithm visible
+    return result.commission; // e.g. 12500
+}</code></pre>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Server-Side (Power Pages Server Logic)</h3>
+      <p class="text-gray-700 mb-3">Proprietary algorithm completely hidden:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Server: CommissionCalculator</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>function get() {
+    try {
+        // Read query parameter
+        const dealId = Server.Context.QueryParameters['dealId'];
+
+        if (!dealId) {
+            return JSON.stringify({
+                success: false,
+                error: "Missing dealId"
+            });
+        }
+
+        // Get deal data from Dataverse
+        const dealResponse = Server.Connector.Dataverse.RetrieveRecord(
+            "opportunities",
+            dealId,
+            "$select=estimatedvalue,customerid,statecode"
+        );
+
+        const deal = JSON.parse(dealResponse.Body);
+
+        // Get customer data (for tier check)
+        const customerResponse = Server.Connector.Dataverse.RetrieveRecord(
+            "accounts",
+            deal._customerid_value,
+            "$select=accountid,customertypecode,address1_country"
+        );
+
+        const customer = JSON.parse(customerResponse.Body);
+
+        // PROPRIETARY ALGORITHM (hidden from browser)
+        let commission = calculateCommissionInternal(
+            deal.estimatedvalue,
+            customer.customertypecode,
+            customer.address1_country
+        );
+
+        Server.Logger.Log(`Commission calculated for deal ${dealId}: ${commission}`);
+
+        return JSON.stringify({
+            success: true,
+            commission: commission,
+            dealId: dealId
+        });
+
+    } catch (err) {
+        Server.Logger.Error(`Commission calculation failed: ${err.message}`);
+        return JSON.stringify({
+            success: false,
+            error: "Calculation failed"
+        });
+    }
+}
+
+// INTERNAL FUNCTION (not callable from browser)
+function calculateCommissionInternal(value, tierCode, country) {
+    let rate = 0.10; // Base: 10%
+
+    // Tier-based adjustment (proprietary)
+    if (tierCode === 3) rate = 0.15;      // Platinum: 15%
+    else if (tierCode === 2) rate = 0.12; // Gold: 12%
+
+    // Region multiplier (proprietary)
+    if (country === "DE" || country === "AT" || country === "CH") {
+        rate *= 1.2; // DACH: +20%
+    }
+
+    // Value-based bonus (proprietary)
+    if (value &gt; 100000) {
+        rate += 0.05; // +5% for >100k
+    }
+
+    return Math.round(value * rate);
+}</code></pre>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6">
+        <h4 class="font-bold mb-3 text-amber-900">Benefits of This Solution</h4>
+        <ul class="space-y-2 text-sm text-amber-900">
+          <li>Proprietary algorithm completely hidden</li>
+          <li>Client receives only final result (no reverse engineering possible)</li>
+          <li>Competitors cannot copy the formula</li>
+          <li>Algorithm updates without client deployment</li>
+          <li>Additional server-side validation possible</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="use-case-3" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Use Case 3: External API Integration</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">
+        <strong>Problem:</strong> External REST APIs (payment providers, SMS services, weather APIs, etc.) require API keys. In client-side code, these would be visible via F12, a security risk.
+      </p>
+      <p class="text-lg text-gray-700 leading-relaxed mb-8">
+        <strong>Solution:</strong> Store API keys in site settings, calls via Server Logic, keys never reach the browser.
+      </p>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Client-Side (Browser)</h3>
+      <p class="text-gray-700 mb-3">No API keys in browser, generic API call:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Client: External API Proxy</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>// Client doesn't know the API keys
+async function callExternalService(actionType, payload) {
+    const response = await fetch(
+        '/_api/serverlogics/ExternalAPIProxy',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                '__RequestVerificationToken': getCSRFToken()
+            },
+            body: JSON.stringify({
+                action: actionType,
+                data: payload
+            })
+        }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+        console.log("API call successful:", result.data);
+        return result.data;
+    } else {
+        console.error("API call failed:", result.error);
+        throw new Error(result.error);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Server-Side (Power Pages Server Logic)</h3>
+      <p class="text-gray-700 mb-3">API keys securely from site settings, generic REST API call:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <div class="text-xs text-gray-400 mb-3 font-mono uppercase tracking-widest">Server: ExternalAPIProxy</div>
+        <pre class="text-sm font-mono leading-relaxed"><code>function post() {
+    try {
+        const payload = JSON.parse(Server.Context.Body);
+        const action = payload.action;
+
+        // API keys from encrypted site settings (NEVER in browser)
+        const apiKey = Server.SiteSetting.Get("ExternalAPI_ApiKey");
+        const apiBaseUrl = Server.SiteSetting.Get("ExternalAPI_BaseUrl");
+
+        if (!apiKey || !apiBaseUrl) {
+            throw new Error("API credentials not configured");
+        }
+
+        Server.Logger.Log(`External API call: ${action}`);
+
+        // Example: Payment API, SMS service, weather API, etc.
+        let apiEndpoint = "";
+        let requestBody = {};
+
+        // Action-based routing
+        if (action === "sendSMS") {
+            apiEndpoint = `${apiBaseUrl}/messages`;
+            requestBody = {
+                to: payload.data.phoneNumber,
+                text: payload.data.message,
+                from: "YourServiceName"
+            };
+        } else if (action === "verifyPayment") {
+            apiEndpoint = `${apiBaseUrl}/payments/verify`;
+            requestBody = {
+                transactionId: payload.data.transactionId,
+                amount: payload.data.amount
+            };
+        } else if (action === "getWeather") {
+            apiEndpoint = `${apiBaseUrl}/weather?city=${payload.data.city}`;
+            // GET request without body
+        } else {
+            throw new Error(`Unknown action: ${action}`);
+        }
+
+        // EXTERNAL API CALL (via Server.Connector.HttpClient)
+        let response;
+
+        if (action === "getWeather") {
+            // GET request
+            response = Server.Connector.HttpClient.GetAsync(
+                apiEndpoint,
+                JSON.stringify({
+                    "Authorization": `Bearer ${apiKey}`,
+                    "Accept": "application/json"
+                })
+            );
+        } else {
+            // POST request
+            response = Server.Connector.HttpClient.PostAsync(
+                apiEndpoint,
+                JSON.stringify(requestBody),
+                JSON.stringify({
+                    "Authorization": `Bearer ${apiKey}`,
+                    "Content-Type": "application/json"
+                }),
+                "application/json"
+            );
+        }
+
+        if (!response.IsSuccessStatusCode) {
+            throw new Error(`API error: ${response.ReasonPhrase}`);
+        }
+
+        const apiResult = JSON.parse(response.Body);
+
+        Server.Logger.Log(`External API success: ${action}`);
+
+        return JSON.stringify({
+            success: true,
+            data: apiResult,
+            action: action
+        });
+
+    } catch (err) {
+        Server.Logger.Error(`External API failed: ${err.message}`);
+        return JSON.stringify({
+            success: false,
+            error: err.message
+        });
+    }
+}</code></pre>
+      </div>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h4 class="font-bold mb-2 text-gray-900">Required Site Settings</h4>
+        <pre class="text-sm font-mono text-gray-800 whitespace-pre-wrap">ServerLogic/AllowedDomains = api.yourservice.com,api.alternative.com
+ExternalAPI_ApiKey = [Your API Key]
+ExternalAPI_BaseUrl = https://api.yourservice.com/v1</pre>
+        <p class="text-sm text-gray-600 mt-3"><strong>Examples for external APIs:</strong> Stripe/PayPal (payment), Twilio/MessageBird (SMS), OpenWeather/WeatherAPI, SendGrid/Mailgun (email), Google Maps/HERE (geocoding)</p>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6">
+        <h4 class="font-bold mb-3 text-amber-900">Benefits of This Solution</h4>
+        <ul class="space-y-2 text-sm text-amber-900">
+          <li>API keys never in browser (via <code class="font-mono text-xs">Server.SiteSetting</code>)</li>
+          <li>No CORS issues (server &rarr; API directly)</li>
+          <li>Synchronous processing (no Power Automate delay)</li>
+          <li>Error handling with <code class="font-mono text-xs">Server.Logger</code></li>
+          <li>Centralized credential management</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="server-objects" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Server Objects API Reference</h2>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Server Logic provides several built-in objects:
+      </p>
+
+      <div class="space-y-6">
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.Connector.Dataverse</h4>
+          <p class="text-sm text-gray-600 mb-4">CRUD operations on Dataverse tables</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// Create
+Server.Connector.Dataverse.CreateRecord(
+    "contacts",
+    JSON.stringify({...})
+);
+
+// Read
+Server.Connector.Dataverse.RetrieveRecord(
+    "contacts",
+    contactId,
+    "$select=firstname,lastname"
+);
+
+// Update
+Server.Connector.Dataverse.UpdateRecord(
+    "contacts",
+    contactId,
+    JSON.stringify({...})
+);
+
+// Delete
+Server.Connector.Dataverse.DeleteRecord(
+    "contacts",
+    contactId
+);</code></pre>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.Connector.HttpClient</h4>
+          <p class="text-sm text-gray-600 mb-4">HTTP requests to external APIs</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// GET
+Server.Connector.HttpClient.GetAsync(
+    url,
+    headers
+);
+
+// POST
+Server.Connector.HttpClient.PostAsync(
+    url,
+    body,
+    headers,
+    contentType
+);
+
+// PUT
+Server.Connector.HttpClient.PutAsync(
+    url,
+    body,
+    headers,
+    contentType
+);
+
+// DELETE
+Server.Connector.HttpClient.DeleteAsync(
+    url,
+    headers
+);</code></pre>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.Context</h4>
+          <p class="text-sm text-gray-600 mb-4">Request metadata &amp; user info</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// Request body
+const payload = JSON.parse(
+    Server.Context.Body
+);
+
+// Query parameters
+const id = Server.Context.QueryParameters['id'];
+
+// HTTP method
+const method = Server.Context.HttpMethod;
+
+// Request headers
+const auth = Server.Context.Headers['Authorization'];</code></pre>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.Logger</h4>
+          <p class="text-sm text-gray-600 mb-4">Diagnostic logging (DevTools extension)</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// Info
+Server.Logger.Log("Info message");
+
+// Warning
+Server.Logger.Warn("Warning message");
+
+// Error
+Server.Logger.Error("Error message");
+
+// Logs visible in DevTools extension</code></pre>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.SiteSetting</h4>
+          <p class="text-sm text-gray-600 mb-4">Read encrypted site settings</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// Store API keys securely
+const apiKey = Server.SiteSetting.Get(
+    "ExternalAPI_ApiKey"
+);
+
+const timeout = Server.SiteSetting.Get(
+    "ServerLogic/TimeoutInSeconds"
+);</code></pre>
+        </div>
+
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h4 class="text-xl font-bold mb-3 text-blue-600">Server.User</h4>
+          <p class="text-sm text-gray-600 mb-4">Current user (authenticated)</p>
+          <pre class="text-xs bg-gray-50 p-4 rounded-lg font-mono overflow-x-auto"><code>// User info
+if (Server.User) {
+    const fullname = Server.User.fullname;
+    const email = Server.User.emailaddress1;
+    const userId = Server.User.contactid;
+} else {
+    // Anonymous user
+}</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="setup" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Setup Guide</h2>
+
+      <div class="pp-soft p-8 rounded-2xl mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900">Prerequisites</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">1.</span>
+            <div>
+              <strong>Enhanced Data Model</strong><br>
+              <span class="text-sm">Server Logic only works with Enhanced Data Model. Migration is required if you are using the Standard Model.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">2.</span>
+            <div>
+              <strong>Power Pages Studio</strong><br>
+              <span class="text-sm">Access to the "Setup" workspace &rarr; "Server Logic (Preview)"</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-blue-600 font-bold">3.</span>
+            <div>
+              <strong>VS Code with Power Platform Tools</strong><br>
+              <span class="text-sm">For code authoring with IntelliSense</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Step-by-Step Setup</h3>
+
+      <div class="space-y-6">
+        <div class="pp-card pl-6">
+          <h4 class="text-lg font-bold mb-2 text-gray-900">Step 1: Create Server Logic</h4>
+          <ol class="list-decimal list-inside space-y-2 text-gray-700">
+            <li>Open Power Pages Studio</li>
+            <li>Setup workspace &rarr; Server Logic (Preview)</li>
+            <li>Click "New Server Logic"</li>
+            <li>Enter a name (e.g. "BulkContactImport")</li>
+            <li>Assign a web role</li>
+          </ol>
+        </div>
+
+        <div class="pp-card pl-6">
+          <h4 class="text-lg font-bold mb-2 text-gray-900">Step 2: Write Code</h4>
+          <ol class="list-decimal list-inside space-y-2 text-gray-700">
+            <li>Click "Edit Code"</li>
+            <li>Select "Open Visual Studio Code"</li>
+            <li>Insert the code template (function get/post/put/del)</li>
+            <li>Save (Ctrl+S)</li>
+          </ol>
+        </div>
+
+        <div class="pp-card pl-6">
+          <h4 class="text-lg font-bold mb-2 text-gray-900">Step 3: Table Permissions</h4>
+          <ol class="list-decimal list-inside space-y-2 text-gray-700">
+            <li>Security workspace &rarr; Table Permissions</li>
+            <li>Create a new permission for the affected tables</li>
+            <li>Set privileges (Create, Read, Update, Delete)</li>
+            <li>Assign a web role</li>
+          </ol>
+        </div>
+
+        <div class="pp-card pl-6">
+          <h4 class="text-lg font-bold mb-2 text-gray-900">Step 4: Site Settings (optional)</h4>
+          <div class="bg-gray-900 text-gray-100 rounded-xl p-4 mt-2 overflow-x-auto">
+            <pre class="text-sm font-mono"><code>ServerLogic/Enabled = true
+ServerLogic/TimeoutInSeconds = 120
+ServerLogic/AllowedDomains = api.example.com
+ServerLogic/MaxMemoryUsageInBytes = 10485760</code></pre>
+          </div>
+          <p class="text-sm text-gray-700 mt-3"><strong>Update, November 2026:</strong> Microsoft no longer documents <code>MaxMemoryUsageInBytes</code>. It still worked in <a href="/en/blog/power-pages-server-logic-memory-limit/">my measurements</a>, but treat it as an emergency measure and confirm it with Microsoft before relying on it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="limitations" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Limitations &amp; Restrictions</h2>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h3 class="text-xl font-bold mb-4 text-gray-900">Preview Status</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold">&times;</span>
+            <div><strong>Not production-ready:</strong> Preview features are subject to change, breaking changes are possible</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold">&times;</span>
+            <div><strong>No SLA:</strong> No service level agreements, no production support</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold">&times;</span>
+            <div><strong>Enhanced Data Model required:</strong> Only works with EDM, not with the Standard Model</div>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-900">Technical Limitations</h3>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="pp-box pp-box--risk p-6">
+          <h4 class="font-bold mb-3 text-gray-900">Not Available</h4>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>Browser APIs (fetch, XMLHttpRequest)</li>
+            <li>Node.js APIs (Buffer, fs, process)</li>
+            <li>DOM manipulation</li>
+            <li>window, document objects</li>
+            <li>npm packages</li>
+          </ul>
+        </div>
+
+        <div class="pp-box pp-box--tip p-6">
+          <h4 class="font-bold mb-3 text-gray-900">Available</h4>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>ECMAScript 2023 standard</li>
+            <li>Server.Connector.* APIs</li>
+            <li>Server.Context, Server.User</li>
+            <li>Server.Logger for diagnostics</li>
+            <li>JSON, Array, String methods</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--note p-6">
+        <h4 class="font-bold mb-2 text-gray-900">Performance Limits</h4>
+        <ul class="space-y-2 text-sm text-gray-700">
+          <li><strong>Timeout:</strong> 120 seconds (default), max 240 seconds</li>
+          <li><strong>Memory:</strong> 10 MB per function, of which only about a third held data in my measurements. <a href="/en/blog/power-pages-server-logic-memory-limit/">Measured in November 2026</a>. Microsoft no longer documents this value.</li>
+          <li><strong>Content types:</strong> application/json, text/html, application/x-www-form-urlencoded</li>
+          <li><strong>Allowed domains:</strong> Must be explicitly defined in site settings</li>
+        </ul>
+      </div>
+    </section>
+
+
+
+
+  </div>
+</article>
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

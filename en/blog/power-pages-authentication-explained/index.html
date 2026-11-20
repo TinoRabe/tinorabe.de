@@ -1,0 +1,1760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Authentication Guide 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Explained</title>
+<meta name="description" content="Power Pages authentication guide: OAuth 2.0, OpenID Connect &amp; SAML 2.0 with SSO setup, security best practices and social login configuration explained.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-authentication-explained/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-authentication-explained/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-authentication-erklaert/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-authentication-explained/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Authentication Guide 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Explained">
+<meta property="og:description" content="Power Pages authentication guide: OAuth 2.0, OpenID Connect &amp; SAML 2.0 with SSO setup, security best practices and social login configuration explained.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-authentication-explained/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-authentication-explained.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Authentication Guide 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Explained">
+<meta property="article:published_time" content="2025-11-06">
+<meta property="article:modified_time" content="2026-08-27">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Authentication Guide 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Explained">
+<meta name="twitter:description" content="Power Pages authentication guide: OAuth 2.0, OpenID Connect &amp; SAML 2.0 with SSO setup, security best practices and social login configuration explained.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-authentication-explained.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-authentication-explained/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-authentication-explained/",
+      "name": "Power Pages Authentication Guide 2025: OAuth 2.0, OIDC & SAML 2.0 Explained",
+      "description": "Power Pages authentication guide: OAuth 2.0, OpenID Connect & SAML 2.0 with SSO setup, security best practices and social login configuration explained.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-authentication-explained.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-authentication-explained/#article",
+      "headline": "Power Pages Authentication Guide 2025: OAuth 2.0, OIDC & SAML 2.0 Explained",
+      "description": "Power Pages authentication guide: OAuth 2.0, OpenID Connect & SAML 2.0 with SSO setup, security best practices and social login configuration explained.",
+      "datePublished": "2025-11-06",
+      "dateModified": "2026-08-27",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-authentication-explained/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-authentication-explained.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages authentication, OAuth 2.0 tutorial, OpenID Connect OIDC, SAML 2.0 configuration, Microsoft Entra External ID, SSO single sign-on, Power Pages security, identity provider setup, social login Power Pages, authentication best practices 2025",
+      "articleSection": "TUTORIAL"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>TUTORIAL</span>
+      <time datetime="2025-11-06">6 November 2025</time><span>35 min read</span><a href="/de/blog/power-pages-authentication-erklaert/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Power Pages Authentication Guide 2025: OAuth 2.0, OIDC &amp; SAML 2.0 Explained</h1>
+    <p class="art-lead">Power Pages authentication guide: OAuth 2.0, OpenID Connect &amp; SAML 2.0 with SSO setup, security best practices and social login configuration explained.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<article class="py-12 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+    <div class="prose prose-lg max-w-none mb-12">
+      <p class="text-xl text-gray-700 leading-relaxed">
+        When you click "Sign in with Microsoft" on a Power Pages site, what actually happens? This guide breaks it down with simple analogies and clear visuals.
+      </p>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        <strong>The TL;DR:</strong> your portal asks a trusted authority (like Microsoft) to verify who you are. They confirm it, and you're in. Simple as that, but the mechanics behind that handshake are worth understanding, because when authentication breaks, you'll know exactly where to look.
+      </p>
+    </div>
+
+    <section id="introduction" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">The Three Players</h2>
+
+      <p class="text-gray-700 mb-6 leading-relaxed">Before diving into technical flows, let's establish who's involved in every Power Pages authentication exchange:</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h3 class="text-lg font-bold mb-2 text-gray-900">You (the user)</h3>
+          <p class="text-gray-700">The person trying to log in.</p>
+        </div>
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h3 class="text-lg font-bold mb-2 text-gray-900">Power Pages (your portal)</h3>
+          <p class="text-gray-700">Your website. It needs to know who you are before letting you in.</p>
+        </div>
+        <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+          <h3 class="text-lg font-bold mb-2 text-gray-900">Identity Provider (the bouncer)</h3>
+          <p class="text-gray-700">The trusted company that checks IDs, Microsoft Entra External ID, Google, Okta, Facebook, and others.</p>
+        </div>
+      </div>
+
+      <div class="pp-card p-6">
+        <p class="font-bold text-gray-900 mb-2">The core question</p>
+        <p class="text-gray-700 mb-2"><strong>How does your portal trust what Microsoft (or any other identity provider) says?</strong></p>
+        <p class="text-gray-700">The answer: digital signatures. Like a tamper-proof seal on a letter, if the seal is intact and matches the sender's known key, you can trust the contents.</p>
+      </div>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="oauth-oidc" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">OAuth 2.0 / OpenID Connect Deep Dive</h2>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <p class="text-gray-700 mb-2"><strong>Common identity providers:</strong> Microsoft Entra External ID, Entra ID (Azure AD), Google, GitHub, Auth0, Okta (OIDC)</p>
+        <p class="text-gray-700"><strong>Protocol flow:</strong> Authorization Code Flow with PKCE (recommended) or Hybrid Flow</p>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Real-world analogy: the nightclub with police verification</h3>
+        <p class="text-gray-800 mb-4">Imagine a nightclub (Power Pages) that doesn't issue its own IDs. Instead, it trusts the police station (identity provider) to verify everyone's identity.</p>
+        <ol class="space-y-2 text-gray-800 ml-4 list-decimal list-inside">
+          <li><strong>You</strong> arrive at the club and want to get in</li>
+          <li><strong>Bouncer</strong> says: "I need proof from the police station down the street"</li>
+          <li><strong>You</strong> walk to the police station</li>
+          <li><strong>Police</strong> verify your identity (check your passport) and give you a stamped wristband</li>
+          <li><strong>You</strong> return to the club with the wristband</li>
+          <li><strong>Bouncer</strong> checks the stamp (validates it's authentic) &rarr; "You're in!"</li>
+        </ol>
+        <p class="text-gray-800 mt-4"><strong>Why this works:</strong> the club trusts the police's stamp. The police only stamp wristbands for verified people. The stamp can't be forged (digital signature). The wristband expires after a few hours (token expiry).</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Technical flow: Authorization Code Flow, step-by-step</h3>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <div class="space-y-6 text-gray-800">
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 1: User initiates login</p>
+            <p><strong>Step 1:</strong> User clicks "Sign in with Microsoft" on Power Pages.</p>
+            <p class="ml-4 mt-1 text-sm italic">Like walking up to the nightclub.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 2: Authorization request</p>
+            <p><strong>Step 2:</strong> Power Pages generates an authorization request with:</p>
+            <ul class="ml-8 mt-2 space-y-1 list-disc">
+              <li><code>client_id</code>: your app's ID</li>
+              <li><code>redirect_uri</code>: where to return after login</li>
+              <li><code>scope</code>: what info you need (<code>openid</code>, <code>email</code>, <code>profile</code>)</li>
+              <li><code>state</code>: random value to prevent CSRF attacks</li>
+              <li><code>nonce</code>: random value to prevent replay attacks</li>
+            </ul>
+            <p class="ml-4 mt-2 text-sm italic">Like the bouncer writing a note: "Please verify this person and send them back."</p>
+            <p class="mt-3"><strong>Step 3:</strong> the browser redirects the user to the identity provider (e.g. the Microsoft login page).</p>
+            <p class="ml-4 mt-1 text-sm italic">Like walking to the police station.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 3: User authentication</p>
+            <p><strong>Step 4:</strong> user enters username and password on the IdP's login page.</p>
+            <p><strong>Step 5:</strong> the IdP validates the credentials against its user database.</p>
+            <p class="ml-4 mt-2 text-sm italic">Like the police checking your passport.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 4: Authorization code exchange</p>
+            <p><strong>Step 6:</strong> the IdP generates an <strong>authorization code</strong> (short-lived, single-use).</p>
+            <p><strong>Step 7:</strong> the browser redirects back to Power Pages with the code in the URL:</p>
+            <p class="ml-4"><code>https://yoursite.powerappsportals.com/signin-oidc?code=abc123&amp;state=xyz</code></p>
+            <p class="ml-4 mt-2 text-sm italic">Like getting a temporary receipt from police, not the full ID yet.</p>
+            <p class="mt-3"><strong>Step 8:</strong> Power Pages verifies the <code>state</code> parameter (CSRF protection).</p>
+            <p class="mt-3"><strong>Step 9:</strong> Power Pages makes a <strong>backend</strong> request to the IdP's token endpoint:</p>
+<pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto text-sm"><code>POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&amp;
+code=abc123&amp;
+client_id=your-client-id&amp;
+client_secret=your-secret&amp;
+redirect_uri=https://yoursite.powerappsportals.com/signin-oidc</code></pre>
+            <p class="ml-4 mt-2 text-sm italic">Like the club manager calling the police station to verify the receipt.</p>
+            <p class="mt-3"><strong>Why backend?</strong> the <code>client_secret</code> must never be exposed to the browser.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 5: Token validation &amp; session creation</p>
+            <p><strong>Step 10:</strong> the IdP returns tokens:</p>
+            <ul class="ml-8 mt-2 space-y-1 list-disc">
+              <li><strong>id_token</strong> (JWT), contains user identity claims</li>
+              <li><strong>access_token</strong>: for API calls (optional in Power Pages)</li>
+              <li><strong>refresh_token</strong>: to get new tokens without re-login (optional)</li>
+            </ul>
+            <p class="mt-3"><strong>Step 11:</strong> Power Pages validates the <code>id_token</code>:</p>
+            <ul class="ml-8 mt-2 space-y-1">
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Signature is valid (using the IdP's public key)</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Issuer (<code>iss</code>) matches the expected IdP</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Audience (<code>aud</code>) matches our <code>client_id</code></li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Token hasn't expired (<code>exp</code> claim)</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Nonce matches the one we sent</li>
+            </ul>
+            <p class="ml-4 mt-2 text-sm italic">Like the bouncer checking the stamp is authentic and not expired.</p>
+            <p class="mt-3"><strong>Step 12:</strong> Power Pages extracts user claims from the token (email, name, etc.).</p>
+            <p><strong>Step 13:</strong> Power Pages creates or updates the contact record in Dataverse.</p>
+            <p><strong>Step 14:</strong> Power Pages creates a session cookie.</p>
+            <p><strong>Step 15:</strong> the user is redirected to the originally requested page.</p>
+            <p class="ml-4 mt-2 text-sm italic">Like finally getting into the club with your verified wristband.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 6: Subsequent requests</p>
+            <p><strong>Every page load:</strong> Power Pages checks the session cookie.</p>
+            <p><strong>Token expired?</strong> Use the refresh token to get new tokens (if configured).</p>
+            <p><strong>Session expired?</strong> The user must log in again.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--risk p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Why the two-step dance? (Code &rarr; tokens)</h4>
+        <p class="text-gray-800 mb-3"><strong>The problem:</strong> if the IdP sent tokens directly in the browser URL (or as a POST to the browser), malicious JavaScript on the page could steal them.</p>
+        <p class="text-gray-800 mb-3"><strong>The solution:</strong> the Authorization Code Flow separates concerns:</p>
+        <ul class="space-y-2 text-gray-800 ml-4 list-disc">
+          <li><strong>Frontend:</strong> the browser only ever sees a short-lived, single-use authorization code</li>
+          <li><strong>Backend:</strong> the Power Pages server exchanges the code for tokens using the client secret</li>
+          <li><strong>Result:</strong> tokens never touch the browser, which makes token theft far harder</li>
+        </ul>
+        <p class="text-gray-800 mt-3 text-sm italic">It's like getting a receipt at the police station, then the club manager calls to verify and gets the full details privately.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Visual flow diagram</h3>
+
+      <div class="bg-white border border-gray-200 rounded-xl p-4 mb-4 overflow-x-auto">
+        <div class="mermaid">
+sequenceDiagram
+    autonumber
+    actor User
+    participant Browser
+    participant PP as Power Pages
+    participant IdP as Identity Provider
+
+    User->>Browser: 1. Navigate to portal
+    Browser->>PP: 2. Request protected page
+    PP->>Browser: 3. Redirect to login page
+
+    rect rgb(200, 220, 255)
+        Note over User,Browser: User initiates login
+        User->>Browser: 4. Click "Sign in with Azure AD"
+    end
+
+    rect rgb(255, 220, 200)
+        Note over Browser,IdP: Authorization Request Phase
+        Browser->>PP: 5. POST /signin-oidc
+        PP->>PP: 6. Generate auth request<br/>(client_id, redirect_uri, scope, state, nonce)
+        PP->>Browser: 7. HTTP 302 Redirect to IdP
+        Browser->>IdP: 8. GET /authorize?params
+    end
+
+    rect rgb(200, 255, 220)
+        Note over User,IdP: User Authentication Phase
+        IdP->>Browser: 9. Show login page
+        User->>Browser: 10. Enter username/password
+        Browser->>IdP: 11. POST credentials
+        IdP->>IdP: 12. Validate credentials
+    end
+
+    rect rgb(255, 255, 200)
+        Note over Browser,PP: Authorization Code Exchange
+        IdP->>Browser: 13. HTTP 302 with code
+        Browser->>PP: 14. GET /signin-oidc?code=xyz&state=abc
+        PP->>PP: 15. Verify state parameter
+        PP->>IdP: 16. POST /token<br/>(code, client_id, client_secret)
+        IdP->>IdP: 17. Validate code & client
+        IdP->>PP: 18. Return id_token + access_token
+    end
+
+    rect rgb(220, 200, 255)
+        Note over PP: Token Validation & Session Creation
+        PP->>PP: 19. Validate id_token signature
+        PP->>PP: 20. Check iss, aud, exp, nonce
+        PP->>PP: 21. Extract user claims
+        PP->>PP: 22. Create/update user in Dataverse
+        PP->>PP: 23. Create session cookie
+    end
+
+    PP->>Browser: 24. Set-Cookie + Redirect to original page
+    Browser->>PP: 25. Request original page with cookie
+    PP->>Browser: 26. Return protected content
+    Browser->>User: 27. Display page
+        </div>
+      </div>
+      <p class="text-sm text-gray-600 mb-8"><strong>Diagram legend:</strong> the colored bands group related steps together. Numbers match the step-by-step explanation above.</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Required parameters</h3>
+      <p class="text-gray-700 mb-4">These parameters must be configured for authentication to work:</p>
+
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Parameter</th>
+              <th class="p-3 text-left">Description</th>
+              <th class="p-3 text-left">Example value</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Provider Name <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The text displayed on the sign-in button that users see on the login page</td><td class="p-3 align-top">"Sign in with Company Account"<br>"Sign in with Microsoft"</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Authority <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The identity provider's authorization endpoint URL. Tells Power Pages where to redirect users for authentication.</td><td class="p-3 align-top"><code>https://{tenant}.ciamlogin.com/</code> (Entra External ID)<br><code>https://login.microsoftonline.com/{tenant-id}/</code> (Entra ID)<br><code>https://accounts.google.com/</code> (Google)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Client ID <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The application (client) ID from your IdP app registration. Uniquely identifies your Power Pages site to the identity provider.</td><td class="p-3 align-top"><code>12345678-90ab-cdef-1234-567890abcdef</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Redirect URL <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The Power Pages callback URL where the IdP sends users after authentication. Auto-generated by Power Pages, always use the Copy button, never type this manually.</td><td class="p-3 align-top"><code>https://yoursite.powerappsportals.com/signin-oidc</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Metadata Address <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The OpenID Connect discovery document URL. Contains all the IdP's endpoints, supported features, and public keys for token validation. Power Pages fetches this automatically to configure itself.</td><td class="p-3 align-top"><code>https://{tenant}.ciamlogin.com/.well-known/openid-configuration</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Scope <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">Space-separated list of OAuth scopes to request. <code>openid</code> is mandatory. Add <code>email</code> for the user's email, <code>profile</code> for first/last name.</td><td class="p-3 align-top"><code>openid email</code> (minimal)<br><code>openid email profile</code> (recommended)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Response Type <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The OAuth flow type. <code>code id_token</code> (hybrid flow) is recommended for security, it provides both an authorization code and an ID token.</td><td class="p-3 align-top"><code>code id_token</code> (recommended)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Client Secret <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED*</span></td><td class="p-3 align-top">The client secret from your IdP app registration. Required when Response Type includes <code>code</code>. Proves the token exchange request comes from your authorized site. Keep it secure.</td><td class="p-3 align-top"><em>*Required only if Response Type contains <code>code</code></em></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Response Mode <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">How the IdP returns the authentication response. <code>form_post</code> is recommended, it sends tokens via HTTP POST (safer than URL fragments).</td><td class="p-3 align-top"><code>form_post</code> (recommended)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Optional / advanced parameters</h3>
+      <p class="text-gray-700 mb-4">These provide additional control but aren't required for basic authentication:</p>
+
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Parameter</th>
+              <th class="p-3 text-left">Description</th>
+              <th class="p-3 text-left">Default / use case</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">External Logout</td><td class="p-3 align-top">Enable federated sign-out. <strong>On:</strong> signing out of Power Pages also signs the user out of the IdP. <strong>Off:</strong> only signs out of Power Pages.</td><td class="p-3 align-top">Off (default). Turn on for high-security scenarios.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Post Logout Redirect URL</td><td class="p-3 align-top">Where to redirect users after sign-out. Must be configured in the IdP's allowed logout URLs.</td><td class="p-3 align-top"><code>https://yoursite.powerappsportals.com/</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">RP Initiated Logout</td><td class="p-3 align-top">Allow the relying party (Power Pages) to initiate sign-out at the IdP. Only works when External Logout is on.</td><td class="p-3 align-top">Off (default). Requires External Logout = On.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Issuer Filter</td><td class="p-3 align-top">Wildcard-based filter for multi-tenant scenarios. Use this to accept tokens from multiple Azure AD tenants.</td><td class="p-3 align-top"><code>https://sts.windows.net/*/</code>: B2B portals with users from different companies</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Validate Audience</td><td class="p-3 align-top">When on, Power Pages checks that the <code>aud</code> claim matches one of your Valid Audiences.</td><td class="p-3 align-top">Off (default). Production recommendation: on + set Valid Audiences.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Valid Audiences</td><td class="p-3 align-top">Comma-separated allowed audience values. Prevents token misuse across applications.</td><td class="p-3 align-top"><code>api://12345678-90ab-cdef</code>. Requires Validate Audience = on.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Validate Issuers</td><td class="p-3 align-top">When on, Power Pages only accepts tokens from IdPs in your Valid Issuers list.</td><td class="p-3 align-top">Off (default). Prevents token replay from unauthorized IdPs.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Valid Issuers</td><td class="p-3 align-top">Comma-separated allowed issuer URLs.</td><td class="p-3 align-top"><code>https://sts.windows.net/{tenant1}/,https://sts.windows.net/{tenant2}/</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Registration Claims Mapping</td><td class="p-3 align-top">Map claims from the IdP token to Dataverse contact fields during registration. Format: <code>contact_field=token_claim</code>.</td><td class="p-3 align-top"><code>firstname=given_name,lastname=family_name</code>. Text and Boolean only.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Login Claims Mapping</td><td class="p-3 align-top">Map claims to Dataverse contact fields on every sign-in, keeping contact data in sync.</td><td class="p-3 align-top">Use the same mapping as Registration for consistency.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Nonce Lifetime</td><td class="p-3 align-top">How long (minutes) the nonce value is valid, preventing replay attacks.</td><td class="p-3 align-top">10 minutes (default). Adjust if users on slow networks hit timeouts.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Use Token Lifetime</td><td class="p-3 align-top">Match the Power Pages session lifetime to the IdP token expiry. Overrides the default 8-hour timeout, session ends when the token expires (typically 1 hour).</td><td class="p-3 align-top">Off (default = 8 hours). Turn on for high-security portals.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Contact Mapping with Email</td><td class="p-3 align-top">Automatically link the IdP identity to a Dataverse contact by matching email address. Off: a new contact is created for every new IdP identity, even on an email match.</td><td class="p-3 align-top">On (default, recommended). When off, the same user can create multiple contacts across different IdPs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--tip p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">OAuth/OIDC quick start</h4>
+        <p class="text-gray-700 mb-3">For 90% of OAuth/OIDC scenarios, you only need the required parameters:</p>
+        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+          <li>Register an app in your IdP (Entra External ID, Google, etc.)</li>
+          <li>Copy the <strong>Redirect URL</strong> from Power Pages &rarr; paste it as the Redirect URI in the IdP</li>
+          <li>Get <strong>Client ID</strong> and <strong>Client Secret</strong> from the IdP</li>
+          <li>Find the <strong>Metadata Address</strong> (usually in the IdP app overview or endpoints section)</li>
+          <li>Set <strong>Scope</strong> to <code>openid email</code> (or <code>openid email profile</code> for first/last name)</li>
+          <li>Set <strong>Response Type</strong> to <code>code id_token</code> and <strong>Response Mode</strong> to <code>form_post</code></li>
+          <li>Test in incognito mode</li>
+        </ol>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6">OAuth/OIDC dos and don'ts</h3>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-green-50 border-2 border-green-500 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-green-800 mb-4">Do, OAuth best practices</h4>
+          <ul class="space-y-3 text-gray-800 text-sm">
+            <li><strong>Use <code>code id_token</code> response type</strong>: hybrid flow provides the best security and UX</li>
+            <li><strong>Always request the <code>email</code> scope</strong>: required for user identification and contact mapping</li>
+            <li><strong>Use the Copy button for Redirect URL</strong>: typos cause 80% of OAuth failures</li>
+            <li><strong>Verify the metadata URL is publicly accessible</strong>: open it in a browser without authentication</li>
+            <li><strong>Start with minimal scopes</strong>: <code>openid email</code> is enough; add <code>profile</code> only if needed</li>
+            <li><strong>Set client secret expiry to 6 to 12 months</strong>: forces rotation without being too frequent</li>
+            <li><strong>Test token claims in jwt.io</strong>: verify email, name, groups arrive as expected</li>
+            <li><strong>Enable diagnostic logging before testing</strong>: Power Pages &rarr; Settings &rarr; Authentication</li>
+            <li><strong>Test with non-admin accounts</strong>: admin accounts have different token claims</li>
+            <li><strong>Configure claims mapping for first/last name</strong>: improves the profile page experience</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 border-2 border-red-500 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-red-800 mb-4">Don't, OAuth pitfalls</h4>
+          <ul class="space-y-3 text-gray-800 text-sm">
+            <li><strong>Don't type the Redirect URL manually</strong>: one wrong character = cryptic "redirect_uri_mismatch"</li>
+            <li><strong>Don't forget the trailing slash in Authority</strong>: <code>https://login.microsoftonline.com/{tenant-id}/</code></li>
+            <li><strong>Don't share client secrets across multiple sites</strong>: each site needs its own app registration</li>
+            <li><strong>Don't test only in your own browser</strong>: test incognito, different browsers, mobile</li>
+            <li><strong>Don't use implicit flow</strong>: response type <code>id_token</code> alone is deprecated</li>
+            <li><strong>Don't request unnecessary scopes</strong>: more scopes = more consent prompts = higher drop-off</li>
+            <li><strong>Don't ignore token expiry</strong>: the default 1-hour lifetime needs a session strategy</li>
+            <li><strong>Don't forget the Post Logout Redirect URL</strong>: otherwise users see the IdP's logout page</li>
+            <li><strong>Don't assume SSO = Single Sign-Out</strong>: SSO works, but single sign-out is not supported</li>
+            <li><strong>Don't skip claims mapping validation</strong>: wrong mapping breaks user profiles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Top 5 OAuth/OIDC configuration mistakes</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="font-bold text-red-700 mb-1">1. Redirect URI mismatch</p>
+            <p class="text-gray-700"><strong>Problem:</strong> the URL in Power Pages doesn't exactly match the one in the IdP app registration (trailing slash, http vs. https, casing).</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> "redirect_uri_mismatch" or "AADSTS50011".</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> use the Copy button in Power Pages, paste the exact value into the IdP.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">2. Missing or wrong scope</p>
+            <p class="text-gray-700"><strong>Problem:</strong> scope doesn't include <code>openid</code> (mandatory) or <code>email</code> (needed for contact mapping).</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> authentication works, but users have no email address in Power Pages and can't receive notifications.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> set Scope to at least <code>openid email</code>.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">3. Metadata URL not accessible</p>
+            <p class="text-gray-700"><strong>Problem:</strong> metadata URL requires authentication or sits behind a firewall/VPN.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> "Unable to retrieve metadata" or 404/401 during configuration.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> metadata must be publicly accessible, test by opening it in a browser while logged out.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">4. Expired client secret</p>
+            <p class="text-gray-700"><strong>Problem:</strong> the client secret expired (typically after 6 to 24 months).</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> authentication worked before, then suddenly fails with "invalid_client" or "AADSTS7000222".</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> generate a new secret, update Power Pages, set a calendar reminder 30 days before the next expiry.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">5. Wrong response mode</p>
+            <p class="text-gray-700"><strong>Problem:</strong> using <code>query</code> or <code>fragment</code> with a <code>code id_token</code> response type.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> tokens appear in the browser URL bar (security risk), or response mode mismatch errors.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> always use <code>form_post</code>: the safest option for Power Pages.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6">OAuth/OIDC best practices by role</h3>
+
+      <div class="pp-card p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For identity provider admins (Entra External ID, Google, Auth0)</h4>
+        <p class="font-bold text-blue-600 mt-4 mb-2">App registration setup</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>One app registration per Power Pages site</strong>: isolates configuration, easier troubleshooting, better security</li>
+          <li><strong>Use descriptive app names</strong>: "Power Pages Production Customer Portal", not "App1"</li>
+          <li><strong>Document all settings</strong>: screenshot the app registration, save in project documentation</li>
+          <li><strong>Configure multiple owners</strong>: don't rely on a single person for secret rotation</li>
+        </ul>
+        <p class="font-bold text-blue-600 mt-4 mb-2">Secret management</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Set a 6-month expiry for client secrets</strong>: balances security and operational overhead</li>
+          <li><strong>Use descriptive secret names with the expiry date</strong>: "Prod Secret (Expires Dec 2025)", not "Secret 1"</li>
+          <li><strong>Create two secrets with staggered expiry</strong>: allows zero-downtime rotation</li>
+          <li><strong>Set calendar reminders 30 days before expiry</strong>: prevents emergency "authentication is down" incidents</li>
+        </ul>
+        <p class="font-bold text-blue-600 mt-4 mb-2">Claims &amp; token configuration</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Always include the email claim</strong>: essential for Power Pages contact mapping</li>
+          <li><strong>Configure optional claims for profile data</strong>: enable <code>given_name</code>, <code>family_name</code></li>
+          <li><strong>Test tokens in jwt.io</strong>: decode ID tokens to verify claims before testing in Power Pages</li>
+          <li><strong>Configure group claims for role mapping</strong>: use groups to auto-assign Power Pages roles</li>
+          <li><strong>Keep token lifetime at the default 1 hour</strong>: don't extend it, to avoid security risk</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--tip p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For Power Pages admins</h4>
+        <p class="font-bold text-green-700 mt-4 mb-2">Configuration &amp; testing</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Always test in incognito/private mode</strong>: catches cookie and cache issues</li>
+          <li><strong>Enable diagnostic logging before testing</strong>: logs show exact OAuth errors with codes</li>
+          <li><strong>Test with non-admin accounts</strong>: admin tokens carry different claims</li>
+          <li><strong>Test across devices</strong>: desktop Chrome, mobile Safari, Edge, OAuth behaves differently</li>
+          <li><strong>Verify the email claim arrives in the contact record</strong>: check after the first login</li>
+        </ul>
+        <p class="font-bold text-green-700 mt-4 mb-2">Claims mapping</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Configure Registration Claims Mapping</strong>: <code>firstname=given_name,lastname=family_name</code></li>
+          <li><strong>Use the same mapping for Login Claims Mapping</strong>: keeps contact data synced with the IdP</li>
+          <li><strong>Don't map fields users can't change</strong>: mapping job title when users can't edit it causes confusion</li>
+          <li><strong>Test claims mapping with a real user account</strong>: verify mapped fields land correctly</li>
+        </ul>
+        <p class="font-bold text-green-700 mt-4 mb-2">Session management</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Understand the default 8-hour session</strong>: Power Pages session &ne; token expiry (token expires at 1 hour, session continues)</li>
+          <li><strong>Consider Use Token Lifetime for high-security portals</strong>: forces re-authentication when the token expires</li>
+          <li><strong>Test session expiry behavior</strong>: does the user get a clear error message after 8 hours?</li>
+          <li><strong>Educate users about IdP session vs. Power Pages session</strong>: signing out of the portal doesn't sign out of the IdP</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For consultants &amp; developers</h4>
+        <p class="font-bold text-blue-700 mt-4 mb-2">Troubleshooting workflow</p>
+        <ol class="space-y-2 text-gray-700 text-sm list-decimal ml-4">
+          <li><strong>Verify the Redirect URL</strong>: 80% of OAuth issues are redirect URL mismatches</li>
+          <li><strong>Check Metadata URL accessibility</strong>: should return JSON without authentication</li>
+          <li><strong>Verify Client ID and Secret</strong>: copy-paste from the IdP, don't trust memory</li>
+          <li><strong>Check the scope configuration</strong>: must include <code>openid</code> at minimum</li>
+          <li><strong>Review Power Pages diagnostic logs</strong>: look for specific error codes (AADSTS*, invalid_client, etc.)</li>
+          <li><strong>Use the browser DevTools Network tab</strong>: watch the flow: authorization request &rarr; redirect &rarr; token exchange</li>
+        </ol>
+        <p class="font-bold text-blue-700 mt-4 mb-2">Common error codes</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>AADSTS50011</strong>: redirect URI mismatch</li>
+          <li><strong>AADSTS7000222</strong>: invalid client secret</li>
+          <li><strong>AADSTS50105</strong>: user not assigned to app</li>
+          <li><strong>invalid_request</strong>: missing required parameter</li>
+          <li><strong>unauthorized_client</strong>: client not authorized</li>
+        </ul>
+        <p class="font-bold text-blue-700 mt-4 mb-2">Project delivery</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Screenshot every working config screen</strong>: Client ID, Authority, Scopes, Claims Mapping</li>
+          <li><strong>Document the client secret rotation process</strong>: who does it, how often</li>
+          <li><strong>Create an error runbook</strong>: document errors seen during testing, with solutions</li>
+          <li><strong>Provide user documentation</strong>: explain consent, logout, and session timeout</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="sso" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Single Sign-On (SSO) with OAuth/OpenID Connect</h2>
+
+      <p class="text-gray-700 text-lg mb-6"><strong>Quick answer:</strong> yes. OAuth 2.0 and OpenID Connect enable SSO across multiple applications.</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">How SSO works</h3>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h4 class="text-xl font-bold text-gray-900 mb-3">The concert wristband analogy</h4>
+        <p class="text-gray-800 mb-2">Imagine a music festival with multiple stages (applications):</p>
+        <ol class="space-y-2 text-gray-800 ml-4 list-decimal list-inside">
+          <li>The <strong>entry gate</strong> checks your ticket and gives you a wristband</li>
+          <li><strong>Stage 1 (App 1)</strong> sees your wristband &rarr; "You're in!"</li>
+          <li><strong>Stage 2 (App 2)</strong> sees the same wristband &rarr; "You're in here too!"</li>
+          <li>No need to show your ticket again at each stage</li>
+        </ol>
+        <p class="text-gray-800 mt-3">That wristband is your <strong>access token</strong> from the identity provider.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-green-50 border-2 border-green-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-green-800 mb-3">What Power Pages supports</h4>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Single sign-in</strong>: log in once, access multiple Power Pages sites (if they use the same IdP)</li>
+            <li><strong>Cross-application SSO</strong>: works with other apps using the same identity provider</li>
+            <li><strong>Front-channel sign-out</strong>: logs you out of both Power Pages and the IdP</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-red-800 mb-3">What Power Pages doesn't support</h4>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Single sign-out</strong>: logging out of one app won't automatically log you out of all apps</li>
+            <li><strong>Cross-provider SSO</strong>: sessions can't be shared between Google and Microsoft logins</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Real-world SSO scenarios</h3>
+
+      <div class="pp-box pp-box--tip p-6 mb-4">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Scenario 1: employee portal + intranet</h4>
+        <p class="text-gray-700 mb-2"><strong>Setup:</strong> both use Microsoft Entra External ID</p>
+        <ul class="space-y-1 text-gray-700 text-sm">
+          <li>Employee logs into SharePoint &rarr; gets a token from Entra External ID</li>
+          <li>Employee visits the Power Pages portal &rarr; the same token works</li>
+          <li>No second login required</li>
+        </ul>
+      </div>
+      <div class="pp-box pp-box--tip p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Scenario 2: customer portal + support app</h4>
+        <p class="text-gray-700 mb-2"><strong>Setup:</strong> both use Okta</p>
+        <ul class="space-y-1 text-gray-700 text-sm">
+          <li>Customer logs into the support app &rarr; gets an Okta token</li>
+          <li>Customer clicks a link to the Power Pages portal &rarr; automatically signed in</li>
+          <li>Seamless experience</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">What breaks SSO?</h4>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Different identity providers</strong>: portal uses Google, app uses Microsoft (won't share sessions)</li>
+          <li><strong>Token expired</strong>: tokens typically last 1 hour, then you need to re-authenticate</li>
+          <li><strong>Different domains</strong>: cookies don't cross domains (use the same parent domain if possible)</li>
+          <li><strong>Incognito/private mode</strong>: no cookies, no SSO</li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Setting up SSO</h3>
+      <p class="text-gray-700 mb-2"><strong>Step 1: use the same identity provider everywhere</strong></p>
+      <ul class="space-y-1 text-gray-700 ml-6 mb-4 list-disc">
+        <li>All apps &rarr; Microsoft Entra External ID, or</li>
+        <li>All apps &rarr; Okta, or</li>
+        <li>All apps &rarr; Google</li>
+      </ul>
+      <p class="text-gray-700 mb-2"><strong>Step 2: configure apps in the IdP</strong></p>
+      <ul class="space-y-1 text-gray-700 ml-6 mb-4 list-disc">
+        <li>Register each app (Power Pages, SharePoint, custom apps)</li>
+        <li>Use the same tenant/organization</li>
+        <li>Configure proper redirect URLs for each app</li>
+      </ul>
+      <p class="text-gray-700 mb-2"><strong>Step 3: test the flow</strong></p>
+      <ul class="space-y-1 text-gray-700 ml-6 mb-8 list-disc">
+        <li>Log into App 1 &rarr; get a token</li>
+        <li>Open App 2 in the same browser &rarr; should auto-login</li>
+        <li>Check: no second password prompt = SSO working</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">SSO token lifetime</h3>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Token type</th>
+              <th class="p-3 text-left">Typical lifetime</th>
+              <th class="p-3 text-left">What happens after</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">ID Token</td><td class="p-3 align-top">1 hour</td><td class="p-3 align-top">Needs refreshing (usually silent)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Access Token</td><td class="p-3 align-top">1 hour</td><td class="p-3 align-top">Refresh using the refresh token</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Refresh Token</td><td class="p-3 align-top">90 days (Microsoft)</td><td class="p-3 align-top">Need to log in again</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Power Pages Session</td><td class="p-3 align-top">8 hours (configurable)</td><td class="p-3 align-top">Redirected to the login page</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-card p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Pro tip: silent token refresh</h4>
+        <p class="text-gray-700 mb-2">OAuth/OpenID Connect providers can silently refresh tokens in the background using refresh tokens:</p>
+        <ul class="space-y-1 text-gray-700 text-sm list-disc ml-4">
+          <li>The user's session stays active without re-login</li>
+          <li>It happens automatically before the token expires</li>
+          <li>The user doesn't notice anything</li>
+        </ul>
+        <p class="text-gray-700 mt-3"><strong>Power Pages does this automatically</strong>: you don't need to configure anything special.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">When SSO doesn't work</h3>
+      <p class="text-gray-700 mb-3"><strong>Problem:</strong> "I logged into App A but still need to log in to Power Pages."</p>
+      <p class="text-gray-700 mb-2"><strong>Checklist:</strong></p>
+      <ul class="space-y-1 text-gray-700 mb-8">
+        <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Same identity provider? (Both must use Entra External ID, not one Entra + one Google)</li>
+        <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Same tenant? (Both must be in the same Entra External ID tenant)</li>
+        <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Same browser? (SSO doesn't cross browsers)</li>
+        <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Cookies enabled? (SSO needs cookies)</li>
+        <li><span class="pp-mark pp-mark--todo" aria-hidden="true">□</span>Token still valid? (Check if it has expired)</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">SSO best practices</h3>
+      <ul class="space-y-2 text-gray-700 list-disc ml-4">
+        <li><strong>Keep it simple</strong>: one IdP for all apps (don't mix Google + Microsoft + Okta)</li>
+        <li><strong>Communicate session limits</strong>: tell users "session expires in 8 hours"</li>
+        <li><strong>Implement "remember me"</strong>: a longer refresh token means fewer re-logins</li>
+        <li><strong>Test across apps</strong>: make sure SSO actually works before launch</li>
+        <li><strong>Document the flow</strong>: so support knows what's expected</li>
+      </ul>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="saml" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">SAML 2.0 Deep Dive</h2>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <p class="text-gray-700 mb-2"><strong>Common identity providers:</strong> Okta, Microsoft Entra ID (Enterprise Apps), Azure AD B2C (with custom policies), Ping Identity, OneLogin, Shibboleth</p>
+        <p class="text-gray-700"><strong>Protocol flow:</strong> SP-initiated SAML flow (Power Pages redirects the user to the IdP for authentication)</p>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Real-world analogy: the embassy visa system</h3>
+        <p class="text-gray-800 mb-4">Imagine you want to enter a foreign country (Power Pages) that requires a visa. You can't just show up, you need proof from your home country's embassy (identity provider) that you're authorized.</p>
+        <ol class="space-y-2 text-gray-800 ml-4 list-decimal list-inside">
+          <li><strong>You</strong> arrive at the border (Power Pages login page)</li>
+          <li><strong>Border guard</strong> says: "You need a visa from your embassy" and gives you an official form (SAML Request)</li>
+          <li><strong>You</strong> take the form to your embassy (IdP login page)</li>
+          <li><strong>Embassy staff</strong> verify your identity (check your passport, ask security questions)</li>
+          <li><strong>Embassy</strong> stamps your visa application form (SAML Assertion) with an official seal</li>
+          <li><strong>You</strong> return to the border with the stamped form</li>
+          <li><strong>Border guard</strong> verifies the embassy seal (XML signature validation), checks it's authentic &rarr; "Welcome!"</li>
+        </ol>
+        <p class="text-gray-800 mt-4"><strong>Why this works:</strong> the border guard trusts the embassy seal (both agreed on security certificates beforehand). The embassy seal is tamper-proof (XML digital signature). The visa has an expiry (<code>NotOnOrAfter</code>). The visa is for this specific person (<code>NameID</code> matches).</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Technical flow: SP-initiated SAML 2.0, step-by-step</h3>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <div class="space-y-6 text-gray-800">
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 1: User initiates login (service provider initiated)</p>
+            <p><strong>Step 1:</strong> user clicks "Sign in with Okta" (or your SAML provider) on Power Pages.</p>
+            <p class="ml-4 mt-1 text-sm italic">Like arriving at the border checkpoint.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 2: SAML authentication request (AuthnRequest)</p>
+            <p><strong>Step 2:</strong> Power Pages generates a <strong>SAML AuthnRequest</strong> (XML document) containing:</p>
+            <ul class="ml-8 mt-2 space-y-1 list-disc">
+              <li><code>Issuer</code>: the service provider realm (your site's identifier)</li>
+              <li><code>AssertionConsumerServiceURL</code>: where to send the response</li>
+              <li><code>ID</code>: unique request ID (prevents replay attacks)</li>
+              <li><code>IssueInstant</code>: timestamp when the request was created</li>
+            </ul>
+            <p class="mt-3"><strong>Example SAML request:</strong></p>
+<pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto text-sm"><code>&lt;samlp:AuthnRequest
+  xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+  ID="_abcd1234"
+  Version="2.0"
+  IssueInstant="2025-11-06T10:30:00Z"
+  Destination="https://idp.example.com/saml/sso"
+  AssertionConsumerServiceURL="https://yoursite.powerappsportals.com/signin-saml2"&gt;
+  &lt;saml:Issuer&gt;https://yoursite.powerappsportals.com/&lt;/saml:Issuer&gt;
+  &lt;samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"/&gt;
+&lt;/samlp:AuthnRequest&gt;</code></pre>
+            <p class="ml-4 mt-2 text-sm italic">Like the border guard giving you an official form to take to the embassy.</p>
+            <p class="mt-3"><strong>Step 3:</strong> Power Pages encodes the XML request (Base64), optionally compresses it (Deflate), and redirects the browser to the IdP:</p>
+            <p class="ml-4"><code>https://idp.example.com/saml/sso?SAMLRequest=PHNhbWxwOkF1dGhuUmVxdWVzdC...</code></p>
+            <p class="ml-4 mt-1 text-sm italic">Like walking to the embassy with the form.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 3: User authentication at the IdP</p>
+            <p><strong>Step 4:</strong> the IdP decodes and validates the SAML request:</p>
+            <ul class="ml-8 mt-1 list-disc">
+              <li>Checks the Issuer is a known service provider</li>
+              <li>Validates the IssueInstant isn't too old</li>
+              <li>Checks AssertionConsumerServiceURL is registered</li>
+            </ul>
+            <p class="mt-3"><strong>Step 5:</strong> the IdP shows a login page to the user.</p>
+            <p><strong>Step 6:</strong> the user enters credentials (username/password, MFA, etc.).</p>
+            <p><strong>Step 7:</strong> the IdP validates the credentials.</p>
+            <p class="ml-4 mt-2 text-sm italic">Like the embassy staff checking your passport and asking security questions.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 4: SAML response (assertion) generation</p>
+            <p><strong>Step 8:</strong> the IdP creates a <strong>SAML Assertion</strong> (XML) containing:</p>
+            <ul class="ml-8 mt-2 space-y-1 list-disc">
+              <li><code>Issuer</code>: the IdP's entityID</li>
+              <li><code>Subject/NameID</code>: user's unique identifier (email, UPN, etc.)</li>
+              <li><code>Conditions</code>: audience (must match the Service Provider Realm), NotBefore, NotOnOrAfter</li>
+              <li><code>AttributeStatement</code>: user claims (email, first name, last name, roles)</li>
+              <li><code>AuthnStatement</code>: when/how the user authenticated</li>
+            </ul>
+            <p class="mt-3"><strong>Example SAML assertion:</strong></p>
+<pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto text-sm"><code>&lt;saml:Assertion ID="_xyz5678" IssueInstant="2025-11-06T10:31:00Z"&gt;
+  &lt;saml:Issuer&gt;https://idp.example.com&lt;/saml:Issuer&gt;
+  &lt;saml:Subject&gt;
+    &lt;saml:NameID Format="email"&gt;john.doe@company.com&lt;/saml:NameID&gt;
+  &lt;/saml:Subject&gt;
+  &lt;saml:Conditions NotBefore="2025-11-06T10:30:00Z" NotOnOrAfter="2025-11-06T11:31:00Z"&gt;
+    &lt;saml:AudienceRestriction&gt;
+      &lt;saml:Audience&gt;https://yoursite.powerappsportals.com/&lt;/saml:Audience&gt;
+    &lt;/saml:AudienceRestriction&gt;
+  &lt;/saml:Conditions&gt;
+  &lt;saml:AttributeStatement&gt;
+    &lt;saml:Attribute Name="email"&gt;&lt;saml:AttributeValue&gt;john.doe@company.com&lt;/saml:AttributeValue&gt;&lt;/saml:Attribute&gt;
+    &lt;saml:Attribute Name="firstname"&gt;&lt;saml:AttributeValue&gt;John&lt;/saml:AttributeValue&gt;&lt;/saml:Attribute&gt;
+  &lt;/saml:AttributeStatement&gt;
+  &lt;ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"&gt;...&lt;/ds:Signature&gt;
+&lt;/saml:Assertion&gt;</code></pre>
+            <p class="mt-3"><strong>Step 9:</strong> the IdP <strong>signs the XML assertion</strong> using its private key (X.509 certificate).</p>
+            <p class="ml-4 mt-1 text-sm italic">Like the embassy stamping and sealing the visa form.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 5: POST assertion back to the service provider</p>
+            <p><strong>Step 10:</strong> the IdP Base64-encodes the signed SAML response.</p>
+            <p><strong>Step 11:</strong> the IdP sends an auto-submitting HTML form to the browser (HTTP POST binding):</p>
+<pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto text-sm"><code>&lt;form method="POST" action="https://yoursite.powerappsportals.com/signin-saml2"&gt;
+  &lt;input type="hidden" name="SAMLResponse" value="PD94bWwgdmVyc2lvbj0iMS4w..." /&gt;
+  &lt;input type="submit" value="Continue" /&gt;
+&lt;/form&gt;
+&lt;script&gt;document.forms[0].submit();&lt;/script&gt;</code></pre>
+            <p class="mt-3"><strong>Step 12:</strong> the browser automatically POSTs to the Power Pages ACS URL.</p>
+            <p class="ml-4 mt-1 text-sm italic">Like returning to the border with the stamped visa.</p>
+          </div>
+          <div>
+            <p class="font-bold text-lg mb-2">Phase 6: Assertion validation &amp; session creation</p>
+            <p><strong>Step 13:</strong> Power Pages decodes the SAML response.</p>
+            <p class="mt-2"><strong>Step 14:</strong> Power Pages validates the assertion:</p>
+            <ul class="ml-8 mt-2 space-y-1">
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span><strong>Signature valid:</strong> uses the IdP's public key (from metadata) to verify the XML signature</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span><strong>Issuer matches:</strong> assertion Issuer = Authentication Type (entityID)</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span><strong>Audience matches:</strong> Audience = Service Provider Realm</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span><strong>Not expired:</strong> current time between NotBefore and NotOnOrAfter</li>
+              <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span><strong>Not replayed:</strong> Assertion ID hasn't been used before (cached)</li>
+            </ul>
+            <p class="ml-4 mt-2 text-sm italic">Like a border guard checking: is the embassy seal authentic? Is the visa for this country? Not expired? Not used before?</p>
+            <p class="mt-3"><strong>Step 15:</strong> extract user attributes from the AttributeStatement (email, name, etc.).</p>
+            <p><strong>Step 16:</strong> create or update the contact record in Dataverse using NameID and attributes.</p>
+            <p><strong>Step 17:</strong> create the Power Pages session cookie.</p>
+            <p><strong>Step 18:</strong> redirect the user to the originally requested page.</p>
+            <p class="ml-4 mt-2 text-sm italic">Like finally being allowed to cross the border.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--risk p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Key SAML differences from OAuth/OIDC</h4>
+        <div class="space-y-3 text-gray-800 text-sm">
+          <p><strong>1. XML instead of JSON:</strong> SAML uses verbose XML documents. OAuth/OIDC uses compact JSON tokens.</p>
+          <p><strong>2. Signatures on XML:</strong> SAML signs the entire XML assertion. OAuth signs JWT tokens with simpler Base64 encoding.</p>
+          <p><strong>3. No backend token exchange:</strong> the SAML assertion is POSTed directly to the browser (but it's signed, so still secure). OAuth has a backend code-for-tokens exchange.</p>
+          <p><strong>4. Certificate-based trust:</strong> SAML requires exchanging X.509 certificates beforehand. OAuth uses metadata discovery URLs.</p>
+          <p><strong>5. Enterprise-focused:</strong> SAML is older (2005) and common in enterprise/B2B scenarios. OAuth/OIDC is newer (2012/2014) and more modern.</p>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Visual flow diagram</h3>
+      <div class="bg-white border border-gray-200 rounded-xl p-4 mb-4 overflow-x-auto">
+        <div class="mermaid">
+sequenceDiagram
+    autonumber
+    actor User
+    participant Browser
+    participant PP as Power Pages<br/>(Service Provider)
+    participant IdP as Identity Provider<br/>(Okta/Entra ID)
+
+    User->>Browser: 1. Navigate to portal
+    Browser->>PP: 2. Request protected page
+    PP->>Browser: 3. Redirect to login page
+
+    rect rgb(200, 220, 255)
+        Note over User,Browser: User initiates login
+        User->>Browser: 4. Click "Sign in with Okta"
+    end
+
+    rect rgb(255, 220, 200)
+        Note over PP,IdP: SAML Authentication Request (AuthnRequest)
+        Browser->>PP: 5. POST /signin-saml2
+        PP->>PP: 6. Generate SAML AuthnRequest XML<br/>(Issuer, ACS URL, ID, Timestamp)
+        PP->>Browser: 7. HTTP 302 Redirect with encoded SAML Request
+        Browser->>IdP: 8. GET /sso?SAMLRequest=...
+    end
+
+    rect rgb(200, 255, 220)
+        Note over User,IdP: User Authentication Phase
+        IdP->>IdP: 9. Decode & validate SAML Request
+        IdP->>Browser: 10. Show login page
+        User->>Browser: 11. Enter username/password
+        Browser->>IdP: 12. POST credentials
+        IdP->>IdP: 13. Validate credentials
+    end
+
+    rect rgb(255, 255, 200)
+        Note over IdP,PP: SAML Response (Assertion) Generation
+        IdP->>IdP: 14. Create SAML Assertion XML<br/>(Issuer, NameID, Attributes, Conditions)
+        IdP->>IdP: 15. Sign XML with X.509 certificate
+        IdP->>Browser: 16. Auto-submit HTML form with SAMLResponse
+        Browser->>PP: 17. POST /signin-saml2 with SAMLResponse
+    end
+
+    rect rgb(220, 200, 255)
+        Note over PP: Assertion Validation & Session Creation
+        PP->>PP: 18. Decode SAML Response
+        PP->>PP: 19. Validate XML signature (using IdP public key)
+        PP->>PP: 20. Check Issuer, Audience, NotBefore, NotOnOrAfter
+        PP->>PP: 21. Extract NameID & Attributes
+        PP->>PP: 22. Create/update user in Dataverse
+        PP->>PP: 23. Create session cookie
+    end
+
+    PP->>Browser: 24. Set-Cookie + Redirect to original page
+    Browser->>PP: 25. Request original page with cookie
+    PP->>Browser: 26. Return protected content
+    Browser->>User: 27. Display page
+        </div>
+      </div>
+      <p class="text-sm text-gray-600 mb-8"><strong>Diagram legend:</strong> notice how SAML uses XML (not JSON) and signs the entire assertion instead of using a backend token exchange like OAuth.</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Required parameters</h3>
+      <p class="text-gray-700 mb-4">These parameters must be configured for SAML authentication to work:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Parameter</th>
+              <th class="p-3 text-left">Description</th>
+              <th class="p-3 text-left">Example value</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Provider Name <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The text displayed on the sign-in button</td><td class="p-3 align-top">"Sign in with Okta"<br>"Sign in with Company SSO"</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Metadata Address <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The SAML 2.0 federation metadata document URL. Contains all SAML endpoints, certificates, and supported features. Power Pages parses this automatically.</td><td class="p-3 align-top"><code>https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml</code> (Entra ID)<br><code>https://yourorg.okta.com/app/{app-id}/sso/saml/metadata</code> (Okta)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Authentication Type <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The <code>entityID</code> value from the SAML metadata document, uniquely identifying the identity provider. Find it by opening the Metadata Address URL and copying the <code>&lt;entityID&gt;</code> value from the root <code>&lt;EntityDescriptor&gt;</code> element.</td><td class="p-3 align-top"><code>https://sts.windows.net/{tenant-id}/</code> (Entra ID)<br><code>http://www.okta.com/{externalKey}</code> (Okta)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Service Provider Realm <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The App ID URI from your IdP app registration (also called Audience in SAML terms). Must match exactly what you configured in the IdP as the SP Entity ID.</td><td class="p-3 align-top"><code>https://yoursite.powerappsportals.com/</code><br><code>api://{app-id}</code></td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Assertion Consumer Service URL <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">The Power Pages callback URL where the IdP sends SAML assertions (also called ACS URL). Auto-generated by Power Pages; must match the IdP's configured ACS/Reply URL.</td><td class="p-3 align-top"><code>https://yoursite.powerappsportals.com/signin-saml2</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Optional / advanced parameters</h3>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Parameter</th>
+              <th class="p-3 text-left">Description</th>
+              <th class="p-3 text-left">Default / use case</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Validate Audience</td><td class="p-3 align-top">When on, Power Pages checks that the <code>Audience</code> element matches one of your Valid Audiences values, preventing assertion replay attacks.</td><td class="p-3 align-top">Off (default). Turn on for production.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Valid Audiences</td><td class="p-3 align-top">Comma-separated list of allowed audience values, matching your Service Provider Realm.</td><td class="p-3 align-top"><code>https://yoursite.powerappsportals.com/</code>. Requires Validate Audience = on.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Contact Mapping with Email</td><td class="p-3 align-top">Automatically link the IdP identity to a Dataverse contact by email match. Off: always create a new contact for each new SAML identity.</td><td class="p-3 align-top">On (default). Ensure the IdP sends an email claim (NameID or attribute).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">How to find the entityID (Authentication Type)</h4>
+        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+          <li>Copy the <strong>Metadata Address</strong> URL from your IdP</li>
+          <li>Paste it into a web browser</li>
+          <li>You'll see an XML document</li>
+          <li>Look for the <code>&lt;EntityDescriptor entityID="..."&gt;</code> tag at the top</li>
+          <li>Copy the <code>entityID</code> value, that's your <strong>Authentication Type</strong></li>
+        </ol>
+        <p class="mt-4 text-sm text-gray-600"><strong>Example:</strong> in <code>&lt;EntityDescriptor entityID="https://sts.windows.net/abc123/"&gt;</code>, the entityID is <code>https://sts.windows.net/abc123/</code>.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6">SAML 2.0 dos and don'ts</h3>
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-green-50 border-2 border-green-500 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-green-800 mb-4">Do, SAML best practices</h4>
+          <ul class="space-y-3 text-gray-800 text-sm">
+            <li><strong>Always verify the metadata URL is accessible</strong>: should return XML without authentication</li>
+            <li><strong>Copy entityID exactly from metadata</strong>: including protocol, trailing slash, casing</li>
+            <li><strong>Match Service Provider Realm to the IdP configuration</strong>: exactly what was configured as SP Entity ID</li>
+            <li><strong>Configure Name ID format in the IdP</strong>: Persistent or Email format works best for Power Pages</li>
+            <li><strong>Send the email claim in the SAML assertion</strong>: as NameID or a separate email attribute</li>
+            <li><strong>Test assertions in a SAML decoder tool</strong>: decode responses to verify claims</li>
+            <li><strong>Turn on Validate Audience in production</strong>: prevents assertion replay attacks</li>
+            <li><strong>Use the SHA-256 signing algorithm</strong>: SHA-1 is deprecated and may be rejected</li>
+            <li><strong>Configure assertion expiry appropriately</strong>: 5 to 10 minutes is typical</li>
+            <li><strong>Document the certificate renewal process</strong>: SAML certificates expire</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 border-2 border-red-500 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-red-800 mb-4">Don't, SAML pitfalls</h4>
+          <ul class="space-y-3 text-gray-800 text-sm">
+            <li><strong>Don't confuse Service Provider Realm with ACS URL</strong>: they serve different purposes</li>
+            <li><strong>Don't use the same value for Realm and ACS URL</strong>: a common mistake causing validation errors</li>
+            <li><strong>Don't type the entityID manually</strong>: copy the exact value from the metadata XML</li>
+            <li><strong>Don't forget to configure claim rules in the IdP</strong>: Power Pages needs at minimum the NameID claim</li>
+            <li><strong>Don't use the SHA-1 signing algorithm</strong>: deprecated, may cause rejections</li>
+            <li><strong>Don't ignore certificate expiry</strong>: SAML certs expire (typically 1 to 3 years)</li>
+            <li><strong>Don't test only the SP-initiated flow</strong>: some IdPs require IdP-initiated configuration too</li>
+            <li><strong>Don't assume SAML = OAuth</strong>: different protocols, configuration, and error messages</li>
+            <li><strong>Don't skip metadata validation</strong>: verify it contains SingleSignOnService and a signing certificate</li>
+            <li><strong>Don't forget clock skew tolerance</strong>: ensure the IdP and Power Pages servers use NTP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Top 5 SAML configuration mistakes</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="font-bold text-red-700 mb-1">1. Service Provider Realm vs. ACS URL confusion</p>
+            <p class="text-gray-700"><strong>Problem:</strong> using the same value for both fields, or swapping them.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> "Audience mismatch" or "Invalid destination" errors.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> Service Provider Realm = who you are (your SP entity ID). ACS URL = where to send the response (<code>/signin-saml2</code>). These must differ.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">2. Wrong entityID (Authentication Type)</p>
+            <p class="text-gray-700"><strong>Problem:</strong> entityID doesn't match the metadata document.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> "Unknown issuer" or "Issuer mismatch" errors.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> open the metadata URL, find <code>&lt;EntityDescriptor entityID="..."&gt;</code>, copy the exact value.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">3. Missing email claim</p>
+            <p class="text-gray-700"><strong>Problem:</strong> the IdP doesn't send an email claim, or sends it in an unexpected format.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> users authenticate but the contact record has no email.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> configure the IdP to send email as NameID or as a dedicated email attribute claim.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">4. Metadata URL not accessible</p>
+            <p class="text-gray-700"><strong>Problem:</strong> metadata requires authentication, is behind a firewall, or returns HTML instead of XML.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> "Unable to retrieve metadata" or "Invalid metadata document".</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> metadata must be a publicly accessible URL returning valid XML.</p>
+          </div>
+          <div>
+            <p class="font-bold text-red-700 mb-1">5. Clock skew issues</p>
+            <p class="text-gray-700"><strong>Problem:</strong> a time difference between the IdP and Power Pages causes assertion validation failures.</p>
+            <p class="text-gray-700"><strong>Symptom:</strong> intermittent "Assertion expired" or "Assertion not yet valid" errors.</p>
+            <p class="text-green-700 font-semibold"><strong>Fix:</strong> ensure the IdP uses NTP; configure assertion validity to 5 to 10 minutes.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6">SAML 2.0 best practices by role</h3>
+
+      <div class="pp-card p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For identity provider admins (Okta, Entra ID, Ping)</h4>
+        <p class="font-bold text-blue-600 mt-4 mb-2">SAML application setup</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Use descriptive app names</strong>: "Power Pages Customer Portal (Production)", not "SAML App 1"</li>
+          <li><strong>Configure the Single Sign-On URL (ACS URL) correctly</strong>: must end with <code>/signin-saml2</code></li>
+          <li><strong>Set the SP Entity ID to the site URL</strong></li>
+          <li><strong>Configure the Name ID format</strong>: "Persistent" or "Email" for best compatibility</li>
+          <li><strong>Make metadata publicly accessible</strong>: Power Pages must fetch it without authentication</li>
+        </ul>
+        <p class="font-bold text-blue-600 mt-4 mb-2">Claim configuration</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Always send the email claim</strong>: as NameID or as <code>.../claims/emailaddress</code></li>
+          <li><strong>Send first name and last name if available</strong>: use <code>givenName</code> and <code>surname</code></li>
+          <li><strong>Consider sending group memberships</strong>: usable for Power Pages role assignment</li>
+          <li><strong>Test claims with a SAML decoder</strong>: verify all expected claims arrive</li>
+        </ul>
+        <p class="font-bold text-blue-600 mt-4 mb-2">Certificate management</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Use SHA-256</strong>: SHA-1 is deprecated</li>
+          <li><strong>Set calendar reminders for certificate expiry</strong>: typically 1 to 3 years</li>
+          <li><strong>Rotate certificates without downtime</strong>: configure the new cert alongside the old</li>
+          <li><strong>Publish the new certificate in metadata before activation</strong></li>
+        </ul>
+        <p class="font-bold text-blue-600 mt-4 mb-2">Security settings</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Sign assertions, not just responses</strong>: prevents assertion substitution attacks</li>
+          <li><strong>Set assertion validity to 5 to 10 minutes</strong></li>
+          <li><strong>Don't sign with SHA-1</strong></li>
+          <li><strong>Enable audience restriction</strong></li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--tip p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For Power Pages admins</h4>
+        <p class="font-bold text-green-700 mt-4 mb-2">Configuration &amp; testing</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Copy the Assertion Consumer Service URL from Power Pages</strong>: don't type it manually</li>
+          <li><strong>Verify Service Provider Realm matches the IdP configuration</strong>: exact match, case-sensitive</li>
+          <li><strong>Test the metadata URL before configuring</strong></li>
+          <li><strong>Copy entityID from metadata XML</strong>: don't guess</li>
+          <li><strong>Enable diagnostic logging before testing</strong></li>
+          <li><strong>Use a SAML decoder browser extension</strong></li>
+        </ul>
+        <p class="font-bold text-green-700 mt-4 mb-2">Troubleshooting tools</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>SAML-tracer or SAML DevTools</strong> browser extension, captures and decodes SAML traffic</li>
+          <li><strong>Online SAML decoder</strong>: samltool.com</li>
+          <li><strong>Power Pages diagnostic logs</strong>: full assertion validation errors</li>
+          <li><strong>IdP sign-in logs</strong>: check if authentication succeeds at the IdP</li>
+        </ul>
+        <p class="font-bold text-green-700 mt-4 mb-2">Production readiness</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Turn on Validate Audience</strong>: set Valid Audiences to your Service Provider Realm</li>
+          <li><strong>Document the certificate expiry date</strong></li>
+          <li><strong>Test from multiple networks</strong>: corporate VPN, home internet, mobile</li>
+          <li><strong>Verify Contact Mapping with Email is on</strong>: prevents duplicate contacts</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">For consultants &amp; developers</h4>
+        <p class="font-bold text-blue-700 mt-4 mb-2">SAML troubleshooting checklist</p>
+        <ol class="space-y-2 text-gray-700 text-sm list-decimal ml-4">
+          <li><strong>Verify metadata accessibility</strong>: should return XML</li>
+          <li><strong>Check entityID matches</strong>: compare Authentication Type to <code>&lt;EntityDescriptor entityID&gt;</code></li>
+          <li><strong>Verify Service Provider Realm matches the IdP</strong></li>
+          <li><strong>Check the ACS URL is correct</strong>: must end with <code>/signin-saml2</code></li>
+          <li><strong>Use a SAML decoder</strong>: verify claims</li>
+          <li><strong>Check Power Pages diagnostic logs</strong></li>
+          <li><strong>Verify the certificate is valid</strong>: expiry date, signing algorithm (SHA-256+)</li>
+        </ol>
+        <p class="font-bold text-blue-700 mt-4 mb-2">Common SAML error messages</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>"Unknown issuer"</strong> &rarr; entityID doesn't match the assertion</li>
+          <li><strong>"Audience mismatch"</strong> &rarr; Service Provider Realm doesn't match the assertion's audience</li>
+          <li><strong>"Invalid destination"</strong> &rarr; ACS URL in the assertion doesn't match the configured value</li>
+          <li><strong>"Assertion expired"</strong> &rarr; clock skew, or assertion validity too short</li>
+          <li><strong>"Signature validation failed"</strong> &rarr; certificate mismatch, expired cert, or wrong algorithm</li>
+          <li><strong>"Missing NameID"</strong> &rarr; IdP not sending the NameID claim</li>
+        </ul>
+        <p class="font-bold text-blue-700 mt-4 mb-2">Project documentation</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Screenshot the IdP SAML configuration</strong>: SP Entity ID, ACS URL, NameID format, claim rules</li>
+          <li><strong>Save the metadata URL and entityID</strong></li>
+          <li><strong>Document the certificate expiry process</strong></li>
+          <li><strong>Create a SAML error runbook</strong></li>
+          <li><strong>Provide user documentation</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="social-idp" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Social Identity Providers (quick setup for B2C)</h2>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">What are social identity providers?</h3>
+        <p class="text-gray-800 mb-3">Power Pages includes <strong>five pre-configured OAuth 2.0 providers</strong> for consumer authentication scenarios. These are simplified, wizard-based alternatives to the generic OAuth/OIDC setup covered above.</p>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4">
+          <div class="bg-white p-3 rounded-lg text-center border-2 border-blue-200"><div class="font-semibold text-sm">Microsoft</div></div>
+          <div class="bg-white p-3 rounded-lg text-center border-2 border-red-200"><div class="font-semibold text-sm">Google</div></div>
+          <div class="bg-white p-3 rounded-lg text-center border-2 border-blue-300"><div class="font-semibold text-sm">Facebook</div></div>
+          <div class="bg-white p-3 rounded-lg text-center border-2 border-blue-400"><div class="font-semibold text-sm">LinkedIn</div></div>
+          <div class="bg-white p-3 rounded-lg text-center border-2 border-sky-200"><div class="font-semibold text-sm">Twitter/X</div></div>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Key limitation:</strong> Power Pages doesn't support other OAuth providers beyond these five. For custom providers (Auth0, Okta, or your own OAuth server), use the generic OpenID Connect configuration instead.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Supported social providers</h3>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Provider</th>
+              <th class="p-3 text-left">Setup location</th>
+              <th class="p-3 text-left">Best use case</th>
+              <th class="p-3 text-left">Special requirements</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Microsoft</td><td class="p-3 align-top">Azure Portal</td><td class="p-3 align-top">B2C portals where users have Microsoft accounts</td><td class="p-3 align-top">Azure AD app registration</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Google</td><td class="p-3 align-top">Google Console</td><td class="p-3 align-top">Public-facing customer portals, wide consumer reach</td><td class="p-3 align-top">Enable Google People API</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Facebook</td><td class="p-3 align-top">Facebook Developers</td><td class="p-3 align-top">Consumer apps, social integration</td><td class="p-3 align-top">App registration, privacy policy URL</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">LinkedIn</td><td class="p-3 align-top">LinkedIn Developers</td><td class="p-3 align-top">Professional networks, B2B customer portals</td><td class="p-3 align-top">LinkedIn app registration</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Twitter/X</td><td class="p-3 align-top">X Developer Platform</td><td class="p-3 align-top">Social media integration, public community portals</td><td class="p-3 align-top">Twitter developer account</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Configuration parameters</h3>
+      <p class="text-gray-700 mb-4">Social identity providers require only 2 to 3 configuration values in Power Pages:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Parameter</th>
+              <th class="p-3 text-left">Description</th>
+              <th class="p-3 text-left">Where to find it</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Client ID <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">Unique identifier for your OAuth application at the identity provider</td><td class="p-3 align-top">App registration in the provider console</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Client Secret <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded ml-1">REQUIRED</span></td><td class="p-3 align-top">Secret key for authenticating your application to the provider</td><td class="p-3 align-top">App registration secrets section</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold text-blue-600">Reply URL <span class="text-xs bg-gray-500 text-white px-2 py-0.5 rounded ml-1">AUTO-GENERATED</span></td><td class="p-3 align-top">Power Pages callback URL where users return after authentication. Copy from the Power Pages wizard, paste into the provider console.</td><td class="p-3 align-top">Format: <code>.../signin-{provider}</code> (e.g. <code>/signin-google</code>, <code>/signin-facebook</code>, <code>/signin-microsoft</code>)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="text-xl font-bold text-gray-900 mt-8 mb-4">Optional additional settings</h4>
+      <p class="text-gray-700 mb-4">All social providers share these optional advanced settings (expand "Additional settings" in the Power Pages wizard):</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Setting</th>
+              <th class="p-3 text-left">Description</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Scope</td><td class="p-3 align-top">Comma-separated list of permissions to request (e.g. <code>email,profile</code>)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Registration enabled</td><td class="p-3 align-top">Off: denies registration if no contact exists. On: allows new user registration (if the site setting permits).</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Contact mapping with email</td><td class="p-3 align-top">On: associates a unique contact record with a matching email address. Not applicable for Microsoft's multitenant endpoint.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Authentication type</td><td class="p-3 align-top">OWIN authentication middleware type (advanced, usually leave default)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Backchannel timeout</td><td class="p-3 align-top">Timeout in milliseconds for back-channel communications (advanced)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Social OAuth vs. generic OAuth/OIDC</h3>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Aspect</th>
+              <th class="p-3 text-left">Social OAuth (wizard)</th>
+              <th class="p-3 text-left">Generic OAuth/OIDC (manual)</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Supported providers</td><td class="p-3 align-top">Only 5: Microsoft, Google, Facebook, LinkedIn, Twitter/X</td><td class="p-3 align-top">Any OIDC-compliant provider (Entra External ID, Auth0, Okta, custom)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Setup method</td><td class="p-3 align-top">Wizard with 2 fields (Client ID + Secret)</td><td class="p-3 align-top">Manual with 9+ parameters</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Configuration</td><td class="p-3 align-top">Authority/Metadata auto-configured</td><td class="p-3 align-top">You provide Authority, Metadata Address, Scopes, Response Type, etc.</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Primary use case</td><td class="p-3 align-top">B2C consumer portals, public websites</td><td class="p-3 align-top">B2B enterprise portals, advanced features</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Token format</td><td class="p-3 align-top">JWT (JSON)</td><td class="p-3 align-top">JWT (JSON)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Complexity</td><td class="p-3 align-top">Very low</td><td class="p-3 align-top">Low to medium</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Advanced features</td><td class="p-3 align-top">Limited (no custom scopes, limited claims mapping)</td><td class="p-3 align-top">Full control (custom scopes, claims, token validation)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--tip p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">When to use social identity providers?</h3>
+        <p class="font-bold text-green-700 mt-4 mb-2">Use social OAuth when:</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li>Building B2C customer portals or public-facing websites</li>
+          <li>Users already have Google, Facebook, Microsoft, LinkedIn, or Twitter/X accounts</li>
+          <li>You want the fastest possible setup (under 10 minutes)</li>
+          <li>You don't need custom claims mapping or advanced token validation</li>
+          <li>The target audience is consumers, not enterprise employees</li>
+        </ul>
+        <p class="font-bold text-red-700 mt-6 mb-2">Use generic OAuth/OIDC instead when:</p>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li>Building enterprise B2B portals with a corporate IdP (Entra External ID, Okta, Auth0)</li>
+          <li>You need custom claims mapping from the IdP to Dataverse contact fields</li>
+          <li>You require advanced token validation (audience, issuer, custom validators)</li>
+          <li>You want control over scopes, response types, response modes</li>
+          <li>Using a provider not in the list of 5 (e.g. Ping Identity, Keycloak, a custom OAuth server)</li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-12 mb-6">Social IdP best practices</h3>
+
+      <div class="pp-card p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Security &amp; privacy considerations</h4>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Privacy policy required:</strong> most social providers (Facebook, Google) require a privacy policy URL during app registration</li>
+          <li><strong>Minimal scope requests:</strong> only request permissions you actually need</li>
+          <li><strong>GDPR compliance:</strong> for EU users, ensure social login complies with GDPR (consent, data processing agreements)</li>
+          <li><strong>Terms of service:</strong> review each provider's terms, some restrict commercial use</li>
+          <li><strong>Email verification:</strong> not all social providers guarantee verified emails. Facebook emails may not be verified; Google emails are.</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Common pitfalls with social IdPs</h4>
+        <ul class="space-y-2 text-gray-700 text-sm list-disc ml-4">
+          <li><strong>Cross-provider SSO doesn't work:</strong> users who log in with Google cannot use Microsoft for the same contact. Each social provider creates a separate identity.</li>
+          <li><strong>Cannot mix social IdPs for SSO:</strong> if you configure both Google and Microsoft, they won't share sessions.</li>
+          <li><strong>Reply URL must match exactly:</strong> trailing slash, http vs. https, subdomain, one wrong character breaks it.</li>
+          <li><strong>Provider app approval delays:</strong> some providers (Facebook, LinkedIn) require review before going live, taking days to weeks.</li>
+          <li><strong>Rate limiting:</strong> social providers have API rate limits. High-traffic portals may hit limits during login spikes.</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--note p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-3">Multi-provider setup strategy</h4>
+        <p class="text-gray-700 mb-3">Many portals offer multiple social login options. Recommended approach:</p>
+        <ol class="space-y-2 text-gray-700 text-sm list-decimal ml-4">
+          <li><strong>Choose 2 to 3 providers max</strong>: don't overwhelm users with 5 buttons; pick what's relevant for your audience</li>
+          <li><strong>Monitor usage</strong>: track which providers users actually use, remove unused ones</li>
+          <li><strong>Set up redundancy</strong>: configure 2+ providers so an outage on one doesn't lock users out</li>
+          <li><strong>Keep it simple</strong>: one IdP for all apps is ideal; mixing providers across apps confuses users</li>
+        </ol>
+      </div>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="session-security" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Session Security Deep Dive</h2>
+
+      <p class="text-gray-700 text-lg mb-6"><strong>The big question:</strong> "If the session cookie is the key to entry, can I just copy it to another machine and be authenticated?"</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">The short answer</h3>
+      <p class="text-gray-700 mb-4"><strong>Technically:</strong> yes, you could copy the cookie and gain access.<br><strong>In practice:</strong> Power Pages implements security measures to make this harder (but not impossible).</p>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Why this matters</h4>
+        <p class="text-gray-700">Session hijacking (cookie theft) is a real security concern. If an attacker gets your session cookie, they can impersonate you until the cookie expires.</p>
+        <p class="text-gray-700 mt-2"><strong>The risk:</strong> an attacker with your cookie doesn't need your password. They're already "in."</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Security measures in Power Pages session cookies</h3>
+      <p class="text-gray-700 mb-4">Power Pages session cookies have these built-in protections:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Security flag</th>
+              <th class="p-3 text-left">What it does</th>
+              <th class="p-3 text-left">Attack it prevents</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">HttpOnly <span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span></td><td class="p-3 align-top">JavaScript cannot read the cookie</td><td class="p-3 align-top">XSS attacks trying to steal cookies</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Secure <span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span></td><td class="p-3 align-top">Cookie only sent over HTTPS</td><td class="p-3 align-top">Network interception on unencrypted connections</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">SameSite <span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span></td><td class="p-3 align-top">Cookie won't be sent from other domains</td><td class="p-3 align-top">CSRF (cross-site request forgery) attacks</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Short expiry <span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span></td><td class="p-3 align-top">Cookie expires after 8 hours (typical)</td><td class="p-3 align-top">Limits the window for abuse if stolen</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">What Power Pages doesn't check (by default)</h3>
+      <ul class="space-y-2 text-gray-700 list-disc ml-4 mb-4">
+        <li><strong>IP address</strong>: the cookie works from any IP address</li>
+        <li><strong>User agent</strong>: the cookie works in any browser</li>
+        <li><strong>Device fingerprint</strong>: no device binding</li>
+        <li><strong>Geolocation</strong>: no location validation</li>
+      </ul>
+      <p class="text-gray-700 mb-8"><strong>This means:</strong> if an attacker gets your cookie, they can use it from a different machine or location until it expires.</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Real-world attack scenarios</h3>
+
+      <div class="pp-box pp-box--warn p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Scenario 1: malware on the user's machine</h4>
+        <p class="text-gray-700 mb-2"><strong>Attack:</strong></p>
+        <ol class="space-y-1 text-gray-700 ml-6 list-decimal text-sm">
+          <li>Attacker installs malware on the user's computer</li>
+          <li>Malware reads browser cookies from disk</li>
+          <li>Malware sends cookies to the attacker's server</li>
+          <li>Attacker uses the cookie on their machine, full access until expiry</li>
+        </ol>
+        <p class="text-gray-700 mt-3 mb-2"><strong>Defense:</strong></p>
+        <ul class="space-y-1 text-gray-700 text-sm list-disc ml-4">
+          <li>Antivirus software (user responsibility)</li>
+          <li>Keep OS and browser updated</li>
+          <li>Short session timeout (admin control)</li>
+          <li>User education (don't use shared devices)</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-6">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Scenario 2: network sniffing (mitigated by HTTPS)</h4>
+        <p class="text-gray-700 mb-2"><strong>Attack:</strong></p>
+        <ol class="space-y-1 text-gray-700 ml-6 list-decimal text-sm">
+          <li>User on public WiFi without HTTPS</li>
+          <li>Attacker captures network traffic</li>
+          <li>Attacker extracts the session cookie</li>
+          <li>Attacker replays the cookie, session hijacked</li>
+        </ol>
+        <p class="text-gray-700 mt-3 mb-2"><strong>Defense:</strong></p>
+        <ul class="space-y-1 text-gray-700 text-sm list-disc ml-4">
+          <li>Power Pages forces HTTPS (built-in)</li>
+          <li>Secure flag on cookies (prevents transmission over HTTP)</li>
+          <li>Still vulnerable if the user ignores certificate warnings</li>
+        </ul>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Scenario 3: XSS attack (mitigated by HttpOnly)</h4>
+        <p class="text-gray-700 mb-2"><strong>Attack:</strong></p>
+        <ol class="space-y-1 text-gray-700 ml-6 list-decimal text-sm">
+          <li>Attacker finds a vulnerability in custom portal script</li>
+          <li>Attacker injects JavaScript targeting <code>document.cookie</code></li>
+          <li>The script tries to read the session cookie</li>
+          <li>The HttpOnly flag blocks access</li>
+        </ol>
+        <p class="text-gray-700 mt-3 mb-2"><strong>Defense:</strong></p>
+        <ul class="space-y-1 text-gray-700 text-sm list-disc ml-4">
+          <li>HttpOnly flag (built into Power Pages)</li>
+          <li>Content Security Policy (configure in the portal)</li>
+          <li>Input validation on all forms</li>
+          <li>Regular security audits of custom code</li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">How to minimize risk</h3>
+      <h4 class="text-xl font-bold text-gray-900 mt-6 mb-4">For Power Pages admins</h4>
+      <div class="pp-box pp-box--tip p-6 mb-8">
+        <p class="text-gray-700 mb-3"><strong>1. Short session timeouts</strong> (e.g. 2 to 4 hours instead of 8)</p>
+        <ul class="space-y-1 text-gray-700 ml-6 list-disc text-sm mb-4">
+          <li>Configured at the Power Pages level</li>
+          <li>Balance security vs. user convenience</li>
+          <li>Limits the damage window if a cookie is stolen</li>
+        </ul>
+        <p class="text-gray-700 mb-3"><strong>2. Conditional Access policies</strong> (Entra External ID, requires Premium license)</p>
+        <ul class="space-y-1 text-gray-700 ml-6 list-disc text-sm mb-4">
+          <li>Restrict by IP range (e.g. corporate network only)</li>
+          <li>Block suspicious locations</li>
+          <li>Require a compliant device</li>
+          <li>Configuration complexity varies by IdP</li>
+        </ul>
+        <p class="text-gray-700 mb-3"><strong>3. Monitor session activity</strong></p>
+        <ul class="space-y-1 text-gray-700 ml-6 list-disc text-sm mb-4">
+          <li>Enable diagnostic logging in Power Pages</li>
+          <li>Review Entra External ID sign-in logs regularly</li>
+          <li>Look for unusual patterns</li>
+        </ul>
+        <p class="text-gray-700 mb-3"><strong>4. Use a Web Application Firewall (WAF)</strong></p>
+        <ul class="space-y-1 text-gray-700 ml-6 list-disc text-sm mb-4">
+          <li>Azure Front Door or similar</li>
+          <li>Can detect session hijacking patterns (e.g. same cookie from multiple IPs)</li>
+          <li>Rate limiting to prevent brute force</li>
+        </ul>
+        <p class="text-gray-700 mb-3"><strong>5. Implement custom session validation</strong></p>
+        <ul class="space-y-1 text-gray-700 ml-6 list-disc text-sm">
+          <li>Use the Power Pages Web API or custom code</li>
+          <li>Check for suspicious behavior (e.g. rapid page access)</li>
+          <li>Trigger re-authentication if needed</li>
+        </ul>
+      </div>
+
+      <h4 class="text-xl font-bold text-gray-900 mt-8 mb-4">For end users</h4>
+      <p class="text-gray-700 mb-3"><strong>Important:</strong> as a portal user, you have no control over session timeouts or security policies, those are controlled by the identity provider admin and Power Pages admin.</p>
+      <p class="text-gray-700 mb-3"><strong>What you can do to protect yourself:</strong></p>
+      <ul class="space-y-2 text-gray-700 mb-6 list-disc ml-4">
+        <li>Never access sensitive portals on shared/public computers</li>
+        <li>Don't stay logged in unnecessarily, log out when done</li>
+        <li>Keep your browser and OS updated</li>
+        <li>Use antivirus software</li>
+        <li>Be cautious on public WiFi (use a VPN if possible)</li>
+        <li>Clear browser cookies after using shared devices</li>
+        <li>Report suspicious login notifications immediately</li>
+      </ul>
+      <p class="text-gray-700 mb-8">If you need stronger security measures, contact your portal administrator.</p>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Detecting cookie theft</h3>
+      <p class="text-gray-700 mb-4"><strong>Red flags to monitor:</strong></p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Indicator</th>
+              <th class="p-3 text-left">What it means</th>
+              <th class="p-3 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top">Same user, different IPs simultaneously</td><td class="p-3 align-top">Possible cookie theft</td><td class="p-3 align-top">Force logout, require re-authentication</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top">Login from impossible locations</td><td class="p-3 align-top">Can't be in the US and China 5 minutes apart</td><td class="p-3 align-top">Block session, alert user</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top">Rapid requests from a single session</td><td class="p-3 align-top">Automated attack or data scraping</td><td class="p-3 align-top">Rate limit, CAPTCHA, or block</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top">User agent suddenly changes</td><td class="p-3 align-top">Cookie used in a different browser</td><td class="p-3 align-top">Optional: re-authenticate for high-security scenarios</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-box pp-box--warn p-6 mb-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-2">Reality check: what you can actually monitor</h4>
+        <p class="text-gray-700 mb-3"><strong>Out-of-the-box (no additional tools):</strong></p>
+        <p class="text-gray-700 mb-2"><strong>As Power Pages admin:</strong></p>
+        <ul class="space-y-1 text-gray-700 ml-4 text-sm mb-4">
+          <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Diagnostic logs (errors and failures only)</li>
+          <li><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>No IP addresses, user agents, or session details</li>
+          <li><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>No real-time monitoring capabilities</li>
+        </ul>
+        <p class="text-gray-700 mb-2"><strong>As Entra External ID admin:</strong></p>
+        <ul class="space-y-1 text-gray-700 ml-4 text-sm mb-4">
+          <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Sign-in logs (Azure Portal &rarr; Entra External ID &rarr; Monitoring &rarr; Sign-in logs)</li>
+          <li><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Shows IP, location, device, browser, success/failure</li>
+          <li><span class="pp-mark pp-mark--warn" aria-hidden="true">!</span>Only captures login events, not ongoing session activity</li>
+          <li><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>Can't detect if the same cookie is used from multiple IPs simultaneously</li>
+        </ul>
+        <p class="text-gray-700 mb-3"><strong>To actually detect the red flags above, you need:</strong></p>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-white border-b-2 border-amber-300">
+                <th class="p-2 text-left">Tool</th>
+                <th class="p-2 text-left">What it does</th>
+                <th class="p-2 text-left">Cost</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-amber-200"><td class="p-2 align-top font-semibold">Azure Application Insights</td><td class="p-2 align-top">Track Power Pages requests, IPs, sessions</td><td class="p-2 align-top">Pay-per-use (~&euro;2 to 5/GB ingested)</td></tr>
+              <tr class="border-b border-amber-200"><td class="p-2 align-top font-semibold">Azure Monitor + Log Analytics</td><td class="p-2 align-top">Correlate sign-in logs + Power Pages logs</td><td class="p-2 align-top">Pay-per-use (~&euro;2.50/GB)</td></tr>
+              <tr class="border-b border-amber-200"><td class="p-2 align-top font-semibold">Microsoft Entra ID Protection</td><td class="p-2 align-top">Automatic risk detection (impossible travel, etc.)</td><td class="p-2 align-top">Premium P2 (~&euro;8 to 10/user/month)</td></tr>
+              <tr class="border-b border-amber-200"><td class="p-2 align-top font-semibold">SIEM (e.g. Microsoft Sentinel)</td><td class="p-2 align-top">Advanced threat detection, custom rules</td><td class="p-2 align-top">Enterprise pricing (~&euro;200+/month)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Bottom line:</strong> the red flags table shows what you <em>should</em> monitor, but detecting them requires additional tools and budget. For most Power Pages deployments, this level of monitoring is only justified for high-security scenarios (financial data, healthcare, admin portals).</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">What you can do without extra tools</h3>
+      <p class="text-gray-700 mb-4"><strong>Practical approach for most projects:</strong></p>
+      <ol class="space-y-4 text-gray-700 mb-8 list-decimal ml-4">
+        <li><strong>Enable Entra External ID sign-in logs</strong> (free, always on)
+          <ul class="space-y-1 ml-6 mt-2 list-disc text-sm">
+            <li>Review weekly for unusual login patterns</li>
+            <li>Look for logins from unexpected countries</li>
+            <li>Check for failed login attempts (brute force?)</li>
+          </ul>
+        </li>
+        <li><strong>Enable Power Pages diagnostic logging</strong> (free)
+          <ul class="space-y-1 ml-6 mt-2 list-disc text-sm">
+            <li>Captures authentication errors</li>
+            <li>Helps debug login issues</li>
+            <li>Won't catch session hijacking, but shows system health</li>
+          </ul>
+        </li>
+        <li><strong>Implement Conditional Access</strong> (Entra External ID, requires Premium license)
+          <ul class="space-y-1 ml-6 mt-2 list-disc text-sm">
+            <li>Restrict logins by IP range (e.g. corporate network only)</li>
+            <li>Block high-risk countries</li>
+            <li>Require device compliance</li>
+            <li>Prevention is better (and cheaper) than detection</li>
+          </ul>
+        </li>
+        <li><strong>Short session timeouts</strong> (Power Pages setting, free)
+          <ul class="space-y-1 ml-6 mt-2 list-disc text-sm">
+            <li>Reduce from 8 hours to 2 to 4 hours</li>
+            <li>Limits the damage window if a cookie is stolen</li>
+            <li>No additional tools needed</li>
+          </ul>
+        </li>
+        <li><strong>User education</strong> (free)
+          <ul class="space-y-1 ml-6 mt-2 list-disc text-sm">
+            <li>Tell users to log out on shared devices</li>
+            <li>Warn about phishing attempts</li>
+            <li>Provide a clear "report suspicious activity" contact</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Session security comparison</h3>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="pp-navy text-white">
+              <th class="p-3 text-left">Security measure</th>
+              <th class="p-3 text-left">Power Pages default</th>
+              <th class="p-3 text-left">Additional protection available</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">HTTPS enforcement</td><td class="p-3 align-top"><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Always on</td><td class="p-3 align-top">-</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">HttpOnly cookies</td><td class="p-3 align-top"><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Enabled</td><td class="p-3 align-top">-</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Secure flag</td><td class="p-3 align-top"><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Enabled</td><td class="p-3 align-top">-</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">SameSite attribute</td><td class="p-3 align-top"><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Enabled</td><td class="p-3 align-top">-</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">IP binding</td><td class="p-3 align-top"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>Not default</td><td class="p-3 align-top">Via Conditional Access (Entra External ID)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Device binding</td><td class="p-3 align-top"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>Not available</td><td class="p-3 align-top">Via Conditional Access (Entra External ID)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Geolocation checks</td><td class="p-3 align-top"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>Not default</td><td class="p-3 align-top"><span class="pp-mark pp-mark--yes" aria-hidden="true">✓</span>Via Conditional Access (Entra External ID)</td></tr>
+            <tr class="border-b border-gray-200"><td class="p-3 align-top font-semibold">Additional authentication factors</td><td class="p-3 align-top"><span class="pp-mark pp-mark--no" aria-hidden="true">✗</span>Not built-in</td><td class="p-3 align-top">Configure at IdP level (complex setup)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pp-card p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">The bottom line</h3>
+        <p class="text-gray-700 mb-3"><strong>Session cookies are vulnerable to theft</strong>: this is true for all web applications, not just Power Pages.</p>
+        <p class="text-gray-700 mb-3"><strong>The defense is layered security:</strong></p>
+        <ol class="space-y-2 text-gray-700 ml-4 list-decimal">
+          <li><strong>Base protections</strong> (HTTPS, HttpOnly, Secure flag) &rarr; built-in</li>
+          <li><strong>Short session timeouts</strong> &rarr; limits the damage window</li>
+          <li><strong>Conditional Access</strong> &rarr; blocks suspicious activity (Premium license)</li>
+          <li><strong>Monitoring &amp; alerts</strong> &rarr; detect and respond quickly (extra tools needed)</li>
+          <li><strong>User education</strong> &rarr; prevents careless mistakes (free)</li>
+        </ol>
+        <p class="text-gray-700 mt-3">No single measure is perfect, but together, they make stealing sessions significantly harder and less valuable.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Should you worry?</h3>
+      <p class="text-gray-700 mb-3"><strong>Low-risk scenarios:</strong></p>
+      <ul class="space-y-1 text-gray-700 list-disc ml-4 mb-6">
+        <li>Public marketing portal (no sensitive data)</li>
+        <li>Internal portal on a corporate network only</li>
+        <li>Short sessions (2 to 4 hours) with Conditional Access enabled</li>
+      </ul>
+      <p class="text-gray-700 mb-3"><strong>High-risk scenarios:</strong></p>
+      <ul class="space-y-1 text-gray-700 list-disc ml-4 mb-6">
+        <li>Portal with financial transactions</li>
+        <li>Access to personal health information</li>
+        <li>Administrative functions (user management, settings)</li>
+        <li>Publicly accessible with sensitive data</li>
+      </ul>
+      <p class="text-gray-700"><strong>Recommendation:</strong> for high-risk scenarios, implement all available protections (short sessions + Conditional Access + monitoring + WAF). Consider step-up authentication for critical operations.</p>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="conclusion" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Conclusion</h2>
+      <p class="text-lg text-gray-700 mb-6">Authentication in Power Pages is basically three friends passing notes: you, your portal, and Microsoft (or Google, or whichever identity provider you've chosen).</p>
+
+      <div class="pp-box pp-box--tip p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Remember these five things</h3>
+        <ol class="space-y-3 text-gray-700 ml-6 list-decimal">
+          <li><strong>Use OAuth/OpenID Connect</strong>: it's the modern way. SAML is for legacy systems.</li>
+          <li><strong>It's all about trust</strong>: your portal trusts the identity provider's digital signature, like a passport stamp.</li>
+          <li><strong>Security happens in steps</strong>: multiple redirects mean more secure, not broken.</li>
+          <li><strong>Tokens have expiry dates</strong>: usually 1 hour. That's normal.</li>
+          <li><strong>Check your URLs match exactly</strong>: most auth failures come down to a wrong redirect URL.</li>
+        </ol>
+      </div>
+
+      <p class="text-gray-700">Now you understand how login works. When something breaks, you'll know exactly where to look.</p>
+    </section>
+
+    <hr class="my-12 border-t-2 border-gray-200">
+
+    <section id="further-reading" class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Further Reading</h2>
+      <ul class="space-y-2 text-gray-700 ml-6 list-disc">
+        <li><a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Microsoft Learn: Power Pages Authentication</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/oauth2-provider" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Microsoft Learn: Social Identity Providers (OAuth 2.0)</a></li>
+        <li><a href="https://datatracker.ietf.org/doc/html/rfc6749" target="_blank" rel="noopener" class="text-blue-600 hover:underline">OAuth 2.0 RFC 6749</a></li>
+        <li><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener" class="text-blue-600 hover:underline">OpenID Connect Core Spec</a></li>
+        <li><a href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html" target="_blank" rel="noopener" class="text-blue-600 hover:underline">SAML 2.0 Technical Overview</a></li>
+      </ul>
+    </section>
+
+
+
+  </div>
+</article>
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

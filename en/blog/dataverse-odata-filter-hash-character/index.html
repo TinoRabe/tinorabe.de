@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>OData Filter Eats Your # Character: A Dataverse Web API Gotcha</title>
+<meta name="description" content="A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="OData Filter Eats Your # Character: A Dataverse Web API Gotcha">
+<meta property="og:description" content="A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-dataverse-odata-filter-hash-character.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OData Filter Eats Your # Character: A Dataverse Web API Gotcha">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OData Filter Eats Your # Character: A Dataverse Web API Gotcha">
+<meta name="twitter:description" content="A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-dataverse-odata-filter-hash-character.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/#webpage",
+      "url": "https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/",
+      "name": "OData Filter Eats Your # Character: A Dataverse Web API Gotcha",
+      "description": "A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-dataverse-odata-filter-hash-character.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/#article",
+      "headline": "OData Filter Eats Your # Character: A Dataverse Web API Gotcha",
+      "description": "A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-dataverse-odata-filter-hash-character.png",
+      "inLanguage": "en-GB",
+      "keywords": "OData filter encoding, Dataverse Web API hash character, Power Pages filter 400, escape single quote OData, encodeURIComponent OData, Dataverse filter special characters",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Development</span>
+      <time datetime="2026-09-09">9 September 2026</time><span>8 min read</span><a href="/de/blog/dataverse-odata-filter-rautezeichen/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">OData Filter Eats Your # Character: A Dataverse Web API Gotcha</h1>
+    <p class="art-lead">A hash in a record name silently truncates your Dataverse OData filter. Why it happens, the two-layer fix, and the characters Microsoft never documented.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Your filter works. It has worked for months. Then marketing creates a record called <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter #2</code> and the request comes back 400.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+  Nothing in your code changed. Nothing in Dataverse broke. The character did it.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  Here is what happens, why the fix is two steps and not one, and which characters Microsoft documents for this problem and which it quietly leaves out.
+</p>
+
+<figure class="mb-12">
+  <img src="/assets/images/blog/dataverse-odata-filter-hash-character/hero-odata-filter-hash.png" alt="The filter you send gets cut at the # before it leaves the browser, arriving at the server as an unterminated string that returns HTTP 400" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+</figure>
+
+<section id="the-scenario" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The scenario</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    A Server Logic endpoint updates consent records. It looks up a Purpose by name before writing:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>const filter = "msdynmkt_name eq '" + purposeName + "'";
+const raw = Server.Connector.Dataverse.RetrieveMultipleRecords(
+              "msdynmkt_purposes", "$filter=" + filter);</code></pre>
+
+  <p class="text-gray-700 leading-relaxed">
+    For most Purposes this is fine. For <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Commercial HLC #1 - DACH</code>, status 400. For <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter Q4 #2</code>, status 400. The pattern took a while to see because the test data was clean: every failing name contained a hash.
+  </p>
+</section>
+
+<section id="why-the-hash-is-different" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Why the hash is different</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Every other special character in a URL causes trouble at the destination. The hash causes trouble before the request even leaves.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    RFC 3986 defines <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> as the delimiter that starts the fragment identifier, and it is precise about what that means: "the fragment identifier is separated from the rest of the URI prior to a dereference, and thus the identifying information within the fragment itself is dereferenced solely by the user agent, regardless of the URI scheme."
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Separated prior to a dereference. The client cuts the URL at the hash and sends only what is to the left of it.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    So this request:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>GET /api/data/v9.2/msdynmkt_purposes?$filter=msdynmkt_name eq 'Commercial HLC #1 - DACH'</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    arrives at the server looking like this:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>GET /api/data/v9.2/msdynmkt_purposes?$filter=msdynmkt_name eq 'Commercial HLC</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The string literal now has an opening quote and no closing quote. Dataverse parses it, fails, and returns 400.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    That is the loud failure mode, and it is the lucky one.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Consider <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Campaign #2 Berlin</code> used in a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains()</code> filter. Truncate at the hash and what is left depends on the exact shape. If the hash sits in the middle of a string literal that is still open, the common case for a value like this, you get the same unfinished quote and the same loud 400 as above. I tested exactly this live on 3 September 2026: a test contact with <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> in the last name, the same unescaped <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains()</code> filter fired against <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/api/data/v9.2/contacts</code>, result HTTP 400, "unterminated string literal"; properly encoded with <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%23</code>, HTTP 200 with the single expected match. The real danger sits elsewhere: if the hash is no longer inside an open literal when the client truncates, say because the same query string carries an additional condition or a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> after it, you can be left with a filter that is valid on its own but incomplete. No error. HTTP 200. Just not the filter you wrote. In a consent or entitlement context, that is a considerably worse outcome than a 400, because nothing tells you it happened.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    The reason your HTTP client does not protect you is that this is genuinely ambiguous. A hash in a URL is meaningful. The client cannot know whether you meant a fragment or a literal. Some libraries encode aggressively, some pass strings through untouched. The Dataverse connector in Power Pages Server Logic is in the second camp.
+  </p>
+</section>
+
+<section id="what-microsoft-documents" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">What Microsoft does document</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    More than you might expect, and with one significant hole.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Single quotes are documented.</strong> The Dataverse Web API filter guidance has a section called "Manage single quotes": "If the filter is for a single value, replace the single quote character with two consecutive single quote characters". The documented failure message is worth memorising because it names the position: "There is an unterminated literal at position 21 in 'lastname eq 'O'Bryan''".
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Percent-encoding is documented, partially.</strong> The same page says that if a string value in a filter function includes a special character, you need to URL encode it, using <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains(name,'+123')</code> as the example that fails and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contains(name,'%2B123')</code> as the fix.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    It then gives a table of characters to encode. Here is the complete list:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Character</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Encoded</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 font-mono text-sm">
+        <tr class="border-b border-gray-200"><td class="p-3">$</td><td class="p-3">%24</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">&amp;</td><td class="p-3">%26</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">+</td><td class="p-3">%2B</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">,</td><td class="p-3">%2C</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">/</td><td class="p-3">%2F</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">:</td><td class="p-3">%3A</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">;</td><td class="p-3">%3B</td></tr>
+        <tr class="border-b border-gray-200 bg-gray-50"><td class="p-3">=</td><td class="p-3">%3D</td></tr>
+        <tr class="border-b border-gray-200"><td class="p-3">?</td><td class="p-3">%3F</td></tr>
+        <tr class="bg-gray-50"><td class="p-3">@</td><td class="p-3">%40</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ten characters. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> is not one of them.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Neither is <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%</code> itself, which is arguably worse. A percent sign inside a value that is not encoded to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%25</code> corrupts every percent-triplet that follows it. A record named <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">50% Rabatt</code> is a live grenade in a filter, and the documentation is silent on both.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    So the two characters most likely to fail without an obvious error are exactly the two missing from Microsoft's table. That is the gap this post exists to fill.
+  </p>
+</section>
+
+<section id="the-fix" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The fix, in the right order</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The tempting fix is a single replace on the hash. It works for the case in front of you and leaves the others.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The correct fix respects that there are two different layers of rules stacked on each other.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    <strong>Layer one is OData.</strong> Inside a string literal, a single quote is doubled. That is the OData v4.01 URL conventions rule: "single quotes within string literals are represented as two consecutive single quotes". This has nothing to do with URLs.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Layer two is the URI.</strong> Reserved characters in the value get percent-encoded, per RFC 3986.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Apply them in that order, and one function handles everything:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function odataString(value) {
+  // 1. OData layer: double the single quotes inside the literal
+  const doubled = String(value).replace(/'/g, "''");
+  // 2. URI layer: percent-encode everything reserved
+  return encodeURIComponent(doubled);
+}
+
+const filter = "msdynmkt_name eq '" + odataString(purposeName) + "'";</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The order is not a stylistic preference. It is load-bearing, and the reason is a nice coincidence in the JavaScript standard library.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">encodeURIComponent</code> escapes everything except <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">A-Z a-z 0-9 - _ . ! ~ * ' ( )</code>. The apostrophe is on the exempt list. So it encodes <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">#</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%23</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%25</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&amp;</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%26</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%2B</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">?</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">%3F</code>, and it leaves your carefully doubled quotes exactly as <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">''</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Do it the other way round and the doubling produces literal quotes that then survive encoding anyway, but you have lost the guarantee that the doubling applied to the original value rather than to an encoded one. Double first. Encode second. Every time.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Note what is encoded and what is not. The quotes wrapping the literal are structure, so they stay bare. Only the value goes through the function. Encoding the whole filter expression breaks it, because <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">eq</code>, the spaces, and the quotes are syntax.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    The OASIS specification has a worked example of exactly this principle. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Categories('Smartphone%2FTablet')</code> is valid while <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Categories('Smartphone/Tablet')</code> is not, because forward slashes are read as path segment separators. The hash behaves the same way, one layer earlier.
+  </p>
+</section>
+
+<section id="two-traps" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Two traps nearby</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Power Pages Liquid <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">url_escape</code> is not a substitute.</strong> The filter is documented as "URI-escape a string, for inclusion in a URL", and the doc's own example shows <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">'This & that//'</code> becoming <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">This+%26+that%2F%2F</code>. Look at the spaces. It produces <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code>, form-encoding style. Inside an OData string literal, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">+</code> is a literal plus sign, not a space, so <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">url_escape</code> will silently change your search term. If you build filters in Liquid, this filter is the wrong tool.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-lg text-gray-800">
+      <strong>Watch for double encoding.</strong> If you hand your already-encoded filter to a URL builder or an HTTP library that encodes query parameters again, <code class="bg-yellow-100 px-1.5 py-0.5 rounded font-mono">%23</code> becomes <code class="bg-yellow-100 px-1.5 py-0.5 rounded font-mono">%2523</code> and you are back to no matches. Encode once, at the value, and know where that happens in your stack.
+    </p>
+  </div>
+</section>
+
+<section id="where-this-bites" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Where this bites</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Anywhere your filter values are not GUIDs.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Marketing-named records are the classic case, because the hash is a naming convention there: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Newsletter #1</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Campaign #DACH</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Commercial #2</code>. Generated identifiers are next: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">INV#2024-001</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">PO#88213</code>. Then anything users type that ends up in a filter, which means categories, tags, project codes, and search boxes.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Search boxes deserve a specific mention. A user typing a hash into a search field is not exotic, and a search that returns silently wrong results is worse than one that errors.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    A portal nobody is actively watching can return silently wrong data to users for months before anyone notices. That is precisely what monthly <a href="/leistungen/care/" class="underline font-semibold">Care</a> reviews are built to catch.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    The rule that keeps you safe is simple. If a value in a filter is anything other than a GUID, it goes through the escape function. Write <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">odataString</code> once, put it where the team will find it, and use it everywhere.
+  </p>
+</section>
+
+<section id="url-limits" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">While you are in the URL</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Two documented limits worth knowing, since percent-encoding roughly triples the length of every character it touches.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Microsoft documents that "The maximum length of URL accepted by is 32 KB (32,768 characters)", rising to 64 KB inside a <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$batch</code> body. And there is a tighter one that catches people first: "The maximum length of any individual segment in an OData request is 260 characters." A heavily encoded value can reach that faster than you would guess.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Neither limit causes the hash problem. Both can appear while you are fixing it.
+  </p>
+</section>
+
+<section id="the-takeaway" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">The takeaway</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Two rules, two layers, one function.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Double the single quotes, because OData says so. Percent-encode the value, because the URI says so. In that order, because <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">encodeURIComponent</code> leaves apostrophes alone and would otherwise let you fool yourself.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    And keep in mind which failures are loud and which are quiet. The 400 that started this post is the friendly version. The one to fear is the truncated filter that still parses, returns 200, and hands you the wrong record.
+  </p>
+</section>
+
+
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Related Articles</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/en/blog/power-pages-server-logic-hidden-constraints/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Server Logic: 4 Hidden Constraints</h3>
+      <p class="text-gray-600 mb-4">The documented blocklist, four constraints found by bisection, and a debugging playbook for an opaque runtime.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">A decision tree, performance comparison, and security patterns between the two data access paths in Power Pages.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Sources</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/query/filter-rows" class="underline" target="_blank" rel="noopener">Dataverse Web API, filter rows</a>, "Manage single quotes" and "URL encode special characters" with the ten character table</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/compose-http-requests-handle-errors" class="underline" target="_blank" rel="noopener">Dataverse Web API, compose HTTP requests and handle errors</a>, version v9.2, URL length and 260 character segment limits, error envelope</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/api-limits" class="underline" target="_blank" rel="noopener">Dataverse Web API service protection limits</a></li>
+    <li><a href="https://www.rfc-editor.org/rfc/rfc3986.txt" class="underline" target="_blank" rel="noopener">RFC 3986</a>, section 3.5 on fragments, section 2.2 on reserved characters, section 2.1 on percent-encoding</li>
+    <li><a href="https://docs.oasis-open.org/odata/odata/v4.01/os/part2-url-conventions/odata-v4.01-os-part2-url-conventions.html" class="underline" target="_blank" rel="noopener">OData Version 4.01 Part 2, URL Conventions</a>, string literals and percent-encoding</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" class="underline" target="_blank" rel="noopener">MDN, encodeURIComponent</a> and the characters it does not escape</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-filters" class="underline" target="_blank" rel="noopener">Power Pages Liquid filters</a>, url_escape and xml_escape</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/template-tags" class="underline" target="_blank" rel="noopener">Power Pages Liquid template tags</a>, {% fetchxml %}</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-objects" class="underline" target="_blank" rel="noopener">Server objects</a>, Server.Connector.Dataverse</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

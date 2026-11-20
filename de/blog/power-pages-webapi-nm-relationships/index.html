@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML</title>
+<meta name="description" content="Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-webapi-nm-relationships/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-webapi-nm-relationships/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML">
+<meta property="og:description" content="Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-webapi-nm-relationships.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML">
+<meta property="article:published_time" content="2026-09-29">
+<meta property="article:modified_time" content="2026-09-29">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML">
+<meta name="twitter:description" content="Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-webapi-nm-relationships.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/#webpage",
+      "url": "https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/",
+      "name": "N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML",
+      "description": "Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-webapi-nm-relationships.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/#article",
+      "headline": "N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML",
+      "description": "Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.",
+      "datePublished": "2026-09-29",
+      "dateModified": "2026-09-29",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-webapi-nm-relationships.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Web API, N:M, Many-to-Many, FetchXML, link-entity, intersect, Table Permissions",
+      "articleSection": "Entwicklung"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Entwicklung</span>
+      <time datetime="2026-09-29">29. September 2026</time><span>7 Min. Lesezeit</span><a href="/en/blog/power-pages-webapi-nm-relationships/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">N:M-Beziehungen in Power Pages lesen: Web API vs. Liquid FetchXML</h1>
+    <p class="art-lead">Die Portal Web API stolpert beim Lesen von N:M-Beziehungen. Warum das passiert, was Microsoft dazu dokumentiert, und wie Liquid FetchXML es serverseitig löst.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Der Use Case ist banal: Zu einer Installation die verknüpften Produkte anzeigen, verbunden über eine Many-to-Many-Beziehung. Man greift zur Portal Web API, ruft den Navigationspfad ab, und bekommt einen Fehler statt Daten.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Danach beginnt die übliche Suche an den falschen Stellen: Site Settings, Berechtigungen, Schreibweise der Navigation Property. Die Wahrheit ist differenzierter als "die Web API kann kein N:M". Dieser Beitrag zeigt zwei Wege: was die Portal Web API wirklich kann (und wo sie stolpert) und wie Liquid FetchXML das N:M-Lesen serverseitig löst. Beides habe ich im Demo-Portal nachgestellt (Enhanced Data Model, zwei eigene Tabellen <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Installation</code> und <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Produkt</code> mit N:M-Beziehung). Einen dritten Weg, Server Logic (on-demand, serverseitiges JavaScript), behandle ich in einem eigenen Folge-Post.
+</p>
+
+<section id="web-api" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Weg 1: Portal Web API, was sie kann und wo sie stolpert</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Portal Web API (<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/...</code>) bietet laut Microsoft ein <strong>Subset</strong> der Dataverse-Operationen: Lesen, Anlegen, Aktualisieren/Löschen und <strong>Associate/Disassociate</strong>. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$expand</code> ist dokumentiert für single-valued (N:1) und collection-valued (1:N) Navigation Properties, letzteres aber <strong>nur eine Ebene tief</strong>. Ein N:M-<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$expand</code>-Beispiel fehlt in der Portal-Doku komplett.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">Der belastbare, dokumentierte N:M-Haken ist ein <strong>Known Issue</strong>. Microsoft schreibt wörtlich:</p>
+
+  <blockquote class="pp-box pp-box--note p-6 mb-6 text-gray-800 italic">
+    "Users get a CDS error if they invoke a <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm not-italic">GET</code> Web API request for tables that have multiple levels of one-to-many or many-to-many table permissions when Parental, Contact, or Account scopes add more conditions to the query. To resolve this issue, use FetchXML in the OData query."
+  </blockquote>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Genau dieses "use FetchXML" ist der offizielle Ausweg, dazu gleich. Was über die Portal Web API dagegen <strong>sauber funktioniert</strong>, ist das <strong>Verknüpfen und Lösen</strong> von N:M-Beziehungen über <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$ref</code> (im Demo bestätigt):
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>webapi.safeAjax({
+  type: "POST",
+  url: "/_api/pwrprtl_installations(" + installationId + ")/pwrprtl_installation_product/$ref",
+  contentType: "application/json",
+  data: JSON.stringify({
+    "@odata.id": baseUrl + "/_api/pwrprtl_products(" + productId + ")"
+  })
+});</code></pre>
+
+  <p class="text-gray-700 leading-relaxed">
+    Merksatz: <strong>N:M schreiben (associate) über die Web API ist unproblematisch. Das komfortable N:M-Lesen über <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$expand</code> ist es nicht</strong>: dafür gibt es den FetchXML-Weg.
+  </p>
+</section>
+
+<section id="liquid-fetchxml" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Weg 2: Liquid FetchXML, Microsofts eigener Workaround</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    FetchXML löst N:M serverseitig über verschachtelte <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">link-entity</code>-Elemente, wobei die automatische Intersect-Tabelle mit <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">intersect="true"</code> als Join dient. Im Web Template:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>{% fetchxml products %}
+&lt;fetch&gt;
+  &lt;entity name="pwrprtl_product"&gt;
+    &lt;attribute name="pwrprtl_product_name" /&gt;
+    &lt;link-entity name="pwrprtl_installation_product" from="pwrprtl_productid" to="pwrprtl_productid" intersect="true"&gt;
+      &lt;link-entity name="pwrprtl_installation" from="pwrprtl_installationid" to="pwrprtl_installationid"&gt;
+        &lt;filter&gt;
+          &lt;condition attribute="pwrprtl_installationid" operator="eq" value="{{ installationId }}" /&gt;
+        &lt;/filter&gt;
+      &lt;/link-entity&gt;
+    &lt;/link-entity&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+{% endfetchxml %}
+
+&lt;ul&gt;
+{% for p in products.results.entities %}
+  &lt;li&gt;{{ p.pwrprtl_product_name }}&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">Im Demo-Portal liefert genau das die verknüpften Produkte einer Installation:</p>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/power-pages-webapi-nm-relationships/nm-fetchxml-result.jpg" alt="Die Liquid-FetchXML-Seite im Portal listet die über die N:M-Beziehung verknüpften Produkte einer Installation" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <div class="pp-box pp-box--warn p-6 mb-6">
+    <p class="text-gray-800">
+      <strong>Der Stolperstein, der mich beim Nachstellen Zeit gekostet hat</strong> (und der Sie sonst genauso trifft): Liquid FetchXML läuft im Kontext des <strong>angemeldeten</strong> Nutzers und respektiert dessen Web-Rolle und Table Permissions. Als ich die Seite anonym aufrief, kam eine leere Liste zurück, keine Fehlermeldung, nichts. Erst als Portal-Contact <strong>angemeldet</strong> (mit einer Web-Rolle, der Lese-Table-Permissions auf die beteiligten Tabellen zugewiesen sind) erschienen die Daten. Setzen Sie also Read-Table-Permissions auf die beteiligten Tabellen für die passende Web-Rolle; ich habe zusätzlich eine Permission auf die Intersect-Tabelle gesetzt und nicht isoliert, ob sie zwingend nötig ist, im Zweifel mitnehmen.
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed">
+    Charakteristik: Die Daten stehen <strong>beim Seiten-Rendering</strong> bereit (vorgeladen). Ideal, wenn die Liste ohnehin gleich sichtbar ist.
+  </p>
+</section>
+
+<section id="entscheidung" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Entscheidungshilfe</h2>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Aufgabe</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Empfohlener Weg</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4">N:M <strong>lesen</strong>, Liste beim Page-Load sichtbar</td>
+          <td class="p-4">Liquid FetchXML (<code class="bg-gray-100 px-1 rounded font-mono text-xs">link-entity</code>/<code class="bg-gray-100 px-1 rounded font-mono text-xs">intersect</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4">N:M <strong>schreiben</strong> (verknüpfen/lösen)</td>
+          <td class="p-4">Portal Web API <code class="bg-gray-100 px-1 rounded font-mono text-xs">$ref</code> (POST/DELETE)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="p-4">1:N / N:1 <strong>lesen</strong></td>
+          <td class="p-4">Portal Web API <code class="bg-gray-100 px-1 rounded font-mono text-xs">$expand</code> (eine Ebene) oder Liquid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die eigentliche Lehre steckt weniger im "welcher Weg geht" als im Kontext: Beide Wege respektieren Web-Rolle und Table Permissions des Nutzers. Ein leeres Ergebnis ist deshalb oft kein Bug im Code, sondern eine fehlende Berechtigung oder ein nicht angemeldeter Nutzer. Bevor Sie die FetchXML zerlegen, prüfen Sie erst, als wer die Seite läuft.
+  </p>
+
+  <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+    <p class="text-gray-700 leading-relaxed"><strong>Ausblick:</strong> Es gibt einen dritten Weg, N:M-Daten zu holen, <strong>Server Logic</strong>, serverseitiges JavaScript, das der Client on-demand aufruft (seit 2026 allgemein verfügbar). Wann sich das gegenüber dem vorgeladenen FetchXML lohnt und worauf man dabei achten muss, kommt in einem eigenen Folge-Post.</p>
+  </div>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Weiterführende Artikel</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="/de/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Entwicklung</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API</h3>
+      <p class="text-gray-600 mb-4">Der grundsätzliche Vergleich der beiden Datenzugriffswege, Entscheidungsbaum, Performance, Security.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/power-pages-sicherheitsarchitektur/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Sicherheit</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Sicherheitsarchitektur</h3>
+      <p class="text-gray-600 mb-4">Table Permissions, Web Roles und Scopes, das Modell hinter der Berechtigungsfalle in diesem Beitrag.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/wildcard-web-api-fix/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Sicherheit</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Wildcard im Web API</h3>
+      <p class="text-gray-600 mb-4">Ein weiteres Web-API-Detail mit Sicherheitsfolgen: die Ablösung des Wildcard-Werts in den Feldlisten.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/power-pages/configure/web-api-overview" class="underline" target="_blank" rel="noopener">Microsoft Learn: Overview of the portals Web API</a> (Operations-Subset, "Known issues": N:M-GET-Fehler + FetchXML-Workaround, "follows the table permissions")</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/read-operations" class="underline" target="_blank" rel="noopener">Microsoft Learn: Read operations</a> (<code class="bg-gray-100 px-1 rounded font-mono text-xs">$expand</code> für N:1/1:N, "only one level of depth")</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/write-update-delete-operations" class="underline" target="_blank" rel="noopener">Microsoft Learn: Write, update, delete</a> (Associate/Disassociate <code class="bg-gray-100 px-1 rounded font-mono text-xs">$ref</code>)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/liquid/template-tags" class="underline" target="_blank" rel="noopener">Microsoft Learn: fetchxml Liquid tag</a> und <a href="https://learn.microsoft.com/power-apps/developer/data-platform/fetchxml/reference/link-entity" class="underline" target="_blank" rel="noopener">link-entity / intersect</a></li>
+    <li>Hands-on in meinem eigenen Demo-Portal: zwei Tabellen mit N:M-Beziehung, Associate über <code class="bg-gray-100 px-1 rounded font-mono text-xs">$ref</code> und N:M-Lesen über Liquid FetchXML live nachgestellt</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

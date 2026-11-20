@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es</title>
+<meta name="description" content="Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/&lt;tabelle&gt;/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/wildcard-web-api-fix/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/wildcard-web-api-fix/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/wildcard-web-api-fix/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/wildcard-web-api-fix/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es">
+<meta property="og:description" content="Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/&lt;tabelle&gt;/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/wildcard-web-api-fix/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-wildcard-web-api-fix.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es">
+<meta property="article:published_time" content="2026-08-19">
+<meta property="article:modified_time" content="2026-10-19">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es">
+<meta name="twitter:description" content="Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/&lt;tabelle&gt;/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-wildcard-web-api-fix.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/wildcard-web-api-fix/#webpage",
+      "url": "https://tinorabe.de/de/blog/wildcard-web-api-fix/",
+      "name": "Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es",
+      "description": "Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/<tabelle>/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-wildcard-web-api-fix.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/wildcard-web-api-fix/#article",
+      "headline": "Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es",
+      "description": "Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/<tabelle>/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.",
+      "datePublished": "2026-08-19",
+      "dateModified": "2026-10-19",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/wildcard-web-api-fix/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-wildcard-web-api-fix.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Web API, Webapi fields Site Setting, Wildcard deprecated, Power Pages Deprecation, Power Pages Sicherheit, Spaltenberechtigungen, Table Permissions",
+      "articleSection": "Sicherheit"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Sicherheit</span>
+      <time datetime="2026-08-19">19. August 2026</time><span>12 Min. Lesezeit</span><a href="/en/blog/wildcard-web-api-fix/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es</h1>
+    <p class="art-lead">Seit dem 14. September 2026 lehnt Power Pages den Wildcard in Webapi/&lt;tabelle&gt;/fields ab. Was fehlschlägt, wie Sie in 10 Minuten prüfen, welche Optionen bleiben.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="pp-box pp-box--warn p-6 mb-10">
+  <p class="text-gray-900 font-bold mb-2">Update, 19. Oktober 2026: Die Frist ist abgelaufen.</p>
+  <p class="text-gray-800 mb-3">Seit dem 14. September 2026 unterstützt Power Pages <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> in <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;tabelle&gt;/fields</code> auf keiner Site mehr. Web-API-Anfragen an Tabellen, die noch mit dem Wildcard konfiguriert sind, schlagen fehl, bis die Spalten explizit aufgeführt sind. Prüfung und Fix unten gelten unverändert.</p>
+  <p class="text-gray-800 mb-3"><strong>Zwei Optionen, die Microsoft seit diesem Artikel ergänzt hat:</strong> das Site Setting <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;tabelle&gt;/UseFieldsFromView</code> (ab Site-Version 9.8.8.x) übernimmt die erlaubten Spalten aus einer Systemansicht namens <em>Power Pages Web API Columns</em>, und Admins können pro Site einmalig eine Verlängerung um 90 Tage unter <em>Manage exemptions</em> im Power Platform Admin Center beantragen. Die Verlängerung ist nicht erneuerbar.</p>
+  <p class="text-gray-700 text-sm">Quellen: <a class="underline" href="https://learn.microsoft.com/power-pages/configure/web-api-overview#site-settings-for-the-web-api">Portals Web API overview</a>, <a class="underline" href="https://learn.microsoft.com/power-pages/admin/manage-exemptions">Manage exemptions for Power Pages sites</a>, <a class="underline" href="https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard">Migrate from the Web API wildcard</a>.</p>
+</div>
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Am 14. August 2026 hat Microsoft die Dokumentation zu den anstehenden Änderungen in Power Pages aktualisiert. Ein neuer Eintrag betrifft jedes Portal, das die Portal Web API nutzt.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">Die Sachlage in zwei Sätzen:</p>
+
+<div class="pp-box pp-box--note p-6 mb-8">
+  <p class="text-gray-800 mb-3"><strong>Ab August 2026</strong> können neu erstellte Websites den Wildcard-Wert <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> im Site Setting <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;tabellenname&gt;/fields</code> nicht mehr verwenden.</p>
+  <p class="text-gray-800"><strong>Am 14. September 2026</strong> wird die Unterstützung für den Wildcard-Wert für <strong>alle</strong> Websites entfernt. Bestehende Websites müssen dann eine explizite Liste erlaubter Spalten hinterlegen.</p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  Das sind, gerechnet ab dem Erscheinen dieses Beitrags, gut vier Wochen. Der Selbstcheck dauert zehn Minuten pro Portal, das lässt sich beziffern, weil er immer dieselben Schritte umfasst. Wie lange der Fix danach dauert, hängt vom einzelnen Portal ab, von der Zahl betroffener Tabellen und davon, wie viel Custom Code auf den Web-API-Aufrufen aufbaut. Was in jedem Fall Zeit kostet, ist nicht das Umstellen selbst, sondern das Finden aller betroffenen Stellen, und genau darum geht es hier.
+</p>
+
+<section id="worum-es-geht" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Worum es technisch geht</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Portal Web API von Power Pages wird über zwei Site Settings je Tabelle freigeschaltet:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Site Setting</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Bedeutung</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4 font-mono text-sm">Webapi/&lt;tabellenname&gt;/enabled</td>
+          <td class="p-4">Schaltet die Web API für diese Tabelle ein. Standardwert <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">False</code>.</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4 font-mono text-sm">Webapi/&lt;tabellenname&gt;/fields</td>
+          <td class="p-4">Kommaseparierte Liste der Spalten, die über die Web API zugänglich sind. Pflichteinstellung.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Der Tabellenname im Setting ist der <strong>logische Name</strong> der Tabelle, also <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">account</code> oder <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">incident</code>. In der URL des Aufrufs steht dagegen der <strong>EntitySetName</strong> in der Mehrzahl, also <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/accounts</code> oder <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/incidents</code>. Diese Unterscheidung ist beim Aufräumen wichtig, weil Sie in den Site Settings nach dem einen und im JavaScript nach dem anderen suchen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Bisher war im <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting der Wert <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> erlaubt. Er bedeutet alle Spalten. Bequem beim Bauen, und genau das ist das Problem. Microsoft formuliert es so: der Wildcard-Wert legt alle Spalten einer Dataverse-Tabelle über die Power Pages Web API offen.
+  </p>
+</section>
+
+<section id="was-bricht" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was am 14. September konkret bricht</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Alles, was über den <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/</code>-Pfad auf eine Tabelle zugreift, deren <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting auf <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> steht. Wo genau das in Ihrem Portal passiert, kann ich von hier aus nicht wissen, das hängt an Ihrer Implementierung und Ihrem Custom Code. Die folgenden vier Kategorien sind deshalb <strong>Beispiele, keine vollständige Liste</strong>, sie sollen Ihnen beim Suchen eine Richtung geben. Genauso gut kann der Aufruf in einer React-Komponente stecken, in einem Web Template oder in einer Multistep-Form-Konfiguration, die niemand mehr auf dem Schirm hat. Die dritte Kategorie unten ist die, die man am ehesten vergisst:
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">1. Custom JavaScript auf Formularen</h3>
+      <p class="text-gray-600 text-sm">Der Klassiker ist ein Basic Form mit einem Skript, das beim Laden per <code class="bg-gray-100 px-1 rounded font-mono text-xs">safeAjax</code> weitere Daten nachlädt oder beim Speichern einen zweiten Datensatz schreibt. Bricht sofort, weil der Aufruf fehlschlägt.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">2. Buttons und Aktionen in Listen</h3>
+      <p class="text-gray-600 text-sm">Ein eigener Button in einer List, der einen Statuswechsel schreibt, einen Datensatz dupliziert oder einen Genehmigungsschritt auslöst. Diese Aufrufe laufen über dieselbe API und über dasselbe Setting.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">3. Alles, was nach dem Absenden im Hintergrund passiert</h3>
+      <p class="text-gray-600 text-sm">Nachgelagerte Schreibvorgänge, Kalkulationen, Verknüpfungen von Datensätzen. Der Nutzer sieht die Erfolgsmeldung des Formulars, die stille Folgeaktion bleibt aus. Der unangenehmste Fall, weil er nicht als Fehler auffällt, sondern als fehlender Datensatz drei Wochen später.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">4. Zugekaufte Komponenten und PCF-Controls</h3>
+      <p class="text-gray-600 text-sm">Alles, was Sie nicht selbst geschrieben haben und was auf die Portal Web API setzt. Prüfen Sie die Site Settings, nicht die Herkunft des Codes.</p>
+    </div>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Nicht betroffen sind serverseitige Integrationen gegen die Dataverse Web API unter <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/api/data/v9.2/</code>. Das ist eine andere Schnittstelle mit einem anderen Berechtigungsmodell. Betroffen ist ausschließlich der Portal-Pfad <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    So sieht das Fehlerbild konkret aus. Im Demo-Portal habe ich das <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting entfernt und denselben Aufruf wiederholt: Antwort HTTP 403, Fehlercode <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">90040101</code>, Meldung "Attribute contactid in table contact is not enabled for Web Api." (der genannte Spaltenname wechselt je nachdem, welche Spalte der Aufruf anfragt). Das ist der belegte Fall des <strong>fehlenden</strong> Settings. Der Wildcard-Fall nach dem 14. September sieht sehr wahrscheinlich, aber nicht garantiert genauso aus, denn beide Fälle laufen technisch auf dasselbe hinaus: keine Spalte in der Antwort ist als erlaubt hinterlegt.
+  </p>
+
+  <figure class="mb-4">
+    <img src="/assets/images/blog/wildcard-web-api-fix/api-response-error.png" alt="Fehlerantwort bei fehlendem fields-Setting im Chrome-Network-Tab: Statuscode 403 und Fehlerkörper mit Code 90040101" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+</section>
+
+<section id="hands-on" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Hands-on: Wildcard gegen explizite Spaltenliste</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Der Unterschied lässt sich in wenigen Minuten sichtbar machen. Der folgende Ablauf ist so beschrieben, dass Sie ihn in Ihrer eigenen Entwicklungsumgebung nachstellen können. Alle Zahlen und Fehlermeldungen unten sind in meinem eigenen Demo-Portal gemessen, nicht angenommen.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Ausgangslage herstellen</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Legen Sie in der Portal Management App zwei Site Settings für eine Tabelle Ihrer Wahl an. Im Beispiel <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contact</code>:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>Webapi/contact/enabled   &rarr;  true
+Webapi/contact/fields    &rarr;  *</code></pre>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/wildcard-web-api-fix/site-settings-wildcard.png" alt="Site Settings der Demo-Website in der Portal Management App, gefiltert auf Webapi/contact, mit Wert Sternchen im fields-Setting" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Vergeben Sie außerdem eine Table Permission mit Leserecht auf <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">contact</code> für die Web Role, unter der Sie testen. Ohne Table Permission bekommen Sie einen Berechtigungsfehler, nicht das Verhalten, das Sie sehen wollen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Nach jeder Änderung an Site Settings rufen Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_services/about</code> auf und lösen Clear Cache aus. Ohne Cache-Invalidierung messen Sie den alten Zustand.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Der Aufruf</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Für lesende Aufrufe reicht tatsächlich die Adresszeile Ihres Browsers. Angemeldet am Portal einfach die URL direkt aufrufen:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed break-all whitespace-pre-wrap"><code>https://IhrPortal.powerappsportals.com/_api/contacts?$top=1&amp;$select=contactid,firstname,lastname,emailaddress1</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Der Browser zeigt die JSON-Antwort direkt an, kein Werkzeug nötig. Ich zeige den Ablauf trotzdem über die Browser-Konsole, weil sich damit auch die Spaltenzahl automatisch auszählen und formatieren lässt, und weil dieselbe Technik für schreibende Aufrufe (<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">POST</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">PATCH</code>) sowieso nötig ist, die über die Adresszeile nicht gehen. In der Konsole, angemeldet am Portal:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>fetch("/_api/contacts?$top=1&amp;$select=contactid,firstname,lastname,emailaddress1", {
+  headers: { "Accept": "application/json" }
+})
+  .then(r =&gt; r.json())
+  .then(d =&gt; {
+    const rec = d.value[0];
+    console.log("Spalten in der Antwort:", Object.keys(rec).length);
+    console.log(Object.keys(rec).sort());
+  });</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Für schreibende Aufrufe brauchen Sie zusätzlich das CSRF-Token. Die von Microsoft dokumentierte Wrapper-Funktion <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">webapi.safeAjax</code> holt es intern über <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">shell.getTokenDeferred()</code> und setzt daraus den Header <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">__RequestVerificationToken</code>, das ist der aktuelle, gegen Microsoft Learn geprüfte Stand. Lesende <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">GET</code>-Aufrufe, wie oben, funktionieren auch ohne.
+  </p>
+
+  <div class="pp-box pp-box--note p-6 mb-8">
+    <p class="text-gray-800">
+      <strong>Beobachtung aus dem Demo-Portal:</strong> Ohne das <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> in der URL antwortet der Aufruf mit einem Berechtigungsfehler, auch wenn das <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting korrekt konfiguriert ist. Der Server behandelt einen Aufruf ohne explizite Spaltenauswahl offenbar wie eine implizite Anfrage nach allen Spalten und prüft diese gegen die Berechtigung. Nehmen Sie deshalb in <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> genau die Spalten auf, die in Ihrem <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting stehen.
+    </p>
+  </div>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Vorher: fields = *</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Demo-Website ist am 16. August 2026 angelegt worden, also nach dem Stichtag im August, ab dem Microsoft neu erstellten Websites den Wildcard-Wert komplett verweigert. Der Aufruf mit <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fields = *</code> liefert dort deshalb schon heute keinen Spaltensatz, sondern einen Fehler: HTTP 403, Code <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">90040122</code>, Meldung "You are unauthorized to process this request." Dieser Code steht noch nicht in Microsofts offizieller Fehlercode-Tabelle für die Web API, vermutlich weil er erst mit der Wildcard-Sperre neu dazugekommen ist. Das ist kein Sonderfall der Zukunft, das ist der aktuelle Zustand jeder Website, die seit August 2026 entstanden ist.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Auf Websites, die vor diesem Stichtag angelegt wurden, funktioniert der Wildcard-Wert nach aktuellem Stand noch, bis die Unterstützung am 14. September für alle entfernt wird. Wie viele Spalten eine solche ältere Website konkret zurückliefert, kann ich an dieser Stelle nicht zeigen, weil die einzige verfügbare Demo-Website selbst schon zur neuen Kategorie zählt. Rechnen Sie bei einer Standard-Kontakttabelle mit eigenen Feldern mit einem hohen zweistelligen bis dreistelligen Wert, das lässt sich in Ihrer eigenen, älteren Umgebung in einer Minute nachmessen.
+  </p>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/wildcard-web-api-fix/api-response-wildcard.png" alt="Fehlerantwort beim Wildcard-Aufruf im Chrome-Network-Tab: Statuscode 403 und Fehlercode 90040122, You are unauthorized to process this request" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <h3 class="text-2xl font-bold mb-4 text-gray-900">Nachher: explizite Liste</h3>
+
+  <p class="text-gray-700 leading-relaxed mb-4">Ändern Sie das Setting auf die Spalten, die Ihre Seite tatsächlich braucht:</p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>Webapi/contact/fields  &rarr;  contactid,firstname,lastname,emailaddress1</code></pre>
+
+  <figure class="mb-6">
+    <img src="/assets/images/blog/wildcard-web-api-fix/site-settings-explicit.png" alt="Site Setting nach der Umstellung auf die explizite Spaltenliste in der Portal Management App" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Cache invalidieren, Aufruf mit passendem <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> wiederholen. Die Antwort enthält jetzt exakt die vier angeforderten Spalten plus das Verwaltungsfeld <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">@odata.etag</code>, gemessen also fünf Einträge im JSON, nichts weiter. Die Seite funktioniert unverändert, die Angriffsfläche ist auf das reduziert, was Sie tatsächlich abgefragt haben.
+  </p>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/wildcard-web-api-fix/api-response-explicit.png" alt="Erfolgreiche API-Antwort mit der expliziten Spaltenliste im Chrome-Network-Tab: Statuscode 200 mit fünf Feldern" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed">
+    In das Setting gehören die <strong>Schemanamen</strong> der Spalten, nicht die Anzeigenamen. Das kostet beim Umstellen Zeit. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">emailaddress1</code>, nicht "E-Mail". Bei eigenen Spalten also inklusive Präfix, etwa <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">new_kundennummer</code>. Die Attribut-Auswahl-Controls im modernen Konfigurationserlebnis geben Ihnen die Liste kommasepariert aus, das spart Tipparbeit und Tippfehler.
+  </p>
+</section>
+
+<section id="selbstcheck" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Der 10-Minuten-Selbstcheck</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Sie brauchen dafür Zugriff auf die Portal Management App und eine Liste Ihrer Portale. Rechnen Sie zehn Minuten pro Portal.
+  </p>
+
+  <div class="space-y-6 mb-8">
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 1: Site Settings filtern</h3>
+      <p class="text-gray-700 leading-relaxed">Öffnen Sie die Portal Management App, dann <strong>Site Settings</strong>. Filtern Sie die Spalte <strong>Name</strong> auf den Textbestandteil <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/</code>. Sie sehen jetzt alle Web-API-Einstellungen dieser Website. Im Design Studio finden Sie dieselben Einträge unter den Website-Einstellungen, die Portal Management App ist für diesen Zweck aber schneller, weil sie sortier- und filterbare Rasteransichten hat.</p>
+    </div>
+
+    <figure class="mb-2">
+      <img src="/assets/images/blog/wildcard-web-api-fix/selbstcheck-filter.png" alt="Site Settings in der Portal Management App gefiltert auf Webapi/, Namens- und Wertspalte sichtbar" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+    </figure>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 2: Auf den Wert schauen</h3>
+      <p class="text-gray-700 leading-relaxed">Sortieren oder filtern Sie zusätzlich auf <strong>Value</strong> gleich <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code>. Jeder Treffer ist ein Fundstück. Notieren Sie den Tabellennamen aus dem Setting-Namen.</p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 3: Kein Treffer ist noch kein Ergebnis</h3>
+      <p class="text-gray-700 leading-relaxed">Wenn Sie mehrere Websites in der Umgebung haben, prüfen Sie, ob der Filter auf die richtige Website eingeschränkt ist. Site Settings sind websitebezogen, und in einer Umgebung mit Dev, Test und Prod stehen drei Datensatzsätze nebeneinander. Prüfen Sie alle drei, denn kaputt geht später die Produktion.</p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 4: Je Fundstück die genutzten Spalten ermitteln</h3>
+      <p class="text-gray-700 leading-relaxed">Für jede betroffene Tabelle brauchen Sie die Liste der Spalten, die Ihr Code tatsächlich liest oder schreibt. Zwei Wege führen dahin: Durchsuchen Sie Ihre Web Templates, Web Files und Content Snippets nach dem Tabellennamen im Plural, also <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/contacts</code>, und lesen Sie die verwendeten Felder aus <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> und aus den Payloads der Schreibaufrufe ab. Alternativ öffnen Sie die betroffene Portalseite und beobachten die Aufrufe im Netzwerk-Tab. Das ist der ehrlichere Weg, weil er auch Code erfasst, den Sie nicht mehr auf dem Schirm haben.</p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 5: Umstellen, invalidieren, testen</h3>
+      <p class="text-gray-700 leading-relaxed">Setting auf die ermittelte Liste ändern, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_services/about</code> und Clear Cache, dann die betroffenen Seiten durchklicken. Vergessen Sie die Schreibpfade nicht: ein <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> verrät Ihnen nur die gelesenen Spalten. Was ein <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">POST</code> oder <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">PATCH</code> schreibt, steht im Request Body.</p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2 text-gray-900">Schritt 6: Nachziehen in allen Umgebungen</h3>
+      <p class="text-gray-700 leading-relaxed">Site Settings sind Konfigurationsdaten. Nehmen Sie die Änderung in der Solution mit, damit sie den Weg nach Test und Produktion findet und den nächsten Deployment-Zyklus überlebt.</p>
+    </div>
+  </div>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-gray-800">
+      Stellen Sie <strong>großzügig</strong> um, nicht knapp. Wenn Sie unsicher sind, ob eine Spalte gebraucht wird, nehmen Sie sie zunächst mit auf und streichen Sie später. Ein zu enges <code class="bg-yellow-100 px-1.5 py-0.5 rounded font-mono text-sm">fields</code>-Setting bricht die Seite genauso wie das entfernte Wildcard, nur merken Sie es dann selbst, statt am 14. September.
+    </p>
+  </div>
+</section>
+
+<section id="einordnung" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Einordnung: Warum das eine Sicherheitsänderung ist</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Microsoft begründet die Änderung mit Sicherheit und Wartbarkeit. Die Formulierung in der Dokumentation: Die Verwendung des Wildcard-Werts kann unbeabsichtigt zusätzliche Spalten über die Power Pages Web API offenlegen. Eine explizite Liste stellt sicher, dass nur die beabsichtigten Daten zugänglich sind.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das ist präzise formuliert und trifft einen Punkt, den ich in Security Audits regelmäßig sehe. Die Web API hängt an drei Kontrollebenen: der Web Role des Nutzers, den Table Permissions und den Column Permissions. Wer alle drei sauber gesetzt hat, für den ist der Wildcard kein Loch, sondern nur unordentlich. Das Problem ist der praktische Normalfall: Table Permissions werden auf Tabellenebene vergeben, Column Permissions bleiben oft ungenutzt, weil sie in der Anfangsphase Reibung erzeugen. Dann ist der Wildcard die eine Zeile Konfiguration, die entscheidet, ob ein angemeldeter Portalnutzer über die Konsole zwölf Spalten sieht oder hundertzwanzig.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das Interessante am Aufräumen ist deshalb weniger der Fix selbst als das, was dabei sichtbar wird. Fast jedes Portal, das ich mir ansehe, hat mindestens eine Web-API-Tabelle, von der niemand im Team mehr weiß, wofür sie freigeschaltet wurde. Der 14. September ist ein guter Anlass, diese Liste einmal ehrlich durchzugehen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Wenn Sie bei der Gelegenheit wissen wollen, wie es um die anderen beiden Ebenen steht, ist das genau der Umfang eines <a href="/leistungen/security-audit/" class="underline font-semibold">Security Audits</a>: Table Permissions, Column Permissions, Web Roles, Authentifizierung und die Frage, welche Daten ein angemeldeter Nutzer tatsächlich abrufen kann, wenn er es darauf anlegt. Festpreis ab 4.900 Euro netto, Ergebnis ist ein Befundbericht mit Schweregraden und Reihenfolge, keine Liste mit 200 Zeilen Werkzeugausgabe.
+  </p>
+</section>
+
+<section id="was-tun" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was Sie jetzt tun sollten</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">Bis zum 14. September 2026 sind es vier Wochen. Die Reihenfolge, die ich empfehle:</p>
+
+  <ol class="list-decimal pl-6 space-y-3 text-gray-700 leading-relaxed mb-6">
+    <li>Heute den Selbstcheck oben durchführen, für jedes Portal, jede Umgebung. Ergebnis ist eine Liste betroffener Tabellen.</li>
+    <li>Diese Woche die Spaltenlisten ermitteln und in Dev umstellen.</li>
+    <li>Nächste Woche über Test nach Produktion ziehen, mit Regressionstest auf den betroffenen Seiten.</li>
+    <li>Danach den Puffer bis zum 14. September für das behalten, was dabei auffällt.</li>
+  </ol>
+
+  <p class="text-gray-700 leading-relaxed">
+    Warten Sie nicht bis kurz vor Schluss. Microsoft schreibt es selbst in die Dokumentation: Nicht warten, bis die Unterstützung entfernt wird, sondern die Site Settings so bald wie möglich aktualisieren.
+  </p>
+</section>
+
+<section id="care" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Warum meine Wartungskunden das schon wussten</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Meine Wartungskunden hatten diese Information am Ankündigungstag auf dem Tisch, mit der Liste ihrer betroffenen Tabellen dabei. Nicht weil ich schneller lese als andere, sondern weil der Release-Check bei Power Pages Care zum Vertrag gehört.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Ich kümmere mich um Ihr Portal, damit Sie es nicht tun müssen. Das ist kein Support-Vertrag mit Stundenkontingent. Vier Dinge passieren jeden Monat, ob gerade etwas los ist oder nicht.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">01 Sicherheits- und Konfigurations-Review</h3>
+      <p class="text-gray-600 text-sm">Table Permissions, Web Roles, Site Settings und die Identitätskonfiguration werden systematisch durchgesehen.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">02 Microsoft-Release-Check mit klarer Einordnung</h3>
+      <p class="text-gray-600 text-sm">Ich lese die Release Notes, Sie bekommen das Urteil. Was Ihr Portal betrifft, was zu tun ist, was Sie ignorieren können. Der Wildcard-Fall ist genau so gelaufen.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">03 Schriftlicher Monatsbericht</h3>
+      <p class="text-gray-600 text-sm">Status, Befunde, Empfehlungen, offene Punkte, in einer Form, die auch für Audit und Compliance taugt.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">04 Kleinere Anpassungen inklusive</h3>
+      <p class="text-gray-600 text-sm">Ein Bugfix, eine Berechtigungsanpassung, eine Formularänderung. Alles Größere wird vorher vereinbart.</p>
+    </div>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Care kostet 1.290 Euro netto im Monat</strong>, mit 48 Stunden Reaktionszeit an Werktagen und Anpassungen bis zwei Stunden im Monat. <strong>Care Plus kostet 2.490 Euro netto</strong> und enthält zusätzlich einen Quartals-Deep-Dive über je einen Auditbereich, 24 Stunden Reaktionszeit, am selben Tag bei Sicherheitsvorfällen, und Anpassungen bis fünf Stunden. Mindestlaufzeit drei Monate, danach monatlich kündbar.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Der Deep-Dive folgt den acht Bereichen des Security Audits, über zwei Jahre entsteht daraus ein rollierendes Vollaudit. Wenn Sie kündigen, bleiben Reports und Dokumentation bei Ihnen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ein Portal ohne diesen Blick erfährt von Änderungen wie dieser an dem Tag, an dem das Formular nicht mehr speichert. Das ist der ganze Unterschied.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Sie wissen immer, wer zuständig ist. Onepager und Konditionen: <a href="/leistungen/care/" class="underline">Care</a>. Fragen dazu gern direkt an tino@amingi.net.
+  </p>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Weiterführende Artikel</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="/de/blog/haertungs-serie-2026/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Administration</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages 2026: Die stille Härtungs-Serie</h3>
+      <p class="text-gray-600 mb-4">Warum der Wildcard-Fall kein Einzelfall ist, sondern Teil einer Serie seit 2022, mit Zeitleiste und der Frage, wer bei Ihnen darauf achtet.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Entwicklung</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">Entscheidungsbaum, Performance-Vergleich und Security-Muster zwischen den beiden Datenzugriffswegen in Power Pages.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/power-pages-sicherheitsarchitektur/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Sicherheit</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Sicherheitsarchitektur</h3>
+      <p class="text-gray-600 mb-4">Table Permissions, Web Roles und das hierarchische Sicherheitsmodell im Detail, die Kontrollebenen hinter diesem Beitrag.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/important-changes-deprecations" class="underline" target="_blank" rel="noopener">Important upcoming changes and deprecations in Power Pages</a>, Abschnitt "Wildcard value (*) in Web API field configuration", Dokumentstand 14.08.2026</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-overview" class="underline" target="_blank" rel="noopener">Overview of the Power Pages portals Web API</a>, Site Settings, Endpunkt-Aufbau, Tabellen- und Spaltenberechtigungen</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/assign-table-permissions" class="underline" target="_blank" rel="noopener">Assign table permissions</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-apps/maker/portals/configure/column-permissions" class="underline" target="_blank" rel="noopener">Column permissions</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-http-requests-handle-errors" class="underline" target="_blank" rel="noopener">Compose HTTP requests and handle errors for the portals Web API</a>, Fehlercode-Tabelle (Code 90040101 dort dokumentiert, Code 90040122 aus dem Demo-Test nicht)</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Wann wurde Ihr Portal zuletzt unabhängig geprüft?</p>
+      <p>Das Security-Audit zeigt, was durch Ihr Portal nach außen geht: Tabellenberechtigungen, Web API, Authentifizierung, Konfiguration. Sie erhalten einen Befundbericht mit Schweregraden und konkreten Maßnahmen. Festpreis ab 4.900 € netto.</p>
+      <p class="btns"><a class="btn" href="/leistungen/security-audit/">Zum Security-Audit</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

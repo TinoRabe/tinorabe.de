@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Fetching N:M data on demand with Power Pages Server Logic</title>
+<meta name="description" content="The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-server-logic-nm-ondemand/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Fetching N:M data on demand with Power Pages Server Logic">
+<meta property="og:description" content="The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-nm-ondemand.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fetching N:M data on demand with Power Pages Server Logic">
+<meta property="article:published_time" content="2026-09-29">
+<meta property="article:modified_time" content="2026-09-29">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fetching N:M data on demand with Power Pages Server Logic">
+<meta name="twitter:description" content="The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-nm-ondemand.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/",
+      "name": "Fetching N:M data on demand with Power Pages Server Logic",
+      "description": "The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-nm-ondemand.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/#article",
+      "headline": "Fetching N:M data on demand with Power Pages Server Logic",
+      "description": "The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.",
+      "datePublished": "2026-09-29",
+      "dateModified": "2026-09-29",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-nm-ondemand.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages Server Logic, Server.Connector.Dataverse, on-demand, N:M, many-to-many, $expand, server-side JavaScript, table permissions",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Development</span>
+      <time datetime="2026-09-29">29 September 2026</time><span>6 min read</span><a href="/de/blog/power-pages-server-logic-nm-ondemand/" hreflang="de" lang="de">Deutsche Fassung</a>
+    </p>
+    <h1 class="art-h1">Fetching N:M data on demand with Power Pages Server Logic</h1>
+    <p class="art-lead">The Web API stumbles on reading N:M in Power Pages. Server Logic reads it server-side via $expand, on demand. Verified live, with the security caveats.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    In the <a href="/en/blog/power-pages-webapi-nm-relationships/" class="underline">previous post</a> I read a many-to-many relationship with Liquid FetchXML. That works, but the data is fetched at page render: it is preloaded whether the visitor ever looks at it or not.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-6">
+  Sometimes you want the opposite: fetch the linked records on demand, when the user expands a row or opens a detail panel, without a full page reload and without exposing the query in the browser. That is what Server Logic is for. And it answers a question the FetchXML post left open: can a server-side call read N:M through <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$expand</code>, the convenient path the portal Web API stumbles on? I tested it live. It can.
+</p>
+
+<section id="what" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">What Server Logic is</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Server Logic lets you run JavaScript on the server as part of the site runtime. It has been <strong>generally available since April 2026</strong> (public preview since October 2025). The code and its configuration are stored in Dataverse, so it moves through your solutions and pipelines like any other Power Pages component.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">Two properties matter for this use case:</p>
+
+  <ul class="space-y-3 text-gray-700 mb-6 list-disc pl-5">
+    <li>It runs <strong>server-side</strong>, so the browser never sees the query or the connection. You author native JavaScript (ECMAScript 2023) without browser APIs: no DOM, no <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fetch</code>, no <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">XMLHttpRequest</code>.</li>
+    <li>It is <strong>governed by web roles and table permissions</strong>, exactly like the rest of the portal. It is not an elevated backdoor. More on that below, because it is the part people get wrong.</li>
+  </ul>
+
+  <p class="text-gray-700 leading-relaxed">
+    You author it in the design studio under <strong>Set up, Server logic</strong>, then edit the code in Visual Studio Code, which gives you IntelliSense and compile-time checks. Each HTTP method maps to a function you define: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">get()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">post()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">put()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">patch()</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">del()</code>.
+  </p>
+</section>
+
+<section id="reading" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Reading N:M from Server Logic</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Inside <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">get()</code>, you talk to Dataverse through the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Connector.Dataverse</code> object. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">RetrieveMultipleRecords</code> takes the entity set name and an OData options string:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>function get() {
+  try {
+    var options =
+      "$select=pwrprtl_installation_name" +
+      "&amp;$expand=pwrprtl_installation_product($select=pwrprtl_product_name)";
+    return Server.Connector.Dataverse.RetrieveMultipleRecords(
+      "pwrprtl_installations",
+      options
+    );
+  } catch (err) {
+    Server.Logger.Error("GET failed: " + err.message);
+    return JSON.stringify({ status: "error", message: err.message });
+  }
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The Microsoft docs only show <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$select</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$top</code> for this method. Whether <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">$expand</code> across an N:M navigation property works is not documented, so I built exactly this in the demo portal (the same two custom tables <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Installation</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Product</code> with an N:M relationship from the last post) and called it.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">It returns the nested collection cleanly:</p>
+
+  <figure class="mb-8">
+    <img src="/assets/images/blog/power-pages-server-logic-nm-ondemand/sl-nm-expand-result.png" alt="The Server Logic endpoint returns HTTP 200 with the N:M related products nested under each installation via expand" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed">
+    One installation, its two linked products (<code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Pump A</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Valve B</code>), nested under <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">pwrprtl_installation_product</code>, in a single call. This is the convenient read the portal Web API documents as hitting a Known Issue under Contact and Account permission scopes. Server Logic issues the query through the server-side Dataverse connector rather than the portal Web API request pipeline, so that particular issue is out of the picture.
+  </p>
+</section>
+
+<section id="calling" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Calling it from the page, on demand</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The client calls the logic by name at <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">/_api/serverlogics/&lt;name&gt;</code>. Use the portal's <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">safeAjax</code> wrapper so the anti-forgery token is attached:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>webapi.safeAjax({
+  type: "GET",
+  url: "/_api/serverlogics/installation-products",
+  contentType: "application/json",
+  success: function (res) {
+    // res.data holds the server logic response; parse and render
+  }
+});</code></pre>
+
+  <p class="text-gray-700 leading-relaxed">
+    You wire that to a row-expand handler or a detail button. Nothing about the query lives in the browser: the client sees a named endpoint and a result, not the table names or the options string. (You can also invoke logic from Liquid with the <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% serverlogic %}</code> tag, but that runs during page render and reintroduces the preloading you were trying to avoid.)
+  </p>
+</section>
+
+<section id="security" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Security: permission-bound, and authorization is your job</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Server Logic runs inside the caller's security context and respects their web role and table permissions. That has a comfortable side and a sharp side.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6 mb-6">
+    <p class="text-gray-800 mb-4">
+      <strong>The comfortable side:</strong> an unauthenticated visitor, or one whose web role lacks read permission on the involved tables, gets nothing back. The empty-result trap from the FetchXML post applies here too, so if the call returns nothing, check who the page is running as before you debug the code.
+    </p>
+    <p class="text-gray-800">
+      <strong>The sharp side:</strong> permission-bound is not the same as safe. The moment you accept a parameter from the client, for example an entity set name or a record id, you own the authorization decision. Validate every input, never pass client-supplied values straight into a query, and enforce table permissions (or an equivalent check) for the specific records being touched. Server-side does not mean trusted-by-default.
+    </p>
+  </div>
+</section>
+
+<section id="limits" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Limits worth knowing before you commit</h2>
+
+  <ul class="space-y-3 text-gray-700 mb-6 list-disc pl-5">
+    <li>No <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">fetch</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">eval</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">require</code>, and other unsafe patterns are blocked. For external systems you use the provided <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">HttpClient</code>, and an admin can switch external HTTP calls off entirely.</li>
+    <li>Execution has a timeout: <strong>120 seconds by default, 240 seconds maximum</strong>. Server Logic is for focused operations, not long batch jobs.</li>
+    <li>Calling logic from Liquid with <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% serverlogic %}</code> extends the page render, which defeats the on-demand goal. Keep it to client calls when you want responsiveness.</li>
+  </ul>
+</section>
+
+<section id="decision" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Which way for which job</h2>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Task</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Recommended way</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4"><strong>Read</strong> N:M, list visible at page load</td>
+          <td class="p-4">Liquid FetchXML (<code class="bg-gray-100 px-1 rounded font-mono text-xs">link-entity</code> / <code class="bg-gray-100 px-1 rounded font-mono text-xs">intersect</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4"><strong>Read</strong> N:M, on demand (row expand, detail panel)</td>
+          <td class="p-4">Server Logic + <code class="bg-gray-100 px-1 rounded font-mono text-xs">Server.Connector.Dataverse</code> (<code class="bg-gray-100 px-1 rounded font-mono text-xs">$expand</code>)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="p-4"><strong>Write</strong> N:M (associate / disassociate)</td>
+          <td class="p-4">Portal Web API <code class="bg-gray-100 px-1 rounded font-mono text-xs">$ref</code> (POST / DELETE)</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4"><strong>Read</strong> 1:N / N:1</td>
+          <td class="p-4">Portal Web API <code class="bg-gray-100 px-1 rounded font-mono text-xs">$expand</code> (one level) or Liquid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed">
+    FetchXML and Server Logic are not competitors so much as two timings of the same read: preloaded versus on demand. Pick by when the user actually needs the data, and keep the authorization discipline the same for both.
+  </p>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Related articles</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <a href="/en/blog/power-pages-webapi-nm-relationships/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Reading N:M: Web API vs. FetchXML</h3>
+      <p class="text-gray-600 mb-4">The predecessor: what the portal Web API can do with N:M, and the Liquid FetchXML workaround.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API</h3>
+      <p class="text-gray-600 mb-4">The fundamental comparison of the two data-access paths: decision tree, performance, security.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+    <a href="/en/blog/power-pages-security-architecture/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages security architecture</h3>
+      <p class="text-gray-600 mb-4">Table permissions, web roles and scopes: the model behind the authorization point in this post.</p>
+      <span class="font-semibold">Read article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Sources</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/power-pages/configure/server-logic-overview" class="underline" target="_blank" rel="noopener">Microsoft Learn: Server logic overview</a> (general availability, API URL, HTTP method to function mapping, "protected by web roles and table permissions")</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/server-objects" class="underline" target="_blank" rel="noopener">Microsoft Learn: Server objects</a> (<code class="bg-gray-100 px-1 rounded font-mono text-xs">Server.Connector.Dataverse.RetrieveMultipleRecords</code>)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/server-logic-operations" class="underline" target="_blank" rel="noopener">Microsoft Learn: Interact with Dataverse tables using server logic</a> (the method skeleton and the safeAjax client call)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/author-server-logic" class="underline" target="_blank" rel="noopener">Microsoft Learn: Author server logic</a> (limitations: no fetch/eval, timeout, blocked patterns)</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/web-api-overview" class="underline" target="_blank" rel="noopener">Microsoft Learn: Overview of the portals Web API</a> (the N:M GET Known Issue and the FetchXML workaround)</li>
+    <li>Hands-on in my own demo portal: a Server Logic reading the N:M relationship via <code class="bg-gray-100 px-1 rounded font-mono text-xs">$expand</code>, verified live (HTTP 200, nested related records returned)</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

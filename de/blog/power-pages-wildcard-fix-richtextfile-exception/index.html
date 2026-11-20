@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt</title>
+<meta name="description" content="Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-wildcard-fix-richtextfile-exception/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-wildcard-fix-richtextfile-exception/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt">
+<meta property="og:description" content="Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-wildcard-fix-richtextfile-exception.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt">
+<meta property="article:published_time" content="2026-09-02">
+<meta property="article:modified_time" content="2026-11-06">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt">
+<meta name="twitter:description" content="Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-wildcard-fix-richtextfile-exception.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/#webpage",
+      "url": "https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/",
+      "name": "Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt",
+      "description": "Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-wildcard-fix-richtextfile-exception.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/#article",
+      "headline": "Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt",
+      "description": "Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-11-06",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-wildcard-fix-richtextfile-exception.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Web API Wildcard Ausnahme, msdyn_richtextfile, Rich Text Editor Control Site Settings, Power Pages Web API Deprecation, Webapi Feldliste, Power Pages Attachment-Tabelle",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Development</span>
+      <time datetime="2026-09-02">2. September 2026</time><span>6 Min. Lesezeit</span><a href="/en/blog/power-pages-wildcard-fix-richtextfile-exception/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Die Wildcard-Ausnahme für Rich-Text-Dateien in Power Pages ist weg. Diese Feldliste gilt</h1>
+    <p class="art-lead">Auch für msdyn_richtextfile akzeptiert Power Pages den Wildcard nicht mehr. Microsofts Tutorial nennt jetzt die expliziten Spalten inklusive msdyn_fileblob.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="pp-box pp-box--warn p-6 mb-10">
+  <p class="text-gray-900 font-bold mb-2">Aktualisiert am 6. November 2026: Die Ausnahme gibt es nicht mehr.</p>
+  <p class="text-gray-800 mb-3">Dieser Artikel entstand vor dem Wegfall des Wildcards und wurde entsprechend überarbeitet. Seit dem 14. September 2026 wird <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> in <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;tabelle&gt;/fields</code> auf keiner Website mehr unterstützt, auch nicht für <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfile</code>. Anfragen an eine Tabelle, die ihn noch verwendet, schlagen fehl, bis die Konfiguration migriert ist. Eine Administratorin oder ein Administrator kann eine einmalige, kurze Verlängerung beantragen. Sie verschiebt die Durchsetzung, hebt die Pflicht aber nicht auf.</p>
+  <p class="text-gray-800 mb-3"><strong>Was zu tun ist:</strong> <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/msdyn_richtextfile/fields</code> auf <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfileid,msdyn_name,msdyn_imageblob,msdyn_fileblob,msdyn_parententityname,msdyn_parententity_fieldname,msdyn_parentid,statecode,statuscode</code> setzen und sowohl einen Bild- als auch einen Dateianhang testen.</p>
+  <p class="text-gray-700 text-sm">Quellen: <a class="underline" href="https://learn.microsoft.com/power-pages/configure/component-rte-tutorial#step-32-add-web-api-site-setting">Configure the rich text editor control on Power Pages, Schritt 3.2</a> und <a class="underline" href="https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard">Power Pages Web API requests fail after wildcard column configuration is deprecated</a>.</p>
+</div>
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Der <a href="/de/blog/wildcard-web-api-fix/" class="underline font-semibold">generische Wildcard-Fix</a> ist klar: Sie ersetzen <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;tabelle&gt;/fields</code> = <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> durch eine explizite Spaltenliste. Das gilt jetzt für jede Tabelle, auch für die eine, bei der Microsofts eigenes Tutorial früher den Wildcard empfohlen hat.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfile</code>, die Attachment-Tabelle hinter dem Rich-Text-Editor-Control, ist die Stelle, an der dieser Fix am leichtesten schiefgeht. Dieser Beitrag zeigt, warum die naheliegende Feldliste unvollständig ist, was sie stillschweigend zerstört, und die vollständige Liste.
+</p>
+
+<section id="wildcard-empfehlung" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Microsofts Tutorial sagte früher: Wildcard verwenden</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Schritt 3.2 von "Configure the rich text editor control on Power Pages" listet die Site Settings, die für das Speichern und Abrufen von Bild- und Dateianhängen nötig sind. Früher stand dort als Wert <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code>. Heute steht dort:
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Site-Setting-Name</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Wert</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4 font-mono text-sm">Webapi/msdyn_richtextfile/enabled</td>
+          <td class="p-4 font-mono text-sm">true</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4 font-mono text-sm">Webapi/msdyn_richtextfile/fields</td>
+          <td class="p-4 font-mono text-sm break-all">msdyn_richtextfileid,msdyn_name,msdyn_imageblob,msdyn_fileblob,msdyn_parententityname,msdyn_parententity_fieldname,msdyn_parentid,statecode,statuscode</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das Tutorial warnt außerdem, dass <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_fileblob</code> für Dateianhänge nötig ist, obwohl die Spalte schreibgeschützt ist, und dass bei einer unvollständigen Liste Bilder funktionieren können, während Dateien scheitern. Bei den meisten Tabellen ist eine explizite Liste einfach, weil Ihr eigener Code entscheidet, welche Spalten er liest und schreibt, und Sie genau diese auflisten können. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfile</code> ist anders: Der Konsument ist ein Closed-Source-PCF-Control, das je nach Aktion unterschiedliche Spalten anfragt. Ein Bild-Upload ist eine andere Anfrage als ein Datei-Upload, und Lesen ist eine andere Anfrage als Schreiben.
+  </p>
+
+  <div class="pp-box pp-box--note p-6 mb-6">
+    <p class="text-gray-800">
+      <strong>Hinweis:</strong> Dieser Beitrag beruht auf einer echten Fehlerbehebung, durchgeführt in einer produktiven Kundenumgebung im Rahmen der allgemeinen Wildcard-Bereinigung, kein Gedankenexperiment. Die Feldliste unten ist das, was den Fall behoben hat, verifiziert gegen die Dataverse-Metadaten, nicht aus dem Symptom geraten.
+    </p>
+  </div>
+</section>
+
+<section id="zwei-blob-spalten" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Zwei Blob-Spalten, zwei unterschiedliche Aufgaben</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfile</code> speichert Anhänge des Rich-Text-Editor-Controls über zwei getrennte Blob-Spalten:
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900"><code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono">msdyn_imageblob</code></h3>
+      <p class="text-gray-600 text-sm">Base64-Bildinhalt, direkt im Create-Payload gesetzt. Das nutzt ein eingefügtes oder per Drag-and-Drop abgelegtes PNG, JPG oder GIF.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900"><code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono">msdyn_fileblob</code></h3>
+      <p class="text-gray-600 text-sm">Eine Datei-Spalte, in den Dataverse-Metadaten schreibgeschützt (<code class="bg-gray-100 px-1 rounded">IsValidForCreate: false</code>, <code class="bg-gray-100 px-1 rounded">IsValidForUpdate: false</code>). Hoch- und heruntergeladen über einen eigenen <code class="bg-gray-100 px-1 rounded">PUT</code>/<code class="bg-gray-100 px-1 rounded">GET .../$value</code>-Vorgang, nicht über den normalen Create-Body.</p>
+    </div>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed">
+    Genau dieser zweite Teil ist die Falle. <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_fileblob</code> taucht nie als setzbares Feld in einem Create- oder Update-Payload auf, also fehlt es in einer Feldliste, die aus dem tatsächlichen Schreibverhalten des Controls abgeleitet wurde. Trotzdem muss die Spalte in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/msdyn_richtextfile/fields</code> stehen, weil der Datei-Spalten-Vorgang selbst anhand dieser Liste erlaubt oder blockiert wird, unabhängig davon, ob die Spalte über den normalen Payload schreibbar ist.
+  </p>
+</section>
+
+<section id="was-zerstoert-wird" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was eine naheliegende Feldliste zerstört</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Der generische Wildcard-Fix, angewendet ohne das obige Wissen, führt meist zu einer Feldliste, die aus dem sichtbaren Anwendungsfall abgeleitet ist, den Bild-Anhängen:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed"><code>Webapi/msdyn_richtextfile/fields  &rarr;  msdyn_imageblob,msdyn_parentid</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Bild-Anhänge, eingefügt oder per Drag-and-Drop als PNG, JPG oder GIF, funktionieren weiter. Bestehende Datei-Anhänge, PDF, XLSX, ZIP, lassen sich nicht mehr lesen. Neue lassen sich ebenfalls nicht anlegen, und beide Fehler stammen aus unterschiedlichen Code-Pfaden mit demselben Fehlercode:
+  </p>
+
+  <figure class="mb-4">
+    <img src="/assets/images/blog/power-pages-wildcard-fix-richtextfile-exception/error-90040101-fileblob.png" alt="Power Pages Web API Fehlerantwort, JSON-Body, Code 90040101, das Attribut msdyn_fileblob in der Tabelle msdyn_richtextfile ist für die Web-API nicht aktiviert" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+  </figure>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das ist der Lese-Pfad, auf <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_fileblob</code>. Der Anlege-Pfad scheitert auf dieselbe Weise an einer anderen Spalte, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_parententityname</code>, die die verkürzte Liste ebenfalls ausließ. Zwei fehlende Felder, zwei Fehlermeldungen, beide mit dem HTTP-Fehlercode <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">90040101</code>, beide aus demselben Site Setting.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-lg text-gray-800">
+      <strong>Warnung:</strong> Dass Bild-Anhänge nach der Änderung weiterlaufen, ist keine Bestätigung, dass der Fix vollständig ist. Es sagt nur, dass der Bild-Pfad die entfernten Spalten nicht brauchte. Datei-Anhänge sind eine eigenständige, stille Regression, bis jemand versucht, eine zu öffnen.
+    </p>
+  </div>
+</section>
+
+<section id="vollstaendige-feldliste" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Die vollständige Feldliste</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das ist die Liste aus Schritt 3.2 von Microsofts Tutorial: die schreibbaren Spalten von <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">msdyn_richtextfile</code>, laut Dataverse-Entity-Reference, plus die schreibgeschützte Datei-Spalte, die das Control trotzdem in der Liste braucht:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed break-all whitespace-pre-wrap"><code>msdyn_richtextfileid,msdyn_name,msdyn_imageblob,msdyn_fileblob,msdyn_parententityname,msdyn_parententity_fieldname,msdyn_parentid,statecode,statuscode</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Diese Liste deckt beide Anhang-Arten und beide Operationen ab, Lesen und Anlegen. Im beschriebenen Fall angewendet, funktionierten Bild- und Datei-Anhänge anschließend wieder in beiden Richtungen. Es ist auch kein Einzelfund: Dasselbe Muster einer verkürzten Liste tauchte bei einem zweiten, unabhängigen Portal wieder auf, mit einer zusätzlichen Falle, dort existierte die Tabelle als zwei separate Site-Setting-Datensätze mit unterschiedlichen GUIDs. Leicht zu übersehen, wenn Sie bei der Deprecation-Bereinigung nach Tabellennamen statt nach Site-Setting-Zeilen zählen.
+  </p>
+
+  <div class="pp-box pp-box--note p-6">
+    <p class="text-gray-800">
+      <strong>Hinweis:</strong> Systemspalten wie <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">OwnerId</code> sind hier bewusst ausgeschlossen. Der Client setzt sie nie selbst, deshalb gehören sie nicht in eine Feldliste, die auf das begrenzt ist, was Ihr Code tatsächlich liest oder schreibt.
+    </p>
+  </div>
+</section>
+
+<section id="selbst-herleiten" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Wenn Sie es selbst herleiten wollen</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Liste oben ist für das aktuelle Rich-Text-Editor-Control verifiziert, aber "Closed-Source-PCF-Control" bedeutet, dass Microsoft in einem künftigen Release ändern kann, was das Control anfragt, ohne es anzukündigen. Übernehmen Sie die Liste nicht blind, wenn Sie sie live prüfen können:
+  </p>
+
+  <ol class="list-decimal pl-6 space-y-3 text-gray-700 leading-relaxed mb-6">
+    <li>Fragen Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">EntityDefinitions(LogicalName='msdyn_richtextfile')/Attributes</code> gegen die Dataverse Web API ab und lesen Sie schreibbare gegenüber schreibgeschützten Spalten direkt aus den Metadaten, statt aus einem Blogbeitrag.</li>
+    <li>Testen Sie beide Anhang-Pfade real: einen Bild-Anhang und einen Datei-Anhang, jeweils gelesen und neu angelegt. Vier Prüfungen, nicht zwei, weil Lesen und Anlegen unabhängig voneinander scheitern.</li>
+    <li>Prüfen Sie auf doppelte Site-Setting-Datensätze für exakt denselben Tabellennamen, bevor Sie davon ausgehen, dass die Einstellung überall behoben ist.</li>
+    <li>Wenn eine Anfrage weiter scheitert: Suchen Sie mit den Entwicklertools des Browsers die fehlende Spalte, ergänzen Sie nur diese und testen Sie erneut. Weichen Sie nicht auf <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">*</code> aus, der Wert wird nicht mehr unterstützt.</li>
+  </ol>
+
+  <p class="text-gray-700 leading-relaxed">
+    Die allgemeine Regel kennt jetzt keine Ausnahme mehr. Schwieriger ist diese Tabelle, weil sie einen einzigen Closed-Source-Konsumenten mit variablem Feldbedarf je nach Szenario hat. Eine Liste, die vollständig aussieht, kann also trotzdem falsch sein. Deshalb zählen die vier Prüfungen hier mehr als bei einer Tabelle, die Ihr eigener Code aufruft.
+  </p>
+</section>
+
+<section id="care" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Warum meine Care-Kunden das schon wussten</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Der Fall hinter diesem Beitrag stammt aus genau dieser Art Fehlerbehebung: eine Tabelle einmal unvollständig fixiert, dann sauber korrigiert, nachdem der tatsächliche Feldbedarf gegen die Metadaten geprüft wurde statt angenommen. Genau diesen Unterschied macht eine systematische Prüfung, und das gehört jeden Monat zu Power Pages Care, nicht erst, wenn etwas sichtbar kaputt ist.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-8">
+    Ich kümmere mich um Ihr Portal, damit Sie es nicht müssen. Das ist kein Support-Vertrag mit einem Stundenkontingent. Vier Dinge passieren jeden Monat, unabhängig davon, ob gerade etwas los ist.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">01 Sicherheits- und Konfigurationsprüfung</h3>
+      <p class="text-gray-600 text-sm">Table Permissions, Web Roles, Site Settings und Identitätskonfiguration systematisch geprüft.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">02 Microsoft-Release-Check mit klarer Einschätzung</h3>
+      <p class="text-gray-600 text-sm">Ich lese die Release Notes und Deprecation-Hinweise, Sie bekommen die Einschätzung: Was Ihr Portal betrifft, was zu tun ist, was Sie ignorieren können.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">03 Schriftlicher Monatsbericht</h3>
+      <p class="text-gray-600 text-sm">Status, Befunde, Empfehlungen, offene Punkte, in einer Form, die auch für Audit und Compliance funktioniert.</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+      <h3 class="text-lg font-bold mb-2 text-gray-900">04 Kleinere Anpassungen inklusive</h3>
+      <p class="text-gray-600 text-sm">Ein Bugfix, eine Berechtigungsanpassung, eine Formularänderung. Größeres wird vorab abgestimmt.</p>
+    </div>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Care kostet 1.290 Euro netto im Monat</strong>, mit 48 Stunden Reaktionszeit an Werktagen und Anpassungen bis zu zwei Stunden im Monat. <strong>Care Plus kostet 2.490 Euro netto</strong> und ergänzt einen vierteljährlichen Deep-Dive, der jeweils einen Audit-Bereich abdeckt, 24 Stunden Reaktionszeit, bei Sicherheitsvorfällen noch am selben Tag, und Anpassungen bis zu fünf Stunden. Mindestlaufzeit drei Monate, danach monatlich kündbar.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Sie wissen immer, wen Sie anrufen. Onepager und Konditionen: <a href="/leistungen/care/" class="underline">Care</a>. Fragen gehen direkt an tino@amingi.net.
+  </p>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Verwandte Artikel</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/de/blog/wildcard-web-api-fix/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Security</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Wildcard im Web API: Seit dem 14. September gesperrt. So fixen Sie es</h3>
+      <p class="text-gray-600 mb-4">Der generische Fix: was das Setting macht, was bricht, und ein 10-Minuten-Selbstcheck für jede Tabelle Ihrer Website.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">Ein Entscheidungsbaum, Performance-Vergleich und Security-Muster zwischen den zwei Datenzugriffs-Wegen in Power Pages.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/power-pages/configure/component-rte-tutorial#step-32-add-web-api-site-setting" class="underline" target="_blank" rel="noopener">Tutorial: Configure the rich text editor control on Power Pages</a>, Schritt 3.2, Web-API-Site-Setting-Werte</li>
+    <li><a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_richtextfile#writable-columns-attributes" class="underline" target="_blank" rel="noopener">Rich Text Attachment (msdyn_richtextfile) table/entity reference</a>, schreibbare Spalten</li>
+    <li><a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_richtextfile#read-only-columns-attributes" class="underline" target="_blank" rel="noopener">Rich Text Attachment (msdyn_richtextfile) table/entity reference</a>, schreibgeschützte Spalten, inklusive msdyn_fileblob</li>
+    <li><a href="https://learn.microsoft.com/power-pages/important-changes-deprecations" class="underline" target="_blank" rel="noopener">Important upcoming changes and deprecations in Power Pages</a>, Abschnitt "Wildcard value (*) in Web API field configuration"</li>
+    <li><a href="https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard" class="underline" target="_blank" rel="noopener">Power Pages Web API requests fail after wildcard column configuration is deprecated</a>, Migrationsschritte und kurzfristige Verlängerung</li>
+    <li><a href="https://learn.microsoft.com/power-pages/configure/web-api-http-requests-handle-errors" class="underline" target="_blank" rel="noopener">Compose HTTP requests and handle errors for the portals Web API</a>, Fehlercode-Tabelle, Code 90040101</li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Wer achtet auf Ihr Portal, wenn es live ist?</p>
+      <p>Care für Portale auf Dynamics 365: Betrieb, Updates und ein Monatsbericht, damit Ihr Portal auch nach dem Go-Live sicher bleibt. Ab 1.290 € netto im Monat.</p>
+      <p class="btns"><a class="btn" href="/leistungen/care/">Zu Care</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

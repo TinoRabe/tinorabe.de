@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does</title>
+<meta name="description" content="Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.">
+<link rel="canonical" href="https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does">
+<meta property="og:description" content="Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.">
+<meta property="og:url" content="https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-memory-limit.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does">
+<meta property="article:published_time" content="2026-11-04">
+<meta property="article:modified_time" content="2026-11-04">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does">
+<meta name="twitter:description" content="Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-memory-limit.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/#webpage",
+      "url": "https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/",
+      "name": "32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does",
+      "description": "Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-memory-limit.png",
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/#article",
+      "headline": "32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does",
+      "description": "Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.",
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/en-power-pages-server-logic-memory-limit.png",
+      "inLanguage": "en-GB",
+      "keywords": "Power Pages Server Logic memory limit, V8 runtime has exceeded its memory limit, MaxMemoryUsageInBytes, Server.Logger, Power Pages performance",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Articles</a><span>Development</span>
+      <time datetime="2026-11-04">4 November 2026</time><span>9 min read</span>
+    </p>
+    <h1 class="art-h1">32 MB Passes, 4 MB Fails: What the Power Pages Server Logic Memory Limit Actually Does</h1>
+    <p class="art-lead">Power Pages Server Logic has a memory limit that only applies when a periodic check fires. How I measured it, what logging does, and a budget for your data.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Contents">
+      <p class="art-toc-l">Contents</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<article class="py-12 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+      <p class="text-gray-700 leading-relaxed mb-4">In Power Pages Server Logic, I allocated 32 MB of memory and the call succeeded. Three times out of three.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Then I allocated 3.5 MB and let the script run for another 300 milliseconds. It failed with this message:</p>
+      <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 mb-8 overflow-x-auto">
+        <pre class="text-sm font-mono leading-relaxed"><code>The V8 runtime has exceeded its memory limit</code></pre>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-4">That isn't a contradiction. It's how the limit behaves, and it explains why these failures look random: one record fails, the next one works, and one call in five breaks for no visible reason.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Here is what I measured, how you can measure it yourself, and what it means for your design.</p>
+    <section id="the-limit-isn-t-documented" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">The limit isn't documented</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">Microsoft Learn documents a timeout for Server Logic through <code>ServerLogic/TimeoutInSeconds</code>. It doesn't list a memory limit today.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">It used to. An earlier version of the Server Logic overview listed <code>ServerLogic/MaxMemoryUsageInBytes</code> with "Maximum memory per function: 10 MB". That row was removed in November 2025 without an explanation.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">So I measured it.</p>
+    </section>
+
+    <section id="how-to-measure-something-you-can-t-read" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">How to measure something you can't read</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">Server Logic has no heap API. You can only find the limit from the outside: allocate memory until the call fails, then narrow it down with a binary search.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">The cost of any step is then a simple subtraction: how much extra memory fits without that step, minus how much fits with it.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">I got three things wrong before the numbers made sense. You'd probably hit the same three:</p>
+      <ol class="list-decimal pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><strong><code>"x".repeat(n)</code> allocates almost nothing.</strong> The engine keeps a compact reference until you read the string. In a local test, 20 MB of text cost 0.01 MB. Read one character with <code>charCodeAt</code> and it costs the full 20 MB.</li>
+        <li><strong>Without a pause, you measure the wrong limit.</strong> More on that in the next section.</li>
+        <li><strong>The last log line isn't a reliable signal.</strong> Use the HTTP status and the trace of the request.</li>
+      </ol>
+      <p class="text-gray-700 leading-relaxed mb-4">The probe and the test runner are available for download below.</p>
+    </section>
+
+    <section id="the-check-is-periodic" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">The check is periodic</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">This is the finding that matters most. I allocated 8 MB, well above the limit, and let the script keep running for a set time. Each row is ten calls:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">Time after allocating</th><th class="p-3 text-left border-b font-bold text-gray-900">Passed</th><th class="p-3 text-left border-b font-bold text-gray-900">Failed</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">0 ms</td><td class="p-3 border-b text-gray-700">10</td><td class="p-3 border-b text-gray-700">0</td></tr>
+<tr><td class="p-3 border-b text-gray-700">10 ms</td><td class="p-3 border-b text-gray-700">10</td><td class="p-3 border-b text-gray-700">0</td></tr>
+<tr><td class="p-3 border-b text-gray-700">50 ms</td><td class="p-3 border-b text-gray-700">10</td><td class="p-3 border-b text-gray-700">0</td></tr>
+<tr><td class="p-3 border-b text-gray-700">100 ms</td><td class="p-3 border-b text-gray-700">3</td><td class="p-3 border-b text-gray-700">7</td></tr>
+<tr><td class="p-3 border-b text-gray-700">200 ms</td><td class="p-3 border-b text-gray-700">0</td><td class="p-3 border-b text-gray-700">10</td></tr>
+<tr><td class="p-3 border-b text-gray-700">400 ms</td><td class="p-3 border-b text-gray-700">0</td><td class="p-3 border-b text-gray-700">10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <style>
+.ppviz{margin:0 0 2rem}.ppviz-s{overflow-x:auto;-webkit-overflow-scrolling:touch}.ppviz svg{display:block;width:100%;min-width:520px;height:auto;background:#fff;border:1px solid #e3e7f0;border-radius:12px}
+.ppviz figcaption{font-size:.875rem;color:#5b6474;margin-top:.5rem;line-height:1.5}
+.ppviz text{font-family:Inter,system-ui,sans-serif;fill:#141824;font-size:17px}.ppviz .m{fill:#5b6474;font-size:15px}.ppviz .b{font-weight:700}
+.ppviz .ax{stroke:#c9cfdb;stroke-width:1}.ppviz .ck{stroke:#8a93a6;stroke-width:1.5;stroke-dasharray:3 5}.ppviz .lim{stroke:#141824;stroke-width:1.5;stroke-dasharray:7 5}
+.ppviz .ln{fill:none;stroke:#2563eb;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.ppviz .bar{fill:#2563eb}
+@media (prefers-reduced-motion:no-preference){
+.ppviz .ln{stroke-dasharray:1;animation:ppdraw 7s linear infinite}
+.ppviz .a2{animation-name:ppdraw2}
+.ppviz .pa{animation:pppa 7s linear infinite}.ppviz .pb{animation:pppb 7s linear infinite}
+.ppviz .ckb{animation:ppck 7s linear infinite}
+@keyframes ppdraw{0%{stroke-dashoffset:1}12%,100%{stroke-dashoffset:0}}
+@keyframes ppdraw2{0%{stroke-dashoffset:1}45%,100%{stroke-dashoffset:0}}
+@keyframes pppa{0%,12%{opacity:0}16%,92%{opacity:1}100%{opacity:0}}
+@keyframes pppb{0%,45%{opacity:0}49%,92%{opacity:1}100%{opacity:0}}
+@keyframes ppck{0%,43%{stroke-width:1.5;stroke:#8a93a6}46%,50%{stroke-width:3;stroke:#dc2626}56%,100%{stroke-width:1.5;stroke:#8a93a6}}
+@supports (animation-timeline:view()){.ppviz .gr{transform-box:fill-box;transform-origin:bottom;animation:ppgrow linear both;animation-timeline:view();animation-range:entry 20% cover 45%}
+@keyframes ppgrow{from{transform:scaleY(.02)}to{transform:scaleY(1)}}}
+}
+</style>
+<figure class="ppviz">
+<div class="ppviz-s" tabindex="0"><svg viewBox="0 0 640 430" role="img" aria-labelledby="ppv1t ppv1d">
+<title id="ppv1t">Why a large allocation passes and a small one fails</title>
+<desc id="ppv1d">Two schematic timelines. A very large allocation ends before the first memory check and passes. A small allocation just over the limit is still running when the check lands, and fails.</desc>
+<text x="24" y="34" class="b">32 MB, script ends right away: passes</text>
+<line class="lim" x1="70" y1="90" x2="616" y2="90"/><text x="616" y="82" text-anchor="end" class="m">usable limit</text>
+<line class="ax" x1="70" y1="180" x2="616" y2="180"/>
+<line class="ck" x1="276" y1="50" x2="276" y2="180"/><line class="ck" x1="482" y1="50" x2="482" y2="180"/>
+<text x="70" y="200" text-anchor="middle" class="m">start</text><text x="276" y="200" text-anchor="middle" class="m">check</text><text x="482" y="200" text-anchor="middle" class="m">check</text>
+<path class="ln" pathLength="1" d="M70 180 L92 58 L148 58"/>
+<g class="pa"><circle cx="148" cy="58" r="6" fill="#2563eb" stroke="#fff" stroke-width="2"/><text x="162" y="138">finished</text><text x="162" y="160" class="m">no check ran</text></g>
+<text x="24" y="250" class="b">3.5 MB, script keeps running: fails</text>
+<line class="lim" x1="70" y1="300" x2="616" y2="300"/><text x="616" y="292" text-anchor="end" class="m">usable limit</text>
+<line class="ax" x1="70" y1="390" x2="616" y2="390"/>
+<line class="ck ckb" x1="276" y1="264" x2="276" y2="390"/><line class="ck" x1="482" y1="264" x2="482" y2="390"/>
+<text x="276" y="410" text-anchor="middle" class="m">check</text><text x="482" y="410" text-anchor="middle" class="m">check</text><text x="70" y="410" text-anchor="middle" class="m">start</text>
+<path class="ln a2" pathLength="1" d="M70 390 L92 288 L276 288"/>
+<g class="pb"><path d="M268 280 l16 16 m0 -16 l-16 16" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/><text x="294" y="338" class="b">memory limit error</text><text x="294" y="360" class="m">a check caught it</text></g>
+</svg></div>
+<figcaption>Schematic, not to scale. The check timing is what I measured: roughly every 100 to 200 ms. Exact amounts are in the tables.</figcaption>
+</figure>
+      <p class="text-gray-700 leading-relaxed mb-4">The limit only applies when a check runs, and that seems to happen roughly every 100 to 200 ms. A script that goes over the limit and finishes quickly is never caught.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Without any pause, 32 MB passed three out of three times. At 64 MB, one of three passed. Everything above failed.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">I don't know the implementation. The error text matches the wording in the ClearScript project, and an issue there describes exactly this: the heap size is sampled periodically, so a sudden spike between samples can go undetected. That fits what I measured, but that Power Pages uses ClearScript is my inference, not a statement from Microsoft.</p>
+    </section>
+
+    <section id="what-the-limit-is" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">What the limit is</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">So every measurement needs a pause. I used 300 ms. These amounts fit:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">What you keep in memory</th><th class="p-3 text-left border-b font-bold text-gray-900">Fits</th><th class="p-3 text-left border-b font-bold text-gray-900">Fails at</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">Text in blocks of 256 KB</td><td class="p-3 border-b text-gray-700">3,552 KB</td><td class="p-3 border-b text-gray-700">3,584 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Text in blocks of 64 KB</td><td class="p-3 border-b text-gray-700">1,664 KB</td><td class="p-3 border-b text-gray-700">1,696 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Text as a single block</td><td class="p-3 border-b text-gray-700">4,832 KB</td><td class="p-3 border-b text-gray-700">4,864 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Text with non-Latin-1 characters, 256 KB blocks</td><td class="p-3 border-b text-gray-700">1,504 KB characters</td><td class="p-3 border-b text-gray-700">1,536 KB characters</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Parsed JSON objects</td><td class="p-3 border-b text-gray-700">832 KB of JSON</td><td class="p-3 border-b text-gray-700">864 KB of JSON</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-4">There are two things to take from this:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><strong>There's no single number.</strong> The same limit allows 1.7 MB or 4.8 MB, depending on how the memory is used.</li>
+        <li><strong>One special character can double a string.</strong> The engine stores a string with even one character outside Latin-1 at two bytes per character. A single bullet point in a description is enough.</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">Parsed objects are the most expensive. Under 1 MB of JSON fills the limit if you keep it as objects.</p>
+    </section>
+
+    <section id="where-the-memory-goes-in-one-call" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Where the memory goes in one call</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">Real code rarely holds ballast. It holds the same data several times.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">A Custom API response reaches Server Logic as a string with the actual result nested inside, as strings within strings. I replayed that shape with 266 KB of content. This is the memory in use at each step:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">Step</th><th class="p-3 text-left border-b font-bold text-gray-900">Memory in use</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">Raw response received</td><td class="p-3 border-b text-gray-700">about 1,310 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Outer wrapper parsed</td><td class="p-3 border-b text-gray-700">about 1,500 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Body parsed</td><td class="p-3 border-b text-gray-700">about 2,750 KB</td></tr>
+<tr><td class="p-3 border-b text-gray-700">Content parsed</td><td class="p-3 border-b text-gray-700">over the limit</td></tr>
+<tr><td class="p-3 border-b text-gray-700">After returning to the caller</td><td class="p-3 border-b text-gray-700">about 3,040 KB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="ppviz">
+<div class="ppviz-s" tabindex="0"><svg viewBox="0 0 640 360" role="img" aria-labelledby="ppv2t ppv2d">
+<title id="ppv2t">Memory in use at each step of one call with 266 KB of content</title>
+<desc id="ppv2d">Bars rise from about 1,310 KB for the raw response to 2,750 KB after parsing the body. Parsing the content goes over the limit of about 3,550 KB. After returning, about 3,040 KB stay in use.</desc>
+<defs><pattern id="pphatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#2563eb"/><rect width="3" height="8" fill="#93b4f5"/></pattern></defs>
+<line class="ax" x1="70" y1="300" x2="616" y2="300"/>
+<path class="bar gr" d="M96 300 V221 a4 4 0 0 1 4 -4 h48 a4 4 0 0 1 4 4 V300 Z"><title>Raw response: 1,310 KB</title></path>
+<text x="124" y="209" text-anchor="middle" class="b">1,310</text>
+<text x="124" y="322" text-anchor="middle" class="m">Raw</text><text x="124" y="341" text-anchor="middle" class="m">response</text>
+<path class="bar gr" d="M200 300 V209 a4 4 0 0 1 4 -4 h48 a4 4 0 0 1 4 4 V300 Z"><title>Wrapper parsed: 1,500 KB</title></path>
+<text x="228" y="197" text-anchor="middle" class="b">1,500</text>
+<text x="228" y="322" text-anchor="middle" class="m">Wrapper</text><text x="228" y="341" text-anchor="middle" class="m">parsed</text>
+<path class="bar gr" d="M304 300 V130 a4 4 0 0 1 4 -4 h48 a4 4 0 0 1 4 4 V300 Z"><title>Body parsed: 2,750 KB</title></path>
+<text x="332" y="118" text-anchor="middle" class="b">2,750</text>
+<text x="332" y="322" text-anchor="middle" class="m">Body</text><text x="332" y="341" text-anchor="middle" class="m">parsed</text>
+<path class="bar gr" d="M408 300 V64 a4 4 0 0 1 4 -4 h48 a4 4 0 0 1 4 4 V300 Z" fill="url(#pphatch)" style="fill:url(#pphatch)"><title>Content parsed: over limit</title></path>
+<text x="436" y="52" text-anchor="middle" class="b">over limit</text>
+<text x="436" y="322" text-anchor="middle" class="m">Content</text><text x="436" y="341" text-anchor="middle" class="m">parsed</text>
+<path class="bar gr" d="M512 300 V112 a4 4 0 0 1 4 -4 h48 a4 4 0 0 1 4 4 V300 Z"><title>Returned to caller: 3,040 KB</title></path>
+<text x="540" y="100" text-anchor="middle" class="b">3,040</text>
+<text x="540" y="322" text-anchor="middle" class="m">Returned</text><text x="540" y="341" text-anchor="middle" class="m">to caller</text>
+<line class="lim" x1="70" y1="76" x2="616" y2="76"/>
+<text x="24" y="68" class="m">limit</text>
+</svg></div>
+<figcaption>Memory in KB, measured with ballast placed at each step, 266 KB of content. The hatched bar couldn't be measured, because the call already fails there.</figcaption>
+</figure>
+      <p class="text-gray-700 leading-relaxed mb-4">266 KB of JSON already reaches the limit. This doesn't mean a 266 KB call always fails. It means a check at the wrong moment would catch it.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">That shows when I raise the payload size. The "with pause" column uses five calls with a 300 ms pause, the other two use ten calls each:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">Content</th><th class="p-3 text-left border-b font-bold text-gray-900">With pause</th><th class="p-3 text-left border-b font-bold text-gray-900">No pause, no log</th><th class="p-3 text-left border-b font-bold text-gray-900">No pause, full log</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">328 KB</td><td class="p-3 border-b text-gray-700">5 of 5</td><td class="p-3 border-b text-gray-700">10 of 10</td><td class="p-3 border-b text-gray-700">10 of 10</td></tr>
+<tr><td class="p-3 border-b text-gray-700">435 KB</td><td class="p-3 border-b text-gray-700">5 of 5</td><td class="p-3 border-b text-gray-700">10 of 10</td><td class="p-3 border-b text-gray-700">9 of 10</td></tr>
+<tr><td class="p-3 border-b text-gray-700">528 KB</td><td class="p-3 border-b text-gray-700">0 of 5</td><td class="p-3 border-b text-gray-700">10 of 10</td><td class="p-3 border-b text-gray-700">7 of 10</td></tr>
+<tr><td class="p-3 border-b text-gray-700">639 KB</td><td class="p-3 border-b text-gray-700">0 of 5</td><td class="p-3 border-b text-gray-700">10 of 10</td><td class="p-3 border-b text-gray-700">4 of 10</td></tr>
+<tr><td class="p-3 border-b text-gray-700">856 KB</td><td class="p-3 border-b text-gray-700">0 of 5</td><td class="p-3 border-b text-gray-700">10 of 10</td><td class="p-3 border-b text-gray-700">0 of 10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-4">The second column is the trap. 856 KB looks completely fine in a quick test, then fails as soon as anything makes the script run longer.</p>
+    </section>
+
+    <section id="logging-a-payload-is-a-timing-problem" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Logging a payload is a timing problem</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">The right column already shows it. Here is a direct comparison at 483 KB of content, with 80 calls each, in alternation:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">Variant</th><th class="p-3 text-left border-b font-bold text-gray-900">Failed</th><th class="p-3 text-left border-b font-bold text-gray-900">Median response</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">No logging</td><td class="p-3 border-b text-gray-700">0</td><td class="p-3 border-b text-gray-700">546 ms</td></tr>
+<tr><td class="p-3 border-b text-gray-700"><code>JSON.stringify(content)</code> only</td><td class="p-3 border-b text-gray-700">0</td><td class="p-3 border-b text-gray-700">573 ms</td></tr>
+<tr><td class="p-3 border-b text-gray-700"><code>Server.Logger.Log(JSON.stringify(content))</code></td><td class="p-3 border-b text-gray-700">22</td><td class="p-3 border-b text-gray-700">926 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-4">Building the string isn't what breaks it. The log call is. It adds about 350 ms while the entire payload stays in memory, so a check is far more likely to land in that window.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">There's one more catch. In these failures, the trace is often missing, probably because the log is too large for it. You lose the error message exactly when you need it.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Never log a full payload outside of a short debugging session. And if a failure has no trace, check whether your own log is the reason.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Logging isn't the only cause, though. Without any logging, the larger payloads above still fail as soon as a check lands. Removing logs buys you stability, not capacity.</p>
+    </section>
+
+    <section id="maxmemoryusageinbytes-still-works" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900"><code>MaxMemoryUsageInBytes</code> still works</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">I set the undocumented setting to three values and measured each one:</p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+          <thead><tr><th class="p-3 text-left border-b font-bold text-gray-900">Setting</th><th class="p-3 text-left border-b font-bold text-gray-900">Text fits</th><th class="p-3 text-left border-b font-bold text-gray-900">Parsed JSON fits</th><th class="p-3 text-left border-b font-bold text-gray-900">Records in my test catalog</th></tr></thead>
+          <tbody>
+<tr><td class="p-3 border-b text-gray-700">Not set</td><td class="p-3 border-b text-gray-700">3,520 KB</td><td class="p-3 border-b text-gray-700">832 KB</td><td class="p-3 border-b text-gray-700">30</td></tr>
+<tr><td class="p-3 border-b text-gray-700">10 MB</td><td class="p-3 border-b text-gray-700">3,520 KB</td><td class="p-3 border-b text-gray-700">832 KB</td><td class="p-3 border-b text-gray-700">30</td></tr>
+<tr><td class="p-3 border-b text-gray-700">20 MB</td><td class="p-3 border-b text-gray-700">9,152 KB</td><td class="p-3 border-b text-gray-700">2,048 KB</td><td class="p-3 border-b text-gray-700">62</td></tr>
+<tr><td class="p-3 border-b text-gray-700">40 MB</td><td class="p-3 border-b text-gray-700">20,928 KB</td><td class="p-3 border-b text-gray-700">4,608 KB</td><td class="p-3 border-b text-gray-700">102</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-700 leading-relaxed mb-4">This table tells me two things:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><strong>The default still seems to be 10 MB.</strong> Not setting it and setting 10 MB give identical results. The old documentation was right about the number.</li>
+        <li><strong>10 MB doesn't mean 10 MB is available.</strong> About a third of it can actually hold your data.</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">The setting works immediately. I still wouldn't build on it. It's gone from the documentation, so it may change without notice, and I haven't tested concurrent load. Use it as an emergency measure, and ask Microsoft through a support ticket before you rely on it in production.</p>
+    </section>
+
+    <section id="the-real-fix-is-less-data" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">The real fix is less data</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">On a real project, the results page used about 13 % of the data it loaded. Most of the payload was attributes that only one detail page displayed. Filtering the related lists in the API shrank one response from over 500 KB to about 20 KB, and the failures on the detail page were gone.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">Before you tune anything, check three things:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><strong>What does the page actually use?</strong> List the fields your front end reads, then compare that with the response.</li>
+        <li><strong>How many calls does one page make?</strong> That project's filtered search made a second request that loaded the complete catalog.</li>
+        <li><strong>Is your DEV data realistic?</strong> A failing page that works on DEV usually has less data, not better code.</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">The browser isn't your bottleneck. In Chrome, parsed JSON took about 1.3 times its own size in my test, and a browser tab has far more room than 3 MB. The tight limit is on the server.</p>
+    </section>
+
+    <section id="a-budget-you-can-use" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">A budget you can use</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">With default settings, on my measurements:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><strong>Up to about 250 KB of JSON per call:</strong> You have room, even if a check lands at the worst moment. This one is my estimate, since 266 KB already reached the limit at the peak.</li>
+        <li><strong>Up to about 450 KB:</strong> It works, but it depends on timing, and a slow response can push it over.</li>
+        <li><strong>Above about 500 KB:</strong> It fails as soon as a check lands.</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">Measure your own response sizes, and work out how much one record costs you. That number tells you how far your data can grow. Your limits may differ from mine, so run the probe on your own environment.</p>
+    </section>
+
+    <section id="try-it-yourself" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Try it yourself</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">Download the probe and the runner:</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><a href="/assets/downloads/server-logic-memory-probe.js" download>memory-probe.js</a>: Server Logic with ballast, a replay path and checkpoints. Create it as <code>blogtest-memory-probe</code>.</li>
+        <li><a href="/assets/downloads/server-logic-memory-probe-runner.js" download>memory-probe-runner.console.js</a>: the browser console script that runs the series. Paste it on your portal and read <code>window.probeResults</code> when it's done.</li>
+      </ul>
+      <p class="text-gray-700 leading-relaxed mb-4">Use a development environment only. The probe deliberately pushes the limit.</p>
+      <p class="text-gray-700 leading-relaxed mb-4">I measured this on a trial environment in the US region in November 2026. Numbers on other environments may differ: on a second tenant, the text limit was lower while the object limit was identical. If you run it, I'd like to know what you get.</p>
+    </section>
+
+    <section id="sources" class="mb-16">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900">Sources</h2>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700 leading-relaxed">
+        <li><a href="https://learn.microsoft.com/power-pages/configure/server-logic-overview">Server logic overview, Microsoft Learn</a></li>
+        <li><a href="https://learn.microsoft.com/power-pages/configure/author-server-logic#limitations">Author server logic, limitations, Microsoft Learn</a></li>
+        <li><a href="https://learn.microsoft.com/power-pages/configure/server-objects">Server objects, Microsoft Learn</a></li>
+        <li><a href="https://github.com/MicrosoftDocs/power-pages-docs/commit/b125d92b">MicrosoftDocs/power-pages-docs, commit b125d92b</a>: adds the setting</li>
+        <li><a href="https://github.com/MicrosoftDocs/power-pages-docs/commit/29432970">MicrosoftDocs/power-pages-docs, commit 29432970</a>: removes it</li>
+        <li><a href="https://github.com/microsoft/ClearScript/issues/84">ClearScript issue 84</a> and <a href="https://github.com/microsoft/ClearScript/issues/571">issue 571</a></li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Opening Dynamics 365 to the outside world, securely</p>
+      <p>From the data model to the portal for external users: Dynamics 365 Sales, Customer Service and Field Service, Dataverse, Power Automate, Power Pages. Solution architecture, delivery or review, in your team or your partner&#39;s team.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">About delivery (page in German)</a><a class="txtlink" href="/kontakt/">Get in touch</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Consultant · Power Pages Specialist<span>Former Microsoft MVP for Power Pages</span></p>
+      <p class="art-ki">This post was written with AI assistance. The idea, the concept and the experience come from my project work, and every technical claim is verified by me, much of it reproduced in a live portal.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Entra External ID für Power Pages: Administrator-Handbuch</title>
+<meta name="description" content="Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/entra-external-id-administration/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/entra-external-id-administration/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/entra-external-id-administration/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/entra-external-id-administration/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Entra External ID für Power Pages: Administrator-Handbuch">
+<meta property="og:description" content="Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/entra-external-id-administration/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-entra-external-id-administration.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Entra External ID für Power Pages: Administrator-Handbuch">
+<meta property="article:published_time" content="2025-10-15">
+<meta property="article:modified_time" content="2026-10-07">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Entra External ID für Power Pages: Administrator-Handbuch">
+<meta name="twitter:description" content="Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-entra-external-id-administration.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/entra-external-id-administration/#webpage",
+      "url": "https://tinorabe.de/de/blog/entra-external-id-administration/",
+      "name": "Entra External ID für Power Pages: Administrator-Handbuch",
+      "description": "Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-entra-external-id-administration.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/entra-external-id-administration/#article",
+      "headline": "Entra External ID für Power Pages: Administrator-Handbuch",
+      "description": "Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.",
+      "datePublished": "2025-10-15",
+      "dateModified": "2026-10-07",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/entra-external-id-administration/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-entra-external-id-administration.png",
+      "inLanguage": "de-DE",
+      "keywords": "Entra External ID, Externer Tenant, CIAM, Power Pages Administration, Identity Provider, Power Pages Authentication",
+      "articleSection": "Administration"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Administration</span>
+      <time datetime="2025-10-15">15. Oktober 2025</time><span>20 Min. Lesezeit</span><a href="/en/blog/entra-external-id-administration/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Entra External ID für Power Pages: Administrator-Handbuch</h1>
+    <p class="art-lead">Komplettes Administrator-Handbuch für Entra External ID mit Power Pages: Einrichtung, Konfiguration, Best Practices und Troubleshooting im Alltag.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+      <div class="pp-soft p-8 rounded-2xl mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">Inhaltsverzeichnis</h2>
+        <ul class="space-y-2">
+          <li><a href="#einleitung" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">1. Einleitung und Zielsetzung</a></li>
+          <li><a href="#uebersicht" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">2. Übersicht: Einmalige vs. Regelmäßige Aufgaben</a></li>
+          <li><a href="#einmalig" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">3. Einmalige Setup-Aufgaben</a></li>
+          <li><a href="#regelmaessig" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">4. Regelmäßige Wartungsaufgaben</a></li>
+          <li><a href="#monitoring" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">5. Monitoring und Troubleshooting</a></li>
+          <li><a href="#best-practices" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">6. Best Practices und Sicherheit</a></li>
+          <li><a href="#faq" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">7. Häufig gestellte Fragen (FAQ)</a></li>
+          <li><a href="#checklisten" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">8. Checklisten</a></li>
+          <li><a href="#quellen" class="text-blue-600 hover:text-gray-900 font-medium hover:underline">9. Quellen und Referenzen</a></li>
+        </ul>
+      </div>
+
+      <section class="mb-16" id="einleitung">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">1. Einleitung und Zielsetzung</h2>
+
+        <div class="pp-box pp-box--tip p-6 mb-6">
+          <h3 class="text-xl font-bold mb-3 text-green-800">Zielsetzung</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Dieses Dokument beschreibt die administrativen Aufgaben bei der Verwaltung von Microsoft Entra External ID (einem externen Tenant) für die Integration mit Microsoft Power Pages. Es unterscheidet klar zwischen einmaligen Setup-Aufgaben und laufenden Wartungsarbeiten.
+          </p>
+        </div>
+
+        <div class="pp-box pp-box--warn p-6 mb-6">
+          <p class="font-bold mb-2">External ID ist nicht Azure AD B2C</p>
+          <p class="text-gray-700">
+            Microsoft Entra External ID ist die aktuelle CIAM-Lösung von Microsoft. Sie läuft in einem eigenen externen Tenant, den Sie im Microsoft Entra Admin Center verwalten. Azure AD B2C ist ein separates Altprodukt: Seit dem 1. Mai 2025 wird es nicht mehr an Neukunden verkauft, unterstützt wird es mindestens bis Mai 2030. B2C-Konzepte wie <code class="bg-gray-200 px-2 py-1 rounded text-sm">B2C_1_</code>-Policies, Custom Policies (Identity Experience Framework) oder <code class="bg-gray-200 px-2 py-1 rounded text-sm">AADB2C</code>-Fehlercodes gelten für External ID nicht.
+          </p>
+        </div>
+
+        <div class="pp-box pp-box--note p-6 mb-8">
+          <p class="font-bold mb-2">Zielgruppe</p>
+          <p class="text-gray-700">
+            IT-Administratoren und Identity-Verantwortliche mit Grundkenntnissen in Azure/Entra ID. Technisches Verständnis von OAuth2/OpenID Connect ist hilfreich, aber nicht zwingend erforderlich.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white border-2 border-gray-200 p-4 rounded-xl text-center">
+            <h4 class="text-sm text-gray-600 mb-2">Initial-Setup</h4>
+            <div class="text-3xl font-bold text-blue-600">1x</div>
+            <div class="text-sm text-gray-600 mt-1">Einmalig erforderlich</div>
+          </div>
+          <div class="bg-white border-2 border-gray-200 p-4 rounded-xl text-center">
+            <h4 class="text-sm text-gray-600 mb-2">Setup-Dauer</h4>
+            <div class="text-3xl font-bold text-blue-600">2-4h</div>
+            <div class="text-sm text-gray-600 mt-1">Je nach Komplexität</div>
+          </div>
+          <div class="bg-white border-2 border-gray-200 p-4 rounded-xl text-center">
+            <h4 class="text-sm text-gray-600 mb-2">Wartungsaufwand</h4>
+            <div class="text-3xl font-bold text-blue-600">~2h</div>
+            <div class="text-sm text-gray-600 mt-1">Pro Monat</div>
+          </div>
+          <div class="bg-white border-2 border-gray-200 p-4 rounded-xl text-center">
+            <h4 class="text-sm text-gray-600 mb-2">Monitoring</h4>
+            <div class="text-3xl font-bold text-blue-600">Täglich</div>
+            <div class="text-sm text-gray-600 mt-1">5-10 Minuten</div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4 mt-8 text-gray-800">Voraussetzungen</h3>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+            <thead class="pp-navy text-white">
+              <tr>
+                <th class="p-4 text-left font-semibold">Kategorie</th>
+                <th class="p-4 text-left font-semibold">Anforderung</th>
+                <th class="p-4 text-left font-semibold">Erforderlich</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-gray-200">
+                <td class="p-4 font-bold">Azure-Zugang</td>
+                <td class="p-4">Azure-Abonnement (zum Testen reicht ein 30-Tage-Trial-Tenant)</td>
+                <td class="p-4">Ja</td>
+              </tr>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <td class="p-4 font-bold">Berechtigungen</td>
+                <td class="p-4">Tenant Creator zum Anlegen des Tenants; Admin-Rollen im externen Tenant (z.B. Application Administrator)</td>
+                <td class="p-4">Ja</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="p-4 font-bold">Lizenzierung</td>
+                <td class="p-4">External ID, abgerechnet nach monatlich aktiven Benutzern (MAU) über das verknüpfte Azure-Abonnement</td>
+                <td class="p-4">Ja</td>
+              </tr>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <td class="p-4 font-bold">Power Pages</td>
+                <td class="p-4">Power Pages Environment mit Admin-Zugang</td>
+                <td class="p-4">Ja</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="p-4 font-bold">Domain</td>
+                <td class="p-4">Eigene URL-Domain für die Anmeldeseiten (optional)</td>
+                <td class="p-4">Nein</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mb-16" id="uebersicht">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">2. Übersicht: Einmalige vs. Regelmäßige Aufgaben</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white border-2 border-gray-200 p-6 rounded-xl">
+            <h3 class="text-xl font-bold mb-3 text-gray-900">Einmalige Setup-Aufgaben</h3>
+            <p class="text-gray-600 mb-4">Diese Aufgaben fallen einmalig bei der Ersteinrichtung an:</p>
+            <ul class="space-y-2 text-gray-700">
+              <li>Externen Tenant erstellen</li>
+              <li>App-Registrierung konfigurieren</li>
+              <li>User Flow einrichten (Registrierung/Anmeldung)</li>
+              <li>Company Branding konfigurieren</li>
+              <li>MFA per Conditional Access erzwingen</li>
+              <li>Integration mit Power Pages</li>
+              <li>Testbenutzer anlegen und Tests durchführen</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border-2 border-blue-200 p-6 rounded-xl">
+            <h3 class="text-xl font-bold mb-3 text-blue-800">Regelmäßige Wartungsaufgaben</h3>
+            <p class="text-gray-600 mb-4">Diese Aufgaben fallen im laufenden Betrieb an:</p>
+            <ul class="space-y-2 text-gray-700">
+              <li>Sign-in Logs überwachen</li>
+              <li>Fehlgeschlagene Anmeldungen prüfen</li>
+              <li>Inaktive Benutzer deaktivieren</li>
+              <li>Client Secrets rotieren (nur falls eines verwendet wird)</li>
+              <li>Änderungen am User Flow testen</li>
+              <li>Kapazität und Kosten überwachen</li>
+              <li>Sicherheitsupdates verfolgen</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pp-box pp-box--tip p-6 mt-8">
+          <p class="font-bold mb-2">Wichtig</p>
+          <p class="text-gray-700">
+            Nach erfolgreichem Setup ist der administrative Aufwand gering. Die meisten Tätigkeiten beschränken sich auf Monitoring und gelegentliche Anpassungen. Portal-Benutzer setzen ihr Passwort selbst zurück; Profildaten werden in Power Pages gepflegt.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-16" id="einmalig">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">3. Einmalige Setup-Aufgaben</h2>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.1 Externen Tenant erstellen</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Erstellen Sie einen dedizierten externen Tenant für die Portal-Authentifizierung. Externe Tenants werden im Microsoft Entra Admin Center angelegt, nicht im Azure Portal.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Vorgehensweise:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Im Microsoft Entra Admin Center navigieren zu: <em>Entra ID &gt; Overview &gt; Manage tenants</em></li>
+                <li><strong>"Create"</strong> wählen, <strong>"External"</strong> auswählen und fortfahren</li>
+                <li>30-Tage-Trial oder <strong>"Use Azure Subscription"</strong> wählen</li>
+                <li>Tenant-Name und Domain-Name eingeben (z.B. <code class="bg-gray-200 px-2 py-1 rounded text-sm">portalauth</code>)</li>
+                <li>Land/Region wählen (für die DSGVO: ein EU-Land)</li>
+                <li>Abonnement und Ressourcengruppe wählen, dann erstellen (dauert bis zu 30 Minuten)</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Wichtige Einstellungen:</strong>
+            <ul class="text-gray-700 space-y-2 ml-2">
+              <li><strong>Domain:</strong> <code class="bg-gray-200 px-2 py-1 rounded text-sm">[name].onmicrosoft.com</code> wird angelegt; die Anmeldung läuft über <code class="bg-gray-200 px-2 py-1 rounded text-sm">[name].ciamlogin.com</code></li>
+              <li><strong>Rolle:</strong> Zum Anlegen ist mindestens die Rolle Tenant Creator nötig</li>
+              <li><strong>Abrechnung:</strong> MAU-basiert über das verknüpfte Azure-Abonnement</li>
+            </ul>
+          </div>
+
+          <div class="pp-box pp-box--warn p-4">
+            <p class="font-bold mb-2">Wichtig:</p>
+            <p class="text-gray-700">Land/Region (Datenstandort) und Domain-Name lassen sich nach der Erstellung nicht mehr ändern. Wählen Sie sorgfältig.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.2 App-Registrierung konfigurieren</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Registrieren Sie im externen Tenant eine Anwendung für die OpenID-Connect-Anmeldung mit Power Pages.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Zuerst die Reply URL aus Power Pages holen:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Im Power Pages Design Studio: <em>Security &gt; Identity providers</em></li>
+                <li>Bei <strong>"Microsoft Entra External ID"</strong> auf <strong>"Configure"</strong> klicken, Namen eingeben, <strong>"Next"</strong></li>
+                <li><strong>Reply URL</strong> kopieren und den Tab offen lassen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Vorgehensweise:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Im externen Tenant navigieren zu: <em>App registrations &gt; New registration</em></li>
+                <li>Namen vergeben: <code class="bg-gray-200 px-2 py-1 rounded text-sm">power-pages-app</code></li>
+                <li>Redirect URI: Plattform <strong>"Web"</strong>, die aus Power Pages kopierte Reply URL einfügen (bei eigener Domain: die entsprechende URL Ihrer Domain)</li>
+                <li>Registrierung abschließen</li>
+                <li><em>Authentication</em>: <strong>Access tokens</strong> und <strong>ID tokens</strong> aktivieren, speichern</li>
+                <li><em>API permissions</em>: <strong>Grant admin consent</strong> wählen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--note p-4 mb-4">
+            <p class="font-bold mb-2">Client Secret:</p>
+            <p class="text-gray-700">Laut Power-Pages-Dokumentation fragt der eigene Provider "Microsoft Entra External ID" nur Client ID, Authority, Redirect URL und Metadata address ab. Ein Client Secret brauchen Sie nur, wenn Sie External ID über den generischen OpenID-Connect-Provider mit Authorization Code Flow anbinden.</p>
+          </div>
+
+          <div class="pp-box pp-box--risk p-4">
+            <p class="font-bold mb-2">Sicherheit:</p>
+            <p class="text-gray-700">Falls Sie ein Client Secret verwenden: niemals in Code oder öffentlichen Repositories speichern. Bewahren Sie es in einem Tresor wie Azure Key Vault auf und notieren Sie das Ablaufdatum.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.3 User Flow einrichten</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            External ID kennt einen User-Flow-Typ für Registrierung und Anmeldung. Der Passwort-Reset ist Teil der Anmeldung, kein eigener Flow.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Registrierungs- und Anmelde-Flow erstellen:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Navigieren zu: <em>Entra ID &gt; External Identities &gt; User flows &gt; New user flow</em></li>
+                <li>Namen vergeben: <code class="bg-gray-200 px-2 py-1 rounded text-sm">power-pages-user-flow</code> (kein Präfix nötig)</li>
+                <li>Identity providers, Email Accounts:
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li><strong>Email with password</strong> (Standard) oder <strong>Email one-time passcode</strong></li>
+                    <li>Optional: Google, Facebook, Apple oder Custom OIDC, sobald sie im Tenant als Identity Provider eingerichtet sind</li>
+                  </ul>
+                </li>
+                <li>Benutzerattribute für die Registrierung auswählen, dann <strong>"Create"</strong></li>
+                <li>Im User Flow: <em>Applications &gt; Add application</em>, <code class="bg-gray-200 px-2 py-1 rounded text-sm">power-pages-app</code> auswählen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Benutzerattribute festlegen:</strong>
+            <p class="text-gray-700 mb-2">Legen Sie fest, welche Daten bei der Registrierung erfasst werden:</p>
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse bg-white rounded-lg overflow-hidden text-sm">
+                <thead class="bg-blue-600 text-white">
+                  <tr>
+                    <th class="p-3 text-left">Attribut</th>
+                    <th class="p-3 text-left">Bei Registrierung erfassen</th>
+                    <th class="p-3 text-left">Pflicht</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                  <tr class="border-b">
+                    <td class="p-3">E-Mail-Adresse</td>
+                    <td class="p-3">Ja (immer, per Einmalcode verifiziert)</td>
+                    <td class="p-3">Ja</td>
+                  </tr>
+                  <tr class="border-b bg-gray-50">
+                    <td class="p-3">Vorname (Given Name)</td>
+                    <td class="p-3">Ja</td>
+                    <td class="p-3">Empfohlen</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-3">Nachname (Surname)</td>
+                    <td class="p-3">Ja</td>
+                    <td class="p-3">Empfohlen</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3">Anzeigename (Display Name)</td>
+                    <td class="p-3">Optional</td>
+                    <td class="p-3">Nein</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-gray-700 mt-2 text-sm">Attribute werden nur bei der ersten Registrierung abgefragt. Welche Werte in Power Pages ankommen, steuern die App-Registrierung (Token configuration) und das Claims Mapping in Power Pages.</p>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Passwort-Reset aktivieren:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Voraussetzung: Der User Flow nutzt <strong>Email with password</strong></li>
+                <li>Navigieren zu: <em>Entra ID &gt; Authentication methods &gt; Email OTP</em></li>
+                <li>Email OTP für alle Benutzer (oder ausgewählte Gruppen) aktivieren und speichern</li>
+                <li>Benutzer sehen dann auf der Anmeldeseite den Link "Forgot password?"</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--note p-4">
+            <p class="font-bold mb-2">Tipp:</p>
+            <p class="text-gray-700">Testen Sie jeden User Flow direkt nach dem Anlegen mit "Run user flow" im Microsoft Entra Admin Center.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.4 Company Branding konfigurieren</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Passen Sie die von Microsoft gehosteten Anmeldeseiten an Ihr Corporate Design an. Externe Tenants starten mit einem neutralen Branding ohne Microsoft-Logos.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Branding-Optionen:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Navigieren zu: <em>Entra ID &gt; Custom Branding</em>, Reiter <strong>"Default sign-in"</strong> &gt; <strong>"Edit"</strong></li>
+                <li>Basics: Favicon, Hintergrundbild, Hintergrundfarbe</li>
+                <li>Layout: Template (Voll- oder Teilbild), Header, Footer</li>
+                <li>Header und Anmeldeformular: Logo und Banner-Logo</li>
+                <li>Footer: eigene Links zu Datenschutz und Nutzungsbedingungen</li>
+                <li>Text: eigene Texte für Anmeldung und Registrierung</li>
+                <li>Sprachen: über die Sprachanpassung im User Flow</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--warn p-4 mb-4">
+            <p class="font-bold mb-2">Custom CSS läuft aus:</p>
+            <p class="text-gray-700">Microsoft stellt Custom CSS für das Company Branding schrittweise ein. Tenants, die nach dem 5. Januar 2026 angelegt wurden, bekommen es nicht mehr. Planen Sie Ihr Branding mit den eingebauten Optionen. Eigene HTML-Seiten (wie aus B2C bekannt) gibt es in External ID nicht.</p>
+          </div>
+
+          <div class="pp-box pp-box--warn p-4">
+            <p class="font-bold mb-2">Barrierefreiheit:</p>
+            <p class="text-gray-700">Achten Sie bei Hintergrundbildern und Farben auf ausreichende Kontraste und WCAG-Konformität.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.5 Multi-Faktor-Authentifizierung (MFA)</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            In externen Tenants wird MFA über eine Conditional-Access-Richtlinie erzwungen, nicht über eine Einstellung im User Flow.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">MFA aktivieren:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Methoden für den zweiten Faktor unter <em>Entra ID &gt; Authentication methods</em> aktivieren:
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li><strong>Email OTP:</strong> einfachste Methode (als zweiter Faktor nach E-Mail und Passwort)</li>
+                    <li><strong>SMS:</strong> als kostenpflichtiges Add-on verfügbar</li>
+                    <li><strong>Passkey (FIDO2):</strong> phishing-resistent</li>
+                  </ul>
+                </li>
+                <li>Richtlinie anlegen unter <em>Conditional Access &gt; New policy</em>:
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li><strong>Users:</strong> alle Benutzer, Notfallkonten ausschließen</li>
+                    <li><strong>Target resources:</strong> die Power-Pages-App (oder alle Ressourcen)</li>
+                    <li><strong>Grant:</strong> Multifaktor-Authentifizierung erforderlich</li>
+                  </ul>
+                </li>
+                <li>Richtlinie aktivieren und mit einem Testbenutzer prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--tip p-4">
+            <p class="font-bold mb-2">Empfehlung:</p>
+            <p class="text-gray-700">Aktivieren Sie MFA mindestens für administrative Konten. Für normale Portal-Benutzer kann MFA optional bleiben, sollte aber geprüft werden.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.6 Integration mit Power Pages</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Power Pages hat einen eigenen Identity Provider für External ID. Nutzen Sie ihn statt eines generischen OpenID-Connect-Providers.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Benötigte Angaben aus der App-Registrierung:</strong>
+            <div class="bg-gray-800 text-gray-50 p-4 rounded-md font-mono text-sm overflow-x-auto whitespace-pre-wrap">Client ID:        Application (client) ID   (Overview)
+Authority:        Authority URL             (Endpoints)
+Metadata address: OpenID Connect metadata document (Endpoints), Format:
+https://[tenant].ciamlogin.com/[tenant-id]/v2.0/.well-known/openid-configuration</div>
+            <p class="text-gray-700 mt-2 text-sm">Kopieren Sie die Werte aus <em>App registrations &gt; [Ihre App] &gt; Endpoints</em>, statt sie von Hand zusammenzubauen. URLs im B2C-Stil mit Policy-Namen (<code class="bg-gray-200 px-2 py-1 rounded text-sm">B2C_1_...</code>) oder <code class="bg-gray-200 px-2 py-1 rounded text-sm">b2clogin.com</code> funktionieren mit External ID nicht.</p>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Konfiguration in Power Pages:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Zurück zum offenen Tab (Design Studio: <em>Security &gt; Identity providers &gt; Microsoft Entra External ID</em>)</li>
+                <li>Konfiguration eintragen:
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li>Client ID, Authority und Metadata address: [siehe oben]</li>
+                    <li>Redirect URL: Standardwert belassen; bei eigener Domain die eigene URL eintragen (muss exakt der Redirect URI der App-Registrierung entsprechen)</li>
+                  </ul>
+                </li>
+                <li>Optionale Zusatzeinstellungen: External logout, Claims mapping, Nonce lifetime, Use token lifetime, Contact mapping with email</li>
+                <li><strong>"Confirm"</strong> wählen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--note p-4 mb-4">
+            <p class="font-bold mb-2">Tipp:</p>
+            <p class="text-gray-700">Änderungen an der Authentifizierung können einige Minuten dauern. Für sofortige Wirkung die Website im Power Pages Admin Center neu starten.</p>
+          </div>
+
+          <div class="pp-box pp-box--note p-4">
+            <p class="font-bold mb-2">Tipp:</p>
+            <p class="text-gray-700">Deaktivieren Sie nach erfolgreicher Integration andere Identity Provider (lokaler Login, Microsoft), wenn ausschließlich Entra External ID genutzt werden soll.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">3.7 Tests durchführen</div>
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Einmalig</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Führen Sie umfassende Tests durch, bevor das System produktiv geht.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-600 block mb-2">Testszenarien:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li><strong>Registrierung:</strong> Neuen Benutzer anlegen und E-Mail-Verifizierung prüfen</li>
+                <li><strong>Anmeldung:</strong> Mit dem neuen Konto anmelden</li>
+                <li><strong>Passwort-Reset:</strong> "Forgot password?" komplett durchlaufen</li>
+                <li><strong>MFA:</strong> Multi-Faktor-Authentifizierung testen (falls aktiviert)</li>
+                <li><strong>Claims:</strong> Prüfen, ob alle benötigten Werte in Power Pages ankommen (Kontakt-Datensatz)</li>
+                <li><strong>Abmeldung:</strong> Sign-out testen (inkl. External logout, falls aktiviert)</li>
+                <li><strong>Fehlerfälle:</strong> Falsche Anmeldedaten, abgelaufene Sitzung usw. testen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--tip p-4">
+            <p class="font-bold mb-2">Go-Live-Checkliste:</p>
+            <p class="text-gray-700">Das System sollte erst nach erfolgreichen Tests in allen Szenarien für produktive Benutzer freigegeben werden.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16" id="regelmaessig">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">4. Regelmäßige Wartungsaufgaben</h2>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">4.1 Sign-in Logs überwachen</div>
+            <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Täglich</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Überwachen Sie Anmeldeaktivitäten auf Auffälligkeiten und Fehler.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Zugriff auf die Logs:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Im Microsoft Entra Admin Center: <em>Entra ID &gt; Monitoring &amp; health &gt; Sign-in logs</em></li>
+                <li>Filter setzen:
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li>Zeitraum: letzte 24 Stunden</li>
+                    <li>Status: Failure</li>
+                    <li>Anwendung: power-pages-app</li>
+                  </ul>
+                </li>
+                <li>Auffälligkeiten prüfen (z.B. viele Fehlversuche von derselben IP)</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Wichtige Kennzahlen:</strong>
+            <ul class="text-gray-700 space-y-2 ml-2">
+              <li><strong>Fehlgeschlagene Anmeldungen:</strong> sollten unter 5 % liegen</li>
+              <li><strong>MAU (monatlich aktive Benutzer):</strong> für die Kostenkontrolle</li>
+              <li><strong>Anmeldedauer:</strong> Performance-Indikator</li>
+              <li><strong>MFA-Erfolgsquote:</strong> falls MFA aktiviert ist</li>
+            </ul>
+          </div>
+
+          <div class="pp-box pp-box--warn p-4">
+            <p class="font-bold mb-2">Alarmierung einrichten:</p>
+            <p class="text-gray-700">Externe Tenants bewahren Sign-in- und Audit-Logs nur 7 Tage auf. Exportieren Sie sie per Azure Monitor in einen Log-Analytics-Workspace und richten Sie dort Alarme für ungewöhnlich hohe Fehlerraten ein.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">4.2 Inaktive Benutzer deaktivieren</div>
+            <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Monatlich</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Identifizieren und deaktivieren Sie Konten, die längere Zeit nicht genutzt wurden.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Vorgehensweise:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Benutzer ohne Anmeldung seit mehr als 90 Tagen ermitteln (aus den nach Log Analytics exportierten Sign-in Logs oder per Microsoft Graph)</li>
+                <li>Im Microsoft Entra Admin Center: <em>Entra ID &gt; Users</em></li>
+                <li>Liste exportieren und mit dem Fachbereich abstimmen</li>
+                <li>Konten deaktivieren (nicht löschen!):
+                  <ul class="ml-6 mt-2 space-y-1 list-disc">
+                    <li>Benutzer auswählen</li>
+                    <li>Eigenschaften &gt; Account enabled: <strong>Nein</strong></li>
+                  </ul>
+                </li>
+                <li>Dokumentation aktualisieren</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--note p-4">
+            <p class="font-bold mb-2">Hinweis:</p>
+            <p class="text-gray-700">Deaktivierte Konten lassen sich jederzeit reaktivieren. Endgültig gelöscht werden sollte nur nach ausdrücklicher Freigabe (z.B. DSGVO-Löschanfrage).</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">4.3 Client Secrets rotieren</div>
+            <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Halbjährlich</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Nur relevant, wenn Ihre Konfiguration ein Client Secret nutzt (z.B. generischer OpenID-Connect-Provider mit Authorization Code Flow). Der eigene External-ID-Provider nutzt keines, wenn er nach der Microsoft-Dokumentation eingerichtet ist.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Ablauf der Rotation:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Neues Client Secret anlegen (<em>Certificates &amp; secrets &gt; New client secret</em>)</li>
+                <li>Beide Secrets parallel aktiv lassen</li>
+                <li>Power-Pages-Konfiguration auf das neue Secret umstellen</li>
+                <li>Testen (Anmeldung, Registrierung)</li>
+                <li>Altes Secret nach 48 Stunden löschen</li>
+                <li>Vorgang dokumentieren</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--risk p-4">
+            <p class="font-bold mb-2">Wichtig:</p>
+            <p class="text-gray-700">Stimmen Sie die Rotation mit dem Power-Pages-Team ab. Ungeplante Secret-Wechsel führen zu Anmeldefehlern.</p>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">4.4 Kapazität und Kosten überwachen</div>
+            <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Monatlich</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Überwachen Sie die monatlich aktiven Benutzer (MAU) und die zugehörigen Kosten.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Kostenkontrolle:</strong>
+            <ul class="text-gray-700 space-y-2 mb-4 ml-2">
+              <li><strong>Preismodell:</strong> Entra External ID wird nach MAU abgerechnet</li>
+              <li><strong>Kostenlos:</strong> die ersten 50.000 MAU pro Monat</li>
+              <li><strong>Darüber hinaus:</strong> Abrechnung pro MAU; Premium-Add-ons (z.B. SMS für MFA) haben kein Freikontingent. Aktuelle Preise: offizielle Preisseite von External ID</li>
+            </ul>
+
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Im Azure Portal: <em>Cost Management &gt; Cost analysis</em> auf dem Abonnement bzw. der Ressourcengruppe, die mit dem Tenant verknüpft ist</li>
+                <li>Die Nutzung erscheint dort auch, solange Sie unter dem Freikontingent liegen</li>
+                <li>Trend-Analyse: MAU-Entwicklung der letzten 3 Monate</li>
+                <li>Budget-Alarme einrichten (optional)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="pp-card p-6 mb-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div class="text-xl font-bold text-gray-900">4.5 Sicherheitsupdates und Änderungen</div>
+            <div class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Quartalsweise</div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Prüfen Sie regelmäßig angekündigte Änderungen und Sicherheitshinweise.
+          </p>
+
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <strong class="text-blue-700 block mb-2">Quellen:</strong>
+            <div class="bg-white border border-gray-200 p-4 rounded-md">
+              <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Azure Portal: <em>Service Health &gt; Planned maintenance</em></li>
+                <li>Microsoft 365 Message Center abonnieren</li>
+                <li>"What's new" für Microsoft Entra External ID verfolgen</li>
+                <li>Security Advisories prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="pp-box pp-box--note p-4">
+            <p class="font-bold mb-2">Automatische Updates:</p>
+            <p class="text-gray-700">Die meisten Updates spielt Microsoft automatisch ein. Manuelle Anpassungen sind nur bei Breaking Changes nötig, etwa beim Auslaufen von Custom CSS oder der User-Insights-Dashboards.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-16" id="monitoring">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">5. Monitoring und Troubleshooting</h2>
+
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">5.1 Dashboard-Kennzahlen</h3>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+            <thead class="pp-navy text-white">
+              <tr>
+                <th class="p-4 text-left font-semibold">Kennzahl</th>
+                <th class="p-4 text-left font-semibold">Normalwert</th>
+                <th class="p-4 text-left font-semibold">Alarmwert</th>
+                <th class="p-4 text-left font-semibold">Maßnahme</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-gray-200">
+                <td class="p-4">Fehlgeschlagene Anmeldungen</td>
+                <td class="p-4">&lt; 5%</td>
+                <td class="p-4">&gt; 10%</td>
+                <td class="p-4">Sign-in Logs prüfen, User Flow testen</td>
+              </tr>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <td class="p-4">Anmeldedauer</td>
+                <td class="p-4">&lt; 3s</td>
+                <td class="p-4">&gt; 10s</td>
+                <td class="p-4">Performance-Analyse, Azure Support</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="p-4">Token-Fehler</td>
+                <td class="p-4">&lt; 1%</td>
+                <td class="p-4">&gt; 5%</td>
+                <td class="p-4">Token-Konfiguration prüfen, Claims validieren</td>
+              </tr>
+              <tr class="border-b border-gray-200 bg-gray-50">
+                <td class="p-4">MAU-Wachstum</td>
+                <td class="p-4">Gleichmäßig</td>
+                <td class="p-4">Plötzlicher Sprung</td>
+                <td class="p-4">Bot-Aktivität prüfen, Kosten-Alarm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">5.2 Häufige Fehler und Lösungen</h3>
+
+        <p class="text-gray-700 mb-4">External ID meldet Fehler als <code class="bg-gray-200 px-2 py-1 rounded text-sm">AADSTS</code>-Codes. Details zu jedem Code: <code class="bg-gray-200 px-2 py-1 rounded text-sm">https://login.microsoftonline.com/error?code=[Nummer]</code></p>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">AADSTS50126: Benutzername oder Passwort falsch</h4>
+          <p class="text-gray-700 mb-2"><strong>Ursache:</strong> Der Benutzer hat falsche Anmeldedaten eingegeben</p>
+          <p class="text-gray-700"><strong>Lösung:</strong> Ein gewisser Anteil ist normal. Ein plötzlicher Anstieg von wenigen IP-Adressen deutet auf Password Spraying hin: Sign-in Logs prüfen und MFA erwägen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">AADSTS50053: Konto gesperrt oder Anmeldung blockiert</h4>
+          <p class="text-gray-700 mb-2"><strong>Ursache:</strong> Zu viele Fehlversuche, oder die Anfrage kam von einer IP-Adresse mit schädlicher Aktivität</p>
+          <p class="text-gray-700"><strong>Lösung:</strong> Fehlergrund in den Sign-in Logs prüfen. Benutzer informieren; die Sperre endet automatisch.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">AADSTS50011: Redirect URI stimmt nicht überein</h4>
+          <p class="text-gray-700 mb-2"><strong>Ursache:</strong> Die von Power Pages gesendete Redirect URI passt nicht zur App-Registrierung</p>
+          <p class="text-gray-700"><strong>Lösung:</strong> Beide Werte exakt angleichen (Schema, Host, Pfad, abschließender Schrägstrich). Typisch nach dem Umstieg auf eine eigene Domain.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">AADSTS700016: Anwendung nicht gefunden</h4>
+          <p class="text-gray-700 mb-2"><strong>Ursache:</strong> Falsche Client ID, oder die Authority zeigt auf einen anderen Tenant</p>
+          <p class="text-gray-700"><strong>Lösung:</strong> Client ID und Authority in Power Pages mit der App-Registrierung im externen Tenant vergleichen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">AADSTS7000215: Ungültiges Client Secret</h4>
+          <p class="text-gray-700 mb-2"><strong>Ursache:</strong> Nur mit Client Secret: Es ist abgelaufen, oder statt des Werts wurde die Secret ID eingetragen</p>
+          <p class="text-gray-700"><strong>Lösung:</strong> Neues Client Secret anlegen und in Power Pages aktualisieren (siehe 4.3).</p>
+        </div>
+      </section>
+
+      <section class="mb-16" id="best-practices">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">6. Best Practices und Sicherheit</h2>
+
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">6.1 Security Best Practices</h3>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">1. Prinzip der minimalen Rechte</h4>
+          <p class="text-gray-700">Vergeben Sie nur die minimal nötigen Berechtigungen für Dienst- und Admin-Konten. Nutzen Sie dedizierte Admin-Konten, keine persönlichen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">2. Conditional-Access-Richtlinien</h4>
+          <p class="text-gray-700">Nutzen Sie Conditional Access im externen Tenant, um MFA zu verlangen oder den Zugriff zu blockieren. Externe Tenants bieten einen reduzierten Umfang: Bedingungen für Geräteplattform und Standort; Steuerungen Blockieren, MFA verlangen und Passwort-Reset verlangen. Risikobasierte Bedingungen (ID Protection) gibt es dort nicht.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">3. Umgang mit Client Secrets</h4>
+          <p class="text-gray-700">Falls Sie ein Client Secret verwenden: niemals in Code oder Konfigurationsdateien speichern. Nutzen Sie Azure Key Vault, rotieren Sie alle 6-12 Monate und dokumentieren Sie jeden Wechsel.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">4. Audit Logging</h4>
+          <p class="text-gray-700">Externe Tenants bewahren Sign-in- und Audit-Logs 7 Tage auf. Exportieren Sie sie per Azure Monitor nach Log Analytics, in ein Storage-Konto oder ein SIEM und bewahren Sie sie mindestens 90 Tage auf.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">5. Regelmäßige Security Reviews</h4>
+          <p class="text-gray-700">Führen Sie quartalsweise Security Reviews durch. Prüfen Sie: aktive Berechtigungen, MFA-Nutzungsquote, Muster bei Fehlanmeldungen, inaktive Konten.</p>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4 mt-8 text-gray-800">6.2 Performance und Betrieb</h3>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">Sitzung und Token-Laufzeit abstimmen</h4>
+          <p class="text-gray-700">Die Power-Pages-Einstellung "Use token lifetime" koppelt die Sitzung der Website an die Laufzeit des Tokens. Entscheiden Sie bewusst, ob Sie dieses Verhalten wollen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">Claims minimieren</h4>
+          <p class="text-gray-700">Halten Sie Tokens klein: Fragen Sie nur die Benutzerattribute ab, die Sie tatsächlich brauchen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">Eigene URL-Domain und WAF</h4>
+          <p class="text-gray-700">Lassen Sie die Anmeldung über Ihre eigene Domain laufen (z.B. login.contoso.com) und schalten Sie optional eine Web Application Firewall davor (Integration mit Azure Front Door, Cloudflare oder Akamai).</p>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4 mt-8 text-gray-800">6.3 Compliance und Datenschutz</h3>
+
+        <div class="pp-box pp-box--note p-6 mb-6">
+          <p class="font-bold mb-2">DSGVO-Konformität</p>
+          <p class="text-gray-700">
+            Wählen Sie beim Anlegen des externen Tenants ein EU-Land als Land/Region; das lässt sich später nicht ändern. Implementieren Sie Prozesse für DSGVO-Anfragen (Auskunft, Löschung, Berichtigung). Dokumentieren Sie alle Datenverarbeitungen.
+          </p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">Datenstandort</h4>
+          <p class="text-gray-700">Der Datenstandort eines externen Tenants ergibt sich aus dem beim Anlegen gewählten Land/Region. Prüfen Sie ihn vor dem Anlegen gegen Ihre Compliance-Anforderungen.</p>
+        </div>
+
+        <div class="pp-box pp-box--tip p-4 mb-4">
+          <h4 class="font-bold text-green-800 mb-1">Einwilligungen verwalten</h4>
+          <p class="text-gray-700">Gestalten Sie klare Einwilligungen für die Datenerhebung. Dokumentieren Sie alle erhobenen Daten und ihren Zweck. Ermöglichen Sie einen einfachen Widerruf.</p>
+        </div>
+      </section>
+
+      <section class="mb-16" id="faq">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">7. Häufig gestellte Fragen (FAQ)</h2>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Wie oft müssen Client Secrets rotiert werden?</div>
+          <div class="text-gray-600 leading-relaxed">Nur wenn Sie ein Client Secret verwenden (siehe 4.3). Best Practice: alle 6-12 Monate; Microsoft empfiehlt maximal 12 Monate Gültigkeit. Dokumentieren Sie jeden Wechsel und stimmen Sie sich mit dem Power-Pages-Team ab.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Können Benutzer ihre Konten selbst löschen?</div>
+          <div class="text-gray-600 leading-relaxed">Nicht von Haus aus. Admins löschen Benutzer im Microsoft Entra Admin Center oder per Microsoft Graph. Custom Policies gibt es in External ID nicht; eine Selbstlöschung braucht daher einen eigenen Prozess (z.B. ein Anfrageformular). Löschen oder anonymisieren Sie auch den zugehörigen Kontakt in Dataverse.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Was kostet Entra External ID?</div>
+          <div class="text-gray-600 leading-relaxed">Abgerechnet wird nach monatlich aktiven Benutzern (MAU). Das Kernangebot ist für die ersten 50.000 MAU pro Monat kostenlos. Premium-Add-ons wie SMS für MFA haben kein Freikontingent. Aktuelle Preise stehen auf der offiziellen Preisseite von External ID.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Wie lange werden Sign-in Logs aufbewahrt?</div>
+          <div class="text-gray-600 leading-relaxed">In einem externen Tenant 7 Tage, für Sign-in- wie Audit-Logs. Für längere Aufbewahrung exportieren Sie sie per Azure Monitor nach Log Analytics, in ein Storage-Konto oder ein SIEM. Empfehlung: mindestens 90 Tage.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Können Social Logins (Google, Facebook) verwendet werden?</div>
+          <div class="text-gray-600 leading-relaxed">Ja. External ID unterstützt Google, Facebook, Apple und eigene OpenID-Connect-Provider. Richten Sie den Provider im externen Tenant ein und fügen Sie ihn dem User Flow hinzu. Beachten Sie die Datenschutzfolgen von Social Logins.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Was passiert, wenn Entra External ID ausfällt?</div>
+          <div class="text-gray-600 leading-relaxed">Registrierung und Anmeldung im Portal funktionieren nicht mehr; anonyme Seiten bleiben erreichbar. Ihre Verfügbarkeitszusagen dokumentiert Microsoft im Microsoft Online Services SLA. Prüfen Sie bei Ausfällen Azure Service Health und halten Sie einen Wartungshinweis für das Portal bereit.</div>
+        </div>
+
+        <div class="pp-card p-6 mb-4">
+          <div class="text-lg font-bold text-gray-900 mb-3">Wie viele parallele Sitzungen sind erlaubt?</div>
+          <div class="text-gray-600 leading-relaxed">Ein Limit für gleichzeitige Sitzungen pro Benutzer ist nicht dokumentiert. Die Sitzungsdauer steuern die Power-Pages-Einstellungen (z.B. "Use token lifetime") und die Token-Laufzeiten in Entra. Access Tokens haben eine variable Standardlaufzeit von etwa 60 bis 90 Minuten.</div>
+        </div>
+      </section>
+
+      <section class="mb-16" id="checklisten">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">8. Checklisten</h2>
+
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-800">8.1 Checkliste Ersteinrichtung</h3>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Externer Tenant erstellt (EU-Land/Region)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">App-Registrierung konfiguriert (Redirect URI, ID Tokens, Admin Consent)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">User Flow für Registrierung/Anmeldung erstellt und getestet</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Passwort-Reset (Email OTP) aktiviert und getestet</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Company Branding konfiguriert (Logo, Farben)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Conditional-Access-Richtlinie für MFA aktiv (mindestens für Admins)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Integration mit Power Pages getestet (Registrierung, Anmeldung, Passwort-Reset)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Log-Export per Azure Monitor eingerichtet (7 Tage Aufbewahrung im Tenant)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Dokumentation erstellt (Konfiguration, Zugänge, Prozesse)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Go-Live-Tests durchgeführt (alle Szenarien)</div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-800">8.2 Checkliste monatliche Wartung</h3>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Sign-in Logs auf Auffälligkeiten geprüft</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Fehlgeschlagene Anmeldungen analysiert (&lt; 5%)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Inaktive Benutzer identifiziert (&gt; 90 Tage)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">MAU und Kosten geprüft</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Ablaufdatum des Client Secrets geprüft, falls verwendet (&lt; 30 Tage -&gt; Rotation planen)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Azure Service Health auf geplante Wartungen geprüft</div>
+        </div>
+        <div class="flex items-start gap-4 py-3">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Konfiguration gesichert (App-Registrierungen, User Flows)</div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-4 text-gray-800">8.3 Checkliste quartalsweises Security Review</h3>
+
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-6 mb-8">
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Admin-Berechtigungen geprüft (Prinzip der minimalen Rechte)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">MFA-Nutzungsquote geprüft (Ziel: &gt; 90%)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Audit Logs auf verdächtige Aktivitäten geprüft</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Anmeldemethoden und Passwort-Reset geprüft</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Einstellungen des User Flows geprüft (Attribute, Identity Provider)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Conditional-Access-Richtlinien geprüft (MFA, Ausnahmen)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3 border-b border-gray-100">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Compliance-Dokumentation aktualisiert (DSGVO usw.)</div>
+        </div>
+        <div class="flex items-start gap-4 py-3">
+          <div class="w-6 h-6 border-2 border-blue-600 rounded flex-shrink-0 mt-0.5"></div>
+          <div class="text-gray-700">Notfallplan getestet</div>
+        </div>
+      </div>
+
+      <div class="pp-box pp-box--tip p-6">
+        <p class="font-bold mb-2">Zusammenfassung</p>
+        <p class="text-gray-700">
+          Nach erfolgreicher Ersteinrichtung ist der administrative Aufwand für Entra External ID gering. Die meisten Wartungsaufgaben sind in wenigen Stunden pro Monat erledigt. Automatisierung (Alarme, Monitoring) senkt den manuellen Aufwand weiter.
+        </p>
+      </div>
+      </section>
+
+    <section class="mb-16" id="quellen">
+      <h2 class="text-3xl font-bold mb-6 text-gray-900 border-b-4 border-blue-600 pb-2">9. Quellen und Referenzen</h2>
+      <p class="text-gray-700 mb-4">Alle Microsoft-Dokumentationen, auf denen dieses Handbuch basiert.</p>
+      <ol class="list-decimal pl-6 space-y-2 text-gray-700 text-sm">
+        <li>Microsoft Entra External ID Documentation: <a href="https://learn.microsoft.com/en-us/entra/external-id/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/</a></li>
+        <li>OAuth 2.0 and OpenID Connect Protocols: <a href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc</a></li>
+        <li>Entra ID Built-in Roles: <a href="https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference</a></li>
+        <li>Power Pages Administration: <a href="https://learn.microsoft.com/en-us/power-pages/admin/admin-overview" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/power-pages/admin/admin-overview</a></li>
+        <li>Create an External ID Tenant: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-create-external-tenant-portal" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-create-external-tenant-portal</a></li>
+        <li>Register an Application: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-register-ciam-app" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-register-ciam-app</a></li>
+        <li>Create User Flows in Entra External ID: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-user-flow-sign-up-sign-in-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-user-flow-sign-up-sign-in-customers</a></li>
+        <li>Customize Branding: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-customize-branding-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-customize-branding-customers</a></li>
+        <li>Enable Multi-Factor Authentication: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-multifactor-authentication-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-multifactor-authentication-customers</a></li>
+        <li>Monitor Sign-in Activity: <a href="https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-sign-ins" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-sign-ins</a></li>
+        <li>Best Practices for Client Secret Management: <a href="https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#option-3-create-a-new-application-secret" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal</a> - Microsoft recommends a maximum validity of 12 months.</li>
+        <li>GDPR and Microsoft Azure: <a href="https://learn.microsoft.com/en-us/compliance/regulatory/gdpr" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/compliance/regulatory/gdpr</a></li>
+        <li>Microsoft Graph Permissions Reference: <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/graph/permissions-reference</a></li>
+        <li>Azure Key Vault Documentation: <a href="https://learn.microsoft.com/en-us/azure/key-vault/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/azure/key-vault/</a></li>
+        <li>Configure Social Identity Providers: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-google-federation-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-google-federation-customers</a></li>
+        <li>Collect User Attributes: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-define-custom-attributes" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-define-custom-attributes</a></li>
+        <li>Language Customization: <a href="https://learn.microsoft.com/en-us/entra/external-id/user-flow-customize-language" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/user-flow-customize-language</a></li>
+        <li>Web Content Accessibility Guidelines (WCAG): <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://www.w3.org/WAI/WCAG21/quickref/</a></li>
+        <li>Conditional Access in Entra External ID: <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview</a> </li>
+        <li>Token Claims Configuration: <a href="https://learn.microsoft.com/en-us/entra/identity-platform/optional-claims" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/optional-claims</a></li>
+        <li>Azure Monitor Alerts: <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview</a></li>
+        <li>Azure Cost Management: <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/</a></li>
+        <li>Azure Service Health: <a href="https://learn.microsoft.com/en-us/azure/service-health/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/azure/service-health/</a></li>
+        <li>Microsoft 365 Message Center: <a href="https://admin.microsoft.com/Adminportal/Home#/MessageCenter" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://admin.microsoft.com/Adminportal/Home#/MessageCenter</a></li>
+        <li>Entra ID Release Notes: <a href="https://learn.microsoft.com/en-us/entra/fundamentals/whats-new" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/fundamentals/whats-new</a></li>
+        <li>Microsoft Security Response Center: <a href="https://msrc.microsoft.com/update-guide" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://msrc.microsoft.com/update-guide</a></li>
+        <li>Principle of Least Privilege: <a href="https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/best-practices" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/best-practices</a></li>
+        <li>Azure Data Residency: <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/</a></li>
+        <li>Set up Microsoft Entra External ID with Power Pages: <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/entra-external-id" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/power-pages/security/authentication/entra-external-id</a></li>
+        <li>Azure AD B2C end of sale (May 1, 2025): <a href="https://learn.microsoft.com/en-us/azure/active-directory-b2c/faq#azure-ad-b2c-end-of-sale" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/azure/active-directory-b2c/faq#azure-ad-b2c-end-of-sale</a></li>
+        <li>Supported features in workforce and external tenants: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/concept-supported-features-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/concept-supported-features-customers</a></li>
+        <li>Enable self-service password reset (external tenants): <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-enable-password-reset-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-enable-password-reset-customers</a></li>
+        <li>Multifactor authentication in external tenants: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/concept-multifactor-authentication-customers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/concept-multifactor-authentication-customers</a></li>
+        <li>Company branding and custom CSS retirement: <a href="https://learn.microsoft.com/en-us/entra/fundamentals/how-to-customize-branding" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/fundamentals/how-to-customize-branding</a></li>
+        <li>Microsoft Entra authentication error codes (AADSTS): <a href="https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes</a></li>
+        <li>Tokens and claims: endpoints and issuers for external tenants: <a href="https://learn.microsoft.com/en-us/entra/identity-platform/security-tokens#token-endpoints-and-issuers" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/security-tokens#token-endpoints-and-issuers</a></li>
+        <li>Data retention (7 days in external tenants): <a href="https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-reports-data-retention" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-reports-data-retention</a></li>
+        <li>Azure Monitor in external tenants: <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-azure-monitor" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-azure-monitor</a></li>
+        <li>External ID pricing and billing: <a href="https://learn.microsoft.com/en-us/entra/external-id/external-identities-pricing" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/external-id/external-identities-pricing</a></li>
+        <li>Configurable token lifetimes: <a href="https://learn.microsoft.com/en-us/entra/identity-platform/configurable-token-lifetimes" target="_blank" rel="noopener" class="text-blue-600 hover:underline break-all">https://learn.microsoft.com/en-us/entra/identity-platform/configurable-token-lifetimes</a></li>
+      </ol>
+    </section>
+
+
+
+    </div>
+  </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie oft müssen Client Secrets rotiert werden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nur wenn Sie ein Client Secret verwenden (siehe 4.3). Best Practice: alle 6-12 Monate; Microsoft empfiehlt maximal 12 Monate Gültigkeit. Dokumentieren Sie jeden Wechsel und stimmen Sie sich mit dem Power-Pages-Team ab."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können Benutzer ihre Konten selbst löschen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nicht von Haus aus. Admins löschen Benutzer im Microsoft Entra Admin Center oder per Microsoft Graph. Custom Policies gibt es in External ID nicht; eine Selbstlöschung braucht daher einen eigenen Prozess (z.B. ein Anfrageformular). Löschen oder anonymisieren Sie auch den zugehörigen Kontakt in Dataverse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet Entra External ID?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Abgerechnet wird nach monatlich aktiven Benutzern (MAU). Das Kernangebot ist für die ersten 50.000 MAU pro Monat kostenlos. Premium-Add-ons wie SMS für MFA haben kein Freikontingent. Aktuelle Preise stehen auf der offiziellen Preisseite von External ID."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange werden Sign-in Logs aufbewahrt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In einem externen Tenant 7 Tage, für Sign-in- wie Audit-Logs. Für längere Aufbewahrung exportieren Sie sie per Azure Monitor nach Log Analytics, in ein Storage-Konto oder ein SIEM. Empfehlung: mindestens 90 Tage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können Social Logins (Google, Facebook) verwendet werden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. External ID unterstützt Google, Facebook, Apple und eigene OpenID-Connect-Provider. Richten Sie den Provider im externen Tenant ein und fügen Sie ihn dem User Flow hinzu. Beachten Sie die Datenschutzfolgen von Social Logins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert, wenn Entra External ID ausfällt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Registrierung und Anmeldung im Portal funktionieren nicht mehr; anonyme Seiten bleiben erreichbar. Ihre Verfügbarkeitszusagen dokumentiert Microsoft im Microsoft Online Services SLA. Prüfen Sie bei Ausfällen Azure Service Health und halten Sie einen Wartungshinweis für das Portal bereit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viele parallele Sitzungen sind erlaubt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Limit für gleichzeitige Sitzungen pro Benutzer ist nicht dokumentiert. Die Sitzungsdauer steuern die Power-Pages-Einstellungen (z.B. \"Use token lifetime\") und die Token-Laufzeiten in Entra. Access Tokens haben eine variable Standardlaufzeit von etwa 60 bis 90 Minuten."
+      }
+    }
+  ]
+}
+</script>
+
+
+
+
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Weitere Artikel</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/de/blog/power-portals-lizenzierung-kosten/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">Power Pages Kosten & Lizenzierung 2025</h3>
+          <p class="text-gray-600 mb-4">Der komplette Überblick über Lizenzmodelle, Preise und TCO</p>
+          <span class="text-blue-600 font-semibold">Artikel lesen →</span>
+        </a>
+
+        <a href="/de/blog/power-pages-wert-lizenzpakete/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">Power Pages Lizenzwert im Detail</h3>
+          <p class="text-gray-600 mb-4">Was Sie wirklich für authentifizierte & anonyme User-Lizenzen bekommen</p>
+          <span class="text-blue-600 font-semibold">Artikel lesen →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

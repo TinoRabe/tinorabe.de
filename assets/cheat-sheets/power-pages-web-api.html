@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pages Web API Cheat Sheet - Complete CRUD & OData Reference | Tino Rabe</title>
+    <meta name="description" content="Complete Power Pages Web API reference: CRUD operations, OData query options ($select, $filter, $expand), Dataverse relationships (1:N, N:1, N:N), security configuration. With JavaScript code examples using webapi.safeAjax().">
+    <meta name="keywords" content="Power Pages Web API, Power Pages CRUD, OData query, $select, $filter, $expand, $orderby, Dataverse relationships, webapi.safeAjax, Table Permissions, Power Platform API, JavaScript Dataverse">
+    <meta name="author" content="Tino Rabe - Microsoft MVP">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tinorabe.de/assets/cheat-sheets/power-pages-web-api.html">
+    <meta property="og:title" content="Power Pages Web API Cheat Sheet - Complete CRUD & OData Reference">
+    <meta property="og:description" content="Complete reference for Power Pages Web API: CRUD operations, OData queries, Dataverse relationships with JavaScript examples.">
+    <meta property="og:site_name" content="Tino Rabe">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Power Pages Web API Cheat Sheet - Complete CRUD & OData Reference">
+    <meta name="twitter:description" content="Complete Power Pages Web API reference with CRUD operations, OData queries, and Dataverse relationship handling.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tinorabe.de/assets/cheat-sheets/power-pages-web-api.html">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Power Pages Web API Cheat Sheet - Complete CRUD & OData Reference",
+        "description": "Comprehensive reference guide for Power Pages Web API covering CRUD operations, OData query options, Dataverse relationships, and security configuration with JavaScript code examples.",
+        "author": {
+            "@type": "Person",
+            "name": "Tino Rabe",
+            "jobTitle": "Microsoft MVP",
+            "url": "https://tinorabe.de/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Tino Rabe",
+            "url": "https://tinorabe.de/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://tinorabe.de/assets/cheat-sheets/power-pages-web-api.html"
+        },
+        "about": [
+            {"@type": "Thing", "name": "Power Pages"},
+            {"@type": "Thing", "name": "Web API"},
+            {"@type": "Thing", "name": "OData"},
+            {"@type": "Thing", "name": "Dataverse"},
+            {"@type": "Thing", "name": "CRUD Operations"}
+        ],
+        "keywords": "Power Pages, Web API, OData, CRUD, Dataverse, $select, $filter, $expand, JavaScript",
+        "inLanguage": "en",
+        "isAccessibleForFree": true
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cheat-sheet {
+            width: 1200px;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #667eea;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 6px solid #667eea;
+        }
+
+        .command-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .command-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .command-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .command-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .command-method {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .method-get {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .method-post {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .method-patch {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .method-delete {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .command-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            flex-grow: 1;
+        }
+
+        .command-description {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .command-code {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .code-keyword {
+            color: #c678dd;
+            font-weight: 600;
+        }
+
+        .code-function {
+            color: #61afef;
+        }
+
+        .code-string {
+            color: #98c379;
+        }
+
+        .code-property {
+            color: #e06c75;
+        }
+
+        .code-number {
+            color: #d19a66;
+        }
+
+        /* Border colors for different categories */
+        .cat-read { border-left-color: #10b981; }
+        .cat-write { border-left-color: #3b82f6; }
+        .cat-query { border-left-color: #8b5cf6; }
+        .cat-security { border-left-color: #f59e0b; }
+
+        /* Navigation */
+        .nav-container {
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #fb7185 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+        }
+
+        .nav-container.scrolled {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
+            top: auto;
+            width: auto;
+            max-width: 400px;
+            padding: 10px 6px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+            transform: none;
+        }
+
+        .nav-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container.scrolled .nav-title {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container.scrolled .nav-links {
+            flex-direction: row;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-container.scrolled .nav-link {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* CTA in navigation */
+        .nav-cta {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-cta-text {
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .nav-cta-badge {
+            display: inline-block;
+            height: 20px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .nav-container.scrolled .nav-cta-badge {
+            height: 16px;
+            margin-left: 4px;
+        }
+
+        .nav-cta-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-cta-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+            background: #059669;
+        }
+
+        .nav-container.scrolled .nav-cta {
+            margin-top: 8px;
+            padding-top: 8px;
+            gap: 8px;
+        }
+
+        .nav-container.scrolled .nav-cta-text {
+            font-size: 9px;
+        }
+
+        .nav-container.scrolled .nav-cta-link {
+            padding: 6px 12px;
+            font-size: 11px;
+        }
+
+        /* Code block with copy button */
+        .code-wrapper {
+            position: relative;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #475569;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .copy-button:hover {
+            opacity: 1;
+            background: #667eea;
+        }
+
+        .copy-button.copied {
+            background: #10b981;
+        }
+
+        .command-code {
+            position: relative;
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #667eea;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .download-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .download-icon {
+            font-size: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 3px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .cheat-sheet {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cheat-sheet">
+
+    <div class="header">
+        <h1>Power Pages Web API</h1>
+        <p class="subtitle">Quick Reference Guide for CRUD Operations & Query Options</p>
+    </div>
+
+    <!-- SEO Intro Section -->
+    <article class="intro-section" style="background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%); border-radius: 16px; padding: 30px; margin-bottom: 30px; border-left: 5px solid #667eea;">
+        <h2 style="font-size: 24px; color: #1e293b; margin-bottom: 15px;">Understanding the Power Pages Web API</h2>
+        <p style="color: #475569; line-height: 1.8; margin-bottom: 15px;">
+            The <strong>Power Pages Web API</strong> enables client-side JavaScript to perform CRUD operations (Create, Read, Update, Delete) against <strong>Dataverse tables</strong> directly from the browser. Unlike Liquid templates that render server-side, the Web API allows dynamic data interactions after page load, making it essential for building responsive Power Pages applications.
+        </p>
+        <p style="color: #475569; line-height: 1.8; margin-bottom: 15px;">
+            The API follows <strong>OData v4 conventions</strong> and supports powerful query options like <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">$select</code>, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">$filter</code>, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">$expand</code>, <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">$orderby</code>, and <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">$top</code> to retrieve exactly the data you need. All requests must use the <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">webapi.safeAjax()</code> wrapper function, which automatically handles CSRF token management required for write operations.
+        </p>
+        <p style="color: #475569; line-height: 1.8;">
+            <strong>Security note:</strong> The Web API respects <strong>Table Permissions</strong> and Web Roles. Users can only access data they are authorized for. Each table must be explicitly enabled for Web API access via site settings, and specific fields can be whitelisted or blacklisted.
+        </p>
+    </article>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-title">Quick Navigation</div>
+        <div class="nav-links">
+            <a href="#read-operations" class="nav-link">📖 Read Operations</a>
+            <a href="#write-operations" class="nav-link">✏️ Write Operations</a>
+            <a href="#helper-function" class="nav-link">🛠️ Helper Function</a>
+            <a href="#relationships" class="nav-link">🔗 Relationships</a>
+            <a href="#security" class="nav-link">🔐 Security</a>
+        </div>
+        <div class="nav-cta">
+            <a href="https://tinorabe.de/kontakt/" class="nav-cta-link">Get in touch</a>
+            <div class="nav-cta-text">
+                Tino Rabe <img src="../images/MVP_Badge_Horizontal.png" class="nav-cta-badge" alt="Microsoft MVP">
+            </div>
+        </div>
+    </div>
+
+    <!-- Read Operations Section -->
+    <div class="section" id="read-operations">
+        <h2 class="section-title">📖 Read Operations</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-read" style="grid-column: 1 / -1;">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">Basic Read</span>
+                </div>
+                <div class="command-description">Retrieve all records from a table using webapi.safeAjax()</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Records:"</span>, data.value);
+    data.value.<span class="code-function">forEach</span>(<span class="code-keyword">function</span>(record) {
+      console.<span class="code-function">log</span>(record.name);
+    });
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$select - Select Specific Fields</span>
+                </div>
+                <div class="command-description">Return only specified properties to improve performance</div>
+                <div class="command-code">/_api/accounts?$select=name,revenue</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$filter - Filter Results</span>
+                </div>
+                <div class="command-description">Apply filtering criteria using OData operators (eq, ne, gt, lt, and, or)</div>
+                <div class="command-code">/_api/accounts?$filter=revenue gt 90000</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$orderby - Sort Results</span>
+                </div>
+                <div class="command-description">Sort results ascending or descending</div>
+                <div class="command-code">/_api/accounts?$orderby=revenue desc</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$top - Limit Records</span>
+                </div>
+                <div class="command-description">Limit the number of records returned</div>
+                <div class="command-code">/_api/accounts?$top=10</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$expand - Include Related Records</span>
+                </div>
+                <div class="command-description">Retrieve related records via navigation properties</div>
+                <div class="command-code">/_api/accounts?$expand=contact_customer</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$count - Get Record Count</span>
+                </div>
+                <div class="command-description">Return total count of records</div>
+                <div class="command-code">/_api/accounts?$count=true</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">String Functions</span>
+                </div>
+                <div class="command-description">Use contains(), startswith(), endswith() for text filtering</div>
+                <div class="command-code">/_api/accounts?$filter=contains(name,'Contoso')</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">Combine Query Options</span>
+                </div>
+                <div class="command-description">Chain multiple query options with &</div>
+                <div class="command-code">/_api/accounts?$select=name&$filter=revenue gt 1000&$orderby=name&$top=5</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Write Operations Section -->
+    <div class="section" id="write-operations">
+        <h2 class="section-title">✏️ Write Operations</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">Create Record</span>
+                </div>
+                <div class="command-description">Create new record with JSON payload using webapi.safeAjax()</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"name"</span>: <span class="code-string">"Sample Account"</span>,
+    <span class="code-string">"revenue"</span>: <span class="code-number">50000</span>
+  }),
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record created:"</span>, data.accountid);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PATCH</span>
+                    <span class="command-name">Update Record</span>
+                </div>
+                <div class="command-description">Update existing record by ID using webapi.safeAjax()</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PATCH"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(record-id)"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"name"</span>: <span class="code-string">"Updated Name"</span>,
+    <span class="code-string">"revenue"</span>: <span class="code-number">100000</span>
+  }),
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record updated"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">Delete Record</span>
+                </div>
+                <div class="command-description">Delete record by ID using webapi.safeAjax()</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(record-id)"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record deleted"</span>);
+  },
+  <span class="code-property">error</span>: <span class="code-keyword">function</span>(error) {
+    console.<span class="code-function">error</span>(<span class="code-string">"Delete failed:"</span>, error);
+  }
+});</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Helper Function Section -->
+    <div class="section" id="helper-function">
+        <h2 class="section-title">🛠️ Helper Function</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-write" style="grid-column: 1 / -1;">
+                <div class="command-header">
+                    <span class="command-name">Generic Web API Function</span>
+                </div>
+                <div class="command-description">Reusable function that accepts parameters for any Web API operation</div>
+                <div class="command-code"><span class="code-keyword">function</span> <span class="code-function">callWebAPI</span>(method, entitySet, recordId, data, queryString) {
+  <span class="code-keyword">var</span> url = <span class="code-string">"/_api/"</span> + entitySet;
+  <span class="code-keyword">if</span> (recordId) url += <span class="code-string">"("</span> + recordId + <span class="code-string">")"</span>;
+  <span class="code-keyword">if</span> (queryString) url += <span class="code-string">"?"</span> + queryString;
+
+  webapi.<span class="code-function">safeAjax</span>({
+    <span class="code-property">type</span>: method,
+    <span class="code-property">url</span>: url,
+    <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+    <span class="code-property">data</span>: data ? JSON.<span class="code-function">stringify</span>(data) : <span class="code-keyword">null</span>,
+    <span class="code-property">success</span>: <span class="code-keyword">function</span>(result) {
+      console.<span class="code-function">log</span>(<span class="code-string">"Success:"</span>, result);
+      <span class="code-keyword">return</span> result;
+    },
+    <span class="code-property">error</span>: <span class="code-keyword">function</span>(error) {
+      console.<span class="code-function">error</span>(<span class="code-string">"Error:"</span>, error);
+    }
+  });
+}
+
+<span class="code-comment">// Usage Examples:</span>
+<span class="code-function">callWebAPI</span>(<span class="code-string">"GET"</span>, <span class="code-string">"accounts"</span>, <span class="code-keyword">null</span>, <span class="code-keyword">null</span>, <span class="code-string">"$select=name&$top=5"</span>);
+<span class="code-function">callWebAPI</span>(<span class="code-string">"POST"</span>, <span class="code-string">"accounts"</span>, <span class="code-keyword">null</span>, {<span class="code-property">name</span>: <span class="code-string">"New Account"</span>});
+<span class="code-function">callWebAPI</span>(<span class="code-string">"PATCH"</span>, <span class="code-string">"accounts"</span>, <span class="code-string">"record-id"</span>, {<span class="code-property">name</span>: <span class="code-string">"Updated"</span>});
+<span class="code-function">callWebAPI</span>(<span class="code-string">"DELETE"</span>, <span class="code-string">"accounts"</span>, <span class="code-string">"record-id"</span>);</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Relationships Section -->
+    <div class="section" id="relationships">
+        <h2 class="section-title">🔗 Dataverse Relationships</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">1:N - Read Related Records</span>
+                </div>
+                <div class="command-description">One-to-Many: Use $expand to retrieve child records (e.g., Account → Contacts)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(account-id)?$expand=contact_customer_accounts"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Child contacts:"</span>, data.contact_customer_accounts);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">N:1 - Read Parent Record</span>
+                </div>
+                <div class="command-description">Many-to-One: Use $expand to retrieve parent record (e.g., Contact → Account)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)?$expand=parentcustomerid_account"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Parent account:"</span>, data.parentcustomerid_account);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">Create with N:1 Lookup</span>
+                </div>
+                <div class="command-description">Create child record and link to parent using lookup field binding</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"firstname"</span>: <span class="code-string">"John"</span>,
+    <span class="code-string">"lastname"</span>: <span class="code-string">"Doe"</span>,
+    <span class="code-string">"parentcustomerid_account@odata.bind"</span>: <span class="code-string">"/accounts(account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PATCH</span>
+                    <span class="command-name">Update N:1 Relationship (Method 1)</span>
+                </div>
+                <div class="command-description">Update lookup using @odata.bind annotation in PATCH request</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PATCH"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"parentcustomerid_account@odata.bind"</span>: <span class="code-string">"/accounts(new-account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PUT</span>
+                    <span class="command-name">Update N:1 Relationship (Method 2)</span>
+                </div>
+                <div class="command-description">Change reference using PUT on $ref endpoint with @odata.id</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PUT"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/parentcustomerid_account/$ref"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"@odata.id"</span>: <span class="code-string">"/_api/accounts(new-account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">Remove N:1 Lookup (Disassociate)</span>
+                </div>
+                <div class="command-description">Remove single-valued navigation property reference using DELETE on $ref endpoint</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/parentcustomerid_account/$ref"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Lookup cleared"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">N:N - Read Many-to-Many</span>
+                </div>
+                <div class="command-description">Many-to-Many: Use $expand with relationship collection (e.g., Contact → Marketing Lists)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)?$expand=listmember_association"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Marketing lists:"</span>, data.listmember_association);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">N:N - Associate Records</span>
+                </div>
+                <div class="command-description">Create Many-to-Many relationship using $ref endpoint</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/listmember_association/$ref"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"@odata.id"</span>: <span class="code-string">"/_api/lists(list-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">N:N - Disassociate Records</span>
+                </div>
+                <div class="command-description">Remove Many-to-Many relationship using $ref with $id query parameter</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/listmember_association/$ref?$id=/_api/lists(list-id)"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Relationship removed"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-name">Navigation Property Names</span>
+                </div>
+                <div class="command-description">Find relationship names in Power Pages Design Studio or using $metadata endpoint</div>
+                <div class="command-code">/_api/$metadata
+<span class="code-comment">// Look for NavigationProperty elements</span>
+<span class="code-comment">// Example: contact_customer_accounts</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Security & Configuration Section -->
+    <div class="section" id="security">
+        <h2 class="section-title">🔐 Security & Configuration</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">Table Permissions Required</span>
+                </div>
+                <div class="command-description">Web API respects table permissions. Configure via Portal Management → Table Permissions + Web Roles</div>
+                <div class="command-code">Users can only access data authorized by their web role</div>
+            </div>
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">Enable Web API per Table</span>
+                </div>
+                <div class="command-description">Must enable in site settings for each table</div>
+                <div class="command-code">Webapi/&lt;tablename&gt;/enabled = true<br>Webapi/&lt;tablename&gt;/fields = name,email,phone</div>
+            </div>
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">CSRF Token Required</span>
+                </div>
+                <div class="command-description">Write operations require CSRF token for security. Use webapi.safeAjax()</div>
+                <div class="command-code">webapi.safeAjax({<br>  type: "POST",<br>  url: "/_api/accounts",<br>  data: JSON.stringify({name: "Test"})<br>})</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SEO Summary Section -->
+    <article class="summary-section" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 16px; padding: 30px; margin: 40px 0; border-left: 5px solid #f59e0b;">
+        <h2 style="font-size: 24px; color: #1e293b; margin-bottom: 20px;">Quick Reference Summary</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="color: #15803d; font-size: 16px; margin-bottom: 10px;">Read Operations (GET)</h3>
+                <ul style="color: #475569; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>$select</strong> - Return only specific fields</li>
+                    <li><strong>$filter</strong> - Apply conditions (eq, gt, contains)</li>
+                    <li><strong>$expand</strong> - Include related records</li>
+                    <li><strong>$orderby</strong> - Sort results (asc/desc)</li>
+                    <li><strong>$top</strong> - Limit record count</li>
+                </ul>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="color: #1e40af; font-size: 16px; margin-bottom: 10px;">Write Operations</h3>
+                <ul style="color: #475569; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>POST</strong> - Create new records</li>
+                    <li><strong>PATCH</strong> - Update existing records</li>
+                    <li><strong>DELETE</strong> - Remove records</li>
+                    <li><strong>PUT /$ref</strong> - Update relationships</li>
+                </ul>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="color: #7c3aed; font-size: 16px; margin-bottom: 10px;">Relationship Patterns</h3>
+                <ul style="color: #475569; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>1:N</strong> - $expand on parent for children</li>
+                    <li><strong>N:1</strong> - @odata.bind for lookup assignment</li>
+                    <li><strong>N:N</strong> - POST/DELETE to /$ref endpoint</li>
+                </ul>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="color: #dc2626; font-size: 16px; margin-bottom: 10px;">Security Essentials</h3>
+                <ul style="color: #475569; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li>Always use <strong>webapi.safeAjax()</strong></li>
+                    <li>Configure <strong>Table Permissions</strong></li>
+                    <li>Enable tables via <strong>Site Settings</strong></li>
+                    <li>Whitelist fields explicitly</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="color: #475569; margin-top: 20px; font-size: 14px; line-height: 1.6;">
+            <strong>Pro Tip:</strong> Combine query options for optimal performance: <code style="background: white; padding: 2px 6px; border-radius: 4px;">/_api/accounts?$select=name,revenue&$filter=revenue gt 10000&$orderby=name&$top=50</code>
+        </p>
+    </article>
+
+    <div class="download-section">
+        <a href="../downloads/power-pages-webapi-cheat-sheet.pdf" download="power-pages-webapi-cheat-sheet.pdf" class="download-button">
+            <span class="download-icon">⬇️</span>
+            <span>Download PDF</span>
+        </a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo">Tino Rabe · tinorabe.de</div>
+        <div class="footer-text">Need help with Power Pages Web API? Get in touch at tinorabe.de</div>
+    </div>
+
+</div>
+
+<script>
+// Add copy buttons to all code blocks
+document.addEventListener('DOMContentLoaded', function() {
+    const codeBlocks = document.querySelectorAll('.command-code');
+
+    codeBlocks.forEach(function(block) {
+        // Create wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        block.parentNode.insertBefore(wrapper, block);
+        wrapper.appendChild(block);
+
+        // Create copy button
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.textContent = 'Copy';
+        button.setAttribute('aria-label', 'Copy code to clipboard');
+
+        // Add click handler
+        button.addEventListener('click', function() {
+            // Get clean text content without HTML tags
+            const text = block.innerText || block.textContent;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(text).then(function() {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(function() {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+                button.textContent = 'Error';
+                setTimeout(function() {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+
+        wrapper.appendChild(button);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Compact navigation on scroll and track active section
+    const navContainer = document.querySelector('.nav-container');
+    const cheatSheet = document.querySelector('.cheat-sheet');
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    let scrollThreshold = 200;
+
+    function updateActiveSection() {
+        const scrollTop = cheatSheet.getBoundingClientRect().top;
+
+        // Toggle compact navigation
+        if (scrollTop < -scrollThreshold) {
+            navContainer.classList.add('scrolled');
+        } else {
+            navContainer.classList.remove('scrolled');
+        }
+
+        // Find active section
+        let currentSection = '';
+        sections.forEach(function(section) {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionHeight = section.offsetHeight;
+
+            // Section is in viewport (with offset for better UX)
+            if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        // Update active link
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection(); // Initial call
+});
+</script>
+
+</body>
+</html>

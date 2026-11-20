@@ -1,0 +1,2505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Liquid Templates Cheat Sheet: 103 Examples</title>
+<meta name="description" content="103 practical Liquid template examples for Power Pages: variables, filters, tags and Dataverse queries">
+<link rel="canonical" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-liquid-templates/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Liquid Templates Cheat Sheet: 103 Examples">
+<meta property="og:description" content="103 practical Liquid template examples for Power Pages: variables, filters, tags and Dataverse queries">
+<meta property="og:url" content="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Liquid Templates Cheat Sheet: 103 Examples">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Liquid Templates Cheat Sheet: 103 Examples">
+<meta name="twitter:description" content="103 practical Liquid template examples for Power Pages: variables, filters, tags and Dataverse queries">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/#webpage",
+      "url": "https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/",
+      "name": "Power Pages Liquid Templates Cheat Sheet: 103 Examples",
+      "description": "103 practical Liquid template examples for Power Pages: variables, filters, tags and Dataverse queries",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "en-GB"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<link rel="stylesheet" href="/assets/css/pp-sheet.css?v=cfaf3294f9">
+
+
+<div class="container ppsh">
+        <div class="header" data-chip="Cheat sheet · Liquid">
+            <h1>Power Pages Liquid Templates</h1>
+            <p class="subtitle">Terminal-Style Quick Reference • Input → Output Examples • Pro Tips Included</p>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search Liquid syntax, filters, tags...">
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+
+
+            <div class="card basic" data-category="basic" data-keywords="if elsif else conditional logic">
+                <div class="card-header">
+                    <div class="card-title">if / elsif / else</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Conditional logic: execute code based on conditions
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">user</span> <span class="tag">%}</span>
+  Welcome, <span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="operator">|</span> <span class="filter">escape</span> <span class="tag">}}</span>
+<span class="tag">{% elsif</span> <span class="variable">request.params.ref</span> <span class="operator">==</span> <span class="string">'newsletter'</span> <span class="tag">%}</span>
+  Welcome, newsletter reader
+<span class="tag">{% else</span> <span class="tag">%}</span>
+  Welcome, Guest
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output (authenticated user)</div>
+                    <div class="code-block">Welcome, Dave Bowman</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use elsif for multiple conditions instead of nested if statements for better readability
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="for loop iterate array">
+                <div class="card-header">
+                    <div class="card-title">for loop</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Iterate over arrays or ranges
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax (Array)</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% for</span> <span class="variable">item</span> <span class="operator">in</span> <span class="variable">entityview.records</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">item.fullname</span> <span class="tag">}}</span>
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax (Range with limit)</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% for</span> <span class="variable">i</span> <span class="operator">in</span> <span class="operator">(1..5)</span> <span class="tag">limit:</span><span class="string">3</span> <span class="tag">%}</span>
+  Item <span class="tag">{{</span> <span class="variable">i</span> <span class="tag">}}</span>
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use forloop.first, forloop.last, forloop.index for special handling in loops
+                </div>
+                <div class="tip-box warning">
+                    <strong>Performance:</strong> Avoid nested loops on large datasets, use filters like batch or group_by instead
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="assign variable set">
+                <div class="card-header">
+                    <div class="card-title">assign</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Create and assign variables
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">my_variable</span> <span class="operator">=</span> <span class="string">"Hello World"</span> <span class="tag">%}</span>
+<span class="tag">{% assign</span> <span class="variable">total</span> <span class="operator">=</span> <span class="variable">price</span> <span class="operator">|</span> <span class="filter">times:</span> <span class="string">2</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">my_variable</span> <span class="tag">}}</span> - Total: <span class="tag">{{</span> <span class="variable">total</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use capture for multi-line content or strings built with Liquid logic
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="date format time timestamp">
+                <div class="card-header">
+                    <div class="card-title">date</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Format dates and times
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entity.createdon</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">"dd MMM yyyy"</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">"yyyy-MM-dd HH:mm:ss"</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">15 Jan 2025
+2025-01-15 14:30:45</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use the now object for the current UTC date and time. The site caches its value, so it is not refreshed on every request
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="upcase downcase uppercase lowercase string">
+                <div class="card-header">
+                    <div class="card-title">upcase / downcase</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert strings to upper or lower case
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">"power pages"</span> <span class="operator">|</span> <span class="filter">upcase</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">"HELLO"</span> <span class="operator">|</span> <span class="filter">downcase</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">POWER PAGES
+hello</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="join array separator concatenate">
+                <div class="card-header">
+                    <div class="card-title">join</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Join array elements with a separator
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">names</span> <span class="operator">=</span> <span class="string">"John,Mary,Tom"</span> <span class="operator">|</span> <span class="filter">split:</span> <span class="string">","</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">names</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">" | "</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">John | Mary | Tom</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="where filter array select query">
+                <div class="card-header">
+                    <div class="card-title">where</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Filter array by attribute value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">active_users</span> <span class="operator">=</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">where:</span> <span class="string">'statecode'</span><span class="operator">,</span> <span class="string">0</span> <span class="tag">%}</span>
+<span class="tag">{% for</span> <span class="variable">user</span> <span class="operator">in</span> <span class="variable">active_users</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="tag">}}</span>
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use except filter for inverse filtering (all items NOT matching value)
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="order_by sort array">
+                <div class="card-header">
+                    <div class="card-title">order_by</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Sort array by attribute (ascending or descending)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="comment"></span>
+<span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">order_by:</span> <span class="string">'fullname'</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span>
+
+<span class="comment"></span>
+<span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">order_by:</span> <span class="string">'fullname'</span><span class="operator">,</span> <span class="string">'desc'</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Alice, Bob, Charlie
+Charlie, Bob, Alice</div>
+                </div>
+            </div>
+
+
+            <div class="card objects" data-category="objects" data-keywords="page object current url title">
+                <div class="card-header">
+                    <div class="card-title">page</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Access current page properties
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">page.title</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">page.url</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">page.description</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">page.id</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use page.url for canonical links and breadcrumbs
+                </div>
+            </div>
+
+            <div class="card objects" data-category="objects" data-keywords="user object authenticated current contact">
+                <div class="card-header">
+                    <div class="card-title">user</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Access current user/contact properties
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">user</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="operator">|</span> <span class="filter">escape</span> <span class="tag">}}</span>
+  <span class="tag">{{</span> <span class="variable">user.emailaddress1</span> <span class="operator">|</span> <span class="filter">escape</span> <span class="tag">}}</span>
+  <span class="tag">{{</span> <span class="variable">user.id</span> <span class="tag">}}</span>
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Security:</strong> user is null for anonymous visitors, so wrap personal output in {% if user %}
+                </div>
+            </div>
+
+            <div class="card objects" data-category="objects" data-keywords="request params query url path">
+                <div class="card-header">
+                    <div class="card-title">request</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Access HTTP request data (URL, query params, etc.)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">request.url</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">request.path</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">request.params.id</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">request.query</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Example (URL: /page?id=123&amp;name=test)</div>
+                    <div class="code-block">request.params.id → 123
+request.params.name → test</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use request.params to build dynamic pages based on URL parameters
+                </div>
+            </div>
+
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="entitylist dataverse query records">
+                <div class="card-header">
+                    <div class="card-title">entitylist</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Load Dataverse records via Entity List configuration
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% entitylist</span> <span class="variable">name:</span> <span class="string">"Active Contacts"</span> <span class="tag">%}</span>
+  <span class="tag">{% entityview</span> <span class="tag">%}</span>
+    <span class="tag">{% for</span> <span class="variable">item</span> <span class="operator">in</span> <span class="variable">entityview.records</span> <span class="tag">%}</span>
+      <span class="tag">{{</span> <span class="variable">item.fullname</span> <span class="tag">}}</span>: <span class="tag">{{</span> <span class="variable">item.emailaddress1</span> <span class="tag">}}</span>
+    <span class="tag">{% endfor</span> <span class="tag">%}</span>
+  <span class="tag">{% endentityview</span> <span class="tag">%}</span>
+<span class="tag">{% endentitylist</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> The list only provides configuration. Records are rendered through the entityview tag inside the block
+                </div>
+                <div class="tip-box warning">
+                    <strong>Note:</strong> All Dataverse data the site queries is cached server side, not just lists
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="entityview view query records dataverse">
+                <div class="card-header">
+                    <div class="card-title">entityview</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Load Dataverse records via saved View
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% entityview</span> <span class="variable">logical_name:</span><span class="string">'contact'</span><span class="operator">,</span> <span class="variable">name:</span><span class="string">'Active Contacts'</span> <span class="tag">%}</span>
+  Total: <span class="tag">{{</span> <span class="variable">entityview.total_records</span> <span class="tag">}}</span>
+  <span class="tag">{% for</span> <span class="variable">contact</span> <span class="operator">in</span> <span class="variable">entityview.records</span> <span class="tag">%}</span>
+    <span class="tag">{{</span> <span class="variable">contact.fullname</span> <span class="tag">}}</span>
+  <span class="tag">{% endfor</span> <span class="tag">%}</span>
+<span class="tag">{% endentityview</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Combine with filters like where, order_by for client-side manipulation
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="fetchxml query xml dataverse advanced">
+                <div class="card-header">
+                    <div class="card-title">fetchxml</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Execute FetchXML query for advanced Dataverse queries
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% fetchxml</span> <span class="variable">query</span> <span class="tag">%}</span>
+&lt;fetch&gt;
+  &lt;entity name="contact"&gt;
+    &lt;attribute name="fullname"&gt;&lt;/attribute&gt;
+    &lt;filter&gt;
+      &lt;condition attribute="statecode" operator="eq" value="0"&gt;&lt;/condition&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+<span class="tag">{% endfetchxml</span> <span class="tag">%}</span>
+<span class="tag">{% for</span> <span class="variable">contact</span> <span class="operator">in</span> <span class="variable">query.results.entities</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">contact.fullname</span> <span class="tag">}}</span>
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Write every element with an explicit closing tag. Self-closing tags such as &lt;attribute name="fullname"/&gt; are not supported here
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="chart visualization power apps model driven">
+                <div class="card-header">
+                    <div class="card-title">chart</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Embed Power Apps model-driven app chart
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% chart</span> <span class="variable">id:</span><span class="string">"EE3C733D-5693-DE11-97D4-00155DA3B01E"</span> <span class="variable">viewid:</span><span class="string">"00000000-0000-0000-00AA-000010001006"</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="powerbi power bi report dashboard embed">
+                <div class="card-header">
+                    <div class="card-title">powerbi</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Embed Power BI reports or dashboards
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% powerbi</span> <span class="variable">authentication_type:</span><span class="string">"powerbiembedded"</span> <span class="variable">path:</span><span class="string">"https://app.powerbi.com/groups/.../reports/..."</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Note:</strong> Requires Power BI integration enabled in admin center
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="editable cms content management edit">
+                <div class="card-header">
+                    <div class="card-title">editable</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Render CMS object as editable for content editors
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% editable</span> <span class="variable">page</span> <span class="string">'adx_copy'</span> <span class="variable">type:</span> <span class="string">'html'</span><span class="operator">,</span> <span class="variable">title:</span> <span class="string">'Page Copy'</span> <span class="tag">%}</span>
+<span class="tag">{% editable</span> <span class="variable">snippets</span> <span class="string">'Header'</span> <span class="variable">type:</span> <span class="string">'html'</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="entityform form basic model driven">
+                <div class="card-header">
+                    <div class="card-title">entityform</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Render Basic Form (Entity Form) by name or ID
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% entityform</span> <span class="variable">name:</span> <span class="string">'Contact Form'</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card dataverse" data-category="dataverse" data-keywords="searchindex search query results">
+                <div class="card-header">
+                    <div class="card-title">searchindex</div>
+                    <span class="card-badge badge-dataverse">Dataverse</span>
+                </div>
+                <div class="card-description">
+                    Query Power Pages search index
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% searchindex</span> <span class="variable">query:</span> <span class="variable">request.params.q</span><span class="operator">,</span> <span class="variable">page:</span> <span class="variable">request.params.page</span> <span class="tag">%}</span>
+  <span class="tag">{% if</span> <span class="variable">searchindex.results.size</span> <span class="operator">&gt;</span> <span class="string">0</span> <span class="tag">%}</span>
+    <span class="tag">{% for</span> <span class="variable">result</span> <span class="operator">in</span> <span class="variable">searchindex.results</span> <span class="tag">%}</span>
+      <span class="tag">{{</span> <span class="variable">result.title</span> <span class="tag">}}</span>
+    <span class="tag">{% endfor</span> <span class="tag">%}</span>
+  <span class="tag">{% endif</span> <span class="tag">%}</span>
+<span class="tag">{% endsearchindex</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card basic" data-category="basic" data-keywords="case when switch conditional logic">
+                <div class="card-header">
+                    <div class="card-title">case / when</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Switch statement: match against multiple conditions
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% case</span> <span class="variable">page.title</span> <span class="tag">%}</span>
+  <span class="tag">{% when</span> <span class="string">'Home'</span> <span class="tag">%}</span>
+    Welcome home!
+  <span class="tag">{% when</span> <span class="string">'About'</span><span class="operator">,</span> <span class="string">'Contact'</span> <span class="tag">%}</span>
+    Info page
+  <span class="tag">{% else</span> <span class="tag">%}</span>
+    Other page
+<span class="tag">{% endcase</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use case/when for cleaner code when you have 3+ conditions
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="unless conditional negative if not">
+                <div class="card-header">
+                    <div class="card-title">unless</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Negative conditional: execute if false
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% unless</span> <span class="variable">user</span> <span class="tag">%}</span>
+  Please sign in to continue
+<span class="tag">{% endunless</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output (unauthenticated)</div>
+                    <div class="code-block">Please sign in to continue</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> unless is equivalent to if not, use what reads better
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="capture variable assign store">
+                <div class="card-header">
+                    <div class="card-title">capture</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Capture template output into a variable
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% capture</span> <span class="variable">greeting</span> <span class="tag">%}</span>
+  Hello <span class="tag">{{</span> <span class="variable">user.firstname</span> <span class="tag">}}</span>, welcome!
+<span class="tag">{% endcapture</span> <span class="tag">%}</span>
+
+<span class="tag">{{</span> <span class="variable">greeting</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use capture to build complex strings with Liquid logic
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="cycle iterate loop alternate rotate">
+                <div class="card-header">
+                    <div class="card-title">cycle</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Loop through group of strings, outputting next one each time
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% for</span> <span class="variable">item</span> <span class="operator">in</span> <span class="variable">items</span> <span class="tag">%}</span>
+  &lt;div class="<span class="tag">{% cycle</span> <span class="string">'red'</span><span class="operator">,</span> <span class="string">'green'</span><span class="operator">,</span> <span class="string">'blue'</span> <span class="tag">%}</span>"&gt;
+    <span class="tag">{{</span> <span class="variable">item</span> <span class="tag">}}</span>
+  &lt;/div&gt;
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Perfect for zebra-striping table rows or alternating colors
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="tablerow table html generate rows">
+                <div class="card-header">
+                    <div class="card-title">tablerow</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Generate HTML table rows (must be wrapped in &lt;table&gt; tags)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code>&lt;table&gt;
+<span class="tag">{% tablerow</span> <span class="variable">child</span> <span class="operator">in</span> <span class="variable">page.children</span> <span class="variable">cols:</span><span class="string">2</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">child.title</span> <span class="tag">}}</span>
+<span class="tag">{% endtablerow</span> <span class="tag">%}</span>
+&lt;/table&gt;</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use cols: parameter to control columns per row
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="comment documentation note">
+                <div class="card-header">
+                    <div class="card-title">comment</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Add comments that won't be rendered in output
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% comment</span> <span class="tag">%}</span>
+  This text will not appear in the output.
+  Use for documentation and notes.
+<span class="tag">{% endcomment</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="raw literal escape liquid">
+                <div class="card-header">
+                    <div class="card-title">raw</div>
+                    <span class="card-badge badge-basic">Basic</span>
+                </div>
+                <div class="card-description">
+                    Output Liquid code without processing it
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% raw</span> <span class="tag">%}</span>
+  {{ user.fullname }} will be displayed literally
+<span class="tag">{% endraw</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use to show Liquid examples in documentation
+                </div>
+            </div>
+
+
+            <div class="card basic" data-category="basic" data-keywords="equals comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">== (equals)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if two values are equal
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">user.fullname</span> <span class="operator">==</span> <span class="string">'Dave Bowman'</span> <span class="tag">%}</span>
+  Hello, Dave
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="not equals comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">!= (not equals)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if two values are not equal
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.title</span> <span class="operator">!=</span> <span class="string">'Home'</span> <span class="tag">%}</span>
+  Not the home page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="greater than comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">&gt; (greater than)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if left value is greater than right value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">entityview.records.size</span> <span class="operator">&gt;</span> <span class="string">10</span> <span class="tag">%}</span>
+  More than 10 records
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="less than comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">&lt; (less than)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if left value is less than right value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.children.size</span> <span class="operator">&lt;</span> <span class="string">5</span> <span class="tag">%}</span>
+  Less than 5 children
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="greater than equal comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">&gt;= (greater or equal)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if left value is greater than or equal to right value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">entityview.page</span> <span class="operator">&gt;=</span> <span class="string">1</span> <span class="tag">%}</span>
+  Valid page number
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="less than equal comparison operator condition">
+                <div class="card-header">
+                    <div class="card-title">&lt;= (less or equal)</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Check if left value is less than or equal to right value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">entityview.page</span> <span class="operator">&lt;=</span> <span class="variable">entityview.total_pages</span> <span class="tag">%}</span>
+  Valid page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="and logical operator condition">
+                <div class="card-header">
+                    <div class="card-title">and</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Both conditions must be true
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">is_admin</span> <span class="operator">=</span> <span class="variable">user</span> <span class="operator">|</span> <span class="filter">has_role:</span> <span class="string">'Administrators'</span> <span class="tag">%}</span>
+<span class="tag">{% if</span> <span class="variable">user</span> <span class="operator">and</span> <span class="variable">is_admin</span> <span class="tag">%}</span>
+  Admin user
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="or logical operator condition">
+                <div class="card-header">
+                    <div class="card-title">or</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    At least one condition must be true
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.title</span> <span class="operator">==</span> <span class="string">'Home'</span> <span class="operator">or</span> <span class="variable">page.title</span> <span class="operator">==</span> <span class="string">'Index'</span> <span class="tag">%}</span>
+  Home page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="contains operator string search substring">
+                <div class="card-header">
+                    <div class="card-title">contains</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Test for substring or array membership
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.title</span> <span class="operator">contains</span> <span class="string">'Product'</span> <span class="tag">%}</span>
+  This is a product page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="startswith operator string prefix begins">
+                <div class="card-header">
+                    <div class="card-title">startswith</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Test if string starts with substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.title</span> <span class="operator">startswith</span> <span class="string">'Profile'</span> <span class="tag">%}</span>
+  Profile page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card basic" data-category="basic" data-keywords="endswith operator string suffix ends">
+                <div class="card-header">
+                    <div class="card-title">endswith</div>
+                    <span class="card-badge badge-basic">Operator</span>
+                </div>
+                <div class="card-description">
+                    Test if string ends with substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">page.title</span> <span class="operator">endswith</span> <span class="string">'Forum'</span> <span class="tag">%}</span>
+  Forum page
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="append string concatenate suffix">
+                <div class="card-header">
+                    <div class="card-title">append</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Append string to end of another string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'filename'</span> <span class="operator">|</span> <span class="filter">append:</span> <span class="string">'.pdf'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">filename.pdf</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="prepend string concatenate prefix">
+                <div class="card-header">
+                    <div class="card-title">prepend</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add string to beginning of another string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Jane Johnson'</span> <span class="operator">|</span> <span class="filter">prepend:</span> <span class="string">'Dr. '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Dr. Jane Johnson</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="capitalize string uppercase title case">
+                <div class="card-header">
+                    <div class="card-title">capitalize</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Capitalize every word in a string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'power pages rocks'</span> <span class="operator">|</span> <span class="filter">capitalize</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Power Pages Rocks</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="replace string find substitute">
+                <div class="card-header">
+                    <div class="card-title">replace</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Replace all occurrences of substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Hello Dave, how are you Dave?'</span> <span class="operator">|</span> <span class="filter">replace:</span> <span class="string">'Dave'</span><span class="operator">,</span> <span class="string">'John'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello John, how are you John?</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="remove string delete strip">
+                <div class="card-header">
+                    <div class="card-title">remove</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Remove all occurrences of substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Hello, Dave!'</span> <span class="operator">|</span> <span class="filter">remove:</span> <span class="string">'Dave'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello, !</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="split string array delimiter">
+                <div class="card-header">
+                    <div class="card-title">split</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Split string into array using delimiter
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">words</span> <span class="operator">=</span> <span class="string">'This is a test'</span> <span class="operator">|</span> <span class="filter">split:</span> <span class="string">' '</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">words</span><span class="operator">[</span><span class="string">0</span><span class="operator">]</span> <span class="tag">}}</span> <span class="comment"></span>
+<span class="tag">{{</span> <span class="variable">words.size</span> <span class="tag">}}</span> <span class="comment"></span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">This
+4</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Combine with for loop to iterate over split values
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="truncate string shorten ellipsis">
+                <div class="card-header">
+                    <div class="card-title">truncate</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Truncate string to specified length with ellipsis
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'This is a long run of text'</span> <span class="operator">|</span> <span class="filter">truncate:</span> <span class="string">10</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">This is...</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Ellipsis (...) is included in character count
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="strip_html string tags remove sanitize">
+                <div class="card-header">
+                    <div class="card-title">strip_html</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Remove all HTML tags from string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'&lt;p&gt;Hello &lt;strong&gt;World&lt;/strong&gt;&lt;/p&gt;'</span> <span class="operator">|</span> <span class="filter">strip_html</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello World</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="newline_to_br string html break">
+                <div class="card-header">
+                    <div class="card-title">newline_to_br</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert line breaks to &lt;br /&gt; tags
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">note.notetext</span> <span class="operator">|</span> <span class="filter">newline_to_br</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Useful for displaying multi-line user input as HTML
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="remove_first string delete first occurrence">
+                <div class="card-header">
+                    <div class="card-title">remove_first</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Remove first occurrence of substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Hello Dave, how are you Dave?'</span> <span class="operator">|</span> <span class="filter">remove_first:</span> <span class="string">'Dave'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello , how are you Dave?</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="replace_first string substitute first occurrence">
+                <div class="card-header">
+                    <div class="card-title">replace_first</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Replace first occurrence of substring
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Hello Dave, how are you Dave?'</span> <span class="operator">|</span> <span class="filter">replace_first:</span> <span class="string">'Dave'</span><span class="operator">,</span> <span class="string">'John'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello John, how are you Dave?</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="strip_newlines string remove breaks">
+                <div class="card-header">
+                    <div class="card-title">strip_newlines</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Remove all line breaks from string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% capture</span> <span class="variable">text</span> <span class="tag">%}</span>
+Line 1
+Line 2
+<span class="tag">{% endcapture</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">text</span> <span class="operator">|</span> <span class="filter">strip_newlines</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Line 1Line 2</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="text_to_html string convert format">
+                <div class="card-header">
+                    <div class="card-title">text_to_html</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Format plain text as HTML with paragraphs and links
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">note.notetext</span> <span class="operator">|</span> <span class="filter">text_to_html</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Converts URLs to hyperlinks and wraps paragraphs in &lt;p&gt; tags
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="truncate_words string shorten limit">
+                <div class="card-header">
+                    <div class="card-title">truncate_words</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Truncate string to given number of words
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'This is a long run of text'</span> <span class="operator">|</span> <span class="filter">truncate_words:</span> <span class="string">3</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">This is a...</div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="batch array chunk group divide">
+                <div class="card-header">
+                    <div class="card-title">batch</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Divide array into multiple arrays of given size
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">batches</span> <span class="operator">=</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">batch:</span> <span class="string">2</span> <span class="tag">%}</span>
+<span class="tag">{% for</span> <span class="variable">batch</span> <span class="operator">in</span> <span class="variable">batches</span> <span class="tag">%}</span>
+  <span class="tag">{% for</span> <span class="variable">item</span> <span class="operator">in</span> <span class="variable">batch</span> <span class="tag">%}</span>
+    <span class="tag">{{</span> <span class="variable">item.fullname</span> <span class="tag">}}</span>
+  <span class="tag">{% endfor</span> <span class="tag">%}</span>
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Perfect for creating multi-column layouts or pagination
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="concat array merge combine join">
+                <div class="card-header">
+                    <div class="card-title">concat</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Concatenate two arrays into single new array
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">group1</span> <span class="operator">|</span> <span class="filter">concat:</span> <span class="variable">group2</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">John, Pete, Hannah, Joan, Bill</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="except array filter inverse exclude">
+                <div class="card-header">
+                    <div class="card-title">except</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Select items WHERE attribute does NOT equal value (inverse of where)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">not_redmond</span> <span class="operator">=</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">except:</span> <span class="string">'address1_city'</span><span class="operator">,</span> <span class="string">'Redmond'</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="group_by array group aggregate">
+                <div class="card-header">
+                    <div class="card-title">group_by</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Group array items by attribute value
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">groups</span> <span class="operator">=</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">group_by:</span> <span class="string">'address1_city'</span> <span class="tag">%}</span>
+<span class="tag">{% for</span> <span class="variable">group</span> <span class="operator">in</span> <span class="variable">groups</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">group.key</span> <span class="tag">}}</span>: <span class="tag">{{</span> <span class="variable">group.items.size</span> <span class="tag">}}</span> items
+<span class="tag">{% endfor</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Returns array of objects with .key and .items properties
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="select array map pluck extract">
+                <div class="card-header">
+                    <div class="card-title">select</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract single attribute from each array item
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">names</span> <span class="operator">=</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">select:</span> <span class="string">'fullname'</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">names</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="first array element">
+                <div class="card-header">
+                    <div class="card-title">first</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Get first element of array
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">first</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">entityview.records.first.fullname</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="last array element">
+                <div class="card-header">
+                    <div class="card-title">last</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Get last element of array
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">last</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">entityview.records.last.fullname</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="size array length count">
+                <div class="card-header">
+                    <div class="card-title">size</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Get number of items in array or characters in string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">size</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">'Hello'</span> <span class="operator">|</span> <span class="filter">size</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">42
+5</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="shuffle array random randomize">
+                <div class="card-header">
+                    <div class="card-title">shuffle</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Return array with items in random order
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.records</span> <span class="operator">|</span> <span class="filter">shuffle</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Great for randomizing testimonials or featured items
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="skip array slice offset">
+                <div class="card-header">
+                    <div class="card-title">skip</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Skip N items and return the rest
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">words</span> <span class="operator">=</span> <span class="string">'This is a test'</span> <span class="operator">|</span> <span class="filter">split:</span> <span class="string">' '</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">words</span> <span class="operator">|</span> <span class="filter">skip:</span> <span class="string">2</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">a, test</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="take array limit first">
+                <div class="card-header">
+                    <div class="card-title">take</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Take first N items from array
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">words</span> <span class="operator">=</span> <span class="string">'This is a test'</span> <span class="operator">|</span> <span class="filter">split:</span> <span class="string">' '</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">words</span> <span class="operator">|</span> <span class="filter">take:</span> <span class="string">2</span> <span class="operator">|</span> <span class="filter">join:</span> <span class="string">', '</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">This, is</div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="plus math add addition">
+                <div class="card-header">
+                    <div class="card-title">plus</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add two numbers
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.page</span> <span class="operator">|</span> <span class="filter">plus:</span> <span class="string">1</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output (page = 5)</div>
+                    <div class="code-block">6</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="minus math subtract subtraction">
+                <div class="card-header">
+                    <div class="card-title">minus</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Subtract one number from another
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">entityview.page</span> <span class="operator">|</span> <span class="filter">minus:</span> <span class="string">1</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output (page = 5)</div>
+                    <div class="code-block">4</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="times math multiply multiplication">
+                <div class="card-header">
+                    <div class="card-title">times</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Multiply two numbers
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">10</span> <span class="operator">|</span> <span class="filter">times:</span> <span class="string">2</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">20</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="divided_by math divide division">
+                <div class="card-header">
+                    <div class="card-title">divided_by</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Divide one number by another
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">10</span> <span class="operator">|</span> <span class="filter">divided_by:</span> <span class="string">2</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">10.0</span> <span class="operator">|</span> <span class="filter">divided_by:</span> <span class="string">3</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">5
+3.333333</div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Watch Out:</strong> Integer division rounds down. Use decimal for float result.
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="modulo math remainder mod">
+                <div class="card-header">
+                    <div class="card-title">modulo</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Return remainder of division
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">12</span> <span class="operator">|</span> <span class="filter">modulo:</span> <span class="string">5</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">2</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> For zebra striping, assign forloop.index | modulo: 2 and compare the result. Liquid in Power Pages has no % operator
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="round math decimal precision">
+                <div class="card-header">
+                    <div class="card-title">round</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Round number to nearest integer or N decimals
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">4.6</span> <span class="operator">|</span> <span class="filter">round</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">4.5612</span> <span class="operator">|</span> <span class="filter">round:</span> <span class="string">2</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">5
+4.56</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="ceil math ceiling round up">
+                <div class="card-header">
+                    <div class="card-title">ceil</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Round up to nearest integer
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">4.3</span> <span class="operator">|</span> <span class="filter">ceil</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">5</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="floor math round down">
+                <div class="card-header">
+                    <div class="card-title">floor</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Round down to nearest integer
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">4.6</span> <span class="operator">|</span> <span class="filter">floor</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">4</div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_days date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_days</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract days from date
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_days:</span> <span class="string">7</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'yyyy-MM-dd'</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_days:</span> <span class="string">-30</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'MMMM dd'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use negative values to subtract days
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_hours date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_hours</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract hours from date/time
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_hours:</span> <span class="string">2</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'HH:mm'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_months date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_months</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract months from date
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_months:</span> <span class="string">3</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'MMMM yyyy'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_to_iso8601 date format iso standard">
+                <div class="card-header">
+                    <div class="card-title">date_to_iso8601</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Format date as ISO 8601 standard
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_to_iso8601</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">2025-11-04T10:30:00Z</div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use for HTML5 &lt;time&gt; element datetime attribute
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_minutes date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_minutes</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract minutes from date/time
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_minutes:</span> <span class="string">30</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'HH:mm'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_seconds date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_seconds</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract seconds from date/time
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_seconds:</span> <span class="string">-10</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'HH:mm:ss'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_add_years date time manipulation">
+                <div class="card-header">
+                    <div class="card-title">date_add_years</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add or subtract years from date
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_add_years:</span> <span class="string">1</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'yyyy'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="date_to_rfc822 date format rss">
+                <div class="card-header">
+                    <div class="card-title">date_to_rfc822</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Format date according to RFC 822 (for RSS feeds)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date_to_rfc822</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Mon, 04 Nov 2025 10:30:46 Z</div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="html_safe_escape html sanitize xss security">
+                <div class="card-header">
+                    <div class="card-title">html_safe_escape</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert HTML string to safe HTML fragment (removes dangerous tags)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'&lt;img src="x" onerror="alert(1)"&gt;'</span> <span class="operator">|</span> <span class="filter">html_safe_escape</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">&lt;img src="x"&gt;</div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Security:</strong> Removes dangerous attributes like onerror, onclick
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="xml_escape xml encode">
+                <div class="card-header">
+                    <div class="card-title">xml_escape</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    XML-escape string for XML output
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'&lt;product&gt;Widget&lt;/product&gt;'</span> <span class="operator">|</span> <span class="filter">xml_escape</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="boolean convert type cast">
+                <div class="card-header">
+                    <div class="card-title">boolean</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert value to Boolean (true/false)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">is_valid</span> <span class="operator">=</span> <span class="string">'true'</span> <span class="operator">|</span> <span class="filter">boolean</span> <span class="tag">%}</span>
+<span class="tag">{% if</span> <span class="variable">is_valid</span> <span class="tag">%}</span>Valid!<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="decimal convert type cast float">
+                <div class="card-header">
+                    <div class="card-title">decimal</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert value to decimal number
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">price</span> <span class="operator">=</span> <span class="string">'19.99'</span> <span class="operator">|</span> <span class="filter">decimal</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">price</span> <span class="operator">|</span> <span class="filter">times:</span> <span class="string">1.1</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="integer convert type cast int">
+                <div class="card-header">
+                    <div class="card-title">integer</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert value to integer
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">count</span> <span class="operator">=</span> <span class="string">'42'</span> <span class="operator">|</span> <span class="filter">integer</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">count</span> <span class="operator">|</span> <span class="filter">plus:</span> <span class="string">8</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="string convert type cast">
+                <div class="card-header">
+                    <div class="card-title">string</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Convert value to string
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">num_str</span> <span class="operator">=</span> <span class="string">42</span> <span class="operator">|</span> <span class="filter">string</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">num_str</span> <span class="operator">|</span> <span class="filter">append:</span> <span class="string">' items'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="add_query url query string parameter">
+                <div class="card-header">
+                    <div class="card-title">add_query</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Add query string parameter to URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'/page'</span> <span class="operator">|</span> <span class="filter">add_query:</span> <span class="string">'id'</span><span class="operator">,</span> <span class="string">'123'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">/page?id=123</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="base url domain">
+                <div class="card-header">
+                    <div class="card-title">base</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Get base URL (scheme + host + port)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'https://example.com/page?id=1'</span> <span class="operator">|</span> <span class="filter">base</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">https://example.com</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="host url hostname domain">
+                <div class="card-header">
+                    <div class="card-title">host</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract hostname from URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">request.url</span> <span class="operator">|</span> <span class="filter">host</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="path url route">
+                <div class="card-header">
+                    <div class="card-title">path</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract path from URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'https://example.com/products/item'</span> <span class="operator">|</span> <span class="filter">path</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">/products/item</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="path_and_query url route params">
+                <div class="card-header">
+                    <div class="card-title">path_and_query</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract path and query string from URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'https://example.com/page?id=1'</span> <span class="operator">|</span> <span class="filter">path_and_query</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">/page?id=1</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="port url">
+                <div class="card-header">
+                    <div class="card-title">port</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract port number from URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'https://example.com:8080/page'</span> <span class="operator">|</span> <span class="filter">port</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">8080</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="remove_query url parameter">
+                <div class="card-header">
+                    <div class="card-title">remove_query</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Remove query string parameter from URL
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'/page?id=1&name=test'</span> <span class="operator">|</span> <span class="filter">remove_query:</span> <span class="string">'id'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">/page?name=test</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="scheme url protocol https http">
+                <div class="card-header">
+                    <div class="card-title">scheme</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Extract URL scheme/protocol
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">request.url</span> <span class="operator">|</span> <span class="filter">scheme</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">https</div>
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="default fallback value">
+                <div class="card-header">
+                    <div class="card-title">default</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Return default value if variable is null or empty
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="operator">|</span> <span class="filter">default:</span> <span class="string">'Guest'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Perfect for providing fallback values
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="file_size bytes format">
+                <div class="card-header">
+                    <div class="card-title">file_size</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Format number of bytes as human-readable file size
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">10000000</span> <span class="operator">|</span> <span class="filter">file_size</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">2050</span> <span class="operator">|</span> <span class="filter">file_size:</span> <span class="string">0</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">9.5 MB
+2 KB</div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="h html attribute encode">
+                <div class="card-header">
+                    <div class="card-title">h</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    HTML attribute encode (shorthand for HTML encoding in attributes)
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code>&lt;input value="<span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="operator">|</span> <span class="filter">h</span> <span class="tag">}}</span>"&gt;</code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="has_role security permission web role">
+                <div class="card-header">
+                    <div class="card-title">has_role</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Check if user has specific web role
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% if</span> <span class="variable">user</span> <span class="operator">|</span> <span class="filter">has_role:</span> <span class="string">'Administrators'</span> <span class="tag">%}</span>
+  Admin content
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Security:</strong> Use for role-based access control
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="liquid process parse template">
+                <div class="card-header">
+                    <div class="card-title">liquid</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    Process string as Liquid template
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">template</span> <span class="operator">=</span> <span class="string">'Hello {{ user.firstname }}'</span> <span class="tag">%}</span>
+<span class="tag">{{</span> <span class="variable">template</span> <span class="operator">|</span> <span class="filter">liquid</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card objects" data-category="objects" data-keywords="entities dataverse table record lookup">
+                <div class="card-header">
+                    <div class="card-title">entities</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Load any Dataverse record by table name and ID
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{% assign</span> <span class="variable">account</span> <span class="operator">=</span> <span class="variable">entities.account</span><span class="operator">[</span><span class="string">'936DA01F-9ABD-4d9d-80C7-02AF85C822A8'</span><span class="operator">]</span> <span class="tag">%}</span>
+<span class="tag">{% if</span> <span class="variable">account</span> <span class="tag">%}</span>
+  <span class="tag">{{</span> <span class="variable">account.name</span> <span class="tag">}}</span>
+<span class="tag">{% endif</span> <span class="tag">%}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Security:</strong> Respects Table Permissions, user must have read access
+                </div>
+            </div>
+
+            <div class="card objects" data-category="objects" data-keywords="settings site configuration">
+                <div class="card-header">
+                    <div class="card-title">settings</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Access Site Settings by name
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">settings</span><span class="operator">[</span><span class="string">'Header/Logo/Image'</span><span class="operator">]</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">settings</span><span class="operator">[</span><span class="string">'Authentication/Registration/Enabled'</span><span class="operator">]</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> Use settings for configuration values instead of hardcoding
+                </div>
+            </div>
+
+            <div class="card objects" data-category="objects" data-keywords="snippets content reusable text">
+                <div class="card-header">
+                    <div class="card-title">snippets</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Load Content Snippets by name
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">snippets</span><span class="operator">[</span><span class="string">'Footer/Copyright'</span><span class="operator">]</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="variable">snippets</span><span class="operator">[</span><span class="string">'Home/Welcome Message'</span><span class="operator">]</span> <span class="operator">|</span> <span class="filter">default:</span> <span class="string">'Welcome'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="tip-box pro">
+                    <strong>Pro Tip:</strong> For multiple languages, create one snippet record per language via the Content Snippet Language field
+                </div>
+            </div>
+
+            <div class="card objects" data-category="objects" data-keywords="now date time current">
+                <div class="card-header">
+                    <div class="card-title">now</div>
+                    <span class="card-badge badge-objects">Object</span>
+                </div>
+                <div class="card-description">
+                    Current UTC date/time when template renders
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">now</span> <span class="operator">|</span> <span class="filter">date:</span> <span class="string">'MMMM dd, yyyy HH:mm'</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">November 04, 2025 10:30</div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Watch Out:</strong> Value is cached, not updated on every render
+                </div>
+            </div>
+
+
+            <div class="card filters" data-category="filters" data-keywords="escape html encode xss security">
+                <div class="card-header">
+                    <div class="card-title">escape</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    HTML-escape string to prevent XSS
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="variable">user.fullname</span> <span class="operator">|</span> <span class="filter">escape</span> <span class="tag">}}</span>
+<span class="tag">{{</span> <span class="string">'&lt;script&gt;alert("XSS")&lt;/script&gt;'</span> <span class="operator">|</span> <span class="filter">escape</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">&amp;lt;script&amp;gt;alert("XSS")&amp;lt;/script&amp;gt;</div>
+                </div>
+                <div class="tip-box warning">
+                    <strong>Security:</strong> ALWAYS use escape filter when displaying untrusted user input
+                </div>
+            </div>
+
+            <div class="card filters" data-category="filters" data-keywords="url_escape encode uri">
+                <div class="card-header">
+                    <div class="card-title">url_escape</div>
+                    <span class="card-badge badge-filters">Filter</span>
+                </div>
+                <div class="card-description">
+                    URI-escape string for use in URLs
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Syntax</div>
+                    <div class="code-wrapper">
+                        <pre class="code-block"><code><span class="tag">{{</span> <span class="string">'Hello World!'</span> <span class="operator">|</span> <span class="filter">url_escape</span> <span class="tag">}}</span></code></pre>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                <div class="code-section">
+                    <div class="code-label">Output</div>
+                    <div class="code-block">Hello+World%21</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="footer-logo">Tino Rabe</div>
+            <div class="footer-text">Need help with Liquid Templates? <a href="/kontakt/">Get in touch</a></div>
+        </div>
+    </div>
+
+    <section class="ppsh-cta">
+        <div class="ppsh-cta__inner">
+            <div class="ppsh-cta__kicker">Next step</div>
+            <h2>Questions about your Power Pages project?</h2>
+            <p>Describe your project, your portal and your timeline in a few lines. You will hear back whether and how I can help.</p>
+            <a class="ppsh-cta__btn" href="/kontakt/">Get in touch →</a>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const codeBlock = this.previousElementSibling.textContent;
+                navigator.clipboard.writeText(codeBlock).then(() => {
+                    this.textContent = 'Copied!';
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.textContent = 'Copy';
+                        this.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+        });
+
+        const cards = document.querySelectorAll('.card');
+        const searchBox = document.getElementById('searchBox');
+
+        searchBox.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+
+            cards.forEach(card => {
+                const keywords = card.dataset.keywords.toLowerCase();
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-description').textContent.toLowerCase();
+
+                if (keywords.includes(query) || title.includes(query) || description.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

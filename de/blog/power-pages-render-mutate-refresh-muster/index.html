@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages</title>
+<meta name="description" content="Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.">
+<link rel="canonical" href="https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/blog/power-pages-render-mutate-refresh-pattern/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/blog/power-pages-render-mutate-refresh-pattern/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages">
+<meta property="og:description" content="Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.">
+<meta property="og:url" content="https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-render-mutate-refresh-muster.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages">
+<meta property="article:published_time" content="2026-09-16">
+<meta property="article:modified_time" content="2026-09-16">
+<meta property="article:author" content="https://www.linkedin.com/in/tinorabe/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages">
+<meta name="twitter:description" content="Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/artikel/de-power-pages-render-mutate-refresh-muster.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/#webpage",
+      "url": "https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/",
+      "name": "Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages",
+      "description": "Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-render-mutate-refresh-muster.png",
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/#article",
+      "headline": "Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages",
+      "description": "Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.",
+      "datePublished": "2026-09-16",
+      "dateModified": "2026-09-16",
+      "author": { "@id": "https://tinorabe.de/#person" },
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "mainEntityOfPage": { "@id": "https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/#webpage" },
+      "image": "https://tinorabe.de/assets/img/og/artikel/de-power-pages-render-mutate-refresh-muster.png",
+      "inLanguage": "de-DE",
+      "keywords": "Power Pages Render Mutate Refresh, Liquid fetchxml Power Pages, Power Pages Server Logic Muster, Power Pages Tabellenberechtigungen, Power Pages Architektur, shell.getTokenDeferred",
+      "articleSection": "Development"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<article class="art">
+  <header class="wrap art-kopf"><div class="g12">
+    <p class="art-meta">
+      <a href="/artikel/">Artikel</a><span>Development</span>
+      <time datetime="2026-09-16">16. September 2026</time><span>10 Min. Lesezeit</span><a href="/en/blog/power-pages-render-mutate-refresh-pattern/" hreflang="en" lang="en">English version</a>
+    </p>
+    <h1 class="art-h1">Das Render-Mutate-Refresh-Muster: Liquid und Server Logic in Power Pages</h1>
+    <p class="art-lead">Sofort rendern mit Liquid, sicher schreiben über Server Logic, gezielt neu laden. Ein Power Pages Muster für datengebundene Komponenten, mit allen Kosten.</p>
+  </div></header>
+
+  <div class="wrap"><div class="g12 art-raster">
+    <aside class="art-toc" aria-label="Inhalt">
+      <p class="art-toc-l">Inhalt</p>
+      <ol id="toc"></ol>
+    </aside>
+    <div class="art-body tw" id="artikel">
+      
+<div class="prose prose-lg max-w-none mb-8">
+  <p class="text-xl text-gray-700 leading-relaxed">
+    Sie bauen eine Komponente in Power Pages. Sie soll drei Dinge gleichzeitig können.
+  </p>
+</div>
+
+<p class="text-gray-700 leading-relaxed mb-4">
+  Schnell rendern, ohne Spinner. Sicher bleiben, sodass ein Benutzer immer nur die eigenen Daten sieht und ändert. Und sich aktualisieren, ohne die Seite neu zu laden, denn ein Schalter, der die Seite neu lädt, ist kein Schalter.
+</p>
+
+<p class="text-gray-700 leading-relaxed mb-8">
+  Wenn Sie sich für ein Werkzeug entscheiden, geben Sie eines dieser drei Ziele auf. In diesem Beitrag geht es darum, keines aufzugeben.
+</p>
+
+<figure class="mb-12">
+  <img src="/assets/images/blog/power-pages-render-mutate-refresh-pattern/hero-render-mutate-refresh.png" alt="Das Render-Mutate-Refresh-Muster: eine Komponente rendert über Liquid, ändert Daten über einen Server-Logic-Endpunkt und aktualisiert sich, indem sie denselben Endpunkt erneut aufruft" class="rounded-xl border border-gray-200 w-full" loading="lazy">
+</figure>
+
+<section id="warum-ein-werkzeug-nie-reicht" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Warum ein Werkzeug allein nie reicht</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Reines Liquid</strong> rendert auf dem Server. Microsoft sagt es direkt: Liquid wird serverseitig verarbeitet und die Ausgabe als reines HTML an den Endanwender geliefert. Ihre Daten stecken schon im ersten Byte HTML. Schnell, und auf der Leseseite sicher, weil Tabellenberechtigungen greifen. Was Liquid nicht kann, ist irgendetwas über einen Schreibvorgang durchzusetzen, denn wenn der Benutzer klickt, ist Liquid längst fertig.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Reines clientseitiges Web API</strong> gibt Ihnen Schreibvorgänge und Aktualisierungen ohne Reload. Der Preis ist eine leere Komponente, bis die erste Antwort da ist, und Sie müssen die Web API für die Tabelle über <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;table name&gt;/enabled</code> aktivieren und die Spalten in <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Webapi/&lt;table name&gt;/fields</code> auflisten. Damit öffnen Sie eine Tür, die für jedes Skript auf Ihrer Site offen bleibt.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Basic Forms</strong> sind sicher und konfigurationsgetrieben. Sie sind aber kein Schalter. Wer eigenes JavaScript an ein Formularfeld hängt, bekommt laut Microsoft beim Absenden die Meldung "Invalid postback or callback argument". Das sagt schon fast alles über das Interaktionsmodell.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Also: drei Werkzeuge, drei Aufgaben.
+  </p>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden">
+      <thead>
+        <tr>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Vorgang</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Mechanismus</th>
+          <th class="p-4 text-left font-semibold" style="background: #2563eb; color: #fff;">Warum</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr class="border-b border-gray-200">
+          <td class="p-4 text-sm">Erstes Rendern</td>
+          <td class="p-4 font-mono text-sm">Liquid fetchxml, serverseitig</td>
+          <td class="p-4 text-sm">Daten stecken im HTML, kein Spinner</td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-gray-50">
+          <td class="p-4 text-sm">Änderung</td>
+          <td class="p-4 font-mono text-sm">Server Logic über AJAX</td>
+          <td class="p-4 text-sm">Prüfung, die der Client nicht umgehen kann</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="p-4 text-sm">Abgleich</td>
+          <td class="p-4 font-mono text-sm">Gezielter Refresh auf ein Server-Logic-GET, DOM neu aufbauen</td>
+          <td class="p-4 text-sm">Bringt optimistische Anzeige und Realität zusammen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed">
+    Ich nenne das Render-Mutate-Refresh. Entstanden ist es an einem Cockpit für Einwilligungsverwaltung, aber nichts daran ist auf Einwilligungen beschränkt. Es passt auf jede Komponente, die datengebunden, benutzerspezifisch und direkt änderbar ist.
+  </p>
+</section>
+
+<section id="ebene-1-rendern" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Ebene 1: Rendern mit Liquid</h2>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>{% fetchxml preferences %}
+&lt;fetch&gt;
+  &lt;entity name="my_userpreference"&gt;
+    &lt;attribute name="my_topic"&gt;&lt;/attribute&gt;
+    &lt;attribute name="my_value"&gt;&lt;/attribute&gt;
+    &lt;attribute name="my_userpreferenceid"&gt;&lt;/attribute&gt;
+    &lt;filter&gt;
+      &lt;condition attribute="my_contactid" operator="eq" value="{{ user.id }}" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+{% endfetchxml %}
+
+{% for item in preferences.results.entities %}
+  &lt;div class="pref-item"
+       data-id="{{ item.my_userpreferenceid }}"
+       data-topic="{{ item.my_topic | escape }}"
+       data-checked="{{ item.my_value.Value }}"&gt;
+    &lt;span class="pref-label"&gt;{{ item.my_topic | escape }}&lt;/span&gt;
+  &lt;/div&gt;
+{% endfor %}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Zwei Syntaxhinweise, die jeweils einen Nachmittag kosten können.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Die Ergebnisse liegen unter <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">results.entities</code>, nicht direkt auf der Variablen. Und verwenden Sie keine selbstschließenden Tags für Attribute. Microsoft sagt es ausdrücklich: statt <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;attribute name="title"/&gt;</code> schreiben Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;attribute name="title"&gt;&lt;/attribute&gt;</code> mit explizitem schließendem Tag. Beim <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">&lt;condition&gt;</code>-Element ist die Kurzform in Ordnung, bei Attributen nicht.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">user.id</code> ist die dokumentierte Eigenschaft. Das <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">user</code>-Objekt ist ein Entity-Objekt, und für dieses ist <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">ID</code> als GUID der Tabelle in Form einer Zeichenfolge dokumentiert. In viel Community-Code sehen Sie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">user.contactid</code>, und das funktioniert über die allgemeine Regel zum Zugriff per logischem Namen. Namentlich dokumentiert ist aber <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">user.id</code>.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Warum das sicher ist: Der Filter steht serverseitig, in einem Template, das der Browser nie zu Gesicht bekommt. Der Browser erhält gerenderte Zeilen und sonst nichts. Es gibt keinen clientseitigen Filter, an dem sich manipulieren ließe, weil es keine clientseitige Abfrage gibt.
+  </p>
+</section>
+
+<section id="ebene-2-aendern" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Ebene 2: Ändern über Server Logic</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Lesen läuft über Liquid. Schreiben läuft über einen Serverendpunkt, mit dem der Client nicht verhandeln kann.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Auf Clientseite:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function onToggle(recordId, topic, newValue) {
+  shell.getTokenDeferred().done(function (token) {
+    $.ajax({
+      type: "PUT",
+      url: "/_api/serverlogics/preference-update",
+      headers: { "__RequestVerificationToken": token },
+      contentType: "application/json",
+      data: JSON.stringify({ id: recordId, topic: topic, value: newValue })
+    })
+    .done(function () { /* optimistischen Zustand behalten */ })
+    .fail(function () { revertToggle(recordId); });
+  });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das URL-Muster ist dokumentiert: <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">https://&lt;site-url&gt;/_api/serverlogics/&lt;server-logic-name&gt;</code>. Ebenso die Anforderung, dass jeder Aufruf einer Server-Logic-API ein Token gegen Cross-Site Request Forgery enthalten muss.
+  </p>
+
+  <div class="pp-box pp-box--note p-6 mb-6">
+    <p class="text-gray-800">
+      <strong>Hinweis:</strong> Die Server-Logic-Dokumentation verweist auf eine Methode <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">shell.safeAjax</code>, veröffentlicht wird von Microsoft aber der Wrapper <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">webapi.safeAjax</code>, der auf <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">shell.getTokenDeferred()</code> aufsetzt. Wenn <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">shell.safeAjax</code> in Ihrer Site nicht definiert ist, liegt es daran, live bestätigt im Demo-Portal: <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">shell</code> stellt <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">ajaxSafePost</code>, <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">getTokenDeferred</code> und <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">refreshToken</code> bereit, kein <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">safeAjax</code>. Nutzen Sie den dokumentierten Wrapper oder rufen Sie <code class="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-sm">getTokenDeferred</code> direkt auf, wie oben.
+    </p>
+  </div>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Auf Serverseite setzt der Endpunkt durch, was der Browser nicht kann:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function put() {
+  const user = Server.User;
+  if (!user) {
+    return JSON.stringify({ ok: false, error: "Anmeldung erforderlich" });
+  }
+
+  const payload = JSON.parse(Server.Context.Body);
+
+  // Whitelist. Einem Themennamen von der Leitung traut man nicht.
+  const allowed = ["newsletter", "product-updates", "events"];
+  let permitted = false;
+  for (let i = 0; i < allowed.length; i++) {
+    if (allowed[i] === payload.topic) { permitted = true; }
+  }
+  if (!permitted) {
+    Server.Logger.Log("WARN: Thema abgelehnt: " + payload.topic);
+    return JSON.stringify({ ok: false, error: "Unbekanntes Thema" });
+  }
+
+  const body = JSON.stringify({ my_value: payload.value ? 1 : 0 });
+  const raw  = Server.Connector.Dataverse.UpdateRecord(
+                 "my_userpreferences", payload.id, body);
+
+  return JSON.stringify({ ok: true, marker: "put-v3", raw: String(raw) });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.Context.Body</code> ist der dokumentierte Weg, den rohen HTTP-Request-Body zu lesen. Für <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Server.User</code> ist dokumentiert, dass es bei anonymen Aufrufern null liefert. Damit ist die Prüfung ganz oben eine echte Schranke und keine Dekoration.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Lesen und Schreiben auf zwei Mechanismen aufzuteilen bringt Ihnen etwas Konkretes: Sie müssen die Web API auf dieser Tabelle nie aktivieren. Der Schreibpfad ist ein benannter Endpunkt mit Ihrer Prüfung darin, abgesichert über Web Roles, und es gibt keine generische CRUD-Oberfläche, die jemand entdecken könnte.
+  </p>
+</section>
+
+<section id="ebene-3-abgleich" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Ebene 3: Abgleich auf Wunsch</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Optimistische Anzeige ist hervorragend, bis zu dem Moment, in dem sie falsch ist. Ein zweiter Tab, ein Flow im Hintergrund, eine Kollegin mit delegiertem Zugriff, und der Bildschirm lügt.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Geben Sie dem Benutzer also einen Weg zum Abgleich, über dieselbe Familie von Server-Logic-Endpunkten:
+  </p>
+
+  <pre class="text-sm font-mono leading-relaxed bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto mb-6"><code>function refresh() {
+  shell.getTokenDeferred().done(function (token) {
+    $.ajax({
+      url: "/_api/serverlogics/preferences-list",
+      headers: { "__RequestVerificationToken": token }
+    }).done(function (response) {
+      const payload = response.data || response.Data;
+      const items   = JSON.parse(payload).items;
+      rebuildDom(items);
+    });
+  });
+}</code></pre>
+
+  <p class="text-gray-700 leading-relaxed">
+    Beachten Sie das defensive <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">response.data || response.Data</code>. Microsoft dokumentiert die Antworthülle mit großem <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">Data</code> und zeigt im Clientbeispiel kleines <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">data</code>. Fangen Sie beides ab und arbeiten Sie weiter.
+  </p>
+</section>
+
+<section id="berechtigungsdisziplin" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Die Berechtigungsdisziplin, die dieses Muster verlangt</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Jetzt kommt der Teil, der darüber entscheidet, ob dieses Muster sicher oder eine Belastung ist. Er hat nichts mit Code zu tun.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Ebene 1 braucht Leserecht auf der Tabelle für die Web Role des angemeldeten Benutzers. Tabellenberechtigungen gelten nicht nur für ein Template. Microsoft hält ausdrücklich fest, dass der Zugriff auf Dataverse-Datensätze eingeschränkt wird, wenn Formulare, Listen, Liquid, die Portals Web API und weitere Komponenten auf Dataverse-Tabellen zugreifen. Dasselbe Leserecht, das Ihr Liquid-Template abfragen lässt, lässt auch jede Liste, jedes Basic Form und jeden Web-API-Aufruf auf Ihrer Site abfragen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Wenn Ihr Liquid-Filter das Einzige ist, was Benutzer voneinander trennt, dann ist Leserecht mit globalem Geltungsbereich genau eine falsch konfigurierte Liste von einem Datenleck entfernt. Microsofts Site Checker existiert unter anderem dafür und meldet Tabellenberechtigungen, die der anonymen Web Role zugewiesen wurden und ungewollt Daten offenlegen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Zwei Wege in die Sicherheit.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Nehmen Sie den engeren Geltungsbereich.</strong> Der Bereich Kontakt wendet die Berechtigung nur auf Datensätze an, die dem angemeldeten Benutzer zugeordnet sind. Wenn Ihr Datenmodell das hergibt, nutzen Sie ihn, und lassen Sie die Plattform die Trennung durchsetzen statt Ihres Templates. Ihr Liquid-Filter ist dann eine Optimierung und keine Sicherheitsmaßnahme.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Wenn es der globale Bereich sein muss,</strong> behandeln Sie ihn als dauerhafte Verpflichtung. Jede Komponente, die diese Tabelle berührt, wird Teil Ihrer Angriffsfläche. Schreiben Sie es in die Lösungsdokumentation, und prüfen Sie es jedes Mal nach, wenn jemand eine Liste ergänzt.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Und wenn Sie ohnehin dabei sind: Steuern Sie die Oberfläche über die Berechtigungen, die die Plattform bereits kennt. Das Liquid-Objekt für Berechtigungen auf einem Datensatz ist dokumentiert und liefert <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_read</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_write</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_create</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_delete</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_append</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_append_to</code> sowie <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">rules_exist</code>. Wer den Schalter nur rendert, wenn <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">can_write</code> wahr ist, sorgt dafür, dass Oberfläche und Durchsetzung dasselbe sagen. Das erspart Ihren Benutzern viele fehlgeschlagene Schreibvorgänge.
+  </p>
+</section>
+
+<section id="was-es-kostet" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Was Sie das kostet</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Seien Sie ehrlich zu sich, bevor Sie sich festlegen.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Zwei Renderer für eine Komponente.</strong> Liquid baut das DOM beim ersten Aufbau. JavaScript baut es nach einem Refresh erneut. Das ist dasselbe Markup in zwei Ausprägungen, und es wird auseinanderlaufen. Halten Sie beides in einer Datei und prüfen Sie es gemeinsam.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Zwei Abfragesprachen.</strong> Liquid arbeitet mit FetchXML, Server Logic mit OData. Zwei Dialekte, zwei Escaping-Regime, eine Komponente.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    <strong>Refresh ist eine UX-Verpflichtung.</strong> Eine Schaltfläche mit der Aufschrift "Aktualisieren" lässt Benutzer rätseln, wann sie sie drücken sollen. Lösen Sie es entweder automatisch über einen sinnvollen Auslöser wie den Fensterfokus, oder beschriften Sie so, dass die Frage beantwortet ist.
+  </p>
+
+  <div class="pp-box pp-box--warn p-6">
+    <p class="text-lg text-gray-800">
+      <strong>Liquid ist nicht umsonst.</strong> Microsofts eigene Hinweise zur Leistung warnen davor, große Mengen verknüpfter Datensätze zu laden oder in einem Template auf viele Beziehungen zuzugreifen, weil das die Renderzeit spürbar verschlechtert. Serverseitiges Rendern verschiebt die Wartezeit, es löscht sie nicht.
+    </p>
+  </div>
+</section>
+
+<section id="neuerung" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Eine Neuerung, die Sie kennen sollten</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Seit dieses Muster zum ersten Mal aufgeschrieben wurde, hat Microsoft einen Liquid-Tag <code class="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">{% serverlogic %}</code> ergänzt, der Server Logic während des Seitenrenderns aufruft. Die Dokumentation hält fest, dass dieser serverseitige Aufruf weder eine clientseitige HTTP-Anfrage noch ein CSRF-Token benötigt.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Das ist eine echte dritte Option für Ebene 1. Wenn Ihre Leselogik so komplex ist, dass FetchXML im Template unangenehm wird, können Sie jetzt über Server Logic rendern und behalten den sofortigen Seitenaufbau. Dieselbe Dokumentation ergänzt die naheliegende Warnung: Lange laufende Dataverse-Operationen oder externe Aufrufe in diesem Tag verlängern die Antwortzeit der Seite unmittelbar, weil die Seite darauf wartet.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Am Muster ändert das nichts. Die Ebene Render hat lediglich eine Umsetzungsvariante dazugewonnen.
+  </p>
+</section>
+
+<section id="wann-einsetzen" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Wann Sie es einsetzen und wann nicht</h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Setzen Sie Render-Mutate-Refresh ein, wenn die Komponente benutzerspezifischen Zustand zeigt, der Benutzer ihn ohne Seitenwechsel ändern kann, die Daten wichtig genug sind, dass clientseitiges Filtern nicht in Frage kommt, und der erste Seitenaufbau jemandem auffällt, dem er wichtig ist.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Lassen Sie es, wenn die Komponente nur liest, denn reines Liquid ist einfacher, und einfacher gewinnt. Oder wenn es um ein einzelnes Absenden geht, denn ein Basic Form ist weniger Code und weniger Risiko. Oder wenn sich die Daten ständig von außen ändern, denn dann bauen Sie eine Echtzeitanwendung, und dafür hat Power Pages die falsche Form.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Diese Grenze falsch zu ziehen ist genau die Art Entscheidung, die es wert ist, vor dem Bau auf Tragfähigkeit geprüft zu werden, nicht danach. Genau das kläre ich in der <a href="/leistungen/dynamics-365-crm/" class="underline font-semibold">Umsetzung</a>.
+  </p>
+</section>
+
+<section id="checkliste" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-900">Checkliste für die Umsetzung</h2>
+
+  <ol class="list-decimal pl-6 space-y-2 text-gray-700 leading-relaxed">
+    <li>Die Tabelle mit dem benutzerspezifischen Zustand bestimmen</li>
+    <li>Den engsten Geltungsbereich der Tabellenberechtigung wählen, den das Datenmodell hergibt</li>
+    <li>Vor der Vergabe des Leserechts jede vorhandene Liste, jedes Formular und jede Web-API-Einstellung auf dieser Tabelle prüfen</li>
+    <li>Das Liquid-Template mit serverseitig gesetztem Benutzerfilter bauen</li>
+    <li>Einen Server-Logic-Datensatz mit get() und put() anlegen und ihm Web Roles zuweisen</li>
+    <li>Die Web Roles der Server Logic mit denen der Tabellenberechtigung abgleichen</li>
+    <li>Die änderbare Oberfläche über das Liquid-Berechtigungsobjekt steuern</li>
+    <li>Optimistisches Aktualisieren umsetzen und bei Fehlern zurückrollen</li>
+    <li>Den Auslöser für den Refresh ergänzen und entscheiden, ob manuell oder automatisch</li>
+    <li>Die Berechtigungsentscheidung dort dokumentieren, wo der nächste Entwickler sie findet</li>
+  </ol>
+</section>
+
+<section class="bg-gray-900 text-white p-8 md:p-12 rounded-2xl text-center mb-16">
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Bevor Sie eine Tabellenberechtigung ausweiten: Wissen Sie, was sonst noch darauf steht.</h2>
+  <p class="text-lg mb-8 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.8);">
+    Das Security Audit ist meine Festpreisprüfung genau dieser Fläche: Tabellenberechtigungen, Web Roles, Listen, Formulare, Web-API-Einstellungen und das, was ein anonymer Besucher tatsächlich erreicht. Sie bekommen einen Befundbericht mit Schweregraden, kein Bauchgefühl.
+  </p>
+  <a href="/leistungen/security-audit/" class="button button--primary text-lg">
+    Security Audit, ab Festpreis, mit schriftlichem Befundbericht
+  </a>
+</section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-bold mb-8 text-gray-900">Weitere Artikel</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="/de/blog/power-pages-server-logic-versteckte-grenzen/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Power Pages Server Logic: 4 versteckte Grenzen</h3>
+      <p class="text-gray-600 mb-4">Die dokumentierte Sperrliste, vier Grenzen gefunden durch Bisektion, und ein Debugging-Leitfaden für eine undurchsichtige Laufzeitumgebung.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+    <a href="/de/blog/liquid-fetchxml-vs-web-api/" class="block bg-gray-50 hover:bg-gray-100 p-6 rounded-xl transition-all">
+      <span class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 block">Development</span>
+      <h3 class="text-xl font-bold mb-3 text-gray-900">Liquid FetchXML vs. Web API in Power Pages</h3>
+      <p class="text-gray-600 mb-4">Ein Entscheidungsbaum, Leistungsvergleich und Sicherheitsmuster zwischen den beiden Datenzugriffspfaden in Power Pages.</p>
+      <span class="font-semibold">Artikel lesen &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900">Quellen</h2>
+  <ul class="space-y-2 text-sm text-gray-600 list-disc pl-5">
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-overview" class="underline" target="_blank" rel="noopener">What is Liquid</a>, serverseitige Verarbeitung</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/template-tags" class="underline" target="_blank" rel="noopener">Liquid template tags</a>, fetchxml-Syntax, results.entities, Hinweis zu selbstschließenden Tags</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-objects" class="underline" target="_blank" rel="noopener">Available Liquid objects</a>, user, Entity-Objekt, Berechtigungsobjekt, Leistungshinweis</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/power-pages-security" class="underline" target="_blank" rel="noopener">Power Pages security overview</a>, Liquid durch Tabellenberechtigungen geschützt</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/security/table-permissions" class="underline" target="_blank" rel="noopener">Set table permissions</a>, Geltungsbereiche</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-overview" class="underline" target="_blank" rel="noopener">Web API overview</a>, Site Settings Webapi/&lt;table&gt;/enabled und fields</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/webapi-how-to" class="underline" target="_blank" rel="noopener">Portal Web API how-to</a>, shell.getTokenDeferred() und __RequestVerificationToken-Wrapper</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-logic-overview" class="underline" target="_blank" rel="noopener">Server logic overview</a>, URL-Muster, CSRF-Anforderung, Web Roles</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/author-server-logic" class="underline" target="_blank" rel="noopener">Create and manage server logic</a>, Rollenzuweisung, Antworthülle, serverlogic-Tag</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/server-objects" class="underline" target="_blank" rel="noopener">Server objects</a>, Server.Context.Body, Server.User, Server.Connector.Dataverse</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/configure/add-custom-javascript" class="underline" target="_blank" rel="noopener">Add custom JavaScript to a form</a>, Hinweis zu Invalid postback</li>
+    <li><a href="https://learn.microsoft.com/en-us/power-pages/admin/site-checker-configuration-issues" class="underline" target="_blank" rel="noopener">Site Checker configuration issues</a></li>
+  </ul>
+</section>
+
+
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="g12">
+    <aside class="art-cta">
+      <p class="art-cta-t">Dynamics 365 sicher nach außen öffnen</p>
+      <p>Vom Datenmodell bis zum Portal für externe Nutzer: Dynamics 365 Sales, Customer Service und Field Service, Dataverse, Power Automate, Power Pages. Lösungsarchitektur, Umsetzung oder Review, in Ihrem Team oder im Team Ihres Partners.</p>
+      <p class="btns"><a class="btn" href="/leistungen/dynamics-365-crm/">Zur Umsetzung</a><a class="txtlink" href="/kontakt/">Projekt anfragen</a></p>
+    </aside>
+    <footer class="art-autor">
+      <img src="/assets/img/tino-rabe-640.jpg" width="96" height="96" alt="" loading="lazy">
+      <p><b>Tino Rabe</b>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist<span>Ehemaliger Microsoft MVP für Power Pages</span></p>
+      <p class="art-ki">Dieser Beitrag ist mit KI-Unterstützung geschrieben. Idee, Konzept und Erfahrung stammen aus meiner Projektpraxis, jede fachliche Aussage ist von mir geprüft, vieles davon im Portal nachgestellt.</p>
+    </footer>
+  </div></div>
+</article>
+<script src="/assets/js/toc.js?v=a5959938" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

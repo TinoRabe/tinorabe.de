@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pages Learning Curriculum - From Foundation to Enterprise Architect | Tino Rabe</title>
+    <meta name="description" content="Complete interactive learning curriculum for Power Pages: 5 levels from Foundation to Enterprise Architect. Topics, documentation links & progress tracking.">
+    <meta name="keywords" content="Power Pages, Learning Curriculum, Microsoft Power Platform, Dataverse, Liquid Templates, Web API, Security, ALM, Enterprise Architecture">
+    <meta name="author" content="Tino Rabe - Microsoft MVP">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Power Pages Learning Curriculum - Complete Interactive Guide">
+    <meta property="og:description" content="5 levels from Foundation to Enterprise Architect with progress tracking">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tinorabe.de/assets/cheat-sheets/power-pages-learning-curriculum.html">
+    <meta property="og:site_name" content="Tino Rabe">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Power Pages Learning Curriculum">
+    <meta name="twitter:description" content="Complete interactive learning curriculum from Foundation to Enterprise Architect">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tinorabe.de/assets/cheat-sheets/power-pages-learning-curriculum.html">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151934;
+            --bg-card: #1e2139;
+            --bg-code: #0d1117;
+            --border: #30363d;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a8c1;
+            --accent-green: #06ffa5;
+            --accent-blue: #00d4ff;
+            --accent-purple: #b24bf3;
+            --accent-pink: #ff006e;
+            --accent-yellow: #ffd700;
+            --accent-orange: #ff8c00;
+            --border-glow: rgba(178, 75, 243, 0.3);
+            --accent-cyan: #00d4ff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f3a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(178, 75, 243, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, rgba(178, 75, 243, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border-radius: 30px;
+            border: 1px solid rgba(178, 75, 243, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .header .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent-blue);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Controls */
+        .controls {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #fb7185 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover {
+            background: white;
+            color: #ec4899;
+        }
+
+        .filter-btn.active {
+            background: white;
+            color: #ec4899;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .timeline-bar {
+            display: flex;
+            gap: 2px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .timeline-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .timeline-segment:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+        }
+
+        .timeline-segment.active {
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .level-1-segment {
+            flex: 0.75;
+            background: linear-gradient(135deg, #06ffa5 0%, #00d4ff 100%);
+        }
+
+        .level-2-segment {
+            flex: 1;
+            background: linear-gradient(135deg, #b24bf3 0%, #ff006e 100%);
+        }
+
+        .level-3-segment {
+            flex: 1.5;
+            background: linear-gradient(135deg, #ff006e 0%, #ff6b35 100%);
+        }
+
+        .level-4-segment {
+            flex: 2;
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+        }
+
+        .level-5-segment {
+            flex: 10;
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        }
+
+        .segment-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .segment-duration {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .timeline-total {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Level Section */
+        .level-section {
+            margin-bottom: 50px;
+        }
+
+        .level-header {
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .level-header:hover {
+            transform: translateX(5px);
+        }
+
+        .level-header.level-1 {
+            background: var(--bg-card);
+            border-left: 5px solid var(--accent-green);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .level-header.level-2 {
+            background: var(--bg-card);
+            border-left: 5px solid var(--accent-blue);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .level-header.level-3 {
+            background: var(--bg-card);
+            border-left: 5px solid var(--accent-purple);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .level-header.level-4 {
+            background: var(--bg-card);
+            border-left: 5px solid var(--accent-pink);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .level-header.level-5 {
+            background: var(--bg-card);
+            border-left: 5px solid var(--accent-orange);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .level-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .level-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .level-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .meta-icon {
+            font-size: 18px;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Topic Card */
+        .topic-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .topic-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 60px rgba(178, 75, 243, 0.3);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .topic-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .topic-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-level-1 { background: var(--accent-green); color: #000; }
+        .badge-level-2 { background: var(--accent-blue); color: #000; }
+        .badge-level-3 { background: var(--accent-purple); color: #000; }
+        .badge-level-4 { background: var(--accent-pink); color: #000; }
+        .badge-level-5 { background: var(--accent-orange); color: #000; }
+
+        .topic-items {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .topic-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox.checked {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .topic-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        .topic-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-code);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+            transition: width 0.3s;
+        }
+
+        /* CTA Container */
+        .quick-nav {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: auto;
+            max-width: 400px;
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #fb7185 100%);
+            border-radius: 12px;
+            padding: 10px 6px;
+            border: none;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+        }
+
+        .nav-cta {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .nav-cta-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 24px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        .nav-cta-link:hover {
+            animation: none;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.6);
+            background: #059669;
+        }
+
+        .nav-cta-text {
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .nav-cta-badge {
+            display: inline-block;
+            height: 18px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 2px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .level-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Expand/Collapse */
+        .level-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .level-content.expanded {
+            max-height: none;
+        }
+
+        .expand-icon {
+            float: right;
+            transition: transform 0.3s;
+        }
+
+        .level-header.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>⚡ Power Pages Learning Curriculum</h1>
+            <div class="subtitle">Complete Interactive Guide: Foundation → Enterprise Architect</div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Levels</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Resources</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12-24</div>
+                    <div class="stat-label">Months</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <!-- Timeline -->
+            <div class="timeline">
+                <div class="timeline-header">Estimated Learning Timeline - Click to Filter</div>
+                <div class="timeline-bar">
+                    <div class="timeline-segment level-1-segment active" data-level="1" onclick="filterByTimeline(this)">
+                        <div class="segment-label">Maker Basics</div>
+                        <div class="segment-duration">2-3 weeks</div>
+                    </div>
+                    <div class="timeline-segment level-2-segment" data-level="2" onclick="filterByTimeline(this)">
+                        <div class="segment-label">Functional Maker</div>
+                        <div class="segment-duration">3-4 weeks</div>
+                    </div>
+                    <div class="timeline-segment level-3-segment" data-level="3" onclick="filterByTimeline(this)">
+                        <div class="segment-label">Pro-Code Developer</div>
+                        <div class="segment-duration">4-6 weeks</div>
+                    </div>
+                    <div class="timeline-segment level-4-segment" data-level="4" onclick="filterByTimeline(this)">
+                        <div class="segment-label">Solution Architect</div>
+                        <div class="segment-duration">6-8 weeks</div>
+                    </div>
+                    <div class="timeline-segment level-5-segment" data-level="5" onclick="filterByTimeline(this)">
+                        <div class="segment-label">Strategic Consultant</div>
+                        <div class="segment-duration">8-12 months</div>
+                    </div>
+                </div>
+                <div class="timeline-total">Total: 12-24 months to Enterprise Architect · Click "All Levels" to reset</div>
+                <button class="reset-btn" onclick="resetFilter()">All Levels</button>
+            </div>
+        </div>
+
+        <!-- Level 1: Foundation -->
+        <div class="level-section" data-level="1">
+            <div class="level-header level-1 expanded" onclick="toggleLevel(this)">
+                <span class="expand-icon">▼</span>
+                <div class="level-title">Level 1: Foundation - Maker Basics</div>
+                <div class="level-subtitle">Prerequisites: Power Platform Fundamentals</div>
+                <div class="level-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span>2-3 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📖</span>
+                        <span>6 Main Topics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Fundamentals & First Site</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content expanded">
+                <div class="topics-grid">
+                    <!-- 1.1 Power Pages Fundamentals -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.1 Power Pages Fundamentals</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Introduction & Architecture</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/introduction" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Capabilities Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/capabilities" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Design Studio Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/use-design-studio" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.2 Dataverse Fundamentals -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.2 Dataverse Fundamentals</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Dataverse Introduction</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/what-is-dataverse" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tables & Columns Basics</span>
+                                <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/entity-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Relationships (1:N, N:N)</span>
+                                <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-edit-entity-relationships" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Views & Forms Basics</span>
+                                <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-edit-views" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Business Rules</span>
+                                <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-create-business-rule" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.3 Site Creation & Setup -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.3 Site Creation & Setup</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Trial & Signup</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/trial-signup" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Create Site with Copilot</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/create-site-copilot" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Create Site manually</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/create-manage" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Templates Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/templates/" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.4 Pages Workspace -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.4 Pages Workspace - Content</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Add Webpage</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-add-webpage" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Add Text, Images, Video</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/add-text" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Add Sections & Layout</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/add-sections" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Site Structure</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/structure-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.5 Styling Basics -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.5 Styling Workspace - Basic Design</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Style your Site</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-style-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Styling Workspace</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/style-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Bootstrap Basics</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/bootstrap-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1.6 Data Workspace Basics -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">1.6 Data Workspace Basics</div>
+                            <span class="topic-badge badge-level-1">Level 1</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Data Workspace Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/use-data-workspace" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Add a List</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-add-list-to-page" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Add a Form</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-add-form-to-page" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Basic Forms</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/basic-forms" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Lists Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/lists" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 2: Intermediate -->
+        <div class="level-section" data-level="2">
+            <div class="level-header level-2" onclick="toggleLevel(this)">
+                <span class="expand-icon">▼</span>
+                <div class="level-title">Level 2: Intermediate - Functional Maker</div>
+                <div class="level-subtitle">Prerequisites: Level 1 completed</div>
+                <div class="level-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span>3-4 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📖</span>
+                        <span>5 Main Topics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Advanced Features & Security</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <div class="topics-grid">
+                    <!-- 2.1 Advanced Data Components -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.1 Advanced Data Components</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Multistep Forms Tutorial</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-add-multi-step-form" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Multistep Form Properties</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/multistep-form-properties" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>List Configuration</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/list-configuration" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Enhanced View Filter</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/list-enhanced-view-filter" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2.2 Portal Management App -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.2 Portal Management App</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Portal Management Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/portal-management-app" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Configure Site Settings</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/configure-site-settings" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Content Snippets</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/customize-content-snippets" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Web Files & Redirects</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/web-files" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2.3 Security & Authentication -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.3 Basic Security & Authentication</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Security Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/power-pages-security" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Display Data Securely</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-display-data-securely" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Site Authentication</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/tutorial-setup-site-authentication" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Configure Site Authentication</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/configure-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2.4 Web Roles & Permissions -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.4 Web Roles & Permissions</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Create Web Roles</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/create-web-roles" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Table Permissions</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/table-permissions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Assign Table Permissions</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/assign-table-permissions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Page Security</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/page-security" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Column Permissions</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/column-permissions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2.5 Integration Basics -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.5 Integration Basics</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Power BI Integration</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/getting-started/add-power-bi" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Power Automate Basics</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/cloud-flow-integration" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>SharePoint Documents</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/manage-sharepoint-documents" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2.6 Migration & Updates -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">2.6 Migration & Updates</div>
+                            <span class="topic-badge badge-level-2">Level 2</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Convert Website</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/convert-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Upgrade Website</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/upgrade-site" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Migrate Configuration</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/migrate-site-configuration" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 3: Advanced -->
+        <div class="level-section" data-level="3">
+            <div class="level-header level-3" onclick="toggleLevel(this)">
+                <span class="expand-icon">▼</span>
+                <div class="level-title">Level 3: Advanced - Pro-Code Developer</div>
+                <div class="level-subtitle">Prerequisites: Level 2 + JavaScript/HTML/CSS Skills</div>
+                <div class="level-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span>4-6 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📖</span>
+                        <span>6 Main Topics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Pro-Code Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <div class="topics-grid">
+                    <!-- 3.1 Liquid Template Language -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.1 Liquid Template Language</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Liquid Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Liquid Objects & Types</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-objects" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Liquid Tags & Filters</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-tags" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Dataverse Liquid Tags</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/liquid/dataverse-liquid-tags" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.2 Web Templates -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.2 Web Templates</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Web Templates Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/web-templates" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Templates as Components</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/web-templates-as-components" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Custom Page Layouts</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/custom-page-layouts" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.3 Portals Web API -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.3 Portals Web API</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Web API Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Read Operations</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/read-operations" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Write, Update, Delete</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/write-update-delete-operations" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Error Handling</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/web-api-http-requests-handle-errors" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.4 Code Components (PCF) -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.4 Code Components (PCF)</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Code Components Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/component-framework" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Tutorial: Use Code Components</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/component-framework-tutorial" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Dataset Code Components</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/tutorial-pcf-code" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.5 JavaScript Customization -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.5 JavaScript Customization</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Custom JavaScript to Lists</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/add-custom-javascript-list" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Custom JavaScript to Forms</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/add-custom-javascript" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Custom CSS</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/manage-css" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.6 Developer Tools & ALM -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">3.6 Developer Tools & ALM</div>
+                            <span class="topic-badge badge-level-3">Level 3</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Power Platform CLI</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/power-platform-cli" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>VS Code Extension</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/vs-code-extension" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Power Pages ALM</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/portals-alm" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Solutions with Power Pages</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/power-pages-solutions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 4: Expert -->
+        <div class="level-section" data-level="4">
+            <div class="level-header level-4" onclick="toggleLevel(this)">
+                <span class="expand-icon">▼</span>
+                <div class="level-title">Level 4: Expert - Solution Architect</div>
+                <div class="level-subtitle">Prerequisites: Level 3 + Architecture Skills</div>
+                <div class="level-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span>6-8 Weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📖</span>
+                        <span>7 Main Topics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Architecture & Operations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <div class="topics-grid">
+                    <!-- 4.1 Advanced Architecture -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.1 Advanced Architecture</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Power Pages Architecture</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/architecture" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Lifecycle Management</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/lifecycle" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Server-Side Caching</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/clear-server-side-cache" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Enhanced Data Model</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/enhanced-data-model" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.2 Advanced Security -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.2 Advanced Security</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Entra External ID</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/entra-external-id" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>OAuth 2.0 Provider</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/oauth2-provider" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure AD B2C</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/azure-ad-b2c-provider" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>SAML 2.0</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/authentication/saml2-provider" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Web Application Firewall</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/web-application-firewall" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Content Security Policy</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/security/manage-content-security-policy" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/6</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.3 Advanced Integrations -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.3 Advanced Integrations</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure Front Door</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/azure-front-door" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>CDN Configuration</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/configure-cdn" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Virtual Tables</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/virtual-tables" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure Storage</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/enable-azure-storage" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.4 Administration & Governance -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.4 Administration & Governance</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Admin Center Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/admin-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Site Checker</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/site-checker" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Capacity Management</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/capacity-management" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Governance</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/coe-portals" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.5 Performance & Optimization -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.5 Performance & Optimization</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Header & Footer Caching</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/enable-header-footer-output-caching" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Search Configuration</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/search/overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Generative AI Search</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/configure/search/generative-ai" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/3</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.6 Go-Live & Operations -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">4.6 Go-Live & Operations</div>
+                            <span class="topic-badge badge-level-4">Level 4</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Go-Live Checklist</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/go-live/checklist" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Licensing</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/go-live/assign-licensing" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Telemetry Monitoring</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/go-live/telemetry-monitoring" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Custom Domains</span>
+                                <a href="https://learn.microsoft.com/en-us/power-pages/admin/add-custom-domain" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 5: Enterprise -->
+        <div class="level-section" data-level="5">
+            <div class="level-header level-5" onclick="toggleLevel(this)">
+                <span class="expand-icon">▼</span>
+                <div class="level-title">Level 5: Enterprise Architect & Strategic Consultant</div>
+                <div class="level-subtitle">Prerequisites: Level 4 + Enterprise Experience</div>
+                <div class="level-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span>8-12 Months</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📖</span>
+                        <span>10 Main Topics</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🎓</span>
+                        <span>Enterprise & Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <div class="topics-grid">
+                    <!-- 5.1 Well-Architected Framework -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.1 Well-Architected Framework</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Framework Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/what-is-power-well-architected" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Five Pillars</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/pillars" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Security Pillar</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/security/" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Reliability Pillar</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/reliability/" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Performance Efficiency</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/performance-efficiency/" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5.2 Enterprise ALM & DevOps -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.2 Enterprise ALM & DevOps</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>ALM Overview</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/alm/overview-alm" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Solution Concepts</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/alm/solution-concepts-alm" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure DevOps Build Tools</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/alm/devops-build-tools" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>GitHub Actions</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/alm/devops-github-actions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Platform Pipelines</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/alm/pipelines" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/5</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5.3 Governance & Adoption -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.3 Governance & Adoption</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Security Posture Management</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/security-posture-management" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Establish CoE</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/coe/starter-kit" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Business Value</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/business-value" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Champions Network</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/champions" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5.4 Azure Integration -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.4 Azure Integration Architecture</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure Front Door Deep Dive</span>
+                                <a href="https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure AD B2C Enterprise</span>
+                                <a href="https://learn.microsoft.com/en-us/azure/active-directory-b2c/overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Azure Entra External ID</span>
+                                <a href="https://learn.microsoft.com/en-us/entra/external-id/customers/overview-customers-ciam" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>WAF for Front Door</span>
+                                <a href="https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/afds-overview" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5.5 Enterprise Security -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.5 Enterprise Security Architecture</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Threat Modeling</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/security/threat-model" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Security Segmentation</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/security/segmentation" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Incident Response</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/security/incident-response" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Data Classification</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/well-architected/security/data-classification" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5.6 Strategic Consulting -->
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <div class="topic-title">5.6 Strategic Consulting & Advisory</div>
+                            <span class="topic-badge badge-level-5">Level 5</span>
+                        </div>
+                        <ul class="topic-items">
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Realize Value</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/common-vision/realize-value" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Leadership Buy-in</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/common-vision/get-leadership-buyin" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>License Strategy</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/adoption/license-assignment-strategies" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                            <li class="topic-item">
+                                <div class="checkbox" onclick="toggleCheck(this)"></div>
+                                <span>Enterprise Security White Paper</span>
+                                <a href="https://learn.microsoft.com/en-us/power-platform/guidance/white-papers/enterprise-security" class="topic-link" target="_blank">📘 Docs</a>
+                            </li>
+                        </ul>
+                        <div class="progress-section">
+                            <div class="progress-label">Progress: <span class="progress-text">0/4</span></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Power Pages Learning Curriculum</strong> - Your complete guide from Foundation to Enterprise Architect</p>
+            <p>Created by <a href="https://tinorabe.de/" target="_blank">Tino Rabe</a> | Microsoft MVP</p>
+            <p style="margin-top: 20px; font-size: 14px;">
+                💿 Your progress is saved locally in your browser using localStorage<br>
+                🔒 No personal data is collected or transmitted to any server<br>
+                🔃 Last updated: 2025<br>
+                📚 Based on official Microsoft Power Pages Documentation
+            </p>
+        </div>
+    </div>
+
+    <!-- CTA Container -->
+    <div class="quick-nav">
+        <div class="nav-cta">
+            <a href="https://tinorabe.de/kontakt/" class="nav-cta-link">Get in touch</a>
+            <div class="nav-cta-text">
+                Tino Rabe <img src="../images/MVP_Badge_Horizontal.png" class="nav-cta-badge" alt="Microsoft MVP">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timeline filter
+        function filterByTimeline(element) {
+            // Remove active class from all segments
+            document.querySelectorAll('.timeline-segment').forEach(seg => seg.classList.remove('active'));
+            // Add active class to clicked segment
+            element.classList.add('active');
+
+            const level = element.dataset.level;
+            const sections = document.querySelectorAll('.level-section');
+
+            sections.forEach(section => {
+                if (section.dataset.level === level) {
+                    section.style.display = 'block';
+                    // Expand the level content
+                    const header = section.querySelector('.level-header');
+                    const content = section.querySelector('.level-content');
+                    if (header && content) {
+                        header.classList.add('expanded');
+                        content.classList.add('expanded');
+                    }
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Reset filter to show all levels
+        function resetFilter() {
+            // Remove active from all timeline segments
+            document.querySelectorAll('.timeline-segment').forEach(seg => seg.classList.remove('active'));
+            // Show all sections and expand them
+            const sections = document.querySelectorAll('.level-section');
+            sections.forEach(section => {
+                section.style.display = 'block';
+                const header = section.querySelector('.level-header');
+                const content = section.querySelector('.level-content');
+                if (header && content) {
+                    header.classList.add('expanded');
+                    content.classList.add('expanded');
+                }
+            });
+        }
+
+        // Toggle checkbox
+        function toggleCheck(checkbox) {
+            checkbox.classList.toggle('checked');
+            updateProgress(checkbox.closest('.topic-card'));
+            saveProgress();
+        }
+
+        // Update progress bar
+        function updateProgress(card) {
+            const checkboxes = card.querySelectorAll('.checkbox');
+            const checked = card.querySelectorAll('.checkbox.checked');
+            const total = checkboxes.length;
+            const complete = checked.length;
+            const percentage = (complete / total) * 100;
+
+            const progressText = card.querySelector('.progress-text');
+            const progressFill = card.querySelector('.progress-fill');
+
+            progressText.textContent = `${complete}/${total}`;
+            progressFill.style.width = `${percentage}%`;
+        }
+
+        // Toggle level expand/collapse
+        function toggleLevel(header) {
+            header.classList.toggle('expanded');
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            const progress = {};
+            document.querySelectorAll('.topic-card').forEach((card, index) => {
+                const checkboxes = card.querySelectorAll('.checkbox');
+                progress[index] = Array.from(checkboxes).map(cb => cb.classList.contains('checked'));
+            });
+            localStorage.setItem('powerPagesProgress', JSON.stringify(progress));
+        }
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('powerPagesProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                document.querySelectorAll('.topic-card').forEach((card, index) => {
+                    if (progress[index]) {
+                        const checkboxes = card.querySelectorAll('.checkbox');
+                        progress[index].forEach((checked, i) => {
+                            if (checked && checkboxes[i]) {
+                                checkboxes[i].classList.add('checked');
+                            }
+                        });
+                        updateProgress(card);
+                    }
+                });
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            // Expand Level 1 by default
+            const level1Content = document.querySelector('.level-section[data-level="1"] .level-content');
+            if (level1Content) {
+                level1Content.classList.add('expanded');
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Table Permissions: 15 Sicherheitsmuster erklärt</title>
+<meta name="description" content="15 Table Permission Sicherheitsmuster für Power Pages: CRUD-Konfiguration, Web Roles, Parent-Child und Scope-Einstellungen">
+<link rel="canonical" href="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-table-permissions/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-table-permissions/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Table Permissions: 15 Sicherheitsmuster erklärt">
+<meta property="og:description" content="15 Table Permission Sicherheitsmuster für Power Pages: CRUD-Konfiguration, Web Roles, Parent-Child und Scope-Einstellungen">
+<meta property="og:url" content="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Table Permissions: 15 Sicherheitsmuster erklärt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Table Permissions: 15 Sicherheitsmuster erklärt">
+<meta name="twitter:description" content="15 Table Permission Sicherheitsmuster für Power Pages: CRUD-Konfiguration, Web Roles, Parent-Child und Scope-Einstellungen">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/#webpage",
+      "url": "https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/",
+      "name": "Power Pages Table Permissions: 15 Sicherheitsmuster erklärt",
+      "description": "15 Table Permission Sicherheitsmuster für Power Pages: CRUD-Konfiguration, Web Roles, Parent-Child und Scope-Einstellungen",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "de-DE"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<link rel="stylesheet" href="/assets/css/pp-sheet.css?v=cfaf3294f9">
+
+<div class="page-container ppsh">
+    <div class="header" data-chip="Cheat Sheet · Table Permissions">
+        <h1>Power Pages <span class="highlight">Table Permissions</span> erklärt</h1>
+        <p class="subtitle">Sichern Sie Ihre Portaldaten effektiv.</p>
+    </div>
+
+
+    <section class="intro-section">
+
+        <p>Table Permissions sind das Fundament der Datensicherheit in Microsoft Power Pages. Sie steuern, welche Dataverse-Datensätze Ihre Portal-Benutzer lesen, erstellen, aktualisieren oder löschen können. Ohne korrekte Table Permissions wird jeder Datenzugriff standardmäßig blockiert.</p>
+
+        <p>Dieses Cheat Sheet behandelt <strong>15 bewährte Sicherheitsmuster</strong>, die praxisnahe Zugriffskontroll-Herausforderungen lösen. Egal ob Sie ein Kundenportal, Partnerportal oder Mitarbeiter-Self-Service-Portal entwickeln, diese Muster helfen Ihnen, sicheren und skalierbaren Datenzugriff umzusetzen.</p>
+
+        <div class="key-concepts">
+            <div class="concept">
+                <h3>Global Scope</h3>
+                <p>Zugriff auf alle Datensätze unabhängig vom Besitzer. Sparsam einsetzen.</p>
+            </div>
+            <div class="concept">
+                <h3>Contact Scope</h3>
+                <p>Zugriff auf Datensätze, die mit dem Kontaktdatensatz des Benutzers verknüpft sind.</p>
+            </div>
+            <div class="concept">
+                <h3>Account Scope</h3>
+                <p>Zugriff auf Datensätze, die mit dem übergeordneten Konto des Benutzers verknüpft sind.</p>
+            </div>
+            <div class="concept">
+                <h3>Self Scope</h3>
+                <p>Zugriff ausschließlich auf den eigenen Kontaktdatensatz des Benutzers.</p>
+            </div>
+            <div class="concept">
+                <h3>Parent Scope</h3>
+                <p>Zugriff über eine übergeordnete Tabellenbeziehung erben.</p>
+            </div>
+        </div>
+
+        <div class="author-box">
+            <div class="author-info">
+                <span class="author-name">Tino Rabe</span> · <span class="author-title">ehemaliger Microsoft MVP für Power Pages (2024 bis 2026)</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="cheat-sheet">
+        <h2 class="section-title">15 Power Pages Table Permission Muster</h2>
+
+        <div class="grid">
+
+            <div class="card card-blue">
+                <div class="card-number">1</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Global Nur-Lesen</div>
+                <div class="card-description">Alle authentifizierten Benutzer können alle Datensätze lesen. Kein Schreibzugriff.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Access: Global<br>
+                    Privileges: Read
+                </div>
+            </div>
+
+            <div class="card card-green">
+                <div class="card-number">2</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Contact Scope CRUD</div>
+                <div class="card-description">Benutzer können nur Datensätze erstellen/lesen/aktualisieren/löschen, die mit ihrem Kontakt verknüpft sind.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Access: Contact<br>
+                    Privileges: Read, Write, Create, Delete
+                </div>
+            </div>
+
+            <div class="card card-pink">
+                <div class="card-number">3</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Account Scope Lesen</div>
+                <div class="card-description">Benutzer sehen Datensätze, die mit ihrem Konto verknüpft sind (unternehmensweite Sichtbarkeit).</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Access: Account<br>
+                    Privileges: Read
+                </div>
+            </div>
+
+            <div class="card card-orange">
+                <div class="card-number">4</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Nur eigener Zugriff</div>
+                <div class="card-description">Benutzer können nur ihren eigenen Kontaktdatensatz lesen/aktualisieren. Restriktivste Option.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Access: Self<br>
+                    Privileges: Read, Write
+                </div>
+            </div>
+
+            <div class="card card-purple">
+                <div class="card-number">5</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Parent-Child-Beziehung</div>
+                <div class="card-description">Zugriff auf untergeordnete Datensätze über die übergeordnete Table Permission. Sauberes und skalierbares Muster.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Parent: Case (Contact)<br>
+                    Child: Note (via regardingobjectid)
+                </div>
+            </div>
+
+            <div class="card card-yellow">
+                <div class="card-number">6</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Anonymer öffentlicher Zugriff</div>
+                <div class="card-description">Nicht-authentifizierten Benutzern das Lesen öffentlicher Datensätze ermöglichen. Mit Vorsicht verwenden!</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Web Role: Anonymous<br>
+                    Access: Global, Read only
+                </div>
+            </div>
+
+            <div class="card card-cyan">
+                <div class="card-number">7</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Nur-Erstellen-Berechtigung</div>
+                <div class="card-description">Benutzer können Datensätze erstellen, aber nicht zurücklesen. Nützlich für Einsendungen.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Access: Global<br>
+                    Privileges: Create only
+                </div>
+            </div>
+
+            <div class="card card-red">
+                <div class="card-number">8</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Lesen + Anhängen-Muster</div>
+                <div class="card-description">Benutzer können Datensätze lesen und zugehörige Datensätze anhängen (z. B. Notizen zu Cases hinzufügen).</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Privileges: Read, Append<br>
+                    Parent: Case → Child: Note
+                </div>
+            </div>
+
+            <div class="card card-blue">
+                <div class="card-number">9</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Mehrstufiger Parent Scope</div>
+                <div class="card-description">Berechtigungen über 3+ Ebenen verketten (Contact → Case → Note → Attachment).</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Contact → Case<br>
+                    Case → Note → Attachment
+                </div>
+            </div>
+
+            <div class="card card-green">
+                <div class="card-number">10</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Konto-Hierarchiezugriff</div>
+                <div class="card-description">Hierarchiesicherheit aktivieren, um Zugriff auf über-/untergeordnete Konten zu gewähren.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Übergeordnete Konto-Berechtigungen<br>
+                    werden auf untergeordnete Konten übertragen
+                </div>
+            </div>
+
+            <div class="card card-pink">
+                <div class="card-number">11</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Rollenbasierte Lesen/Schreiben-Trennung</div>
+                <div class="card-description">Verschiedene Web-Rollen erhalten verschiedene Berechtigungen (Admins: CRUD, Benutzer: Lesen).</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Admin Role: Read, Write, Delete<br>
+                    User Role: Read only
+                </div>
+            </div>
+
+            <div class="card card-orange">
+                <div class="card-number">12</div>
+                <div class="card-icon"></div>
+                <div class="card-title">AppendTo-Beziehung</div>
+                <div class="card-description">Verknüpfung von Datensätzen mit übergeordneten Datensätzen ermöglichen (Gegenteil von Append).</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Privilege: AppendTo<br>
+                    Notiz mit vorhandenem Case verknüpfen
+                </div>
+            </div>
+
+            <div class="card card-purple">
+                <div class="card-number">13</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Kein-Löschen-Richtlinie</div>
+                <div class="card-description">Lesen/Schreiben/Erstellen gewähren, aber nie Löschen. Datenintegrität wahren.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Privileges: Read, Write, Create<br>
+                    (Löschen bewusst weggelassen)
+                </div>
+            </div>
+
+            <div class="card card-yellow">
+                <div class="card-number">14</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Nur-Lesen für Anonyme, CRUD für Authentifizierte</div>
+                <div class="card-description">Öffentliche Benutzer können browsen, angemeldete Benutzer können vollständig interagieren.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Anonymous: Read<br>
+                    Authenticated: Read, Write, Create
+                </div>
+            </div>
+
+            <div class="card card-cyan">
+                <div class="card-number">15</div>
+                <div class="card-icon"></div>
+                <div class="card-title">Workaround für polymorphe Lookups</div>
+                <div class="card-description">Polymorphe Lookups werden nicht unterstützt. Separate Berechtigungen je Entitätstyp verwenden.</div>
+                <div class="card-example">
+                    <div class="card-example-label">BEISPIEL:</div>
+                    Statt regardingobjectid<br>
+                    fallspezifische Lookups verwenden
+                </div>
+            </div>
+
+        </div>
+
+        <div class="download-section">
+            <a href="/assets/downloads/power-pages-table-permissions.pdf" download class="download-button">
+                <span>Als PDF herunterladen</span>
+            </a>
+        </div>
+
+    </div>
+
+    <section class="summary-section">
+        <h2>Wann welches Table-Permission-Muster einsetzen</h2>
+
+        <p>Die Wahl des richtigen Table-Permission-Musters hängt von Ihren Geschäftsanforderungen ab. Hier eine kurze Entscheidungshilfe:</p>
+
+        <h3>Für Kundenportale</h3>
+        <ul>
+            <li><strong>Contact Scope CRUD</strong> für kundenspezifische Datensätze (Cases, Bestellungen, Rechnungen)</li>
+            <li><strong>Nur eigener Zugriff</strong> for profile management</li>
+            <li><strong>Parent-Child-Beziehung</strong> for related records (case notes, order lines)</li>
+        </ul>
+
+        <h3>Für Partnerportale</h3>
+        <ul>
+            <li><strong>Account Scope</strong> für unternehmensweite Sichtbarkeit</li>
+            <li><strong>Konto-Hierarchiezugriff</strong> for multi-level partner structures</li>
+            <li><strong>Rollenbasierte Trennung</strong> für Partner-Admins vs. normale Benutzer</li>
+        </ul>
+
+        <h3>Für öffentliche Websites</h3>
+        <ul>
+            <li><strong>Anonymer öffentlicher Zugriff</strong> for knowledge articles, FAQs</li>
+            <li><strong>Nur-Erstellen-Berechtigung</strong> for contact forms, lead capture</li>
+            <li><strong>Nur-Lesen Anonym + CRUD Authentifiziert</strong> für Produktkataloge mit Nutzerbewertungen</li>
+        </ul>
+
+        <h3>Best Practices</h3>
+        <ul>
+            <li>Immer mit der restriktivsten Berechtigung starten und bei Bedarf erweitern</li>
+            <li>Parent-Child-Beziehungen statt Global Scope verwenden, wann immer möglich</li>
+            <li>Berechtigungen mit verschiedenen Benutzerkonten testen, bevor die Seite live geht</li>
+            <li>Die Berechtigungsstruktur für künftige Wartung dokumentieren</li>
+            <li>Web API Column Permissions für sensible Felder in Betracht ziehen</li>
+        </ul>
+
+        <p style="margin-top: 25px">Benötigen Sie Hilfe bei der Implementierung von Table Permissions in Ihrem Power Pages-Projekt? <a href="/kontakt/">Projekt anfragen</a>, direkt bei einem ehemaligen Microsoft MVP (2024 bis 2026).</p>
+    </section>
+
+    <div class="footer">
+        <div class="footer-logo">Tino Rabe</div>
+        <div class="footer-text">Microsoft Power Pages-Beratung von <a href="/">Tino Rabe</a>, former Microsoft MVP for Power Pages</div>
+    </div>
+
+</div>
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

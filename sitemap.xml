@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tinorabe.de/de/blog/dynamics-365-kundenportal-templates/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/dynamics-365-customer-portal-templates/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/sicherheit-compliance-power-pages/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/security-compliance-power-pages/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/5-warnsignale-kundenportal/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/5-warning-signs-customer-portal/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-portals-lizenzierung-kosten/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-portals-licensing-costs/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-portals-vs-wordpress/</loc><lastmod>2025-09-05</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-portals-vs-wordpress/</loc><lastmod>2025-09-05</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/self-service-portal-roi-kundenservice/</loc><lastmod>2025-09-18</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/self-service-portal-roi-customer-service/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-lizenzwert-outofthebox/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-wert-lizenzpakete/</loc><lastmod>2025-10-08</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-value-license-packages/</loc><lastmod>2025-10-08</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-value-outofthebox/</loc><lastmod>2025-10-08</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-externe-identitaet-prozess/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-external-identity-process/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/entra-external-id-administration/</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/entra-external-id-administration/</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-sicherheitsarchitektur/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-security-architecture/</loc><lastmod>2025-10-18</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-server-logic-preview/</loc><lastmod>2026-11-04</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-server-logic-preview/</loc><lastmod>2026-11-04</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/makers-guide-power-pages-data/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/makers-guide-power-pages-data/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-authentication-erklaert/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-authentication-explained/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-custom-ssl-certificates/</loc><lastmod>2025-11-16</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-what-and-why/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/liquid-fetchxml-vs-web-api/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/liquid-fetchxml-vs-web-api/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/link-vorschauen-power-pages-og-tags/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/link-previews-power-pages-og-tags/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/wildcard-web-api-fix/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/wildcard-web-api-fix/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-ai-architektur-fehler/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-ai-architecture-mistakes/</loc><lastmod>2026-08-27</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-wildcard-fix-richtextfile-exception/</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-wildcard-fix-richtextfile-exception/</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/dataverse-odata-filter-rautezeichen/</loc><lastmod>2026-09-09</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/haertungs-serie-2026/</loc><lastmod>2026-09-09</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/dataverse-odata-filter-hash-character/</loc><lastmod>2026-09-09</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-hardening-series-2026/</loc><lastmod>2026-09-09</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/the-maintenance-proof/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/es-war-kein-hack/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/wasnt-a-hack/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/der-care-beweis/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/d365-75-25-dilemma/</loc><lastmod>2026-09-15</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/d365-75-25-dilemma/</loc><lastmod>2026-09-15</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-render-mutate-refresh-muster/</loc><lastmod>2026-09-16</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-render-mutate-refresh-pattern/</loc><lastmod>2026-09-16</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/security-selfcheck/</loc><lastmod>2026-09-18</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/d365-partner-ecosystem/</loc><lastmod>2026-09-22</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/d365-partner-ecosystem/</loc><lastmod>2026-09-22</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-server-logic-versteckte-grenzen/</loc><lastmod>2026-09-23</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-server-logic-hidden-constraints/</loc><lastmod>2026-09-23</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/d365-portal-business-case/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-content-snippet-bulk-import/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-html-2026-features/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-server-logic-nm-ondemand/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-serverlogic-from-liquid/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-terms-conditions/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/power-pages-webapi-nm-relationships/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/d365-portal-business-case/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-content-snippet-bulk-import/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-html-2026-features/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-server-logic-nm-ondemand/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-serverlogic-from-liquid/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-terms-conditions/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-webapi-nm-relationships/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://tinorabe.de/de/blog/d365-power-pages-internal-users/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/d365-power-pages-internal-users/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-in-house-vs-specialist/</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://tinorabe.de/de/tools/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/</loc><lastmod>2026-11-04</lastmod></url>
   <url><loc>https://tinorabe.de/impressum/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/datenschutz/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/kontakt/</loc><lastmod>2026-11-20</lastmod></url>
@@ -8,5 +85,27 @@
   <url><loc>https://tinorabe.de/leistungen/security-audit/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/referenzen/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/ueber-mich/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/artikel/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-building-blocks-reference/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-deployment-reference/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-pricing-calculator/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-security-reference/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-template-analyzer/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/tools/power-pages-pricing-calculator/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/tools/power-pages-template-analyzer/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/tools/power-pages-externe-identitaet/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-external-identity/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-learning-curriculum/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-liquid-templates/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-learning-curriculum/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-table-permissions/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-web-api/</loc><lastmod>2026-11-20</lastmod></url>
 </urlset>

@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Building Blocks: What Works Without Code</title>
+<meta name="description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<link rel="canonical" href="https://tinorabe.de/en/tools/power-pages-building-blocks-reference/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Building Blocks: What Works Without Code">
+<meta property="og:description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<meta property="og:url" content="https://tinorabe.de/en/tools/power-pages-building-blocks-reference/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Building Blocks: What Works Without Code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Building Blocks: What Works Without Code">
+<meta name="twitter:description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/en/tools/power-pages-building-blocks-reference/#webpage",
+      "url": "https://tinorabe.de/en/tools/power-pages-building-blocks-reference/",
+      "name": "Power Pages Building Blocks: What Works Without Code",
+      "description": "17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "en-GB"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<style>
+.pps {
+  --pps-navy: #0b0f1c;
+  --pps-navy-card: #161b2c;
+  --pps-blue-dark: #4a9eff;
+  --pps-page: #edf0f8;
+  --pps-card: #ffffff;
+  --pps-blue: #2563eb;
+  --pps-blue-soft: #e8efff;
+  --pps-ink: #141824;
+  --pps-muted: #5b6474;
+  --pps-label: #8a93a6;
+  --pps-line: #dde2ee;
+  background: var(--pps-page);
+  color: var(--pps-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.pps *, .pps *::before, .pps *::after { box-sizing: border-box; }
+.pps-wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+.pps-hero {
+  background-color: var(--pps-navy);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 14px);
+  color: #fff;
+  padding: calc(var(--nav-height, 72px) + 56px) 0 56px;
+}
+.pps-hero__grid { display: flex; justify-content: space-between; gap: 32px; align-items: flex-start; }
+.pps-chip {
+  display: inline-block;
+  border: 1px solid var(--pps-blue-dark);
+  color: var(--pps-blue-dark);
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px; margin-bottom: 24px;
+}
+.pps-hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.pps-hero h1 span { display: block; color: var(--pps-blue-dark); }
+.pps-hero p { color: #a9b1c4; font-size: 1.1rem; line-height: 1.6; max-width: 640px; margin: 0; }
+.pps-tile {
+  flex: none; width: 76px; height: 76px; border-radius: 16px; background: var(--pps-navy-card);
+  position: relative; display: grid; place-items: center;
+  font-weight: 800; font-size: 40px; color: #fff;
+}
+.pps-tile::after { content: ""; position: absolute; top: 12px; right: 12px; width: 10px; height: 10px; background: var(--pps-blue-dark); border-radius: 2px; }
+
+.pps-section { padding: 56px 0 8px; }
+.pps-section:last-of-type { padding-bottom: 72px; }
+.pps-kicker {
+  display: flex; align-items: center; gap: 16px;
+  color: var(--pps-blue); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.pps-kicker::after { content: ""; flex: 1; height: 1px; background: var(--pps-line); }
+.pps-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-lead { color: var(--pps-muted); line-height: 1.6; margin: 0 0 28px; text-wrap: pretty; }
+
+.pps-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pps-legend__item { background: var(--pps-card); border-radius: 6px; padding: 20px; border: 1px solid var(--pps-line); }
+.pps-legend__item strong { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.pps-legend__item p { margin: 0; color: var(--pps-muted); font-size: 0.92rem; line-height: 1.55; }
+
+.pps-mark { display: inline-block; width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.pps-mark--in { background: var(--pps-blue); }
+.pps-mark--nd { border: 2px solid var(--pps-label); }
+.pps-mark--out { background: var(--pps-ink); }
+
+.pps-arch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
+.pps-arch__btn {
+  text-align: left; cursor: pointer; font: inherit; color: inherit;
+  background: var(--pps-card); border: 1px solid var(--pps-line);
+  border-radius: 6px; padding: 20px;
+  transition: background-color .15s, border-color .15s;
+}
+.pps-arch__btn:hover { border-color: var(--pps-ink); }
+.pps-arch__btn:focus-visible { outline: 2px solid var(--pps-blue); outline-offset: 2px; }
+.pps-arch__btn[aria-pressed="true"] { background: var(--pps-navy); border-color: var(--pps-navy); color: #fff; }
+.pps-arch__btn[aria-pressed="true"] .pps-arch__code { color: var(--pps-blue-dark); }
+.pps-arch__btn[aria-pressed="true"] .pps-arch__desc { color: #a9b1c4; }
+.pps-arch__code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 1.6rem; color: var(--pps-blue); display: block; margin-bottom: 4px; }
+.pps-arch__name { font-weight: 700; display: block; margin-bottom: 6px; }
+.pps-arch__desc { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.5; display: block; }
+
+.pps-panel { background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; padding: 28px; }
+.pps-panel__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.pps-panel h3 { display: flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 800; margin: 0 0 14px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-panel ul { list-style: none; margin: 0; padding: 0; }
+.pps-panel li { padding: 10px 0; border-top: 1px solid var(--pps-line); }
+.pps-panel li:first-child { border-top: 0; padding-top: 0; }
+.pps-panel details summary { cursor: pointer; font-weight: 600; list-style: none; }
+.pps-panel details summary::-webkit-details-marker { display: none; }
+.pps-panel details summary::before { content: "→ "; color: var(--pps-blue); }
+.pps-panel details[open] summary::before { content: "↓ "; }
+.pps-panel details p { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.55; margin: 8px 0 0; }
+.pps-empty { color: var(--pps-muted); font-size: 0.92rem; line-height: 1.55; margin: 0; }
+.pps-env { margin-top: 24px; padding-top: 22px; border-top: 1px dashed var(--pps-line); color: var(--pps-muted); font-size: 0.92rem; line-height: 1.6; }
+.pps-env strong { color: var(--pps-ink); }
+
+.pps-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pps-tag {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--pps-blue); background: var(--pps-blue-soft); border-radius: 4px; padding: 3px 7px; white-space: nowrap;
+}
+.pps-tag--me { color: #fff; background: var(--pps-blue); }
+
+.pps-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.pps-toggle { display: inline-flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--pps-muted); cursor: pointer; }
+.pps-toggle input { width: 18px; height: 18px; accent-color: var(--pps-blue); }
+.pps-tablewrap { overflow-x: auto; background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; }
+.pps-table { width: 100%; border-collapse: collapse; min-width: 860px; font-size: 0.9rem; }
+.pps-table th {
+  text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--pps-label); padding: 14px 16px; border-bottom: 1px solid var(--pps-line); background: #f7f8fc;
+}
+.pps-table td { padding: 14px 16px; border-bottom: 1px solid var(--pps-line); vertical-align: top; line-height: 1.5; }
+.pps-table tbody tr:last-child td { border-bottom: 0; }
+.pps-table .pps-group td {
+  background: var(--pps-navy); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 10px 16px;
+}
+.pps-table .pps-feature { font-weight: 700; min-width: 190px; }
+.pps-table .pps-note { color: var(--pps-muted); max-width: 420px; }
+.pps-table .pps-state { white-space: nowrap; }
+.pps-state span { display: inline-flex; align-items: center; gap: 8px; }
+.pps-table .pps-envcell { color: var(--pps-muted); font-style: italic; }
+.pps-table a, .pps-panel a, .pps-foot a { color: var(--pps-blue); font-weight: 600; text-decoration: none; }
+.pps-table a:hover, .pps-panel a:hover, .pps-foot a:hover { text-decoration: underline; }
+.pps-table tr[hidden] { display: none; }
+
+.pps-note-env { color: var(--pps-muted); line-height: 1.6; margin: 20px 0 0; text-wrap: pretty; }
+.pps-note-env strong { color: var(--pps-ink); }
+
+.pps-foot { color: var(--pps-muted); font-size: 0.9rem; line-height: 1.6; }
+.pps-foot ul { list-style: none; padding: 0; margin: 0 0 16px; }
+.pps-foot li { position: relative; padding-left: 22px; margin-bottom: 8px; }
+.pps-foot li::before { content: "→"; position: absolute; left: 0; color: var(--pps-blue); font-weight: 700; }
+.pps-meta { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 700; color: var(--pps-label); letter-spacing: 1px; }
+
+@media (max-width: 860px) {
+  .pps-legend, .pps-arch, .pps-panel__cols { grid-template-columns: 1fr; }
+  .pps-tile { display: none; }
+  .pps-panel { padding: 20px; }
+}
+
+.pps-cta { background: var(--pps-navy); color: #a9b1c4; padding: 64px 0; margin-top: 56px; }
+.pps-cta .pps-kicker { color: var(--pps-blue-dark); }
+.pps-cta .pps-kicker::after { background: rgba(255,255,255,0.12); }
+.pps-cta h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-cta__lead { margin: 0 0 28px; line-height: 1.6; max-width: 720px; }
+.pps-cta__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pps-cta__card { display: block; background: var(--pps-navy-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 24px; text-decoration: none; color: #a9b1c4; transition: border-color .15s; }
+.pps-cta__card:hover, .pps-cta__card:focus-visible { border-color: var(--pps-blue-dark); outline: none; }
+.pps-cta__label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 12px; letter-spacing: 2px; color: var(--pps-blue-dark); }
+.pps-cta__card h3 { color: #fff; font-size: 1.15rem; font-weight: 800; margin: 8px 0 8px; font-family: 'Inter', system-ui, sans-serif; }
+.pps-cta__card p { margin: 0 0 14px; line-height: 1.55; font-size: 0.93rem; }
+.pps-cta__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; font-size: 0.86rem; }
+.pps-cta__meta b { color: #fff; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.pps-cta__go { color: var(--pps-blue-dark); font-weight: 700; white-space: nowrap; }
+@media (max-width: 860px) { .pps-cta__grid { grid-template-columns: 1fr; } }
+</style>
+
+<style>
+.pps-note-env a { color: var(--pps-blue); font-weight: 600; text-decoration: none; }
+.pps-foot h2 { color: var(--pps-ink); }
+.ppb-scale { display: grid; grid-template-columns: repeat(3, auto); gap: 0; margin-top: 28px; width: max-content; max-width: 100%; }
+.ppb-scale span { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 12px; letter-spacing: 2px; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.25); color: #fff; }
+.ppb-scale span + span { border-left: 0; }
+.ppb-scale span:first-child { background: var(--pps-blue-dark); border-color: var(--pps-blue-dark); color: var(--pps-navy); }
+.ppb-scale span:last-child { color: #a9b1c4; }
+
+.ppb-tasks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+.ppb-task { font: inherit; text-align: left; cursor: pointer; background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; padding: 16px; color: var(--pps-ink); min-height: 96px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
+.ppb-task:hover { border-color: var(--pps-ink); }
+.ppb-task:focus-visible { outline: 2px solid var(--pps-blue); outline-offset: 2px; }
+.ppb-task b { font-weight: 700; line-height: 1.35; }
+.ppb-task small { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--pps-label); letter-spacing: 1px; }
+.ppb-task[aria-pressed="true"] { background: var(--pps-navy); border-color: var(--pps-navy); color: #fff; }
+.ppb-task[aria-pressed="true"] small { color: var(--pps-blue-dark); }
+
+.ppb-recipe { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; overflow: hidden; }
+.ppb-recipe__col { padding: 24px; }
+.ppb-recipe__col + .ppb-recipe__col { border: 1px solid #DDE2EC; background: #fbfcfe; }
+.ppb-recipe h3 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pps-label); margin: 0 0 12px; font-family: 'Inter', system-ui, sans-serif; }
+.ppb-recipe ol { margin: 0 0 20px; padding: 0; list-style: none; counter-reset: r; }
+.ppb-recipe ol li { counter-increment: r; position: relative; padding-left: 36px; margin-bottom: 12px; line-height: 1.55; color: var(--pps-muted); }
+.ppb-recipe ol li::before { content: counter(r, decimal-leading-zero); position: absolute; left: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; color: var(--pps-blue); }
+.ppb-recipe ol li b { color: var(--pps-ink); }
+.ppb-recipe p { margin: 0 0 14px; line-height: 1.6; color: var(--pps-muted); }
+.ppb-recipe p b { color: var(--pps-ink); }
+.ppb-wall { border-top: 1px solid var(--pps-line); padding-top: 14px; }
+.ppb-wall b { color: var(--pps-ink); }
+
+.ppb-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.ppb-chip { font: inherit; font-size: 0.86rem; cursor: pointer; border: 1px solid var(--pps-line); background: var(--pps-card); color: var(--pps-muted); border-radius: 999px; padding: 6px 14px; }
+.ppb-chip[aria-pressed="true"] { background: var(--pps-ink); border-color: var(--pps-ink); color: #fff; }
+.ppb-chip:focus-visible { outline: 2px solid var(--pps-blue); outline-offset: 2px; }
+
+.ppb-cat { display: grid; gap: 12px; }
+.ppb-block { background: var(--pps-card); border: 1px solid var(--pps-line); border-radius: 6px; display: grid; grid-template-columns: 220px minmax(0, 1fr) 150px; }
+.ppb-block[hidden] { display: none; }
+.ppb-block__name { padding: 18px 20px; border-right: 1px solid var(--pps-line); }
+.ppb-block__name b { display: block; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+.ppb-block__name span { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--pps-label); letter-spacing: 1px; text-transform: uppercase; }
+.ppb-ladder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ppb-step { padding: 18px 16px; border-right: 1px solid var(--pps-line); font-size: 0.86rem; line-height: 1.55; color: var(--pps-muted); }
+.ppb-step i { display: block; font-style: normal; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 11px; letter-spacing: 1px; margin-bottom: 6px; color: var(--pps-ink); }
+.ppb-step--studio i::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--pps-blue); border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.ppb-step--mgmt i::before { content: ""; display: inline-block; width: 10px; height: 10px; border: 2px solid var(--pps-blue); border-radius: 2px; margin-right: 6px; vertical-align: -2px; box-sizing: border-box; }
+.ppb-step--code i::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--pps-ink); border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.ppb-step--empty { color: var(--pps-label); }
+.ppb-limit { grid-column: 2 / 3; padding: 0 16px 16px; font-size: 0.86rem; line-height: 1.55; color: var(--pps-muted); }
+.ppb-limit b { color: var(--pps-ink); }
+.ppb-limit a { color: var(--pps-blue); font-weight: 600; text-decoration: none; }
+.ppb-spa { grid-row: 1 / span 2; grid-column: 3 / 4; border: 1px solid #DDE2EC; padding: 18px 16px; background: #f7f8fc; font-size: 0.84rem; line-height: 1.5; color: var(--pps-muted); }
+.ppb-spa i { display: block; font-style: normal; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; font-size: 11px; letter-spacing: 1px; color: var(--pps-label); margin-bottom: 6px; }
+.ppb-spa b { display: block; color: var(--pps-ink); margin-bottom: 4px; }
+.ppb-spa--build b { color: var(--pps-ink); }
+.ppb-spa--api b { color: var(--pps-blue); }
+.ppb-spa--nd b { color: var(--pps-label); }
+.ppb-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--pps-blue); background: var(--pps-blue-soft); border-radius: 4px; padding: 2px 6px; margin-left: 6px; vertical-align: 1px; }
+.ppb-head { display: grid; grid-template-columns: 220px minmax(0, 1fr) 150px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--pps-label); padding: 0 0 8px; }
+.ppb-head span:nth-child(2) { padding-left: 16px; }
+.ppb-head span:nth-child(3) { padding-left: 16px; }
+
+@media (max-width: 960px) {
+  .ppb-tasks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ppb-recipe { grid-template-columns: 1fr; }
+  .ppb-recipe__col + .ppb-recipe__col { border-left: 0; border-top: 1px solid var(--pps-line); }
+  .ppb-head { display: none; }
+  .ppb-block { grid-template-columns: 1fr; }
+  .ppb-block__name { border-right: 0; border-bottom: 1px solid var(--pps-line); }
+  .ppb-ladder { grid-template-columns: 1fr; }
+  .ppb-step { border-right: 0; border-bottom: 1px solid var(--pps-line); }
+  .ppb-limit { grid-column: auto; padding: 14px 16px; }
+  .ppb-spa { grid-row: auto; grid-column: auto; border-left: 0; border-top: 1px solid var(--pps-line); }
+}
+</style>
+
+<div class="pps">
+
+  <header class="pps-hero">
+    <div class="pps-wrap pps-hero__grid">
+      <div>
+        <span class="pps-chip">Building blocks reference · verified 1 Dec 2026</span>
+        <h1>Power Pages building blocks,<span>and where code begins.</span></h1>
+        <p>17 design studio building blocks, from forms and lists to Power BI, search and agents. What you get without code, what needs the management app, where Microsoft Learn draws the line, and what an SPA code site has to build itself.</p>
+        <div class="ppb-scale" aria-hidden="true"><span>NO CODE</span><span>CONFIG</span><span>CODE</span></div>
+      </div>
+      <div class="pps-tile" aria-hidden="true">P</div>
+    </div>
+  </header>
+
+  <section class="pps-section" id="build">
+    <div class="pps-wrap">
+      <div class="pps-kicker">For makers</div>
+      <h2>What do you want to build?</h2>
+      <p class="pps-lead">Pick a scenario and get the recipe: which blocks to use, how far the design studio takes you, and where you'll hit a wall.</p>
+      <div class="ppb-tasks" id="ppb-tasks" role="group" aria-label="Scenarios"></div>
+      <div class="ppb-recipe" id="ppb-recipe" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="pps-section" id="catalogue">
+    <div class="pps-wrap">
+      <div class="pps-kicker">For architects</div>
+      <h2>The catalogue</h2>
+      <p class="pps-lead">Every block on the same ladder: design studio, management app, code. The right column shows what a code site gets instead.</p>
+      <div class="ppb-filter" id="ppb-filter" role="group" aria-label="Filter"></div>
+      <div class="ppb-head" aria-hidden="true"><span>Block</span><span>Design studio · Management app · Code</span><span>SPA code site</span></div>
+      <div class="ppb-cat" id="ppb-cat"></div>
+    </div>
+  </section>
+
+  <section class="pps-cta">
+    <div class="pps-wrap">
+      <div class="pps-kicker">Next step</div>
+      <h2>Low code or code site? Decide before you build</h2>
+      <p class="pps-cta__lead">Most projects find their limits in the third sprint. It's cheaper to know them in the first week.</p>
+      <div class="pps-cta__grid">
+        <a class="pps-cta__card" href="/leistungen/dynamics-365-crm/">
+          <span class="pps-cta__label">DECIDE</span>
+          <h3>Delivery</h3>
+          <p>Solution architecture, delivery or review for Dynamics 365 and Power Pages: data model, roles and access model, authentication and environment strategy, in your team or your partner's team.</p>
+          <div class="pps-cta__meta"><span><b>Dynamics 365 CRM &amp; Power Pages</b></span><span class="pps-cta__go">About delivery (in German) →</span></div>
+        </a>
+        <a class="pps-cta__card" href="/kontakt/">
+          <span class="pps-cta__label">ASK</span>
+          <h3>Get in touch</h3>
+          <p>Have a concrete project? Describe your starting point and timeline in a few lines, and you will hear back whether and how I can help.</p>
+          <div class="pps-cta__meta"><span><b>tino@amingi.net</b></span><span class="pps-cta__go">Get in touch →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pps-section">
+    <div class="pps-wrap pps-foot">
+      <div class="pps-kicker">Method</div>
+      <h2>How this was checked</h2>
+      <ul>
+        <li>Every limit comes from a Microsoft Learn page, linked on the block.</li>
+        <li>Standard and enhanced data model behave the same in design studio, so they share one ladder.</li>
+        <li>For SPA code sites, Learn states that out-of-the-box lists and forms aren't supported and the pages workspace isn't available. Where Microsoft's Power Pages plugin documents an API instead, the right column says so.</li>
+        <li>Preview features are marked. Part of a series with the <a href="/en/tools/power-pages-security-reference/">Security Reference</a> and the <a href="/en/tools/power-pages-deployment-reference/">Deployment Reference</a>.</li>
+      </ul>
+      <p>Spotted a change? Write to <a href="mailto:tino@amingi.net?subject=Building%20blocks%20reference%20correction">tino@amingi.net</a> and I'll update the reference.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var L = 'https://learn.microsoft.com/power-pages/';
+  var SPA = {
+    build: { label: 'Build it yourself', cls: 'build' },
+    api: { label: 'Microsoft API available', cls: 'api' },
+    nd: { label: 'Not documented', cls: 'nd' },
+    na: { label: 'Not applicable', cls: 'nd' }
+  };
+
+  var blocks = [
+    { id: 'text', group: 'Content and layout', name: 'Text',
+      studio: 'Styles, formatting, links, palette colours.', mgmt: '', code: 'Liquid to show data inside text.',
+      limit: 'Power Fx for dynamic values is in preview.', tags: [],
+      spa: 'build', spaNote: 'Your own markup.', src: L + 'getting-started/add-text' },
+    { id: 'image', group: 'Content and layout', name: 'Image',
+      studio: 'Upload, image library or external URL.', mgmt: '', code: '',
+      limit: 'External URLs must be https.', tags: [],
+      spa: 'build', spaNote: 'Your own assets.', src: L + 'getting-started/add-image' },
+    { id: 'video', group: 'Content and layout', name: 'Video',
+      studio: 'Embed by URL with start time, autoplay, loop.', mgmt: '', code: '',
+      limit: 'Videos that block embedding won\'t show.', tags: [],
+      spa: 'build', spaNote: 'Your own player.', src: L + 'getting-started/add-video' },
+    { id: 'button', group: 'Content and layout', name: 'Button',
+      studio: 'Link to a URL or a page, primary or secondary style.', mgmt: '', code: 'JavaScript for anything beyond navigation.',
+      limit: 'Navigation only, no actions.', tags: [],
+      spa: 'build', spaNote: 'Your own component.', src: L + 'getting-started/add-button' },
+    { id: 'layout', group: 'Content and layout', name: 'Sections and spacing',
+      studio: 'Six section layouts, spacer, drag and drop.', mgmt: '', code: 'CSS and web templates for custom layouts.',
+      limit: 'No drag and drop in sections with flex-direction row-reverse. Header and footer can\'t be dragged.', tags: [],
+      spa: 'build', spaNote: 'Pages and style workspace aren\'t available.', src: L + 'getting-started/customize-pages' },
+    { id: 'iframe', group: 'Content and layout', name: 'Iframe',
+      studio: 'Embed another website.', mgmt: '', code: '',
+      limit: 'The target site\'s framing headers decide whether it shows. Power Fx is in preview.', tags: [],
+      spa: 'build', spaNote: 'Your own iframe.', src: L + 'getting-started/add-iframe' },
+    { id: 'form', group: 'Capture data', name: 'Form',
+      studio: 'Create, edit or read-only mode from a Dataverse form. CAPTCHA, success message or redirect.', mgmt: 'Basic form metadata for labels, styles, defaults.', code: 'Code components on fields, JavaScript validation.',
+      limit: '<b>Not supported:</b> connection subgrids, duplicate fields, party list fields, business rules, hidden choice values. A lookup rendered as dropdown ignores the related records filter.', tags: [],
+      spa: 'build', spaNote: 'Out-of-the-box forms aren\'t supported. Build with React and the Web API.', src: L + 'configure/basic-forms' },
+    { id: 'attach', group: 'Capture data', name: 'Attachments',
+      studio: 'Notes (up to 90 MB per file) or Azure Blob (up to 10 GB), file types, count.', mgmt: 'Notes and Azure settings per form.', code: 'Web API upload to Azure Blob in custom pages.',
+      limit: 'Notes are also capped by the environment\'s email attachment limit, 5 MB by default. Azure Blob needs base portal 9.3.2405 and runtime 9.6.5.1 or later, plus role assignments in Azure.', tags: [],
+      spa: 'build', spaNote: 'Your own upload, for example through the Web API.', src: L + 'getting-started/add-form' },
+    { id: 'multistep', group: 'Capture data', name: 'Multistep form',
+      studio: 'Steps, attachments per step, back button.', mgmt: '<b>Conditions and redirect steps live here only.</b>', code: 'JavaScript per step.',
+      limit: 'Steps can\'t be reused. Changing steps makes existing sessions stale. No AI form fill.', tags: [],
+      spa: 'build', spaNote: 'Build the flow yourself.', src: L + 'getting-started/multistep-forms' },
+    { id: 'aiform', group: 'Capture data', name: 'AI for forms',
+      studio: 'Generate a form with Copilot. AI form fill from PDFs and images.', mgmt: '', code: '',
+      limit: 'Copilot creates tables named "Copilot …". AI form fill: basic forms in create mode only, site 9.6.9 or later, not in GCC or DoD, no file, image or lookup fields.', tags: ['Preview'],
+      spa: 'api', spaNote: 'Data summarization API, documented in Microsoft\'s plugin.', src: L + 'getting-started/add-form' },
+    { id: 'list', group: 'Show data', name: 'List',
+      studio: 'Dataverse view, create, view, edit, delete, Excel download, search. Modern list: infinite scroll, inline filters, styling.', mgmt: '<b>Advanced filters and calendar view live here only.</b>', code: 'Liquid with FetchXML, Web API, client API for modern lists.',
+      limit: 'Classic lists page instead of scrolling. Data shows only with table permissions.', tags: [],
+      spa: 'build', spaNote: 'Out-of-the-box lists aren\'t supported. Build with React and the Web API.', src: L + 'getting-started/add-list' },
+    { id: 'ailist', group: 'Show data', name: 'AI in lists',
+      studio: 'Summary with charts, natural language search.', mgmt: '', code: '',
+      limit: 'Site 9.7.4 or later. No virtual tables, only the first 5,000 records, English only.', tags: ['Preview'],
+      spa: 'api', spaNote: 'Data summarization API, documented in Microsoft\'s plugin.', src: L + 'getting-started/add-ai-summary-list' },
+    { id: 'powerbi', group: 'Show data', name: 'Power BI',
+      studio: 'Dashboard tile or report page, three access types.', mgmt: '', code: 'powerbi Liquid tag, row-level security through roles.',
+      limit: '"Embed for your customers" needs the Embedded service, an Entra security group and Power BI tenant settings. On an anonymous page, anyone sees it. Paginated reports aren\'t supported.', tags: [],
+      spa: 'nd', spaNote: 'Learn says nothing for code sites.', src: L + 'getting-started/add-power-bi' },
+    { id: 'search', group: 'Show data', name: 'Search',
+      studio: 'Search component with AI summary.', mgmt: 'Site settings for scope and tables.', code: 'searchindex Liquid tag.',
+      limit: 'Needs generative AI search and Dataverse search switched on. The index can take hours to days. One search results page per site.', tags: [],
+      spa: 'api', spaNote: 'Search summary API, documented in Microsoft\'s plugin.', src: L + 'getting-started/add-search' },
+    { id: 'custom', group: 'Extend', name: 'Custom component',
+      studio: 'Insert and set parameters like any other block.', mgmt: '', code: 'A developer builds the web template with a manifest first.',
+      limit: 'Only components with a manifest appear in the list.', tags: ['Preview'],
+      spa: 'build', spaNote: 'Your own components.', src: L + 'getting-started/add-custom-component' },
+    { id: 'agent', group: 'Extend', name: 'Agent',
+      studio: 'Site agent from the set up workspace, web roles control who sees it. Agent from a form is in preview.', mgmt: '', code: 'Copilot Studio for topics and hand-off.',
+      limit: 'Tenant setting for publishing AI copilots, HTTP connector must not be blocked, Copilot Studio capacity. Switch the agent off and on again after a domain change.', tags: [],
+      spa: 'nd', spaNote: 'Learn says nothing for code sites.', src: L + 'getting-started/enable-agent' },
+    { id: 'pcf', group: 'Extend', name: 'Code components on fields',
+      studio: 'Switch on per field, edit properties (preview).', mgmt: '', code: 'Build the PCF control.',
+      limit: 'The component has to be set on the Dataverse form first.', tags: [],
+      spa: 'na', spaNote: 'Code sites have no Dataverse forms.', src: L + 'getting-started/add-form' }
+  ];
+
+  var tasks = [
+    { id: 'contact', title: 'A contact form with an attachment', blocks: ['form', 'attach'],
+      works: 'A form in create mode with CAPTCHA for anonymous visitors and file upload, all in design studio.',
+      wall: 'The Notes size cap. Check the email attachment limit of the environment, or switch to Azure Blob.' },
+    { id: 'application', title: 'An application with several steps', blocks: ['multistep', 'attach'],
+      works: 'Steps, attachments per step and a back button.',
+      wall: 'Branching. Conditions and redirect steps exist only in the management app.' },
+    { id: 'myrecords', title: 'Users see and edit their own records', blocks: ['list', 'form'],
+      works: 'A list with view and edit actions that opens a form in edit mode.',
+      wall: 'Table permissions with contact scope decide what each user sees. Without them the list stays empty.' },
+    { id: 'calendar', title: 'Show dates as a calendar', blocks: ['list'],
+      works: 'A list on a table with date columns.',
+      wall: 'The calendar view itself. It\'s configured in the management app, not in design studio.' },
+    { id: 'kpi', title: 'Show figures and charts', blocks: ['powerbi', 'ailist'],
+      works: 'A Power BI report or dashboard tile, or an AI summary on a list.',
+      wall: 'Embedding for external users needs the Embedded service and admin setup. Paginated reports don\'t work.' },
+    { id: 'find', title: 'Let visitors search the site', blocks: ['search'],
+      works: 'The search component with an AI summary.',
+      wall: 'Dataverse search must be on in the environment, and the first index takes time.' },
+    { id: 'answer', title: 'Answer visitor questions', blocks: ['agent'],
+      works: 'A site agent that answers from your site content.',
+      wall: 'Tenant settings and Copilot Studio capacity. Hand-off to a human needs Copilot Studio.' },
+    { id: 'custom', title: 'Something the toolbox doesn\'t have', blocks: ['custom', 'pcf'],
+      works: 'Reusable custom components and code components, once a developer has built them.',
+      wall: 'Someone has to write Liquid or a PCF control first. At this point, also weigh a code site.' }
+  ];
+
+  var groups = ['All', 'Content and layout', 'Capture data', 'Show data', 'Extend'];
+  var currentTask = 'contact';
+  var currentGroup = 'All';
+
+  function byId(id) { for (var i = 0; i < blocks.length; i++) if (blocks[i].id === id) return blocks[i]; }
+  function src(url) { return '<a href="' + url + '" target="_blank" rel="noopener">Microsoft Learn</a>'; }
+  function tags(t) { return t.map(function (x) { return '<span class="ppb-tag">' + x + '</span>'; }).join(''); }
+
+  function renderTasks() {
+    var el = document.getElementById('ppb-tasks');
+    el.innerHTML = tasks.map(function (t, i) {
+      return '<button type="button" class="ppb-task" data-task="' + t.id + '" aria-pressed="' + (t.id === currentTask) + '"><b>' + t.title + '</b><small>' + String(i + 1).padStart(2, '0') + ' · ' + t.blocks.length + (t.blocks.length > 1 ? ' BLOCKS' : ' BLOCK') + '</small></button>';
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('.ppb-task'), function (b) {
+      b.addEventListener('click', function () { currentTask = b.getAttribute('data-task'); renderTasks(); renderRecipe(); });
+    });
+  }
+
+  function renderRecipe() {
+    var t = tasks.filter(function (x) { return x.id === currentTask; })[0];
+    var steps = t.blocks.map(function (id) {
+      var b = byId(id);
+      return '<li><b>' + b.name + '</b>' + tags(b.tags) + '<br>' + b.studio + (b.mgmt ? ' Management app: ' + b.mgmt.replace(/<\/?b>/g, '') : '') + '</li>';
+    }).join('');
+    var spa = t.blocks.map(function (id) { var b = byId(id); return '<b>' + b.name + ':</b> ' + b.spaNote; }).join('<br>');
+    document.getElementById('ppb-recipe').innerHTML =
+      '<div class="ppb-recipe__col"><h3>The recipe</h3><ol>' + steps + '</ol><p><b>Without code:</b> ' + t.works + '</p></div>' +
+      '<div class="ppb-recipe__col"><h3>Where you hit the wall</h3><p>' + t.wall + '</p><div class="ppb-wall"><h3>On a code site instead</h3><p>' + spa + '</p></div></div>';
+  }
+
+  function step(kind, label, text) {
+    return '<div class="ppb-step ppb-step--' + kind + (text ? '' : ' ppb-step--empty') + '"><i>' + label + '</i>' + (text || 'Nothing extra') + '</div>';
+  }
+
+  function renderFilter() {
+    var el = document.getElementById('ppb-filter');
+    el.innerHTML = groups.map(function (g) {
+      return '<button type="button" class="ppb-chip" data-group="' + g + '" aria-pressed="' + (g === currentGroup) + '">' + g + '</button>';
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('.ppb-chip'), function (c) {
+      c.addEventListener('click', function () { currentGroup = c.getAttribute('data-group'); renderFilter(); applyFilter(); });
+    });
+  }
+
+  function renderCatalogue() {
+    document.getElementById('ppb-cat').innerHTML = blocks.map(function (b) {
+      var s = SPA[b.spa];
+      return '<article class="ppb-block" data-group="' + b.group + '">' +
+        '<div class="ppb-block__name"><b>' + b.name + tags(b.tags) + '</b><span>' + b.group + '</span></div>' +
+        '<div class="ppb-ladder">' + step('studio', 'DESIGN STUDIO', b.studio) + step('mgmt', 'MANAGEMENT APP', b.mgmt) + step('code', 'CODE', b.code) + '</div>' +
+        '<div class="ppb-spa ppb-spa--' + s.cls + '"><i>SPA CODE SITE</i><b>' + s.label + '</b>' + b.spaNote + '</div>' +
+        '<div class="ppb-limit"><b>Limit:</b> ' + b.limit + ' ' + src(b.src) + '</div>' +
+        '</article>';
+    }).join('');
+  }
+
+  function applyFilter() {
+    Array.prototype.forEach.call(document.querySelectorAll('.ppb-block'), function (a) {
+      a.hidden = currentGroup !== 'All' && a.getAttribute('data-group') !== currentGroup;
+    });
+  }
+
+  renderTasks();
+  renderRecipe();
+  renderFilter();
+  renderCatalogue();
+})();
+</script>
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Title -->
+    <title>Power Pages Table Permissions: 15 Security Patterns Explained | Cheat Sheet 2025</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Complete guide to Power Pages table permissions: 15 proven security patterns for Dataverse access control. Learn Global, Contact, Account, Self, and Parent scope with real examples. Free cheat sheet by Microsoft MVP.">
+
+    <!-- Keywords -->
+    <meta name="keywords" content="Power Pages table permissions, Dataverse security, Power Pages access control, web roles, table permission patterns, Power Pages security, CRUD permissions, parent child permissions, account scope, contact scope">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Author -->
+    <meta name="author" content="Tino Rabe">
+    <meta name="language" content="en">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tinorabe.de/assets/cheat-sheets/power-pages-table-permissions.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Power Pages Table Permissions: 15 Security Patterns Explained">
+    <meta property="og:description" content="Complete guide to Power Pages table permissions with 15 proven security patterns. Free cheat sheet by Microsoft MVP.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tinorabe.de/assets/cheat-sheets/power-pages-table-permissions.html">
+    <meta property="og:image" content="https://tinorabe.de/favicon.svg">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Power Pages Table Permissions Cheat Sheet">
+    <meta name="twitter:description" content="15 security patterns for Dataverse access control in Power Pages">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Power Pages Table Permissions: 15 Security Patterns Explained",
+        "description": "Complete guide to Power Pages table permissions with 15 proven security patterns for Dataverse access control. Learn Global, Contact, Account, Self, and Parent scope with real examples.",
+        "image": "https://tinorabe.de/favicon.svg",
+        "author": {
+            "@type": "Person",
+            "name": "Tino Rabe",
+            "jobTitle": "Microsoft MVP for Power Pages",
+            "url": "https://tinorabe.de/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Tino Rabe",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://tinorabe.de/favicon.svg"
+            }
+        },
+        "datePublished": "2025-10-15",
+        "dateModified": "2026-01-15",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://tinorabe.de/assets/cheat-sheets/power-pages-table-permissions.html"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Microsoft Power Pages"
+        },
+        "keywords": "Power Pages, table permissions, Dataverse security, web roles, access control"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #0f172a;
+            padding: 40px;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Intro Section for SEO */
+        .intro-section {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 40px 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .intro-section h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        .intro-section h1 .highlight {
+            color: #34d399;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .intro-section .key-concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .intro-section .concept {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .intro-section .concept h3 {
+            color: #60a5fa;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .intro-section .concept p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .author-box .author-info {
+            font-size: 14px;
+        }
+
+        .author-box .author-name {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .author-box .author-title {
+            color: #94a3b8;
+        }
+
+        .cheat-sheet {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+
+        .header .number {
+            color: #60a5fa;
+        }
+
+        .header .highlight {
+            color: #34d399;
+        }
+
+        .header .subtitle {
+            font-size: 24px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 20px;
+            background: #0f172a;
+            position: relative;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #60a5fa;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .card-icon {
+            font-size: 36px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-top: 50px;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+            line-height: 1.2;
+        }
+
+        .card-description {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .card-example {
+            font-size: 11px;
+            color: #e2e8f0;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+            border: 1px solid #334155;
+        }
+
+        .card-example-label {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Color variations */
+        .card-blue { border-color: #60a5fa; }
+        .card-green { border-color: #34d399; }
+        .card-pink { border-color: #f472b6; }
+        .card-orange { border-color: #fb923c; }
+        .card-purple { border-color: #c084fc; }
+        .card-yellow { border-color: #fbbf24; }
+        .card-cyan { border-color: #22d3ee; }
+        .card-red { border-color: #f87171; }
+
+        .download-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            color: #0f172a;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .download-icon {
+            font-size: 20px;
+        }
+
+        /* Summary Section for SEO */
+        .summary-section {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 40px 50px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .summary-section h2 {
+            font-size: 24px;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        .summary-section h3 {
+            font-size: 18px;
+            color: #34d399;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .summary-section p, .summary-section li {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .summary-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .summary-section ul li::before {
+            content: "→ ";
+            color: #60a5fa;
+        }
+
+        .footer {
+            text-align: center;
+            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            color: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .footer-text {
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .footer a {
+            color: #0f172a;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 20px;
+            }
+            .intro-section, .cheat-sheet, .summary-section {
+                padding: 25px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .cheat-sheet {
+                box-shadow: none;
+            }
+            .intro-section, .summary-section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+
+    <!-- SEO Intro Section -->
+    <section class="intro-section">
+        <h1>Power Pages <span class="highlight">Table Permissions</span> Explained</h1>
+
+        <p>Table permissions are the foundation of data security in Microsoft Power Pages. They control which Dataverse records your portal users can read, create, update, or delete. Without proper table permissions, all data access is blocked by default.</p>
+
+        <p>This cheat sheet covers <strong>15 proven security patterns</strong> that solve real-world access control challenges. Whether you're building a customer portal, partner portal, or employee self-service site, these patterns will help you implement secure and scalable data access.</p>
+
+        <div class="key-concepts">
+            <div class="concept">
+                <h3>Global Scope</h3>
+                <p>Access all records regardless of ownership. Use sparingly.</p>
+            </div>
+            <div class="concept">
+                <h3>Contact Scope</h3>
+                <p>Access records linked to the user's contact record.</p>
+            </div>
+            <div class="concept">
+                <h3>Account Scope</h3>
+                <p>Access records linked to the user's parent account.</p>
+            </div>
+            <div class="concept">
+                <h3>Self Scope</h3>
+                <p>Access only the user's own contact record.</p>
+            </div>
+            <div class="concept">
+                <h3>Parent Scope</h3>
+                <p>Inherit access through a parent table relationship.</p>
+            </div>
+        </div>
+
+        <div class="author-box">
+            <div class="author-info">
+                <span class="author-name">Tino Rabe</span> · <span class="author-title">Microsoft MVP for Power Pages</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Cheat Sheet -->
+    <div class="cheat-sheet">
+
+        <div class="header">
+            <h2><span class="number">15</span> Power Pages <span class="highlight">Table Permission</span> Patterns</h2>
+            <p class="subtitle">Secure your portal data effectively.</p>
+        </div>
+
+        <div class="grid">
+
+            <!-- 1. Global Read-Only -->
+            <div class="card card-blue">
+                <div class="card-number">1</div>
+                <div class="card-icon">🌍</div>
+                <div class="card-title">Global Read-Only</div>
+                <div class="card-description">Allow all authenticated users to read all records. No write access.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Access: Global<br>
+                    Privileges: Read
+                </div>
+            </div>
+
+            <!-- 2. Contact Scope CRUD -->
+            <div class="card card-green">
+                <div class="card-number">2</div>
+                <div class="card-icon">👤</div>
+                <div class="card-title">Contact Scope CRUD</div>
+                <div class="card-description">Users can create/read/update/delete only records related to their contact.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Access: Contact<br>
+                    Privileges: Read, Write, Create, Delete
+                </div>
+            </div>
+
+            <!-- 3. Account Scope Read -->
+            <div class="card card-pink">
+                <div class="card-number">3</div>
+                <div class="card-icon">🏢</div>
+                <div class="card-title">Account Scope Read</div>
+                <div class="card-description">Users see records associated to their account (organization-wide visibility).</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Access: Account<br>
+                    Privileges: Read
+                </div>
+            </div>
+
+            <!-- 4. Self-Only Access -->
+            <div class="card card-orange">
+                <div class="card-number">4</div>
+                <div class="card-icon">🔒</div>
+                <div class="card-title">Self-Only Access</div>
+                <div class="card-description">Users can only read/update their own Contact record. Most restrictive.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Access: Self<br>
+                    Privileges: Read, Write
+                </div>
+            </div>
+
+            <!-- 5. Parent-Child Relationship -->
+            <div class="card card-purple">
+                <div class="card-number">5</div>
+                <div class="card-icon">🔗</div>
+                <div class="card-title">Parent-Child Relationship</div>
+                <div class="card-description">Access child records via parent table permission. Clean & scalable pattern.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Parent: Case (Contact)<br>
+                    Child: Note (via regardingobjectid)
+                </div>
+            </div>
+
+            <!-- 6. Anonymous Public Access -->
+            <div class="card card-yellow">
+                <div class="card-number">6</div>
+                <div class="card-icon">👁️</div>
+                <div class="card-title">Anonymous Public Access</div>
+                <div class="card-description">Allow unauthenticated users to read public records. Use with caution!</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Web Role: Anonymous<br>
+                    Access: Global, Read only
+                </div>
+            </div>
+
+            <!-- 7. Create-Only Permission -->
+            <div class="card card-cyan">
+                <div class="card-number">7</div>
+                <div class="card-icon">➕</div>
+                <div class="card-title">Create-Only Permission</div>
+                <div class="card-description">Users can create records but cannot read them back. Useful for submissions.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Access: Global<br>
+                    Privileges: Create only
+                </div>
+            </div>
+
+            <!-- 8. Read + Append Pattern -->
+            <div class="card card-red">
+                <div class="card-number">8</div>
+                <div class="card-icon">📎</div>
+                <div class="card-title">Read + Append Pattern</div>
+                <div class="card-description">Allow users to read records and append related records (e.g., add notes to cases).</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Privileges: Read, Append<br>
+                    Parent: Case → Child: Note
+                </div>
+            </div>
+
+            <!-- 9. Multi-Level Parent Scope -->
+            <div class="card card-blue">
+                <div class="card-number">9</div>
+                <div class="card-icon">🎯</div>
+                <div class="card-title">Multi-Level Parent Scope</div>
+                <div class="card-description">Chain permissions across 3+ levels (Contact → Case → Note → Attachment).</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Contact → Case<br>
+                    Case → Note → Attachment
+                </div>
+            </div>
+
+            <!-- 10. Account Hierarchy Access -->
+            <div class="card card-green">
+                <div class="card-number">10</div>
+                <div class="card-icon">🏛️</div>
+                <div class="card-title">Account Hierarchy Access</div>
+                <div class="card-description">Enable hierarchy security to grant access to parent/child accounts.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Parent Account permissions<br>
+                    cascade to child accounts
+                </div>
+            </div>
+
+            <!-- 11. Role-Based Read/Write Split -->
+            <div class="card card-pink">
+                <div class="card-number">11</div>
+                <div class="card-icon">👥</div>
+                <div class="card-title">Role-Based Read/Write Split</div>
+                <div class="card-description">Different web roles get different privileges (Admins: CRUD, Users: Read).</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Admin Role: Read, Write, Delete<br>
+                    User Role: Read only
+                </div>
+            </div>
+
+            <!-- 12. Append To Relationship -->
+            <div class="card card-orange">
+                <div class="card-number">12</div>
+                <div class="card-icon">🔗</div>
+                <div class="card-title">Append To Relationship</div>
+                <div class="card-description">Allow linking records to parent records (opposite of Append).</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Privilege: AppendTo<br>
+                    Link Note to existing Case
+                </div>
+            </div>
+
+            <!-- 13. No Delete Policy -->
+            <div class="card card-purple">
+                <div class="card-number">13</div>
+                <div class="card-icon">🚫</div>
+                <div class="card-title">No Delete Policy</div>
+                <div class="card-description">Grant Read/Write/Create but never Delete. Preserve data integrity.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Privileges: Read, Write, Create<br>
+                    (Delete intentionally omitted)
+                </div>
+            </div>
+
+            <!-- 14. Read-Only for Anonymous, CRUD for Authenticated -->
+            <div class="card card-yellow">
+                <div class="card-number">14</div>
+                <div class="card-icon">🔓</div>
+                <div class="card-title">Read-Only for Anonymous, CRUD for Authenticated</div>
+                <div class="card-description">Public can browse, logged-in users can interact fully.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Anonymous: Read<br>
+                    Authenticated: Read, Write, Create
+                </div>
+            </div>
+
+            <!-- 15. Polymorphic Lookup Workaround -->
+            <div class="card card-cyan">
+                <div class="card-number">15</div>
+                <div class="card-icon">⚠️</div>
+                <div class="card-title">Polymorphic Lookup Workaround</div>
+                <div class="card-description">Polymorphic lookups not supported. Use separate permissions per entity type.</div>
+                <div class="card-example">
+                    <div class="card-example-label">EXAMPLE:</div>
+                    Instead of regardingobjectid,<br>
+                    use case-specific lookups
+                </div>
+            </div>
+
+        </div>
+
+        <div class="download-section">
+            <a href="../downloads/power-pages-table-permissions.pdf" download class="download-button">
+                <span class="download-icon">⬇️</span>
+                <span>Download as PDF</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- SEO Summary Section -->
+    <section class="summary-section">
+        <h2>When to Use Which Table Permission Pattern</h2>
+
+        <p>Choosing the right table permission pattern depends on your business requirements. Here's a quick decision guide:</p>
+
+        <h3>For Customer Portals</h3>
+        <ul>
+            <li><strong>Contact Scope CRUD</strong> for customer-owned records (cases, orders, invoices)</li>
+            <li><strong>Self-Only Access</strong> for profile management</li>
+            <li><strong>Parent-Child Relationship</strong> for related records (case notes, order lines)</li>
+        </ul>
+
+        <h3>For Partner Portals</h3>
+        <ul>
+            <li><strong>Account Scope</strong> for organization-wide visibility</li>
+            <li><strong>Account Hierarchy Access</strong> for multi-level partner structures</li>
+            <li><strong>Role-Based Split</strong> for partner admins vs. regular users</li>
+        </ul>
+
+        <h3>For Public Websites</h3>
+        <ul>
+            <li><strong>Anonymous Public Access</strong> for knowledge articles, FAQs</li>
+            <li><strong>Create-Only Permission</strong> for contact forms, lead capture</li>
+            <li><strong>Read-Only Anonymous + CRUD Authenticated</strong> for product catalogs with user reviews</li>
+        </ul>
+
+        <h3>Best Practices</h3>
+        <ul>
+            <li>Always start with the most restrictive permission and expand as needed</li>
+            <li>Use Parent-Child relationships instead of Global scope whenever possible</li>
+            <li>Test permissions with different user accounts before going live</li>
+            <li>Document your permission structure for future maintenance</li>
+            <li>Consider using Web API column permissions for sensitive fields</li>
+        </ul>
+
+        <p style="margin-top: 25px;">Need help implementing table permissions in your Power Pages project? <a href="https://tinorabe.de/kontakt/" style="color: #60a5fa;">Book a free consultation</a> with a Microsoft MVP.</p>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">Tino Rabe · tinorabe.de</div>
+        <div class="footer-text">Microsoft Power Pages consulting by <a href="https://tinorabe.de/">Tino Rabe, MVP</a></div>
+    </div>
+
+</div>
+
+</body>
+</html>

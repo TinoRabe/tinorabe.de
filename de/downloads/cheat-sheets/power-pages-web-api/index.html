@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Power Pages Web API Cheat Sheet: CRUD &amp; OData Referenz</title>
+<meta name="description" content="Vollständige Power Pages Web API Referenz: CRUD-Operationen, OData-Abfragen, Dataverse-Beziehungen und JavaScript-Beispiele">
+<link rel="canonical" href="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Tino Rabe">
+<meta name="theme-color" content="#ffffff">
+<meta name="geo.region" content="DE-SH">
+<meta name="geo.placename" content="Laboe">
+<link rel="alternate" hreflang="de" href="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/">
+<link rel="alternate" hreflang="en-GB" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-web-api/">
+<link rel="alternate" hreflang="x-default" href="https://tinorabe.de/en/downloads/cheat-sheets/power-pages-web-api/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Tino Rabe">
+<meta property="og:title" content="Power Pages Web API Cheat Sheet: CRUD &amp; OData Referenz">
+<meta property="og:description" content="Vollständige Power Pages Web API Referenz: CRUD-Operationen, OData-Abfragen, Dataverse-Beziehungen und JavaScript-Beispiele">
+<meta property="og:url" content="https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/">
+<meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Power Pages Web API Cheat Sheet: CRUD &amp; OData Referenz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power Pages Web API Cheat Sheet: CRUD &amp; OData Referenz">
+<meta name="twitter:description" content="Vollständige Power Pages Web API Referenz: CRUD-Operationen, OData-Abfragen, Dataverse-Beziehungen und JavaScript-Beispiele">
+<meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tinorabe.de/#website",
+      "url": "https://tinorabe.de/",
+      "name": "Tino Rabe",
+      "description": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "publisher": { "@id": "https://tinorabe.de/#person" },
+      "inLanguage": "de-DE"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://tinorabe.de/#organization",
+      "name": "Tino Rabe · Amingi",
+      "alternateName": "Tino Rabe, Dynamics 365 CRM & Power Platform Berater",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "logo": "https://tinorabe.de/favicon.svg",
+      "description": "Freiberufliche Beratung und Umsetzung für Dynamics 365 Sales, Customer Service und Field Service, Power Platform und Power Pages. Kundenportale, Partnerportale, Security-Audits und Betrieb.",
+      "email": "tino@amingi.net",
+      "telephone": "+49 157 55 999 046",
+      "priceRange": "€€",
+      "address": { "@type": "PostalAddress", "streetAddress": "Kaistraße 90, c/o Regus", "postalCode": "24114", "addressLocality": "Kiel", "addressCountry": "DE" },
+      "founder": { "@id": "https://tinorabe.de/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Deutschland" },
+        { "@type": "Country", "name": "Österreich" },
+        { "@type": "Country", "name": "Schweiz" }
+      ],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tinorabe.de/#person",
+      "name": "Tino Rabe",
+      "url": "https://tinorabe.de/",
+      "image": "https://tinorabe.de/assets/img/tino-rabe.webp",
+      "jobTitle": "Dynamics 365 CRM & Power Platform Berater, Power Pages Spezialist",
+      "email": "mailto:tino@amingi.net",
+      "worksFor": { "@id": "https://tinorabe.de/#organization" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Laboe", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fachhochschule Kiel" },
+      "award": "Microsoft Most Valuable Professional (MVP) für Power Pages, 2024 bis 2026",
+      "knowsAbout": ["Dynamics 365 Sales", "Dynamics 365 Customer Service", "Dynamics 365 Field Service", "Microsoft Power Platform", "Dataverse", "Microsoft Power Pages", "Power Automate", "Modellgesteuerte Apps", "Kundenportale", "Partnerportale", "Microsoft Entra External ID"],
+      "knowsLanguage": ["de", "en"],
+      "sameAs": ["https://www.linkedin.com/in/tinorabe/"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/#webpage",
+      "url": "https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/",
+      "name": "Power Pages Web API Cheat Sheet: CRUD & OData Referenz",
+      "description": "Vollständige Power Pages Web API Referenz: CRUD-Operationen, OData-Abfragen, Dataverse-Beziehungen und JavaScript-Beispiele",
+      "isPartOf": { "@id": "https://tinorabe.de/#website" },
+      "about": { "@id": "https://tinorabe.de/#person" },
+      "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
+      "inLanguage": "de-DE"
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=0b597b2c">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/content.css?v=2ef36a9a">
+<link rel="stylesheet" href="/assets/css/tw-content.css?v=7eb18b68">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<header class="top">
+  <div class="wrap"><div class="g12">
+    <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        
+        
+        <li><a href="/leistungen/dynamics-365-crm/">Umsetzung</a></li>
+        
+        <li><a href="/leistungen/security-audit/">Security-Audit</a></li>
+        
+        <li><a href="/leistungen/care/">Care</a></li>
+        
+        <li><a href="/referenzen/">Referenzen</a></li>
+        
+        <li><a href="/artikel/" aria-current="page">Artikel</a></li>
+        
+        <li><a href="/ueber-mich/">Über mich</a></li>
+        
+        <li><a href="/kontakt/">Kontakt</a></li>
+        
+      </ul>
+    </nav>
+  </div></div>
+</header>
+<main id="inhalt">
+<div class="legacy tw">
+
+<link rel="stylesheet" href="/assets/css/pp-sheet.css?v=cfaf3294f9">
+
+<div class="cheat-sheet ppsh">
+
+    <div class="header" data-chip="Cheat Sheet · Web API">
+        <h1>Power Pages Web API</h1>
+        <p class="subtitle">Kurzreferenz für CRUD-Operationen & Abfrageoptionen</p>
+    </div>
+
+    <article class="intro-section" style="padding: 30px;margin-bottom: 30px">
+        <h2 style="font-size: 24px;margin-bottom: 15px">Die Power Pages Web API verstehen</h2>
+        <p style="line-height: 1.8;margin-bottom: 15px">
+            Die <strong>Power Pages Web API</strong> ermöglicht es client-seitigem JavaScript, CRUD-Operationen (Create, Read, Update, Delete) direkt im Browser gegen <strong>Dataverse-Tabellen</strong> durchzuführen. Im Gegensatz zu Liquid-Templates, die server-seitig gerendert werden, erlaubt die Web API dynamische Dateninteraktionen nach dem Laden der Seite, unverzichtbar für reaktionsfähige Power Pages-Anwendungen.
+        </p>
+        <p style="line-height: 1.8;margin-bottom: 15px">
+            Die API folgt <strong>OData v4-Konventionen</strong> and supports powerful query options like <code style="padding: 2px 6px">$select</code>, <code style="padding: 2px 6px">$filter</code>, <code style="padding: 2px 6px">$expand</code>, <code style="padding: 2px 6px">$orderby</code>, and <code style="padding: 2px 6px">$top</code> um genau die benötigten Daten abzurufen. Alle Anfragen müssen die Wrapper-Funktion <code style="padding: 2px 6px">webapi.safeAjax()</code> verwenden, die das CSRF-Token-Management für Schreiboperationen automatisch übernimmt.
+        </p>
+        <p style="line-height: 1.8">
+            <strong>Sicherheitshinweis:</strong> Die Web API respektiert <strong>Table Permissions</strong> und Web-Rollen. Benutzer können nur auf Daten zugreifen, für die sie autorisiert sind. Jede Tabelle muss über Site-Einstellungen explizit für den Web-API-Zugriff aktiviert werden; bestimmte Felder können auf Whitelist oder Blacklist gesetzt werden.
+        </p>
+    </article>
+
+    <div class="nav-container">
+        <div class="nav-title">Schnellnavigation</div>
+        <div class="nav-links">
+            <a href="#read-operations" class="nav-link">Leseoperationen</a>
+            <a href="#write-operations" class="nav-link">Schreiboperationen</a>
+            <a href="#helper-function" class="nav-link">Helper Function</a>
+            <a href="#relationships" class="nav-link">Beziehungen</a>
+            <a href="#security" class="nav-link">Sicherheit</a>
+        </div>
+        <div class="nav-cta">
+            <a href="/kontakt/" class="nav-cta-link">Projekt anfragen</a>
+            <div class="nav-cta-text">
+                Tino Rabe
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="read-operations">
+        <h2 class="section-title">Leseoperationen</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-read" style="grid-column: 1 / -1">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">Einfaches Lesen</span>
+                </div>
+                <div class="command-description">Alle Datensätze einer Tabelle mit webapi.safeAjax() abrufen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Records:"</span>, data.value);
+    data.value.<span class="code-function">forEach</span>(<span class="code-keyword">function</span>(record) {
+      console.<span class="code-function">log</span>(record.name);
+    });
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$select, Bestimmte Felder auswählen</span>
+                </div>
+                <div class="command-description">Nur angegebene Eigenschaften zurückgeben, um die Leistung zu verbessern</div>
+                <div class="command-code">/_api/accounts?$select=name,revenue</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$filter, Ergebnisse filtern</span>
+                </div>
+                <div class="command-description">Filterbedingungen mit OData-Operatoren anwenden (eq, ne, gt, lt, and, or)</div>
+                <div class="command-code">/_api/accounts?$filter=revenue gt 90000</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$orderby, Ergebnisse sortieren</span>
+                </div>
+                <div class="command-description">Ergebnisse auf- oder absteigend sortieren</div>
+                <div class="command-code">/_api/accounts?$orderby=revenue desc</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$top, Datensätze begrenzen</span>
+                </div>
+                <div class="command-description">Anzahl der zurückgegebenen Datensätze begrenzen</div>
+                <div class="command-code">/_api/accounts?$top=10</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$expand, Verknüpfte Datensätze einschließen</span>
+                </div>
+                <div class="command-description">Verknüpfte Datensätze über Navigationseigenschaften abrufen</div>
+                <div class="command-code">/_api/accounts?$expand=contact_customer</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">$count, Datensatzanzahl ermitteln</span>
+                </div>
+                <div class="command-description">Gesamtanzahl der Datensätze zurückgeben</div>
+                <div class="command-code">/_api/accounts?$count=true</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">Zeichenfunktionen</span>
+                </div>
+                <div class="command-description">contains(), startswith(), endswith() für Textfilterung verwenden</div>
+                <div class="command-code">/_api/accounts?$filter=contains(name,'Contoso')</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">Abfrageoptionen kombinieren</span>
+                </div>
+                <div class="command-description">Mehrere Abfrageoptionen mit & verketten</div>
+                <div class="command-code">/_api/accounts?$select=name&$filter=revenue gt 1000&$orderby=name&$top=5</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="write-operations">
+        <h2 class="section-title">Schreiboperationen</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">Datensatz erstellen</span>
+                </div>
+                <div class="command-description">Neuen Datensatz mit JSON-Payload und webapi.safeAjax() erstellen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"name"</span>: <span class="code-string">"Sample Account"</span>,
+    <span class="code-string">"revenue"</span>: <span class="code-number">50000</span>
+  }),
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record created:"</span>, data.accountid);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PATCH</span>
+                    <span class="command-name">Datensatz aktualisieren</span>
+                </div>
+                <div class="command-description">Vorhandenen Datensatz per ID mit webapi.safeAjax() aktualisieren</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PATCH"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(record-id)"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"name"</span>: <span class="code-string">"Updated Name"</span>,
+    <span class="code-string">"revenue"</span>: <span class="code-number">100000</span>
+  }),
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record updated"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">Datensatz löschen</span>
+                </div>
+                <div class="command-description">Datensatz per ID mit webapi.safeAjax() löschen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(record-id)"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Record deleted"</span>);
+  },
+  <span class="code-property">error</span>: <span class="code-keyword">function</span>(error) {
+    console.<span class="code-function">error</span>(<span class="code-string">"Delete failed:"</span>, error);
+  }
+});</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="helper-function">
+        <h2 class="section-title">Helper Function</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-write" style="grid-column: 1 / -1">
+                <div class="command-header">
+                    <span class="command-name">Generische Web-API-Funktion</span>
+                </div>
+                <div class="command-description">Wiederverwendbare Funktion für beliebige Web-API-Operationen</div>
+                <div class="command-code"><span class="code-keyword">function</span> <span class="code-function">callWebAPI</span>(method, entitySet, recordId, data, queryString) {
+  <span class="code-keyword">var</span> url = <span class="code-string">"/_api/"</span> + entitySet;
+  <span class="code-keyword">if</span> (recordId) url += <span class="code-string">"("</span> + recordId + <span class="code-string">")"</span>;
+  <span class="code-keyword">if</span> (queryString) url += <span class="code-string">"?"</span> + queryString;
+
+  webapi.<span class="code-function">safeAjax</span>({
+    <span class="code-property">type</span>: method,
+    <span class="code-property">url</span>: url,
+    <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+    <span class="code-property">data</span>: data ? JSON.<span class="code-function">stringify</span>(data) : <span class="code-keyword">null</span>,
+    <span class="code-property">success</span>: <span class="code-keyword">function</span>(result) {
+      console.<span class="code-function">log</span>(<span class="code-string">"Success:"</span>, result);
+      <span class="code-keyword">return</span> result;
+    },
+    <span class="code-property">error</span>: <span class="code-keyword">function</span>(error) {
+      console.<span class="code-function">error</span>(<span class="code-string">"Error:"</span>, error);
+    }
+  });
+}
+
+<span class="code-comment">// Usage Examples:</span>
+<span class="code-function">callWebAPI</span>(<span class="code-string">"GET"</span>, <span class="code-string">"accounts"</span>, <span class="code-keyword">null</span>, <span class="code-keyword">null</span>, <span class="code-string">"$select=name&$top=5"</span>);
+<span class="code-function">callWebAPI</span>(<span class="code-string">"POST"</span>, <span class="code-string">"accounts"</span>, <span class="code-keyword">null</span>, {<span class="code-property">name</span>: <span class="code-string">"New Account"</span>});
+<span class="code-function">callWebAPI</span>(<span class="code-string">"PATCH"</span>, <span class="code-string">"accounts"</span>, <span class="code-string">"record-id"</span>, {<span class="code-property">name</span>: <span class="code-string">"Updated"</span>});
+<span class="code-function">callWebAPI</span>(<span class="code-string">"DELETE"</span>, <span class="code-string">"accounts"</span>, <span class="code-string">"record-id"</span>);</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="relationships">
+        <h2 class="section-title">Dataverse Relationships</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">1:N, Verknüpfte Datensätze lesen</span>
+                </div>
+                <div class="command-description">1:N: $expand verwenden, um untergeordnete Datensätze abzurufen (z. B. Account → Contacts)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/accounts(account-id)?$expand=contact_customer_accounts"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Child contacts:"</span>, data.contact_customer_accounts);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">N:1, Übergeordneten Datensatz lesen</span>
+                </div>
+                <div class="command-description">N:1: $expand verwenden, um den übergeordneten Datensatz abzurufen (z. B. Contact → Account)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)?$expand=parentcustomerid_account"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Parent account:"</span>, data.parentcustomerid_account);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">Erstellen mit N:1-Lookup</span>
+                </div>
+                <div class="command-description">Untergeordneten Datensatz erstellen und über Lookup-Feldbindung mit übergeordnetem verknüpfen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"firstname"</span>: <span class="code-string">"John"</span>,
+    <span class="code-string">"lastname"</span>: <span class="code-string">"Doe"</span>,
+    <span class="code-string">"parentcustomerid_account@odata.bind"</span>: <span class="code-string">"/accounts(account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PATCH</span>
+                    <span class="command-name">N:1-Beziehung aktualisieren (Methode 1)</span>
+                </div>
+                <div class="command-description">Lookup per @odata.bind-Annotation in PATCH-Anfrage aktualisieren</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PATCH"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"parentcustomerid_account@odata.bind"</span>: <span class="code-string">"/accounts(new-account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-patch">PUT</span>
+                    <span class="command-name">N:1-Beziehung aktualisieren (Methode 2)</span>
+                </div>
+                <div class="command-description">Referenz per PUT auf den $ref-Endpunkt mit @odata.id ändern</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"PUT"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/parentcustomerid_account/$ref"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"@odata.id"</span>: <span class="code-string">"/_api/accounts(new-account-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">N:1-Lookup entfernen (Trennen)</span>
+                </div>
+                <div class="command-description">Einfache Navigationseigenschaft per DELETE auf dem $ref-Endpunkt entfernen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/parentcustomerid_account/$ref"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Lookup cleared"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-method method-get">GET</span>
+                    <span class="command-name">N:N, Many-to-Many lesen</span>
+                </div>
+                <div class="command-description">N:N: $expand mit Beziehungskollektion verwenden (z. B. Contact → Marketing-Listen)</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"GET"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)?$expand=listmember_association"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>(data) {
+    console.<span class="code-function">log</span>(<span class="code-string">"Marketing lists:"</span>, data.listmember_association);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-post">POST</span>
+                    <span class="command-name">N:N, Datensätze verknüpfen</span>
+                </div>
+                <div class="command-description">Many-to-Many-Beziehung über den $ref-Endpunkt erstellen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"POST"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/listmember_association/$ref"</span>,
+  <span class="code-property">contentType</span>: <span class="code-string">"application/json"</span>,
+  <span class="code-property">data</span>: JSON.<span class="code-function">stringify</span>({
+    <span class="code-string">"@odata.id"</span>: <span class="code-string">"/_api/lists(list-id)"</span>
+  })
+});</div>
+            </div>
+
+            <div class="command-item cat-write">
+                <div class="command-header">
+                    <span class="command-method method-delete">DELETE</span>
+                    <span class="command-name">N:N, Datensätze trennen</span>
+                </div>
+                <div class="command-description">Many-to-Many-Beziehung per $ref mit $id-Abfrageparameter entfernen</div>
+                <div class="command-code">webapi.<span class="code-function">safeAjax</span>({
+  <span class="code-property">type</span>: <span class="code-string">"DELETE"</span>,
+  <span class="code-property">url</span>: <span class="code-string">"/_api/contacts(contact-id)/listmember_association/$ref?$id=/_api/lists(list-id)"</span>,
+  <span class="code-property">success</span>: <span class="code-keyword">function</span>() {
+    console.<span class="code-function">log</span>(<span class="code-string">"Relationship removed"</span>);
+  }
+});</div>
+            </div>
+
+            <div class="command-item cat-query">
+                <div class="command-header">
+                    <span class="command-name">Namen der Navigationseigenschaften</span>
+                </div>
+                <div class="command-description">Beziehungsnamen im Power Pages Design Studio oder über den $metadata-Endpunkt ermitteln</div>
+                <div class="command-code">/_api/$metadata
+<span class="code-comment">// Look for NavigationProperty elements</span>
+<span class="code-comment">// Example: contact_customer_accounts</span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="security">
+        <h2 class="section-title">Sicherheit & Configuration</h2>
+        <div class="command-list">
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">Table Permissions erforderlich</span>
+                </div>
+                <div class="command-description">Web API respektiert Table Permissions. Konfiguration über Portal Management → Table Permissions + Web Roles</div>
+                <div class="command-code">Benutzer können nur auf Daten zugreifen, die ihre Web-Rolle autorisiert</div>
+            </div>
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">Web API pro Tabelle aktivieren</span>
+                </div>
+                <div class="command-description">Muss in den Site-Einstellungen für jede Tabelle aktiviert werden</div>
+                <div class="command-code">Webapi/&lt;tablename&gt;/enabled = true<br>Webapi/&lt;tablename&gt;/fields = name,email,phone</div>
+            </div>
+
+            <div class="command-item cat-security">
+                <div class="command-header">
+                    <span class="command-name">CSRF-Token erforderlich</span>
+                </div>
+                <div class="command-description">Schreiboperationen erfordern ein CSRF-Token. webapi.safeAjax() verwenden</div>
+                <div class="command-code">webapi.safeAjax({<br>  type: "POST",<br>  url: "/_api/accounts",<br>  data: JSON.stringify({name: "Test"})<br>})</div>
+            </div>
+
+        </div>
+    </div>
+
+    <article class="summary-section" style="padding: 30px;margin: 40px 0">
+        <h2 style="font-size: 24px;margin-bottom: 20px">Kurzreferenz-Übersicht</h2>
+
+        <div style="display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));gap: 20px">
+            <div style="padding: 20px">
+                <h3 style="font-size: 16px;margin-bottom: 10px">Leseoperationen (GET)</h3>
+                <ul style="font-size: 14px;line-height: 1.8;padding-left: 20px">
+                    <li><strong>$select</strong>, Nur bestimmte Felder zurückgeben</li>
+                    <li><strong>$filter</strong>, Bedingungen anwenden (eq, gt, contains)</li>
+                    <li><strong>$expand</strong>, Verknüpfte Datensätze einschließen</li>
+                    <li><strong>$orderby</strong>, Ergebnisse sortieren (asc/desc)</li>
+                    <li><strong>$top</strong>, Datensatzanzahl begrenzen</li>
+                </ul>
+            </div>
+
+            <div style="padding: 20px">
+                <h3 style="font-size: 16px;margin-bottom: 10px">Schreiboperationen</h3>
+                <ul style="font-size: 14px;line-height: 1.8;padding-left: 20px">
+                    <li><strong>POST</strong>, Neue Datensätze erstellen</li>
+                    <li><strong>PATCH</strong>, Vorhandene Datensätze aktualisieren</li>
+                    <li><strong>DELETE</strong>, Datensätze löschen</li>
+                    <li><strong>PUT /$ref</strong>, Beziehungen aktualisieren</li>
+                </ul>
+            </div>
+
+            <div style="padding: 20px">
+                <h3 style="font-size: 16px;margin-bottom: 10px">Beziehungsmuster</h3>
+                <ul style="font-size: 14px;line-height: 1.8;padding-left: 20px">
+                    <li><strong>1:N</strong>, $expand auf Parent für untergeordnete Datensätze</li>
+                    <li><strong>N:1</strong>, @odata.bind für Lookup-Zuweisung</li>
+                    <li><strong>N:N</strong>, POST/DELETE an /$ref-Endpunkt</li>
+                </ul>
+            </div>
+
+            <div style="padding: 20px">
+                <h3 style="font-size: 16px;margin-bottom: 10px">Sicherheitsgrundlagen</h3>
+                <ul style="font-size: 14px;line-height: 1.8;padding-left: 20px">
+                    <li>Immer <strong>webapi.safeAjax()</strong> verwenden</li>
+                    <li><strong>Table Permissions</strong> konfigurieren</li>
+                    <li>Tabellen über <strong>Site Settings</strong> aktivieren</li>
+                    <li>Felder explizit auf Whitelist setzen</li>
+                </ul>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;font-size: 14px;line-height: 1.6">
+            <strong>Profi-Tipp:</strong> Abfrageoptionen für optimale Leistung kombinieren: <code style="padding: 2px 6px">/_api/accounts?$select=name,revenue&$filter=revenue gt 10000&$orderby=name&$top=50</code>
+        </p>
+    </article>
+
+    <div class="download-section">
+        <a href="/assets/downloads/power-pages-webapi-cheat-sheet.pdf" download="power-pages-webapi-cheat-sheet.pdf" class="download-button">
+            <span>Als PDF herunterladen</span>
+        </a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo">Tino Rabe</div>
+        <div class="footer-text">Benötigen Sie Hilfe mit der Power Pages Web API? <a href="/kontakt/">Projekt anfragen</a></div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const codeBlocks = document.querySelectorAll('.command-code');
+
+    codeBlocks.forEach(function(block) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        block.parentNode.insertBefore(wrapper, block);
+        wrapper.appendChild(block);
+
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.textContent = 'Kopieren';
+        button.setAttribute('aria-label', 'Code kopieren');
+
+        button.addEventListener('click', function() {
+            const text = block.innerText || block.textContent;
+
+            navigator.clipboard.writeText(text).then(function() {
+                button.textContent = 'Kopiert';
+                button.classList.add('copied');
+
+                setTimeout(function() {
+                    button.textContent = 'Kopieren';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+                button.textContent = 'Fehler';
+                setTimeout(function() {
+                    button.textContent = 'Kopieren';
+                }, 2000);
+            });
+        });
+
+        wrapper.appendChild(button);
+    });
+
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    const navContainer = document.querySelector('.nav-container');
+    const cheatSheet = document.querySelector('.cheat-sheet');
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    let scrollThreshold = 200;
+
+    function updateActiveSection() {
+        const scrollTop = cheatSheet.getBoundingClientRect().top;
+
+        if (scrollTop < -scrollThreshold) {
+            navContainer.classList.add('scrolled');
+        } else {
+            navContainer.classList.remove('scrolled');
+        }
+
+        let currentSection = '';
+        sections.forEach(function(section) {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionHeight = section.offsetHeight;
+
+            if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection(); // Initial call
+});
+</script>
+
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+      <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+    </div>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    </div>
+  </div></div>
+</footer>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <div class="wrap">
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
+      <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = 'trcookieconsent';
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+    }
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
+    }
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
+      var a = document.getElementById('cookie-consent-accept');
+      var d = document.getElementById('cookie-consent-decline');
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
+    });
+  })();
+</script>
+
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
+</body>
+</html>
