@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://tinorabe.de/leistungen/security-audit/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Tino Rabe">
-<meta name="theme-color" content="#0b0f1c">
+<meta name="theme-color" content="#ffffff">
 <meta name="geo.region" content="DE-SH">
 <meta name="geo.placename" content="Laboe">
 <link rel="alternate" hreflang="de" href="https://tinorabe.de/leistungen/security-audit/">
@@ -133,14 +133,14 @@
 </script>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=244a2c3d">
+<link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=c0064672">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tinorabe.de/leistungen/security-audit/#faq","url":"https://tinorabe.de/leistungen/security-audit/","inLanguage":"de-DE","mainEntity":[{"@type":"Question","name":"Wie viel Zeit kostet uns das Audit?","acceptedAnswer":{"@type":"Answer","text":"Etwa 2,5 Stunden: Kickoff und Abgrenzung (60 bis 90 Minuten) und die Ergebnispräsentation (60 Minuten). Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten."}},{"@type":"Question","name":"Microsoft hat doch einen Sicherheitsscan. Reicht der nicht?","acceptedAnswer":{"@type":"Answer","text":"Nutzen Sie ihn, er ist ein guter Anfang. Der Scan prüft Ihre Seite gegen allgemeine Web-Regeln. Ob Ihre Berechtigungen zu Ihren Geschäftsregeln passen, kann er nicht wissen. Das Audit prüft genau das und bezieht die Scan-Ergebnisse ein."}},{"@type":"Question","name":"Warum eine externe Prüfung, wir haben doch Entwickler?","acceptedAnswer":{"@type":"Answer","text":"Nicht, weil Ihre Entwickler schlecht wären. Wer eine Konfiguration gebaut hat, sieht ihre Lücken am schlechtesten. Das gilt auch für mich. Dafür gibt es den unabhängigen Blick von außen."}},{"@type":"Question","name":"Was brauchen Sie von uns für den Start?","acceptedAnswer":{"@type":"Answer","text":"Lesenden Zugriff auf die Portal-Konfiguration und einen Ansprechpartner für Rückfragen. Details und die Preisstufe klären wir im Kickoff."}}]}</script>
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
 <header class="top">
-  <div class="wrap">
+  <div class="wrap"><div class="g12">
     <a class="wm" href="/" aria-label="Tino Rabe, Startseite">Tino Rabe<i></i></a>
     <nav aria-label="Hauptnavigation">
       <ul>
@@ -160,107 +160,148 @@
         
       </ul>
     </nav>
-  </div>
+  </div></div>
 </header>
 <main id="inhalt">
-<section class="pagehead" style="padding:0"><div class="wrap">
-  <span class="kicker">Leistung 02 · Richtig geprüft</span>
-  <h1>Ihr Portal ist ein Fenster zu Dynamics 365. Wissen Sie, was man durch dieses Fenster sieht?</h1>
-  <p>Von außen sieht ein Portal fast immer in Ordnung aus. Die meisten Sicherheitsprobleme in Power Pages entstehen nicht durch Angriffe, sondern durch Konfiguration: eine Berechtigung mit zu weitem Bereich, eine Tabelle mit zu vielen freigegebenen Spalten, eine Anmeldung, die mehr erlaubt als gedacht. Das Audit zeigt Ihnen, was tatsächlich nach außen geht.</p>
-  <div class="facts">
-    <div><b>Format</b>Remote-Analyse, strikt lesender Zugriff</div>
-    <div><b>Dauer</b>etwa 2 Wochen, ohne Auswirkung auf den Betrieb</div>
-    <div><b>Festpreis</b>4.900 € netto, 6.900 € netto bei hoher Komplexität. Die Einstufung bestätige ich Ihnen schriftlich vor Ihrer Zusage.</div>
-    <div><b>Zahlung</b>50 % zum Start, 50 % bei Lieferung</div>
-  </div>
-  <div class="btns"><a class="btn" href="mailto:tino@amingi.net?subject=Security-Audit%20Power%20Pages">Audit anfragen</a></div>
-</div></section>
-
-<div class="wrap">
-<section>
-  <div class="sec"><h2>Wann sich ein Audit lohnt</h2></div>
-  <div class="grid g2">
-    <div class="card top3"><h3>Ihr Portal nutzt die Web API, und die Spaltenfreigabe wurde unter Zeitdruck umgestellt.</h3><p>Microsoft hat den Platzhalter <code>*</code> für die freigegebenen Spalten der Web API zum 14. September 2026 abgeschaltet. Wer eine einmalige Verlängerung um 90 Tage beantragt hat, erreicht deren Ende jetzt; das genaue Datum steht im Power Platform Admin Center unter „Manage exemptions“. Danach schlagen Anfragen auf betroffene Tabellen fehl. Wer schnell umgestellt hat, hat oft mehr Spalten freigegeben als nötig. Das Audit prüft, ob nur die Spalten draußen sind, die Ihr Portal wirklich braucht.</p></div>
-    <div class="card top3"><h3>Der Sicherheitsscan von Microsoft zeigt Warnungen, und niemand ist zuständig.</h3><p>Power Pages bringt einen eigenen Sicherheitsscan mit, der Ihre Seite gegen OWASP-basierte Regeln prüft. Er findet typische Web-Schwachstellen wie fehlende Header oder Cross-Site-Scripting-Risiken. Ob ein Kunde die Fälle eines anderen Kunden sehen kann, hängt dagegen an Ihrem Datenmodell und Ihren Regeln. Das bewertet das Audit, und es ordnet die Scan-Ergebnisse gleich mit ein.</p></div>
-    <div class="card top3"><h3>Ein Go-Live oder eine große Änderung steht an.</h3><p>Vor dem ersten Kundenzugriff ist die günstigste Zeit, Berechtigungen zu prüfen.</p></div>
-    <div class="card top3"><h3>Sie haben ein Portal übernommen.</h3><p>Partnerwechsel, neues Team, keine Dokumentation: Das Audit zeigt den Ist-Stand, bevor Sie weiterbauen.</p></div>
-    <div class="card top3"><h3>Datenschutz oder Revision fragt nach.</h3><p>Der Bericht dokumentiert, welche Daten für wen erreichbar sind.</p></div>
-  </div>
+<section class="auf auf-unter auf-oben">
+  <div class="wrap"><div class="g12">
+    <p class="auf-meta auf-m1"><a href="/#leistungen">Leistungen</a></p>
+    <p class="auf-meta auf-m2">Security-Audit</p>
+    <h1 class="auf-h1 lang">Ihr Portal ist ein Fenster zu Dynamics&nbsp;365. Wissen Sie, was man durch dieses Fenster sieht?</h1>
+    <div class="auf-btn"><div class="btns"><a class="btn" href="mailto:tino@amingi.net?subject=Security-Audit%20Power%20Pages">Audit anfragen</a><a class="txtlink" href="#ablauf">Ablauf ansehen</a></div></div>
+    <ul class="auf-fakten vier fakten-oben">
+      <li><b>Festpreis</b><span class="gross preis">ab 4.900&nbsp;€ netto</span>6.900 € netto bei hoher Komplexität. Die Einstufung bestätige ich Ihnen schriftlich vor Ihrer Zusage.</li>
+      <li><b>Dauer</b><span class="gross">etwa 2 Wochen</span>ohne Auswirkung auf den Betrieb</li>
+      <li><b>Aufwand Ihres Teams</b><span class="gross">etwa 2,5 Stunden</span>Kickoff und Abgrenzung (60 bis 90 Minuten) und die Ergebnispräsentation (60 Minuten).</li>
+      <li><b>Ergebnis</b><span class="gross">Befundbericht</span>mit Schweregraden und konkreten Maßnahmen</li>
+    </ul>
+    <div class="auf-lead nach-fakten">
+      <p>Von außen sieht ein Portal fast immer in Ordnung aus. Die meisten Sicherheitsprobleme in Power Pages entstehen nicht durch Angriffe, sondern durch Konfiguration: eine Berechtigung mit zu weitem Bereich, eine Tabelle mit zu vielen freigegebenen Spalten, eine Anmeldung, die mehr erlaubt als gedacht. Das Audit zeigt Ihnen, was tatsächlich nach außen geht.</p>
+    </div>
+    <ul class="auf-weise">
+      <li><b>Format</b>Remote-Analyse, strikt lesender Zugriff</li>
+      <li><b>Zahlung</b>50 % zum Start, 50 % bei Lieferung</li>
+      <li><b>Vertraulich</b>Ich nenne keine Kunden.</li>
+    </ul>
+  </div></div>
 </section>
 
-<section>
-  <div class="sec"><h2>Die acht Prüfbereiche</h2></div>
-  <div class="tablewrap"><table>
-    <tbody>
-      <tr><td class="mono" style="color:var(--blue)">01</td><td><b>Tabellenberechtigungen und Webrollen:</b> das Herz der Portal-Sicherheit</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">02</td><td><b>Anmeldung und Identitätsanbieter:</b> Entra External ID, Azure AD B2C, lokale Konten</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">03</td><td><b>Listen, Formulare und Web API:</b> wer erreicht wirklich was?</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">04</td><td><b>Dateien und Dokumente:</b> Absicherung der Speicherorte</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">05</td><td><b>Web Application Firewall und Netzwerk:</b> die äußere Verteidigungslinie</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">06</td><td><b>Sensible Daten im Portal-Code:</b> Liquid und JavaScript</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">07</td><td><b>Lizenz-Effizienz:</b> zahlen Sie für den richtigen Nutzungstyp?</td></tr>
-      <tr><td class="mono" style="color:var(--blue)">08</td><td><b>Wartbarkeit und Deployment:</b> ALM-Praxis</td></tr>
-    </tbody>
-  </table></div>
+<section class="s" id="ablauf">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Ablauf</h2>
+    <figure class="abb">
+      <div class="ablauf" role="img" aria-label="Ablauf: Kickoff und Abgrenzung 60 bis 90 Minuten mit Ihrem Team, dann etwa 2 Wochen Analyse strikt lesend ohne Ihr Team, dann Ergebnispräsentation 60 Minuten mit Ihrem Team und Befundbericht, optional Re-Check nach der Umsetzung für 1.900 Euro netto. Zahlung 50 Prozent zum Start, 50 Prozent bei Lieferung.">
+        <p class="ab-zahl ab-1">50 % zum Start</p>
+        <p class="ab-zahl ab-3">50 % bei Lieferung</p>
+        <div class="ab-balken team ab-1"></div>
+        <p class="ab-text ab-1"><b>Kickoff und Abgrenzung</b>60 bis 90 Minuten</p>
+        <div class="ab-balken lang ab-2"></div>
+        <p class="ab-text ab-2"><b>Analyse, strikt lesend</b>etwa 2 Wochen, ohne Auswirkung auf den Betrieb. Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten.</p>
+        <div class="ab-balken team ab-3"></div>
+        <p class="ab-text ab-3"><b>Ergebnispräsentation</b>60 Minuten, Befundbericht</p>
+        <div class="ab-balken opt ab-4"></div>
+        <p class="ab-text ab-4"><b>Optional: Re-Check</b>nach der Umsetzung, 1.900 € netto</p>
+        <p class="ab-legende"><span class="l-team">mit Ihrem Team</span><span>ohne Ihr Team</span></p>
+      </div>
+      <figcaption class="abb-unter"><b>Abb. 1</b><span>Ablauf des Audits. Ihr Team ist zweimal gefragt, zusammen etwa 2,5 Stunden. Die Balken sind nicht maßstäblich.</span></figcaption>
+    </figure>
+  </div></div>
 </section>
 
-<section>
-  <div class="sec"><h2>Was Sie danach haben</h2></div>
-  <div class="grid g3">
-    <div class="card"><h3>Einen Bericht, mit dem jedes Team arbeiten kann.</h3><p>Jeder Befund ist nach Risiko eingestuft (kritisch, hoch, mittel, niedrig) und mit einer konkreten Maßnahme beschrieben. So kann ihn jeder Power-Platform-Entwickler umsetzen: Ihr Team, Ihr Partner oder ich.</p></div>
-    <div class="card"><h3>Einen priorisierten Plan.</h3><p>In der Ergebnispräsentation gehen wir die Befunde gemeinsam durch und legen fest, was zuerst dran ist.</p></div>
-    <div class="card"><h3>Optional: Re-Check.</h3><p>Nach der Umsetzung prüfe ich die Behebung für 1.900 € netto.</p></div>
-  </div>
+<section class="s">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Wann sich ein Audit lohnt</h2>
+    <dl class="s-full liste">
+      <div><dt>Ihr Portal nutzt die Web API, und die Spaltenfreigabe wurde unter Zeitdruck umgestellt.</dt><dd>Microsoft hat den Platzhalter <code>*</code> für die freigegebenen Spalten der Web API zum 14. September 2026 abgeschaltet. Wer eine einmalige Verlängerung um 90 Tage beantragt hat, erreicht deren Ende jetzt; das genaue Datum steht im Power Platform Admin Center unter „Manage exemptions“. Danach schlagen Anfragen auf betroffene Tabellen fehl. Wer schnell umgestellt hat, hat oft mehr Spalten freigegeben als nötig. Das Audit prüft, ob nur die Spalten draußen sind, die Ihr Portal wirklich braucht.</dd></div>
+      <div><dt>Der Sicherheitsscan von Microsoft zeigt Warnungen, und niemand ist zuständig.</dt><dd>Power Pages bringt einen eigenen Sicherheitsscan mit, der Ihre Seite gegen OWASP-basierte Regeln prüft. Er findet typische Web-Schwachstellen wie fehlende Header oder Cross-Site-Scripting-Risiken. Ob ein Kunde die Fälle eines anderen Kunden sehen kann, hängt dagegen an Ihrem Datenmodell und Ihren Regeln. Das bewertet das Audit, und es ordnet die Scan-Ergebnisse gleich mit ein.</dd></div>
+      <div><dt>Ein Go-Live oder eine große Änderung steht an.</dt><dd>Vor dem ersten Kundenzugriff ist die günstigste Zeit, Berechtigungen zu prüfen.</dd></div>
+      <div><dt>Sie haben ein Portal übernommen.</dt><dd>Partnerwechsel, neues Team, keine Dokumentation: Das Audit zeigt den Ist-Stand, bevor Sie weiterbauen.</dd></div>
+      <div><dt>Datenschutz oder Revision fragt nach.</dt><dd>Der Bericht dokumentiert, welche Daten für wen erreichbar sind.</dd></div>
+    </dl>
+  </div></div>
 </section>
 
-<section>
-  <div class="sec"><h2>Das Prinzip</h2></div>
-  <div class="prose">
-    <p>Das Audit findet, es verändert nichts. Die Analyse läuft strikt lesend, ohne Auswirkung auf Ihren Betrieb. Maßstab ist das Risiko: Eine einzige zu weit gefasste Tabellenberechtigung auf einem Portal mit Kundendaten kann eine meldepflichtige Datenpanne bedeuten.</p>
-    <p>Audits führe ich vertraulich durch. Ich nenne keine Kunden.</p>
-  </div>
+<section class="s">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Die acht Prüfbereiche</h2>
+    <ol class="abb pruef8">
+      <li><span class="nr">01</span><b>Tabellenberechtigungen und Webrollen:</b> das Herz der Portal-Sicherheit</li>
+      <li><span class="nr">02</span><b>Anmeldung und Identitätsanbieter:</b> Entra External ID, Azure AD B2C, lokale Konten</li>
+      <li><span class="nr">03</span><b>Listen, Formulare und Web API:</b> wer erreicht wirklich was?</li>
+      <li><span class="nr">04</span><b>Dateien und Dokumente:</b> Absicherung der Speicherorte</li>
+      <li><span class="nr">05</span><b>Web Application Firewall und Netzwerk:</b> die äußere Verteidigungslinie</li>
+      <li><span class="nr">06</span><b>Sensible Daten im Portal-Code:</b> Liquid und JavaScript</li>
+      <li><span class="nr">07</span><b>Lizenz-Effizienz:</b> zahlen Sie für den richtigen Nutzungstyp?</li>
+      <li><span class="nr">08</span><b>Wartbarkeit und Deployment:</b> ALM-Praxis</li>
+    </ol>
+  </div></div>
 </section>
 
-<section>
-  <div class="sec"><h2>Häufige Fragen</h2></div>
-  <dl class="faq prose">
-    <dt>Wie viel Zeit kostet uns das Audit?</dt>
-    <dd>Etwa 2,5 Stunden: Kickoff und Abgrenzung (60 bis 90 Minuten) und die Ergebnispräsentation (60 Minuten). Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten.</dd>
-    <dt>Microsoft hat doch einen Sicherheitsscan. Reicht der nicht?</dt>
-    <dd>Nutzen Sie ihn, er ist ein guter Anfang. Der Scan prüft Ihre Seite gegen allgemeine Web-Regeln. Ob Ihre Berechtigungen zu Ihren Geschäftsregeln passen, kann er nicht wissen. Das Audit prüft genau das und bezieht die Scan-Ergebnisse ein.</dd>
-    <dt>Warum eine externe Prüfung, wir haben doch Entwickler?</dt>
-    <dd>Nicht, weil Ihre Entwickler schlecht wären. Wer eine Konfiguration gebaut hat, sieht ihre Lücken am schlechtesten. Das gilt auch für mich. Dafür gibt es den unabhängigen Blick von außen.</dd>
-    <dt>Was brauchen Sie von uns für den Start?</dt>
-    <dd>Lesenden Zugriff auf die Portal-Konfiguration und einen Ansprechpartner für Rückfragen. Details und die Preisstufe klären wir im Kickoff.</dd>
-  </dl>
+<section class="s">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Was Sie danach haben</h2>
+    <dl class="s-full liste">
+      <div><dt>Einen Bericht, mit dem jedes Team arbeiten kann.</dt><dd>Jeder Befund ist nach Risiko eingestuft (kritisch, hoch, mittel, niedrig) und mit einer konkreten Maßnahme beschrieben. So kann ihn jeder Power-Platform-Entwickler umsetzen: Ihr Team, Ihr Partner oder ich.</dd></div>
+      <div><dt>Einen priorisierten Plan.</dt><dd>In der Ergebnispräsentation gehen wir die Befunde gemeinsam durch und legen fest, was zuerst dran ist.</dd></div>
+      <div><dt>Optional: Re-Check.</dt><dd>Nach der Umsetzung prüfe ich die Behebung für 1.900 € netto.</dd></div>
+    </dl>
+  </div></div>
+</section>
+
+<section class="s">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Das Prinzip</h2>
+    <p class="s-gross">Das Audit findet, es verändert nichts.</p>
+    <div class="s-text">
+      <p>Die Analyse läuft strikt lesend, ohne Auswirkung auf Ihren Betrieb. Maßstab ist das Risiko: Eine einzige zu weit gefasste Tabellenberechtigung auf einem Portal mit Kundendaten kann eine meldepflichtige Datenpanne bedeuten.</p>
+      <p><b>Audits führe ich vertraulich durch. Ich nenne keine Kunden.</b></p>
+    </div>
+  </div></div>
+</section>
+
+<section class="s">
+  <div class="wrap"><div class="g12 rule">
+    <h2 class="s-label">Häufige Fragen</h2>
+    <dl class="faq s-full liste">
+      <div><dt>Wie viel Zeit kostet uns das Audit?</dt>
+      <dd>Etwa 2,5 Stunden: Kickoff und Abgrenzung (60 bis 90 Minuten) und die Ergebnispräsentation (60 Minuten). Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten.</dd></div>
+      <div><dt>Microsoft hat doch einen Sicherheitsscan. Reicht der nicht?</dt>
+      <dd>Nutzen Sie ihn, er ist ein guter Anfang. Der Scan prüft Ihre Seite gegen allgemeine Web-Regeln. Ob Ihre Berechtigungen zu Ihren Geschäftsregeln passen, kann er nicht wissen. Das Audit prüft genau das und bezieht die Scan-Ergebnisse ein.</dd></div>
+      <div><dt>Warum eine externe Prüfung, wir haben doch Entwickler?</dt>
+      <dd>Nicht, weil Ihre Entwickler schlecht wären. Wer eine Konfiguration gebaut hat, sieht ihre Lücken am schlechtesten. Das gilt auch für mich. Dafür gibt es den unabhängigen Blick von außen.</dd></div>
+      <div><dt>Was brauchen Sie von uns für den Start?</dt>
+      <dd>Lesenden Zugriff auf die Portal-Konfiguration und einen Ansprechpartner für Rückfragen. Details und die Preisstufe klären wir im Kickoff.</dd></div>
+    </dl>
+  </div></div>
 </section>
 
 
 
 
 
-<div class="contact">
-  <h2>Wann wurde Ihr Portal zuletzt unabhängig geprüft?</h2>
-  <p>Schreiben Sie mir in zwei, drei Sätzen: welches Portal, welche Dynamics-365-Apps dahinter, gibt es einen Anlass. Ich antworte innerhalb eines Werktags.</p>
-  <div class="btns"><a class="btn" href="mailto:tino@amingi.net?subject=Security-Audit%20Power%20Pages">Audit anfragen</a><a class="btn ghost" href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></div>
-</div>
+<section class="contact" aria-labelledby="kontakt-titel">
+  <div class="wrap"><div class="g12">
+    <h2 id="kontakt-titel">Wann wurde Ihr Portal zuletzt unabhängig geprüft?</h2>
+    <p>Schreiben Sie mir in zwei, drei Sätzen: welches Portal, welche Dynamics-365-Apps dahinter, gibt es einen Anlass. Ich antworte innerhalb eines Werktags.</p>
+    <div class="btns"><a class="btn inv" href="mailto:tino@amingi.net?subject=Security-Audit%20Power%20Pages">Audit anfragen</a><a class="txtlink" href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></div>
+  </div></div>
+</section>
 
-<p class="related">Verwandte Leistungen: <a href="/leistungen/dynamics-365-crm/">Umsetzung Dynamics 365 CRM &amp; Power Platform</a> · <a href="/leistungen/care/">Care für Portale auf Dynamics 365</a></p>
-</div>
+<div class="wrap"><div class="g12"><p class="related">Verwandte Leistungen: <a href="/leistungen/dynamics-365-crm/">Umsetzung Dynamics 365 CRM &amp; Power Platform</a> · <a href="/leistungen/care/">Care für Portale auf Dynamics 365</a></p></div></div>
 
 </main>
 <footer class="site">
-  <div class="wrap">
-    <div>
-      <a class="wm" href="/">Tino Rabe<i></i></a>
-      <p style="margin-top:8px">Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
+  <div class="wrap"><div class="g12">
+    <div class="f1"><a class="wm" href="/">Tino Rabe<i></i></a></div>
+    <div class="f2">
+      <p>Dynamics 365 CRM &amp; Power Platform Berater · Power Pages Spezialist</p>
       <p>Wöchentlich auf Englisch: Power Pages Weekly und der Newsletter „Power Pages Pro“ auf <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
     </div>
-    <div class="r">
-      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a> · <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
-      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a> · <a href="/datenschutz/">Datenschutz</a> · <a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
+    <div class="f3">
+      <p><a href="mailto:tino@amingi.net">tino@amingi.net</a><br><a class="footer-tel" href="tel:+4915755999046">+49 157 55 999 046</a><br><a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
     </div>
-  </div>
+  </div></div>
 </footer>
 <div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
   <div class="wrap">
