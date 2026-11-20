@@ -10,7 +10,7 @@ html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--page);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;font-size:16px}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
 .skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:10}
