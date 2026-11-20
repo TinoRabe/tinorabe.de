@@ -125,3 +125,10 @@ footer.site .r{text-align:right}
 .consent-btn.accept{background:var(--blue);border-color:var(--blue);color:#fff}
 .consent-btn.accept:hover{background:#1d4fd8}
 @media (max-width:600px){.consent-actions{width:100%;justify-content:flex-end}}
+
+/* Karten mit Bild (Aktuell) */
+a.card.media{display:flex;flex-direction:column;color:inherit;padding:0 0 20px;overflow:hidden;transition:box-shadow .15s}
+a.card.media:hover{text-decoration:none;box-shadow:0 6px 18px rgba(20,25,40,.12)}
+a.card.media img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;margin-bottom:16px}
+a.card.media .num,a.card.media h3,a.card.media p,a.card.media .more{padding:0 22px}
+a.card.media .more{margin-top:auto;padding-top:12px;color:var(--blue)}
