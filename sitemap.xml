@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tinorabe.de/impressum/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/datenschutz/</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://tinorabe.de/leistungen/security-audit/</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://tinorabe.de/leistungen/care/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/kontakt/</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://tinorabe.de/leistungen/dynamics-365-crm/</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://tinorabe.de/referenzen/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/leistungen/care/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/leistungen/dynamics-365-crm/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/leistungen/security-audit/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://tinorabe.de/referenzen/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://tinorabe.de/ueber-mich/</loc><lastmod>2026-11-20</lastmod></url>
 </urlset>

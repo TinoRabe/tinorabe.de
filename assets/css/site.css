@@ -674,3 +674,55 @@ main>.wrap>section:not(.contact){padding-top:var(--abstand)}
 footer.site .g12{margin-top:var(--abstand)}
 .s .rule>.projekte+.s-text,.s .rule>.projekte~.s-text{margin-top:32px}
 .s .rule>.s-text:has(.txtlink){margin-top:24px}
+
+/* ===== Animationen =====
+   Endzustand ist der Normalzustand (ohne JS, Druck, reduzierte Bewegung).
+   Nur unter html.anim (vom Skript gesetzt) und nur am Bildschirm gibt es einen Startzustand; .an spielt ab.
+   Nur transform und opacity, Staffelung 80 ms je Element, je Grafik höchstens 1,5 s. */
+.vg-spur i{background:none;z-index:0;isolation:isolate}
+.vg-spur i::before{content:"";position:absolute;inset:0;background:var(--schwarz);z-index:-1;transform-origin:left center}
+.vg-spur i.plus{background:none}
+.vg-spur i.plus::before{background:var(--blau)}
+.vg-spur i span{position:relative}
+.zy-marker{grid-column:1/5;grid-row:1;align-self:start;height:8px;background:var(--blau);position:relative;z-index:2;pointer-events:none;transform:translateX(calc(200% + 2 * var(--gut)))}
+.ab-vorhang{display:none}
+.pruef8 .nr{position:relative}
+@media (max-width:899px){.zy-marker{display:none}}
+@media screen{
+  html.anim [data-anim] .a-fade,html.anim [data-anim] .a-t,html.anim [data-anim] .a-m{opacity:0}
+  html.anim [data-anim] .a-fade{transform:translateY(16px)}
+  html.anim [data-anim] .a-grow,html.anim [data-anim] .a-bar::before{transform:scaleX(0);transform-origin:left center}
+  html.anim [data-anim] .a-bar span{opacity:0}
+  html.anim [data-anim].an .a-fade,html.anim [data-anim].an .a-grow,html.anim [data-anim].an .a-bar::before{opacity:1;transform:none;transition:opacity .45s ease-out,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  html.anim [data-anim].an .a-grow{transition:transform .45s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  html.anim [data-anim].an .a-bar span{opacity:1;transition:opacity .3s ease-out;transition-delay:calc(var(--i,0) * 80ms + 550ms)}
+  /* Ablauf: Vorhang gibt die Zeitleiste von links nach rechts frei (1,2 s), Texte und Zahlungen erscheinen, wenn er ihre Spalte erreicht */
+  html.anim [data-anim="ablauf"] .ab-vorhang{display:block;grid-column:1/-1;grid-row:1/3;background:var(--weiss);z-index:2;transform-origin:right center;pointer-events:none}
+  html.anim [data-anim="ablauf"].an .ab-vorhang{transform:scaleX(0);transition:transform 1.2s linear}
+  html.anim [data-anim="ablauf"] .a-m{opacity:1}
+  html.anim [data-anim="ablauf"].an .a-t{opacity:1;transition:opacity .35s ease-out;transition-delay:var(--t)}
+  /* Prüfbereiche: Nummern wechseln nacheinander von Schwarz auf Rot */
+  html.anim [data-anim="pruef"] .nr{color:var(--schwarz)}
+  html.anim [data-anim="pruef"] .nr::after{content:attr(data-nr);position:absolute;left:0;top:0;color:var(--rot);opacity:0}
+  html.anim [data-anim="pruef"].an .nr::after{opacity:1;transition:opacity .25s ease-out;transition-delay:calc(var(--i,0) * 80ms + 150ms)}
+  /* Monatszyklus: Markierer läuft Review, Release-Check, Bericht ab und bleibt beim Bericht */
+  html.anim [data-anim="zyklus"] .zy-marker{transform:none;opacity:0}
+  html.anim [data-anim="zyklus"].an .zy-marker{animation:zy-lauf 1.5s ease-in-out forwards}
+  html.anim [data-anim="zyklus"] .a-fadem{opacity:1}
+}
+@keyframes zy-lauf{
+  0%{opacity:0;transform:none}
+  10%{opacity:1;transform:none}
+  30%{transform:none}
+  50%{transform:translateX(calc(100% + var(--gut)))}
+  65%{transform:translateX(calc(100% + var(--gut)))}
+  85%,100%{opacity:1;transform:translateX(calc(200% + 2 * var(--gut)))}
+}
+@media screen and (max-width:899px){
+  /* Ablauf mobil senkrecht: kein Vorhang, Schritte erscheinen nacheinander */
+  html.anim [data-anim="ablauf"] .ab-vorhang{display:none}
+  html.anim [data-anim="ablauf"] .a-m{opacity:0}
+  html.anim [data-anim="ablauf"].an .a-m{opacity:1;transition:opacity .35s ease-out;transition-delay:var(--t)}
+  html.anim [data-anim="zyklus"] .a-fadem{opacity:0;transform:translateY(16px)}
+  html.anim [data-anim="zyklus"].an .a-fadem{opacity:1;transform:none;transition:opacity .45s ease-out,transform .55s ease-out;transition-delay:calc(var(--i,0) * 80ms)}
+}

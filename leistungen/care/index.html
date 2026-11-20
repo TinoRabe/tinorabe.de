@@ -134,7 +134,7 @@
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=c0064672">
+<link rel="stylesheet" href="/assets/css/site.css?v=71aafda8">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tinorabe.de/leistungen/care/#faq","url":"https://tinorabe.de/leistungen/care/","inLanguage":"de-DE","mainEntity":[{"@type":"Question","name":"Warum nicht einfach anrufen, wenn etwas kaputt ist?","acceptedAnswer":{"@type":"Answer","text":"Weil die gefährlichen Probleme nicht kaputt aussehen. Ein Portal mit einer zu weit gefassten Tabellenberechtigung funktioniert einwandfrei, für Ihre Nutzer und für alle anderen."}},{"@type":"Question","name":"Unser Portal hat ein Partner gebaut. Passt Care trotzdem?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Einstieg ist dann meist ein Security-Audit als Aufnahmebefund, danach übernimmt Care."}},{"@type":"Question","name":"Was zählt als kleinere Anpassung?","acceptedAnswer":{"@type":"Answer","text":"Was im Monatskontingent realistisch machbar ist. Größere Vorhaben schätze ich vorher, Sie entscheiden bewusst."}}]}</script>
 </head>
 <body>
@@ -185,10 +185,11 @@
   <div class="wrap"><div class="g12 rule">
     <h2 class="s-label">Was jeden Monat passiert</h2>
     <figure class="abb">
-      <div class="zyklus" role="img" aria-label="Monatszyklus: Sicherheits- und Konfigurations-Review, Microsoft-Release-Check mit Bewertung, schriftlicher Monatsbericht, danach beginnt der nächste Monat. Kleinere Anpassungen sind inklusive.">
-        <div class="zy-schritt zy-1"><b>Sicherheits- und Konfigurations-Review</b>Tabellenberechtigungen, Webrollen, Website-Einstellungen und Anmeldung</div>
-        <div class="zy-schritt zy-2"><b>Microsoft-Release-Check mit Bewertung</b>was Ihr Portal betrifft, was zu tun ist, was Sie ignorieren können</div>
-        <div class="zy-schritt zy-3"><b>Schriftlicher Monatsbericht</b>Status, Befunde, Empfehlungen, offene Punkte</div>
+      <div class="zyklus" data-anim="zyklus" role="img" aria-label="Monatszyklus: Sicherheits- und Konfigurations-Review, Microsoft-Release-Check mit Bewertung, schriftlicher Monatsbericht, danach beginnt der nächste Monat. Kleinere Anpassungen sind inklusive.">
+        <div class="zy-marker" aria-hidden="true"></div>
+        <div class="zy-schritt zy-1 a-fadem" style="--i:0"><b>Sicherheits- und Konfigurations-Review</b>Tabellenberechtigungen, Webrollen, Website-Einstellungen und Anmeldung</div>
+        <div class="zy-schritt zy-2 a-fadem" style="--i:1"><b>Microsoft-Release-Check mit Bewertung</b>was Ihr Portal betrifft, was zu tun ist, was Sie ignorieren können</div>
+        <div class="zy-schritt zy-3 a-fadem" style="--i:2"><b>Schriftlicher Monatsbericht</b>Status, Befunde, Empfehlungen, offene Punkte</div>
         <div class="zy-rueck" aria-hidden="true"></div>
         <p class="zy-text">jeden Monat von vorn</p>
         <p class="zy-dauer"><b>Kleinere Anpassungen inklusive:</b> ein Fehler, eine Berechtigung, ein Formular. Größeres stimmen wir vorher ab.</p>
@@ -222,14 +223,14 @@
       </table>
     </div>
     <figure class="abb">
-      <div class="vergleich" role="img" aria-label="Vergleich: Reaktionszeit Care 48 Stunden an Werktagen, Care Plus 24 Stunden. Anpassungen inklusive: Care bis 2 Stunden im Monat, Care Plus bis 5 Stunden im Monat.">
+      <div class="vergleich" data-anim="vergleich" role="img" aria-label="Vergleich: Reaktionszeit Care 48 Stunden an Werktagen, Care Plus 24 Stunden. Anpassungen inklusive: Care bis 2 Stunden im Monat, Care Plus bis 5 Stunden im Monat.">
         <p class="vg-kopf">Reaktionszeit (kürzer ist schneller)</p>
-        <p class="vg-name">Care</p><div class="vg-spur"><i style="--w:100%">48 Stunden an Werktagen</i></div>
-        <p class="vg-name">Care Plus</p><div class="vg-spur"><i class="plus" style="--w:50%">24 Stunden</i></div>
+        <p class="vg-name">Care</p><div class="vg-spur"><i class="a-bar" style="--w:100%;--i:0"><span>48 Stunden an Werktagen</span></i></div>
+        <p class="vg-name">Care Plus</p><div class="vg-spur"><i class="plus a-bar" style="--w:50%;--i:1"><span>24 Stunden</span></i></div>
         <p class="vg-hinweis">Care Plus bei Sicherheitsvorfällen am selben Tag</p>
         <p class="vg-kopf">Anpassungen inklusive (länger ist mehr)</p>
-        <p class="vg-name">Care</p><div class="vg-spur"><i style="--w:40%">bis 2 Stunden</i></div>
-        <p class="vg-name">Care Plus</p><div class="vg-spur"><i class="plus" style="--w:100%">bis 5 Stunden im Monat</i></div>
+        <p class="vg-name">Care</p><div class="vg-spur"><i class="a-bar" style="--w:40%;--i:2"><span>bis 2 Stunden</span></i></div>
+        <p class="vg-name">Care Plus</p><div class="vg-spur"><i class="plus a-bar" style="--w:100%;--i:3"><span>bis 5 Stunden im Monat</span></i></div>
       </div>
       <figcaption class="abb-unter"><b>Abb. 2</b><span>Care und Care Plus im Vergleich, maßstäblich nach Stunden.</span></figcaption>
     </figure>
@@ -335,5 +336,6 @@
   })();
 </script>
 
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
 </body>
 </html>

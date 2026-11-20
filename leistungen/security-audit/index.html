@@ -134,7 +134,7 @@
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/inter-tight-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=c0064672">
+<link rel="stylesheet" href="/assets/css/site.css?v=71aafda8">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://tinorabe.de/leistungen/security-audit/#faq","url":"https://tinorabe.de/leistungen/security-audit/","inLanguage":"de-DE","mainEntity":[{"@type":"Question","name":"Wie viel Zeit kostet uns das Audit?","acceptedAnswer":{"@type":"Answer","text":"Etwa 2,5 Stunden: Kickoff und Abgrenzung (60 bis 90 Minuten) und die Ergebnispräsentation (60 Minuten). Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten."}},{"@type":"Question","name":"Microsoft hat doch einen Sicherheitsscan. Reicht der nicht?","acceptedAnswer":{"@type":"Answer","text":"Nutzen Sie ihn, er ist ein guter Anfang. Der Scan prüft Ihre Seite gegen allgemeine Web-Regeln. Ob Ihre Berechtigungen zu Ihren Geschäftsregeln passen, kann er nicht wissen. Das Audit prüft genau das und bezieht die Scan-Ergebnisse ein."}},{"@type":"Question","name":"Warum eine externe Prüfung, wir haben doch Entwickler?","acceptedAnswer":{"@type":"Answer","text":"Nicht, weil Ihre Entwickler schlecht wären. Wer eine Konfiguration gebaut hat, sieht ihre Lücken am schlechtesten. Das gilt auch für mich. Dafür gibt es den unabhängigen Blick von außen."}},{"@type":"Question","name":"Was brauchen Sie von uns für den Start?","acceptedAnswer":{"@type":"Answer","text":"Lesenden Zugriff auf die Portal-Konfiguration und einen Ansprechpartner für Rückfragen. Details und die Preisstufe klären wir im Kickoff."}}]}</script>
 </head>
 <body>
@@ -190,18 +190,19 @@
   <div class="wrap"><div class="g12 rule">
     <h2 class="s-label">Ablauf</h2>
     <figure class="abb">
-      <div class="ablauf" role="img" aria-label="Ablauf: Kickoff und Abgrenzung 60 bis 90 Minuten mit Ihrem Team, dann etwa 2 Wochen Analyse strikt lesend ohne Ihr Team, dann Ergebnispräsentation 60 Minuten mit Ihrem Team und Befundbericht, optional Re-Check nach der Umsetzung für 1.900 Euro netto. Zahlung 50 Prozent zum Start, 50 Prozent bei Lieferung.">
-        <p class="ab-zahl ab-1">50 % zum Start</p>
-        <p class="ab-zahl ab-3">50 % bei Lieferung</p>
-        <div class="ab-balken team ab-1"></div>
-        <p class="ab-text ab-1"><b>Kickoff und Abgrenzung</b>60 bis 90 Minuten</p>
-        <div class="ab-balken lang ab-2"></div>
-        <p class="ab-text ab-2"><b>Analyse, strikt lesend</b>etwa 2 Wochen, ohne Auswirkung auf den Betrieb. Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten.</p>
-        <div class="ab-balken team ab-3"></div>
-        <p class="ab-text ab-3"><b>Ergebnispräsentation</b>60 Minuten, Befundbericht</p>
-        <div class="ab-balken opt ab-4"></div>
-        <p class="ab-text ab-4"><b>Optional: Re-Check</b>nach der Umsetzung, 1.900 € netto</p>
-        <p class="ab-legende"><span class="l-team">mit Ihrem Team</span><span>ohne Ihr Team</span></p>
+      <div class="ablauf" data-anim="ablauf" role="img" aria-label="Ablauf: Kickoff und Abgrenzung 60 bis 90 Minuten mit Ihrem Team, dann etwa 2 Wochen Analyse strikt lesend ohne Ihr Team, dann Ergebnispräsentation 60 Minuten mit Ihrem Team und Befundbericht, optional Re-Check nach der Umsetzung für 1.900 Euro netto. Zahlung 50 Prozent zum Start, 50 Prozent bei Lieferung.">
+        <p class="ab-zahl ab-1 a-t" style="--t:0ms">50 % zum Start</p>
+        <p class="ab-zahl ab-3 a-t" style="--t:800ms">50 % bei Lieferung</p>
+        <div class="ab-balken team ab-1 a-m" style="--t:0ms"></div>
+        <p class="ab-text ab-1 a-t" style="--t:100ms"><b>Kickoff und Abgrenzung</b>60 bis 90 Minuten</p>
+        <div class="ab-balken lang ab-2 a-m" style="--t:200ms"></div>
+        <p class="ab-text ab-2 a-t" style="--t:300ms"><b>Analyse, strikt lesend</b>etwa 2 Wochen, ohne Auswirkung auf den Betrieb. Die Analyse dazwischen mache ich, ohne Ihr Team zu belasten.</p>
+        <div class="ab-balken team ab-3 a-m" style="--t:800ms"></div>
+        <p class="ab-text ab-3 a-t" style="--t:850ms"><b>Ergebnispräsentation</b>60 Minuten, Befundbericht</p>
+        <div class="ab-balken opt ab-4 a-m" style="--t:1000ms"></div>
+        <p class="ab-text ab-4 a-t" style="--t:1050ms"><b>Optional: Re-Check</b>nach der Umsetzung, 1.900 € netto</p>
+        <div class="ab-vorhang" aria-hidden="true"></div>
+        <p class="ab-legende a-t" style="--t:1100ms"><span class="l-team">mit Ihrem Team</span><span>ohne Ihr Team</span></p>
       </div>
       <figcaption class="abb-unter"><b>Abb. 1</b><span>Ablauf des Audits. Ihr Team ist zweimal gefragt, zusammen etwa 2,5 Stunden. Die Balken sind nicht maßstäblich.</span></figcaption>
     </figure>
@@ -224,15 +225,15 @@
 <section class="s">
   <div class="wrap"><div class="g12 rule">
     <h2 class="s-label">Die acht Prüfbereiche</h2>
-    <ol class="abb pruef8">
-      <li><span class="nr">01</span><b>Tabellenberechtigungen und Webrollen:</b> das Herz der Portal-Sicherheit</li>
-      <li><span class="nr">02</span><b>Anmeldung und Identitätsanbieter:</b> Entra External ID, Azure AD B2C, lokale Konten</li>
-      <li><span class="nr">03</span><b>Listen, Formulare und Web API:</b> wer erreicht wirklich was?</li>
-      <li><span class="nr">04</span><b>Dateien und Dokumente:</b> Absicherung der Speicherorte</li>
-      <li><span class="nr">05</span><b>Web Application Firewall und Netzwerk:</b> die äußere Verteidigungslinie</li>
-      <li><span class="nr">06</span><b>Sensible Daten im Portal-Code:</b> Liquid und JavaScript</li>
-      <li><span class="nr">07</span><b>Lizenz-Effizienz:</b> zahlen Sie für den richtigen Nutzungstyp?</li>
-      <li><span class="nr">08</span><b>Wartbarkeit und Deployment:</b> ALM-Praxis</li>
+    <ol class="abb pruef8" data-anim="pruef">
+      <li style="--i:0"><span class="nr" data-nr="01">01</span><b>Tabellenberechtigungen und Webrollen:</b> das Herz der Portal-Sicherheit</li>
+      <li style="--i:1"><span class="nr" data-nr="02">02</span><b>Anmeldung und Identitätsanbieter:</b> Entra External ID, Azure AD B2C, lokale Konten</li>
+      <li style="--i:2"><span class="nr" data-nr="03">03</span><b>Listen, Formulare und Web API:</b> wer erreicht wirklich was?</li>
+      <li style="--i:3"><span class="nr" data-nr="04">04</span><b>Dateien und Dokumente:</b> Absicherung der Speicherorte</li>
+      <li style="--i:4"><span class="nr" data-nr="05">05</span><b>Web Application Firewall und Netzwerk:</b> die äußere Verteidigungslinie</li>
+      <li style="--i:5"><span class="nr" data-nr="06">06</span><b>Sensible Daten im Portal-Code:</b> Liquid und JavaScript</li>
+      <li style="--i:6"><span class="nr" data-nr="07">07</span><b>Lizenz-Effizienz:</b> zahlen Sie für den richtigen Nutzungstyp?</li>
+      <li style="--i:7"><span class="nr" data-nr="08">08</span><b>Wartbarkeit und Deployment:</b> ALM-Praxis</li>
     </ol>
   </div></div>
 </section>
@@ -359,5 +360,6 @@
   })();
 </script>
 
+<script src="/assets/js/anim.js?v=c846a427" defer></script>
 </body>
 </html>
