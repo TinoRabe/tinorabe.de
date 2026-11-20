@@ -3,15 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>
-  // Nur auf der echten Domain zählen, nicht lokal oder auf Vorschau-Hosts (analog powerportals.de)
-  if (/(^|\.)tinorabe\.de$/.test(location.hostname))
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "zgn6w74y83");
-</script>
 
 <title>Über mich: Tino Rabe, Dynamics 365 CRM Berater</title>
 <meta name="description" content="Gewachsen mit Dynamics 365 und Power Platform, bekannt für Power Pages. Seit 2014 an Dynamics 365 und Portalen, ehemaliger Microsoft MVP für Power Pages.">
@@ -114,7 +105,7 @@
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=446f7af6">
+<link rel="stylesheet" href="/assets/css/site.css?v=244a2c3d">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
@@ -178,6 +169,7 @@
     <li>Microsoft-Prüfungen zu Dynamics 365 Sales, Customer Engagement, Power Platform und Field Service (2018 bis 2021)</li>
     <li>Vorträge 2024 bis 2026, u. a. bei Days of Knowledge (Odense), Collabdays Hamburg und dem Global Power Platform Bootcamp</li>
   </ul>
+
 </section>
 
 <section>
@@ -206,13 +198,13 @@
     </div>
     <div class="r">
       <p><a href="mailto:tino@amingi.net">tino@amingi.net</a> · <a href="https://www.linkedin.com/in/tinorabe/" rel="noopener">LinkedIn</a></p>
-      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a> · <a href="/datenschutz/">Datenschutz</a></p>
+      <p><a href="/impressum/">Impressum (Amingi, Inhaber Tino Rabe)</a> · <a href="/datenschutz/">Datenschutz</a> · <a href="#" data-cookie-settings>Cookie-Einstellungen</a></p>
     </div>
   </div>
 </footer>
-<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einwilligung" hidden>
+<div id="cookie-consent" class="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
   <div class="wrap">
-    <p>Diese Website nutzt Microsoft Clarity, um zu verstehen, wie Besucher die Seite nutzen (anonymisierte Analyse, keine Werbung). Cookies werden erst gesetzt, wenn Sie zustimmen. <a href="/datenschutz/">Mehr in der Datenschutzerklärung</a>.</p>
+    <p>Darf ich mit Microsoft Clarity auswerten, wie Besucher diese Seite nutzen? Clarity wird nur geladen, wenn Sie zustimmen. Ihre Wahl können Sie jederzeit unten auf der Seite unter „Cookie-Einstellungen“ ändern. <a href="/datenschutz/#clarity">Mehr in der Datenschutzerklärung</a>.</p>
     <div class="consent-actions">
       <button type="button" class="consent-btn" id="cookie-consent-decline">Ablehnen</button>
       <button type="button" class="consent-btn accept" id="cookie-consent-accept">Akzeptieren</button>
@@ -222,27 +214,46 @@
 <script>
   (function () {
     var KEY = 'trcookieconsent';
-    function apply(granted) {
-      if (typeof window.clarity !== 'function') return;
-      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: granted ? 'granted' : 'denied' });
+    var LIVE = /(^|\.)tinorabe\.de$/.test(location.hostname);
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function loadClarity() {
+      if (!LIVE || window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "zgn6w74y83");
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
     }
-    function banner(show) {
-      var el = document.getElementById('cookie-consent');
-      if (el) el.hidden = !show;
+    function dropCookies() {
+      ['_clck', '_clsk'].forEach(function (n) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname;
+      });
     }
-    function decide(granted) {
-      try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
-      apply(granted);
-      banner(false);
+    function banner(show) { var el = document.getElementById('cookie-consent'); if (el) el.hidden = !show; }
+    function accept() { set('granted'); banner(false); loadClarity(); }
+    function decline() {
+      var was = get() === 'granted';
+      set('denied'); banner(false);
+      if (was) {
+        // Widerruf: Clarity löscht seine Cookies und beendet die Erfassung; danach neu laden, damit das Skript nicht mehr läuft
+        if (typeof window.clarity === 'function') window.clarity('consent', false);
+        dropCookies();
+        setTimeout(function () { location.reload(); }, 300);
+      }
     }
     document.addEventListener('DOMContentLoaded', function () {
-      var stored = null;
-      try { stored = localStorage.getItem(KEY); } catch (e) {}
-      if (stored === 'granted' || stored === 'denied') apply(stored === 'granted'); else banner(true);
+      var s = get();
+      if (s === 'granted') loadClarity(); else if (s !== 'denied') banner(true);
       var a = document.getElementById('cookie-consent-accept');
       var d = document.getElementById('cookie-consent-decline');
-      if (a) a.addEventListener('click', function () { decide(true); });
-      if (d) d.addEventListener('click', function () { decide(false); });
+      if (a) a.addEventListener('click', accept);
+      if (d) d.addEventListener('click', decline);
+      document.querySelectorAll('[data-cookie-settings]').forEach(function (b) {
+        b.addEventListener('click', function (e) { e.preventDefault(); banner(true); });
+      });
     });
   })();
 </script>
