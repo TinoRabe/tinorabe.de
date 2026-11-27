@@ -179,6 +179,13 @@ Allow: /
 User-agent: Sofya-User
 Allow: /
 
+# Lyrenth (AI-readable web index for AI agents; indexer, not a model trainer; Cloudflare verified bot, category Search; lyrenth.com/bot)
+User-agent: AIWebIndex
+Allow: /
+
+User-agent: AIWebIndex-Agent
+Allow: /
+
 # ── Sitemaps ─────────────────────────────────────────────────────────────────
 Sitemap: https://tinorabe.de/sitemap.xml
 
