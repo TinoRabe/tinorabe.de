@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Power Pages Building Blocks: What Works Without Code</title>
-<meta name="description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<meta name="description" content="19 Power Pages design studio building blocks, from forms, lists and table permissions to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
 <link rel="canonical" href="https://tinorabe.de/en/tools/power-pages-building-blocks-reference/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Tino Rabe">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Tino Rabe">
 <meta property="og:title" content="Power Pages Building Blocks: What Works Without Code">
-<meta property="og:description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<meta property="og:description" content="19 Power Pages design studio building blocks, from forms, lists and table permissions to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
 <meta property="og:url" content="https://tinorabe.de/en/tools/power-pages-building-blocks-reference/">
 <meta property="og:image" content="https://tinorabe.de/assets/img/og/og-default.png">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta property="og:image:alt" content="Power Pages Building Blocks: What Works Without Code">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Power Pages Building Blocks: What Works Without Code">
-<meta name="twitter:description" content="17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
+<meta name="twitter:description" content="19 Power Pages design studio building blocks, from forms, lists and table permissions to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.">
 <meta name="twitter:image" content="https://tinorabe.de/assets/img/og/og-default.png">
 <script type="application/ld+json">
 {
@@ -82,7 +82,7 @@
       "@id": "https://tinorabe.de/en/tools/power-pages-building-blocks-reference/#webpage",
       "url": "https://tinorabe.de/en/tools/power-pages-building-blocks-reference/",
       "name": "Power Pages Building Blocks: What Works Without Code",
-      "description": "17 Power Pages design studio building blocks, from forms and lists to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.",
+      "description": "19 Power Pages design studio building blocks, from forms, lists and table permissions to Power BI, search and agents: what you get without code, where Microsoft Learn draws the line, when you need the management app or code, and what an SPA code site has to build itself.",
       "isPartOf": { "@id": "https://tinorabe.de/#website" },
       "about": { "@id": "https://tinorabe.de/#person" },
       "primaryImageOfPage": "https://tinorabe.de/assets/img/og/og-default.png",
@@ -373,9 +373,9 @@
   <header class="pps-hero">
     <div class="pps-wrap pps-hero__grid">
       <div>
-        <span class="pps-chip">Building blocks reference · verified 1 Dec 2026</span>
+        <span class="pps-chip">Building blocks reference · verified 27 Nov 2026</span>
         <h1>Power Pages building blocks,<span>and where code begins.</span></h1>
-        <p>17 design studio building blocks, from forms and lists to Power BI, search and agents. What you get without code, what needs the management app, where Microsoft Learn draws the line, and what an SPA code site has to build itself.</p>
+        <p>19 design studio building blocks, from forms, lists and table permissions to Power BI, search and agents. What you get without code, what needs the management app, where Microsoft Learn draws the line, and what an SPA code site has to build itself.</p>
         <div class="ppb-scale" aria-hidden="true"><span>NO CODE</span><span>CONFIG</span><span>CODE</span></div>
       </div>
       <div class="pps-tile" aria-hidden="true">P</div>
@@ -447,6 +447,7 @@
   var SPA = {
     build: { label: 'Build it yourself', cls: 'build' },
     api: { label: 'Microsoft API available', cls: 'api' },
+    same: { label: 'Works the same', cls: 'api' },
     nd: { label: 'Not documented', cls: 'nd' },
     na: { label: 'Not applicable', cls: 'nd' }
   };
@@ -508,6 +509,14 @@
       studio: 'Search component with AI summary.', mgmt: 'Site settings for scope and tables.', code: 'searchindex Liquid tag.',
       limit: 'Needs generative AI search and Dataverse search switched on. The index can take hours to days. One search results page per site.', tags: [],
       spa: 'api', spaNote: 'Search summary API, documented in Microsoft\'s plugin.', src: L + 'getting-started/add-search' },
+    { id: 'tableperm', group: 'Secure data', name: 'Table permission',
+      studio: 'Security workspace or the Permissions button on a list: table, access type, privileges, web roles. Child permissions for related tables.', mgmt: '<b>The Parent access type lives here only.</b> In design studio you add child permissions instead.', code: 'Enforced server-side for lists, forms, Liquid, the Web API and server logic.',
+      limit: 'Without a table permission, lists and forms show no data. Each table needs its own permission. Global access gives the role every record: avoid it for business data.', tags: [],
+      spa: 'same', spaNote: 'Applies to the Web API and server logic, the data paths of a code site.', src: L + 'security/table-permissions' },
+    { id: 'access', group: 'Secure data', name: 'Access type',
+      studio: 'Global, Contact, Account or Self on each table permission. Custom access filters records with FetchXML.', mgmt: 'Parent access type.', code: '',
+      limit: 'Contact and Account need a relationship from the table to the contact or account table. Custom access requires enhanced authorization.', tags: [],
+      spa: 'same', spaNote: 'Part of the table permission, same as on classic sites.', src: L + 'security/table-permissions#available-access-types' },
     { id: 'custom', group: 'Extend', name: 'Custom component',
       studio: 'Insert and set parameters like any other block.', mgmt: '', code: 'A developer builds the web template with a manifest first.',
       limit: 'Only components with a manifest appear in the list.', tags: ['Preview'],
@@ -549,7 +558,7 @@
       wall: 'Someone has to write Liquid or a PCF control first. At this point, also weigh a code site.' }
   ];
 
-  var groups = ['All', 'Content and layout', 'Capture data', 'Show data', 'Extend'];
+  var groups = ['All', 'Content and layout', 'Capture data', 'Show data', 'Secure data', 'Extend'];
   var currentTask = 'contact';
   var currentGroup = 'All';
 

@@ -75,7 +75,6 @@
   <url><loc>https://tinorabe.de/en/blog/d365-power-pages-internal-users/</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://tinorabe.de/en/blog/power-pages-in-house-vs-specialist/</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://tinorabe.de/de/tools/</loc><lastmod>2026-11-27</lastmod></url>
-  <url><loc>https://tinorabe.de/en/tools/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/blog/power-pages-server-logic-memory-limit/</loc><lastmod>2026-11-04</lastmod></url>
   <url><loc>https://tinorabe.de/impressum/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/datenschutz/</loc><lastmod>2026-11-27</lastmod></url>
@@ -86,7 +85,6 @@
   <url><loc>https://tinorabe.de/referenzen/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/ueber-mich/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/artikel/</loc><lastmod>2026-11-27</lastmod></url>
-  <url><loc>https://tinorabe.de/en/tools/power-pages-building-blocks-reference/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/tools/power-pages-deployment-reference/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/tools/power-pages-pricing-calculator/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/tools/power-pages-security-reference/</loc><lastmod>2026-11-27</lastmod></url>
@@ -103,7 +101,6 @@
   <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-liquid-templates/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-table-permissions/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/de/downloads/cheat-sheets/power-pages-web-api/</loc><lastmod>2026-11-27</lastmod></url>
-  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-learning-curriculum/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-liquid-templates/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/power-pages-table-permissions/</loc><lastmod>2026-11-27</lastmod></url>
@@ -115,4 +112,7 @@
   <url><loc>https://tinorabe.de/en/about/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/contact/</loc><lastmod>2026-11-27</lastmod></url>
   <url><loc>https://tinorabe.de/en/services/care/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/power-pages-building-blocks-reference/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/tools/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://tinorabe.de/en/downloads/cheat-sheets/</loc><lastmod>2026-11-27</lastmod></url>
 </urlset>
